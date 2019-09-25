@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <Route exact path="/" component={HomePage.component} />
-      <Route exact path="/new-item" component={AmortizationCalculator} />
+      <Route exact path="/calc" component={AmortizationCalculator} />
     </div>
   );
 }
