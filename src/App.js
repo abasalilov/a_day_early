@@ -1,7 +1,9 @@
 import React from "react";
+import { Route } from "react-router-dom";
 import logo from "./logo.svg";
-import "./App.css";
+import "./App.scss";
 import { AmortizationCalculator } from "./components";
+import { HomePage } from "./Pages";
 
 function App() {
   return (
@@ -20,7 +22,6 @@ function App() {
           Learn React
         </a>
       </header>
-      <div>here</div>
       <Route exact path="/" component={HomePage} />
       <Route exact path="/new-item" component={AmortizationCalculator} />
     </div>
