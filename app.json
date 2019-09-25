@@ -1,0 +1,10 @@
+{
+  "apps": [
+    {
+      "name": "aDayEarly",
+      "script": "npm run build",
+      "watch": true,
+      "NODE_ENV": "production"
+    }
+  ]
+}
