@@ -39,7 +39,6 @@ const styles = theme => ({
     padding: "1rem"
   },
   subMenuOption: {
-    border: "solid #51a39a 2px",
     color: theme.palette.text.secondary,
     display: "flex",
     alignItems: "center",

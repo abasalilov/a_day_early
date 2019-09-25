@@ -1,5 +1,5 @@
 import React from "react";
-import { Loading } from "../../../../components/navigation";
+import { Loading } from "../../navigation";
 
 class ImageComponent extends React.Component {
   constructor(props) {

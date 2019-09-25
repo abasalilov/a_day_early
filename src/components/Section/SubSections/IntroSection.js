@@ -8,10 +8,7 @@ import { Image } from "../../common";
 const styles = () => {
   return {
     pic: {
-      width: "24rem",
-      margin: "3rem auto",
       padding: "2rem 0",
-      height: "17rem",
       textAlign: "center"
     },
     mobilePic: {
@@ -25,9 +22,7 @@ const styles = () => {
       display: "flex",
       flexDirection: "row",
       justifyContent: "space-between",
-      alignItems: "center",
-      height: "30%",
-      marginTop: "4rem"
+      alignItems: "center"
     },
     mobileIntroHeader: {
       marginBottom: "1.5rem",
@@ -65,7 +60,7 @@ export const IntroSectionComponent = props => {
           containerClassName={containerClass}
           imgClassName={imgClass}
           src={
-            "https://res.cloudinary.com/dbfv0bfmw/image/upload/v1529793665/gmas_logo.png"
+            "https://res.cloudinary.com/dbfv0bfmw/image/upload/v1569108593/ade3.png"
           }
         />
         <div className={classes.heroContent}>

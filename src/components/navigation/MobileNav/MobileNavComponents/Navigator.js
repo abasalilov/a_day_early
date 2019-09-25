@@ -4,10 +4,7 @@ import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import { MorphIcon } from "react-svg-buttons";
 import { isServer, getScreenWidth } from "../../../../utils";
-import {
-  resetAuth as createResetAuthAction,
-  selectModal as createSelectModalAction
-} from "../../../../actions";
+import { resetAuth as createResetAuthAction } from "../../../../actions";
 import { Profile, LogOut, ContactUs, Home } from "./MobileIcons";
 import PropTypes from "prop-types";
 
@@ -65,7 +62,6 @@ class MobileNavigator extends React.Component {
 
   handleRoute(rt) {
     const { history } = this.props;
-    // selectModal(rt);
     history.push(rt);
     this.togglePress();
   }
@@ -185,9 +181,6 @@ const mapDispatchToProps = dispatch => {
   return {
     resetAuthentication: () => {
       dispatch(createResetAuthAction());
-    },
-    selectModal: modalName => {
-      dispatch(createSelectModalAction(modalName));
     }
   };
 };
