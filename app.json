@@ -2,7 +2,7 @@
   "apps": [
     {
       "name": "aDayEarly",
-      "script": "npm run build",
+      "script": "npm run postbuild",
       "watch": true,
       "NODE_ENV": "production"
     }
