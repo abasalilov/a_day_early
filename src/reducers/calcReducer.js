@@ -8,25 +8,25 @@ import update from "react-addons-update";
 
 export const defaultState = {
   default: true,
-  loanAmount: 100000,
-  interestRate: 4,
+  loanAmount: 200000,
+  interestRate: 3.2,
   term: 10,
   beginDate: new Date(),
   isMortgage: false,
   taxRate: 1.5,
-  insuranceAmount: 100,
+  insuranceAmount: 1000,
   amortization: []
 };
 
 export const resetState = {
   default: true,
-  loanAmount: "",
-  interestRate: "",
-  term: "",
-  beginDate: null,
+  loanAmount: 200000,
+  interestRate: 3.2,
+  term: 10,
+  beginDate: new Date(),
   isMortgage: false,
   taxRate: 1.5,
-  insuranceAmount: 100,
+  insuranceAmount: 1000,
   amortization: []
 };
 
@@ -45,8 +45,11 @@ export default function input(state = defaultState, action) {
       ) {
         return state;
       }
-
       const amortization = amortizationSchedule(loanAmount, term, interestRate);
+      console.log("loanAmount", loanAmount);
+      console.log("term", term);
+      console.log("interestRate", interestRate);
+      console.log("amortization", amortization);
 
       return update(state, {
         amortization: {

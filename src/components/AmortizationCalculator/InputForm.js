@@ -2,7 +2,6 @@ import React from "react";
 import { reduxForm, Field } from "redux-form";
 import DateFnsUtils from "@date-io/date-fns/build";
 import { Row, Col } from "react-grid-system";
-import { debounce } from "lodash";
 import { connect } from "react-redux";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { DatePicker } from "@material-ui/pickers";
@@ -20,7 +19,7 @@ class InputFormComponent extends React.Component {
   }
 
   componentDidUpdate() {
-    debounce(() => this.props.updateAmortization(), 800);
+    const one = this.props.updateAmortization();
   }
 
   render() {

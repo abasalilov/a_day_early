@@ -13,8 +13,7 @@ const cellStyle = {
 
 const summaryCellStyle = {
   padding: "5px 0",
-  margin: "0",
-  fontWeight: "700"
+  fontWeight: "500"
 };
 
 const summaryRowStyle = {
@@ -67,7 +66,7 @@ const displayDataCell = content => (
 
 const displaySummaryCell = content => (
   <Col xs={2} style={summaryCellStyle}>
-    <span>{content}:</span>
+    <span>{content}</span>
   </Col>
 );
 

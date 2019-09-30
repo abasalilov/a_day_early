@@ -31,7 +31,7 @@ class CalcApp extends Component {
     } = this.props;
 
     return (
-      <div>
+      <React.Fragment>
         <Header />
         <div className="main-app-container">
           <div className="input-container">
@@ -46,7 +46,7 @@ class CalcApp extends Component {
             <Output input={input} />
           </div>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

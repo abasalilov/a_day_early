@@ -1,25 +1,4 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
-}
+// @import url(https://fonts.googleapis.com/css?family=Raleway:100, 400);
 
 $main-bg-color: #f1f2f0;
 $accent-blue: #37bbe4;
@@ -42,16 +21,18 @@ body {
 }
 
 .main-app-nav {
-  font-size: 2.3em;
+  font-size: 3.3em;
   text-align: center;
   color: $accent-red;
   font-weight: 800;
+  margin: 1rem;
 
   .tagline {
-    font-size: 0.35em;
+    font-size: 0.45em;
     color: $accent-black;
     text-transform: uppercase;
     letter-spacing: 0.3em;
+    margin: 1rem;
   }
 }
 
@@ -59,7 +40,7 @@ body {
   display: flex;
   justify-content: center;
   text-align: center;
-  margin: 0.5em;
+  margin: 1rem;
 }
 
 .output-container {
@@ -86,6 +67,7 @@ body {
 
 .summary-row {
   margin-top: 0.75em;
+  border: dotted green 1px;
 }
 
 .invalid-row {
@@ -99,6 +81,8 @@ body {
 .amortization-table {
   font-size: 0.8em;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0 auto;
+  width: 100%;
 }
 
 footer {
