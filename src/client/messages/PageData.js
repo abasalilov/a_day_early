@@ -13,7 +13,7 @@ import People from "@material-ui/icons/People";
 import TouchApp from "@material-ui/icons/TouchApp";
 const CARD_LIST = "CARD_LIST";
 const INTRO = "INTRO";
-const SERVICES = "SERVICES";
+const CALCULATOR = "CALCULATOR";
 const CONTACT_US = "CONTACT_US";
 /** data **/
 
@@ -158,7 +158,7 @@ const servicesContent = [
 
 export const ServicesSectionData = {
   hasHero: false,
-  displayType: SERVICES,
+  displayType: CALCULATOR,
   displayContent: servicesContent,
   isLastSection: false
 };

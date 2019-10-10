@@ -130,7 +130,7 @@ class ServiceSectionComponent extends React.Component {
     return (
       <React.Fragment>
         <Divider style={{ width: "100%", marginBottom: "2rem" }} />
-        <Grid container key={"dsf"} id="Services">
+        <Grid container key={"dsf"} id="Calculator">
           <Typography
             variant={mobile ? "display4" : "h2"}
             gutterBottom
@@ -138,7 +138,7 @@ class ServiceSectionComponent extends React.Component {
             color="textPrimary"
             style={{ width: "100%" }}
           >
-            Services
+            CALCULATOR
           </Typography>
           {displayContent.map(service => (
             <Grid item key={service.title} xs={mobile ? 12 : 6}>

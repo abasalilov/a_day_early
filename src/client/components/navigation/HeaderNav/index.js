@@ -1,2 +1,1 @@
-export { HeaderNav } from './HeaderNav';
-// export { EOSHeader } from './EOSHeader';
+export { HeaderNav } from "./HeaderNav";

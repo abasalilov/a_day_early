@@ -76,8 +76,8 @@ const styles = {
 
 const externalHeaderLinks = [
   "Home",
-  "About Us",
-  "Services",
+  "WHO WE ARE",
+  "CALCULATOR",
   "Contact Us",
   "Login"
 ];

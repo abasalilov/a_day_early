@@ -31,7 +31,7 @@ ReactDOM.hydrate(
           backgroundColor: "#F1F3F4"
         }}
       >
-        <Favicon url="https://res.cloudinary.com/dbfv0bfmw/image/upload/v1569108593/ade3.png" />
+        {/* <Favicon url="https://res.cloudinary.com/dbfv0bfmw/image/upload/v1569108593/ade3.png" /> */}
         {renderRoutes(Routes)}
       </div>
     </BrowserRouter>

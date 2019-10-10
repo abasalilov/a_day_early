@@ -42,12 +42,12 @@ const footers = [
   {
     title: "Media",
     description: ["Social Media", "Our Blog"],
-    href: "/#Services"
+    href: "/#Calculator"
   },
   {
     title: "Resources",
     description: ["Blogs", "Tech"],
-    href: "/#Services"
+    href: "/#Calculator"
   },
   {
     title: "Legal",

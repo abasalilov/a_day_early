@@ -5,7 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 import {
   CARD_LIST,
   INTRO,
-  SERVICES,
+  CALCULATOR,
   CONTACT_US,
   AboutUsSection,
   HeroSection,
@@ -68,7 +68,7 @@ const SectionComponent = props => {
             <IntroSection mobile={mobile} sectionProps={sectionProps} />
           </Grid>
         ) : null}
-        {displayType === SERVICES ? (
+        {displayType === CALCULATOR ? (
           <Grid container spacing={mobile ? 40 : 24} alignItems="flex-end">
             <ServiceSection mobile={mobile} sectionProps={sectionProps} />
           </Grid>
