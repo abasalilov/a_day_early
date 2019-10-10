@@ -25,19 +25,21 @@ class RightSideComponent extends React.Component {
       <div className="w3-row" id="about">
         <div className="window-trans-padded w3-content bordered-box">
           <div className={classes.content}>
-            <h5 className="bright-blue">Upcoming GMAS campaigns & TGEs:</h5>
+            <h5 className="bright-blue">
+              Upcoming ADE product releases & TGEs:
+            </h5>
             <li>
               <a
-                href={"https://www.shapecoin.io/"}
+                href={"https://adayearly.com/"}
                 target="_blank"
                 className={classes.href}
               >
-                ShapeCoin
+                A
               </a>
             </li>
             <li>
               <a
-                href={"http://partsdetectico.io/"}
+                href={"http://adayearly.com"}
                 target="_blank"
                 className={classes.href}
               >
@@ -45,7 +47,6 @@ class RightSideComponent extends React.Component {
               </a>
             </li>
             <h5 className="bright-blue">Blog Posts:</h5>
-            <li>Bleeding Edge Crypto Projects</li>
             <li>Regulatory</li>
           </div>
         </div>

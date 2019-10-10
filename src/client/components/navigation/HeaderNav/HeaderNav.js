@@ -79,14 +79,14 @@ const externalHeaderLinks = [
   "WHO WE ARE",
   "CALCULATOR",
   "CONTACT US",
-  "Login"
+  "LOGIN"
 ];
 
-const internalHeaderLinks = ["Profile", "Login"];
+const internalHeaderLinks = ["Profile", "LOGIN"];
 
 const getTitle = title => {
   const link = title.replace(" ", "-");
-  if (title === "Login") {
+  if (title === "LOGIN") {
     return "/login";
   }
   return "/#" + link;
@@ -104,7 +104,7 @@ const NavButton = props => {
   const style = { color: "#51a39a", textDecoration: "none" };
   const linkClassName = classNames(classes.w3BarItem, classes.w3Button);
   const linkPath = getTitle(title);
-  if (attempted && result === "OK" && title === "Login") {
+  if (attempted && result === "OK" && title === LOGIN) {
     button = (
       <HeaderLink
         className={linkClassName}

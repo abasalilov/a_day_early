@@ -24,60 +24,57 @@ const RegLeftPanelComponent = props => {
   const { classes } = props;
   return (
     <div className="w3-col m12 l4 window-dark w3-content">
-      <h5>
-        G-MAS leadership drives all dimensions at each stage of the token sale
-        and dApp development:
-      </h5>
+      <h5>A Day Early</h5>
 
       <ul>
         <li>
           <Link className={classes.link} to="/services#wp">
-            White paper drafting.
+            Add.
           </Link>
         </li>
         <li>
           <Link className={classes.link} to="/services#video">
-            Video content creation.
+            Add.
           </Link>
         </li>
         <li>
           <Link className={classes.link} to="/services#reg">
-            Regulatory Compliance.
+            Add.
           </Link>
         </li>
         <li>
           <Link className={classes.link} to="/services#pr">
-            PR and marketing.
+            Add.
           </Link>
         </li>
 
         <li>
           <Link className={classes.link} to="/services#token">
-            Token sale website creation.
+            Add.
           </Link>
         </li>
 
         <li>
           <Link className={classes.link} to="/services#token">
-            Token and secure wallet development.
+            Add.
           </Link>
         </li>
 
         <li>
           <Link className={classes.link} to="/services#dapp">
-            dApp Software Architecture.
+            Add.
           </Link>
         </li>
 
         <li>
           <Link className={classes.link} to="/services#tech">
-            Technical implementation.
+            Add.
           </Link>
         </li>
 
         <li>
           <Link className={classes.link} to="/services#tech">
-            Technical Sourcing and Recruiting.
+            Add.
           </Link>
         </li>
       </ul>

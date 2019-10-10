@@ -388,7 +388,7 @@ class VerticalLinearStepper extends React.Component {
                           label="Status Update"
                           name="statusUpdate"
                           className={classes.textField}
-                          placeholder="#GMAS #yolo"
+                          placeholder="#aDayEarly #earlyBird"
                           margin={"none"}
                           multiline
                           rows="2"

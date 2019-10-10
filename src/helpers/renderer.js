@@ -48,8 +48,7 @@ export default (req, store, context) => {
 
   return `
     <html>
-      <title>G-MAS Dev Group</title>
-      <script id='pixel-script-poptin' src='https://cdn.popt.in/pixel.js?id=1dc225ee7b591' async='true'></script>
+      <title>A Day Early</title>
           <head>
               <style>
                .mobileRootStyle {
@@ -154,10 +153,10 @@ export default (req, store, context) => {
                       box-sizing: content-box;
                   }
 
-                  #direct_upload { 
+                  #direct_upload {
                       padding: 20px 20px;
-                      border-top: 1px solid #ccc; 
-                      border-bottom: 1px solid #ccc; 
+                      border-top: 1px solid #ccc;
+                      border-bottom: 1px solid #ccc;
                     }
 
                   h1, #direct_upload h1 { margin: 0 0 15px 0; }
@@ -247,7 +246,7 @@ export default (req, store, context) => {
                   </style>
                     <div id="root"><nav/><div/>${content}</div>
                   <script>
-                    var initialStore = ${serialize(store.getState())}; 
+                    var initialStore = ${serialize(store.getState())};
                     initialStore.mobile =${mobile};
                     window.INITIAL_STATE = initialStore;
                   </script>

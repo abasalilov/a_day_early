@@ -64,7 +64,7 @@ const MobileLeftPanelComponent = props => {
         <img src="https://res.cloudinary.com/dbfv0bfmw/image/upload/v1569108593/ade3.png" />
         <div className={classes.space}>&nbsp;</div>
         <h1 className="bright-blue">
-          <strong>G-MAS Development is ready!</strong>
+          <strong>A Day Early is ready!</strong>
         </h1>
       </div>
 
@@ -72,7 +72,7 @@ const MobileLeftPanelComponent = props => {
         <div className={classes.center}>
           <div className={classes.textTop}>
             <h2 className="bright-blue">
-              G-MAS leadership drives all dimensions the token sale:
+              A Day Early leadership drives all dimensions the token sale:
             </h2>
           </div>
           <div className={classes.linksContainer}>

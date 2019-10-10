@@ -14,12 +14,12 @@ const Privacy = () => (
         >
             <div>
                 <div>
-                    <h1>G-MAS Development Privacy Policy</h1>
+                    <h1>A Day Early Privacy Policy</h1>
                     <p>
                         <em>Last updated: Aug 22, 2018</em>
                     </p>
                     <p>
-                        G-MAS Development, (&quot;ade Development&quot;, &quot;we&quot;,
+                        A Day Early, (&quot;ade Development&quot;, &quot;we&quot;,
                         &quot;us&quot; and &quot;our&quot;) respects and protects the privacy of
                         visitors to our websites and our customers who use our services. To ensure
                         transparency this Privacy Policy describes our information handling
@@ -28,7 +28,7 @@ const Privacy = () => (
                         and <a href="https://api.adedevelopment.com">api.adedevelopment.com</a>,
                         or any other websites, pages, features, or content we own or operate
                         (collectively, the &quot;Site(s)&quot;) and/or when you use the ade
-                        Development web app, any G-MAS Development or G-MAS Development API or third
+                        Development web app, any A Day Early or A Day Early API or third
                         party applications relying on such an API, and related services (referred to
                         collectively hereinafter as &quot;Services&quot;).
                     </p>
@@ -54,11 +54,11 @@ const Privacy = () => (
                         prior to the change becoming effective.
                     </p>
                     <p>
-                        G-MAS Development may provide additional &quot;just-in-time&quot;
+                        A Day Early may provide additional &quot;just-in-time&quot;
                         disclosures or additional information about the data collection, use and
                         sharing practices of specific Services. These notices may supplement or
-                        clarify G-MAS Development&#39;s privacy practices or may provide you with
-                        additional choices about how G-MAS Development processes your personal
+                        clarify A Day Early&#39;s privacy practices or may provide you with
+                        additional choices about how A Day Early processes your personal
                         information.
                     </p>
                     <h2>THE PERSONAL INFORMATION WE COLLECT</h2>
@@ -70,7 +70,7 @@ const Privacy = () => (
                         be used to identify you.
                     </p>
                     <p>
-                        Except as described in this Privacy Policy, G-MAS Development will not give,
+                        Except as described in this Privacy Policy, A Day Early will not give,
                         sell, rent or loan any personal Information to any third party.
                     </p>
                     <p>
@@ -88,32 +88,32 @@ const Privacy = () => (
                         to open an account, add a payment method, or execute a transaction. We also
                         collect personal information when you use or request information about our
                         Services, subscribe to marketing communications, request support, complete
-                        surveys, or sign up for a G-MAS Development event. We may also collect
+                        surveys, or sign up for a A Day Early event. We may also collect
                         personal information from you offline, such as when you attend one of our
                         events, or when you contact customer support. We may use this information in
                         combination with other information we collect about you, as set forth in
                         this Notice.
                     </p>
                     <p>
-                        Here are some specific examples of the types of personal information G-MAS
+                        Here are some specific examples of the types of personal information A Day Early
                         Development may collect and how we may use it:
                     </p>
                     <ul>
                         <li>
                             {' '}
-                            When you create an account or use G-MAS Development Services, we, or our
+                            When you create an account or use A Day Early Services, we, or our
                             affiliates vendors acting on our behalf may collect the following types
                             of information to meet our legal obligations: your name, date of birth,
                             social security number, driver number ID, personal ID, address, phone,
                             email, full bank account details and/or credit card numbers that you
-                            link to your G-MAS Development account or input when you use G-MAS
-                            Development Services. G-MAS Development will use this information to
+                            link to your A Day Early account or input when you use A Day Early
+                            Development Services. A Day Early will use this information to
                             fulfill your requests and provide the relevant Services.
                         </li>
                         <li>
                             {' '}
                             If you seek permissions to raise Digital Currency buy and sell limits
-                            associated with your G-MAS Development Account, we may require you to
+                            associated with your A Day Early Account, we may require you to
                             provide additional information which we may use in collaboration with
                             service providers acting on our behalf to verify your identity or
                             address, and/or to manage risk as required under applicable law. This
@@ -127,7 +127,7 @@ const Privacy = () => (
                             {' '}
                             Whenever you contact us or respond to our communications (e.g., email,
                             telephone, written), we receive your contact information and any other
-                            personal information you choose to provide us. G-MAS Development will
+                            personal information you choose to provide us. A Day Early will
                             use such information to fulfill your requests or to provide services.
                         </li>
                         <li>
@@ -181,13 +181,13 @@ const Privacy = () => (
                         </li>
                         <li>
                             {' '}
-                            To provide you with G-MAS Development Services and customer support that
+                            To provide you with A Day Early Services and customer support that
                             you request.
                         </li>
                         <li>
                             {' '}
                             To better understand our customers and end-users and the way they use
-                            and interact with G-MAS Development Services.
+                            and interact with A Day Early Services.
                         </li>
                         <li>
                             {' '}
@@ -197,7 +197,7 @@ const Privacy = () => (
                         <li> To communicate with you about our events or our partner events.</li>
                         <li>
                             {' '}
-                            To customize, measure, and improve G-MAS Development Services and the
+                            To customize, measure, and improve A Day Early Services and the
                             content and layout of our website and applications.
                         </li>
                         <li>
@@ -216,7 +216,7 @@ const Privacy = () => (
                         personal information for any purpose that is incompatible with the purposes
                         for which we originally collected it or subsequently obtained your
                         authorization. If you choose to so limit the use of your personal
-                        information, certain features or G-MAS Development Services may not be
+                        information, certain features or A Day Early Services may not be
                         available to you.
                     </p>
                     <h2>INFORMATION FROM THIRD PARTY SOURCES</h2>
@@ -252,7 +252,7 @@ const Privacy = () => (
                         accuracy of the records we hold about you as well as to position, promote or
                         optimize our Services. In addition, we may also use this information in
                         conjunction with your browsing habits / preferences (as obtained from our
-                        data partners) and your contact details, professional information and G-MAS
+                        data partners) and your contact details, professional information and A Day Early
                         Development transaction history to deliver targeted advertising and
                         marketing to you, where permitted by applicable law and in accordance with
                         your advertising / marketing preferences. Second, we also process such
@@ -263,14 +263,14 @@ const Privacy = () => (
                     <p>
                         Once we obtain such information from third parties, we do not subsequently
                         share it with any other third parties except as described in this Policy.
-                        This information is shared with G-MAS Development&#39;s processors and
+                        This information is shared with A Day Early&#39;s processors and
                         corporate group as necessary to perform the Services.
                     </p>
                     <h2>WHY WE SHARE PERSONAL INFORMATION WITH OTHER PARTIES</h2>
                     <p>
                         We take care to allow your personal information to be accessed only by those
                         who really need to in order to perform their tasks and duties, and to share
-                        with third parties who have a legitimate purpose for accessing it. G-MAS
+                        with third parties who have a legitimate purpose for accessing it. A Day Early
                         Development will never sell or rent your personal information. We will only
                         share your information in the following circumstances:
                     </p>
@@ -278,7 +278,7 @@ const Privacy = () => (
                         <li>
                             {' '}
                             We share your information with third party identity verification
-                            services in order to prevent fraud. This allows G-MAS Development to
+                            services in order to prevent fraud. This allows A Day Early to
                             confirm your identity by comparing the information you provide us to
                             public records and other third party databases. These service providers
                             may create derivative data based on your personal information that can
@@ -287,9 +287,9 @@ const Privacy = () => (
                         </li>
                         <li>
                             {' '}
-                            G-MAS Development may use Plaid Technologies, Inc. (&quot;Plaid&quot;)
+                            A Day Early may use Plaid Technologies, Inc. (&quot;Plaid&quot;)
                             to verify your bank account and confirm your bank account balance prior
-                            to approving a transaction. G-MAS Development only shares your
+                            to approving a transaction. A Day Early only shares your
                             information with Plaid in accordance with this Privacy Policy.
                             Information shared with Plaid is treated by Plaid in accordance with its
                             Privacy Policy, available at{' '}
@@ -320,7 +320,7 @@ const Privacy = () => (
                         <li>
                             {' '}
                             We may share your information with companies or other entities that
-                            purchase G-MAS Development assets pursuant to a court-approved sale
+                            purchase A Day Early assets pursuant to a court-approved sale
                             under U.S. Bankruptcy law;
                         </li>
                         <li>
@@ -335,15 +335,15 @@ const Privacy = () => (
                         </li>
                     </ul>
                     <p>
-                        If you establish a G-MAS Development account indirectly on a third party
+                        If you establish a A Day Early account indirectly on a third party
                         website or via a third party application, any information that you enter on
-                        that website or application (and not directly on a G-MAS Development
+                        that website or application (and not directly on a A Day Early
                         website) will be shared with the owner of the third party website or
                         application and your information will be subject to their privacy policies.
                     </p>
                     <h2>HOW PERSONAL INFORMATION IS SHARED WITH THIRD-PARTY SITES AND SERVICES</h2>
                     <p>
-                        If you use your G-MAS Development Account to transfer Digital Currency in
+                        If you use your A Day Early Account to transfer Digital Currency in
                         connection with the purchase or sale of goods or services, we or you may
                         also provide the seller with your shipping address, name, and/or email to
                         help complete your transaction with the seller. The seller is not allowed to
@@ -360,9 +360,9 @@ const Privacy = () => (
                         with us, such as your email address or mobile phone number which may be used
                         to inform you that a transfer has been sent to or received from the third
                         party. We may use this information in connection with such transfers to
-                        confirm that you are a G-MAS Development customer, that Digital Currency
+                        confirm that you are a A Day Early customer, that Digital Currency
                         transfers are enabled, and/or to notify you that you have received Digital
-                        Currency. If you request that we validate your status as a G-MAS Development
+                        Currency. If you request that we validate your status as a A Day Early
                         customer with a third party, we will do so. You may also choose to send
                         Digital Currency to or request Digital Currency from an email address. In
                         such cases, your user name will be displayed in an email message notifying
@@ -370,23 +370,23 @@ const Privacy = () => (
                     </p>
                     <p>
                         Please note that merchants you interact with may have their own privacy
-                        policies, and G-MAS Development is not responsible for their operations,
+                        policies, and A Day Early is not responsible for their operations,
                         including, but not limited to, their information practices. Information
                         collected by third parties, which may include such things as contact details
                         or location data, is governed by their privacy practices. We encourage you
                         to learn about the privacy practices of those third parties.
                     </p>
                     <p>
-                        If you authorize one or more third-party applications to access your G-MAS
-                        Development Account, then information you have provided to G-MAS Development
+                        If you authorize one or more third-party applications to access your A Day Early
+                        Development Account, then information you have provided to A Day Early
                         may be shared with those third parties. Unless you provide further
                         authorization, these third parties are not allowed to use this information
-                        for any purpose other than to facilitate your transactions using G-MAS
+                        for any purpose other than to facilitate your transactions using A Day Early
                         Development Services.
                     </p>
                     <h2>HOW WE PROTECT AND STORE PERSONAL INFORMATION</h2>
                     <p>
-                        We understand how important your privacy is, which is why G-MAS Development
+                        We understand how important your privacy is, which is why A Day Early
                         maintains (and requires its service providers to maintain) appropriate
                         physical, technical and administrative safeguards to protect the security
                         and confidentiality of the personal information you entrust to us.
@@ -407,7 +407,7 @@ const Privacy = () => (
                         require it to fulfill their job responsibilities. Full credit card data is
                         securely transferred and hosted off-site by a payment vendor in compliance
                         with Payment Card Industry Data Security Standards (PCI DSS). This
-                        information is not accessible to G-MAS Development&#39;s staff.
+                        information is not accessible to A Day Early&#39;s staff.
                     </p>
                     <p>
                         However, we cannot guarantee that loss, misuse, unauthorized acquisition, or
@@ -429,13 +429,13 @@ const Privacy = () => (
                     </p>
                     <h2>INTERNATIONAL TRANSFERS OF PERSONAL INFORMATION</h2>
                     <p>
-                        As a global entity, G-MAS Development may store, transfer, and otherwise
+                        As a global entity, A Day Early may store, transfer, and otherwise
                         process your personal information in countries outside of the country of
                         your residence, including the United States and possibly other countries.
                     </p>
                     <p>
-                        G-MAS Development participates in and has certified its compliance with the
-                        EU-U.S. Privacy Shield Framework. G-MAS Development is committed to
+                        A Day Early participates in and has certified its compliance with the
+                        EU-U.S. Privacy Shield Framework. A Day Early is committed to
                         subjecting all personal information received from European Union (EU) member
                         countries, in reliance on the Privacy Shield Framework, to the Framework’s
                         applicable Principles. To learn more about the Privacy Shield Framework,
@@ -443,10 +443,10 @@ const Privacy = () => (
                         <a href="https://www.privacyshield.gov">https://www.privacyshield.gov</a>.
                     </p>
                     <p>
-                        G-MAS Development is responsible for the processing of personal information
+                        A Day Early is responsible for the processing of personal information
                         it receives under the Privacy Shield Framework and subsequently transfers to
                         a third party acting as an agent on its behalf. Pursuant to the Privacy
-                        Shield Principles, G-MAS Development will use personal information only in
+                        Shield Principles, A Day Early will use personal information only in
                         ways that are compatible with the purposes for which it was collected or
                         subsequently authorized by the individual. We will take all reasonable steps
                         to ensure that personal information we process is limited to only what is
@@ -454,22 +454,22 @@ const Privacy = () => (
                         complete, and up-to-date.
                     </p>
                     <p>
-                        G-MAS Development complies with the Privacy Shield Principles for all onward
+                        A Day Early complies with the Privacy Shield Principles for all onward
                         transfers of personal information from the EU, including the onward transfer
-                        liability provisions. Consequently, before G-MAS Development shares your
+                        liability provisions. Consequently, before A Day Early shares your
                         information with any third party that is not also certified under the
-                        E.U.-U.S. Privacy Shield Framework, G-MASelopment LLC. will enter into a
+                        E.U.-U.S. Privacy Shield Framework, A Day Earlyelopment LLC. will enter into a
                         written agreement that the third party provides at least the same level of
                         privacy safeguard as required under those Frameworks, and assures the same
                         level of protection for the personal information as required under
                         applicable data protection laws.
                     </p>
                     <p>
-                        G-MASelopment LLC. commits to resolve European data subjects&#39; complaints
+                        A Day Earlyelopment LLC. commits to resolve European data subjects&#39; complaints
                         about their privacy and our collection, use or disclosure of their personal
                         information in compliance with the EU-U.S. Privacy Shield Principles.
                         European data subjects with inquiries or complaints regarding this Privacy
-                        Policy should first contact G-MAS Development at{' '}
+                        Policy should first contact A Day Early at{' '}
                         <a href="mailto:adedevelopment@gmail.com">adedevelopment@gmail.com</a>.
                     </p>
                     <p>
@@ -488,7 +488,7 @@ const Privacy = () => (
                         Federal Trade Commission with respect to the Framework. Please note that if
                         your complaint is not resolved through these channels, under limited
                         circumstances, a binding arbitration option may be available before a
-                        Privacy Shield Panel. In certain situations, G-MAS Development may be
+                        Privacy Shield Panel. In certain situations, A Day Early may be
                         required to disclose personal information in response to lawful requests by
                         public authorities, including to meet national security or law enforcement
                         requirements.
@@ -503,7 +503,7 @@ const Privacy = () => (
                         where the rights of persons other than you would be violated.
                     </p>
                     <p>
-                        If you close your G-MAS Development account, we will mark your account in
+                        If you close your A Day Early account, we will mark your account in
                         our database as &quot;Closed,&quot; but will keep your account information
                         in our database for a period of time described above. This is necessary in
                         order to deter fraud, by ensuring that persons who try to commit fraud will
@@ -516,7 +516,7 @@ const Privacy = () => (
                     <h2>RETENTION OF PERSONAL INFORMATION</h2>
                     <p>
                         We store our customers&#39; personal information securely throughout the
-                        life of the customer&#39;s G-MAS Development Account. G-MAS Development will
+                        life of the customer&#39;s A Day Early Account. A Day Early will
                         retain your personal information for a minimum of five years or as necessary
                         to comply with our legal obligations or to resolve disputes.
                     </p>
@@ -548,7 +548,7 @@ const Privacy = () => (
                     <p>
                         We do not knowingly request of collect personal information from any person
                         under the age of 18. If a user submitting personal information is suspected
-                        of being younger than 18 years of age, G-MAS Development will require the
+                        of being younger than 18 years of age, A Day Early will require the
                         user to close his or her account and will not allow buying or selling
                         digital currencies. We will also take steps to delete the information as
                         soon as possible. Please notify us if you know of any individuals under the
@@ -585,7 +585,7 @@ const Privacy = () => (
                     </p>
                     <p>
                         <strong>For Texas Users Only:</strong> If you still have an unresolved
-                        complaint regarding G-MAS Development&#39;s money transmission or currency
+                        complaint regarding A Day Early&#39;s money transmission or currency
                         exchange activity, please direct your complaint to: Texas Department of
                         Banking, 2601 North Lamar Boulevard, Austin, Texas 78705, 1-877-276-5554
                         (toll free), <a href="http://www.dob.texas.gov/">www.dob.texas.gov</a>.

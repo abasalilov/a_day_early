@@ -39,21 +39,21 @@ export const updateActiveUser = username => async (dispatch, getState, api) => {
   });
 };
 
-// note might need to regress to   const res = await api.get("/gmas-login");
+// note might need to regress to   const res = await api.get("/ade-login");
 // style
-export const GMAS_LOGIN_SUBMIT = "gmas_login_submit";
-export const gmasLoginSubmit = (username, pw) => async (
+export const ADE_LOGIN_SUBMIT = "ade_login_submit";
+export const adeLoginSubmit = (username, pw) => async (
   dispatch,
   getState,
   api
 ) => {
-  const res = await api.post(`https://gmasdevgroup.com/gmas-login`, {
+  const res = await api.post(`https://gmasdevgroup.com/ade-login`, {
     username,
     pw
   });
 
   dispatch({
-    type: GMAS_LOGIN_SUBMIT,
+    type: ADE_LOGIN_SUBMIT,
     payload: res
   });
 
@@ -67,7 +67,7 @@ export const gmasLoginSubmit = (username, pw) => async (
 
 export const REGISTER_USER = "register_user";
 export const registerUser = data => async (dispatch, getState, api) => {
-  const res = await api.post("https://gmasdevgroup.com/gmas-registration", {
+  const res = await api.post("https://gmasdevgroup.com/ade-registration", {
     data
   });
   dispatch({
@@ -91,7 +91,7 @@ export const confirmUniqueUsername = data => async (
   getState,
   api
 ) => {
-  const res = await api.post("https://gmasdevgroup.com/gmas-username-check", {
+  const res = await api.post("https://gmasdevgroup.com/ade-username-check", {
     data
   });
 
