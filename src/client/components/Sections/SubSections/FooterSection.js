@@ -36,7 +36,7 @@ const styles = theme => ({
 const footers = [
   {
     title: "Company",
-    description: ["Team", "Contact Us", "Locations"],
+    description: ["Team", "CONTACT US", "Locations"],
     href: "/#About-Us"
   },
   {
