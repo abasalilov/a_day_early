@@ -1,7 +1,7 @@
 {
   "apps": [
     {
-      "name": "aDayEarly",
+      "name": "ade-ui",
       "script": "npm run postbuild",
       "watch": true,
       "NODE_ENV": "production"

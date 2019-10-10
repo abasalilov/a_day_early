@@ -1,32 +1,74 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import { Provider } from "react-redux";
-import { createStore } from "redux";
-import { BrowserRouter } from "react-router-dom";
-import App from "./App";
-import rootReducer from "./reducers";
-import * as serviceWorker from "./serviceWorker";
+import "babel-polyfill";
+import express from "express";
+import { matchRoutes } from "react-router-config";
+import proxy from "express-http-proxy";
+import Routes from "./client/Routes";
+import renderer from "./helpers/renderer";
+import createStore from "./helpers/createStore";
+import cluster from "cluster";
 
-const store = createStore(rootReducer);
+global.navigator = { userAgent: "all" };
 
-ReactDOM.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Provider>,
-  document.getElementById("root")
-);
+const PORT = process.env.PORT || 3000;
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+if (cluster.isMaster) {
+  // Count the machine's CPUs
+  let cpuCount = require("os").cpus().length;
 
-// ReactDOM.render(<App />, document.getElementById("root"));
+  // Create a worker for each CPU
+  for (let i = 0; i < 2; i++) {
+    cluster.fork();
+  }
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+  // Listen for dying workers
+  cluster.on("exit", function(worker) {
+    // Replace the dead worker, we're not sentimental
+    console.log("Worker %d died :(", worker.id);
+    cluster.fork();
+  });
+} else {
+  const app = express();
+
+  app.use(
+    "/api",
+    proxy("http://localhost:5000", {
+      proxyReqOptDecorator(opts) {
+        return opts;
+      }
+    })
+  );
+  app.use(express.static("public"));
+  app.get("*", (req, res) => {
+    const store = createStore(req);
+    const promises = matchRoutes(Routes, req.path)
+      .map(({ route }) => {
+        return route.loadData ? route.loadData(store) : null;
+      })
+      .map(promise => {
+        if (promise) {
+          return new Promise((resolve, reject) => {
+            promise.then(resolve).catch(resolve);
+          });
+        }
+      });
+
+    Promise.all(promises).then(() => {
+      const context = {};
+      const content = renderer(req, store, context);
+
+      if (context.url) {
+        return res.redirect(301, context.url);
+      }
+      if (context.notFound) {
+        res.status(404);
+      }
+
+      res.send(content);
+    });
+  });
+
+  app.listen(PORT, () => {
+    console.log(`Listening on port: ${PORT}`);
+    console.log("Worker %d running!", cluster.worker.id);
+  });
+}
