@@ -19,7 +19,8 @@ const CONTACT_US = "CONTACT_US";
 
 const introContent = {
   title: "Exponential Mortgage Acceleration",
-  top: "Your Financial Freedom Awaits...A Day Early",
+  top:
+    "Your Financial Freedom Awaits...A Day Early ... ADD MORE MARKETING COPY HERE",
   middle:
     "Launching Fall 2019. If you would like to be part of our Beta Release, let us know",
   bottom:

@@ -68,14 +68,23 @@ export default (req, store, context) => {
                 margin-top:3rem;
                 background-color:#F1F3F4
                 }
+
+                #Home > div > div > p {
+                  color: #0C5297
+                }
+
                 .react-reveal {
                     display: flex;
                     justify-content: space-between;
                 }
-                #Home {
-                  margin-top: -30px;
-                  padding-top: 30px;
+                #Home > div > div > div > div > h3 > p {
+                  color: #0C5297
                 }
+
+                #Calculator > h3 {
+                  color: #0C5297
+                }
+
                 #Contact-Us {
                   margin-top: -50px;
                   padding-top: 50px;

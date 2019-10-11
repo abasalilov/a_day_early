@@ -6,6 +6,7 @@ import { withStyles } from "@material-ui/core/styles";
 import { HeaderLink } from "../../common";
 import { confirmAuth } from "../../../utils";
 import { resetAuth as createResetAuthAction } from "../../../actions";
+import Divider from "@material-ui/core/Divider";
 
 const styles = {
   w3Top: {

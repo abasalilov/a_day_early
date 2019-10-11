@@ -22,21 +22,15 @@ const styles = () => {
       margin: "auto"
     },
     introHeader: {
-      display: "flex",
-      flexDirection: "row",
-      justifyContent: "space-between",
       alignItems: "center",
       height: "30%",
-      marginTop: "4rem",
-      marginLeft: "-1rem"
+      marginTop: "4rem"
     },
     mobileIntroHeader: {
       marginBottom: "1.5rem",
       marginTop: "9rem"
     },
-    heroContent: {
-      margin: "1rem"
-    },
+    heroContent: {},
     mobleImg: {
       width: "22rem"
     },
@@ -64,11 +58,11 @@ export const IntroSectionComponent = props => {
       <div className={mobile ? classes.mobileIntroHeader : classes.introHeader}>
         <div className={classes.heroContent}>
           <Typography
-            variant={mobile ? "h2" : "h4"}
-            align={mobile ? "center" : "left"}
+            variant={mobile ? "h2" : "h3"}
+            align={"center"}
             color="textPrimary"
           >
-            {displayContent.title}
+            <p>{displayContent.title}</p>
           </Typography>
         </div>
       </div>

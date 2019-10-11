@@ -58,6 +58,7 @@ const SectionComponent = props => {
   return (
     <React.Fragment>
       <section className={classes.layout} id="Home">
+        <h1>A DAY EARLY</h1>
         {/* Hero unit */}
         {hasHero ? (
           <HeroSection mobile={mobile} sectionProps={sectionProps} />
