@@ -4,10 +4,7 @@ import {
   SET_BEGIN_DATE
 } from "../actions";
 import { amortizationSchedule } from "amortization";
-
-const amortizationSchedule = (a, b, c, d) => {
-  return [a, b, c, d];
-};
+import update from "react-addons-update";
 
 export const defaultState = {
   default: true,

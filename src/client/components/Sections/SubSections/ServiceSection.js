@@ -141,50 +141,7 @@ class ServiceSectionComponent extends React.Component {
           >
             <p>Comparison Calculator</p>
           </Typography>
-          {displayContent.map((service, idx) => (
-            <Grid item key={service.title + idx} xs={mobile ? 12 : 6}>
-              {/* Expander start */}
-              <ExpansionPanel
-                expanded={expanded === service.title}
-                onChange={() => this.handleChange(service.title)} // eslint-disable-line
-              >
-                <ExpansionPanelSummary
-                  expandIcon={<ExpandMoreIcon style={moreIconStyle} />}
-                >
-                  <div className={exapsionHeaderClassName}>
-                    {service.icon(dataIconStyle)}
-                    <Typography
-                      className={classes.expansionSecondHeading}
-                      variant={mobile ? "h3" : "h5"}
-                    >
-                      {mobileTitle(service.title)}
-                    </Typography>
-                  </div>
-                </ExpansionPanelSummary>
-                {/* Expander end */}
-
-                <ExpansionPanelDetails className={classes.expansionMenuTab}>
-                  {/* Expander Details start */}
-                  {service.content.map(subService => (
-                    <div
-                      className={classes.subMenuOption}
-                      key={subService.name}
-                      onClick={() => this.handleToggleModal(subService)} // eslint-disable-line
-                    >
-                      {subService.icon(menuIconStyle)}
-                      <Typography
-                        variant={mobile ? "h3" : "h6"}
-                        color="textSecondary"
-                      >
-                        {subService.name}
-                      </Typography>
-                    </div>
-                  ))}
-                </ExpansionPanelDetails>
-                {/* Expander Details end */}
-              </ExpansionPanel>
-            </Grid>
-          ))}
+          <AmortizationCalculator />
         </Grid>
       </React.Fragment>
     );
