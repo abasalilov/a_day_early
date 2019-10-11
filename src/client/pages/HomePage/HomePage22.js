@@ -8,10 +8,18 @@ import {
   ContactUsSectionData
 } from "../../messages";
 
+const splitStyle = {
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-between",
+  border: "solid red"
+};
+
 const HomePageComponent = props => (
   <div>
-    <Section {...props} sectionProps={IntroSectionData} />
-    <Section {...props} sectionProps={ServicesSectionData} />
+    <div style={splitStyle}>
+      <LeftPanel />
+    </div>
   </div>
 );
 

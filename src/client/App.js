@@ -15,7 +15,7 @@ import {
 const theme = createMuiTheme({
   typography: {
     useNextVariants: true,
-    fontFamily: ["Raleway"].join(",")
+    fontFamily: ["Raleway-ExtraBold"].join(",")
   },
   // https://material-ui.com/customization/themes/#customizing-all-instances-of-a-component-type
   overrides: {

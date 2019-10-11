@@ -18,11 +18,12 @@ const CONTACT_US = "CONTACT_US";
 /** data **/
 
 const introContent = {
-  title: "MONTHLY PAYMENT",
-  top: "Your Financial Freedom Awaits... aDay Early",
+  title: "Exponential Mortgage Acceleration",
+  top: "Your Financial Freedom Awaits...A Day Early",
   middle:
     "Launching Fall 2019. If you would like to be part of our Beta Release, let us know",
-  bottom: ""
+  bottom:
+    "You set the pace, we accelerate, take a look at our comparisons calculator below"
 };
 
 /* eslint-disable */

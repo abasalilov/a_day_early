@@ -3,6 +3,7 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
+import AccountCircle from "@material-ui/icons/AccountCircle";
 import { HeaderLink } from "../../common";
 import { confirmAuth } from "../../../utils";
 import { resetAuth as createResetAuthAction } from "../../../actions";
@@ -28,8 +29,7 @@ const styles = {
     top: "0",
     left: "0",
     zIndex: "100",
-    marginBottom: "2rem",
-    opacity: ".8"
+    marginBottom: "2rem"
   },
   w3BarAuth: {
     width: "100%",
@@ -43,16 +43,14 @@ const styles = {
     left: "0",
     zIndex: "100",
     marginBottom: "2rem",
-    opacity: ".8",
     padding: "0 1rem"
   },
   w3Button: {
     userSelect: "none",
     color: "#0C5297",
     "&:hover": {
-      backgroundColor: "#fff",
-      color: "#0C5297",
-      textShadow: "1px 1px 4px #03c0fe"
+      color: "#7BB16",
+      textShadow: "1px 1px 4px #7BB16"
     }
   },
   w3BarItem: {
@@ -66,10 +64,16 @@ const styles = {
   },
   selected: {
     backgroundColor: "#fff",
-    color: "#03c0fe",
-    textShadow: "1px 1px 4px #03c0fe"
+    color: "#0C5297",
+    textShadow: "1px 1px 4px #0C5297"
   },
   notSelected: {}
+};
+
+const loginStyle = {
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center"
 };
 
 const externalHeaderLinks = [
@@ -80,6 +84,11 @@ const externalHeaderLinks = [
   "LOGIN"
 ];
 
+const iconStyles = {
+  color: "#0C5297",
+  marginBottom: ".5rem"
+};
+
 const internalHeaderLinks = ["Profile", "LOGIN"];
 
 const getTitle = title => {
@@ -89,6 +98,8 @@ const getTitle = title => {
   }
   return "/#" + link;
 };
+
+const isLogin = title => title === "LOGIN";
 
 const NavButton = props => {
   const {
@@ -102,6 +113,8 @@ const NavButton = props => {
   const style = { color: "#0C5297", textDecoration: "none" };
   const linkClassName = classNames(classes.w3BarItem, classes.w3Button);
   const linkPath = getTitle(title);
+  const isLoginComponent = isLogin(title);
+
   if (attempted && result === "OK" && title === LOGIN) {
     button = (
       <HeaderLink
@@ -112,6 +125,21 @@ const NavButton = props => {
         title={"Logout"}
         mobile={mobile ? 1 : 0}
       />
+    );
+  } else if (isLoginComponent) {
+    const isHref = linkPath.includes("#");
+    button = (
+      <div style={loginStyle}>
+        <HeaderLink
+          isHref={isHref}
+          className={linkClassName}
+          to={linkPath}
+          title={title}
+          hasIcon={true}
+          mobile={mobile ? 1 : 0}
+        />
+        {/* <AccountCircle style={iconStyles} /> */}
+      </div>
     );
   } else {
     const isHref = linkPath.includes("#");

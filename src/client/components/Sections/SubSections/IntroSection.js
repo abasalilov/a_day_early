@@ -27,7 +27,8 @@ const styles = () => {
       justifyContent: "space-between",
       alignItems: "center",
       height: "30%",
-      marginTop: "4rem"
+      marginTop: "4rem",
+      marginLeft: "-1rem"
     },
     mobileIntroHeader: {
       marginBottom: "1.5rem",
@@ -40,7 +41,7 @@ const styles = () => {
       width: "22rem"
     },
     imgContainer: {
-      width: "13rem"
+      width: "200%"
     }
   };
 };
@@ -61,26 +62,18 @@ export const IntroSectionComponent = props => {
   return (
     <Grid item key={displayContent.title} xs={12}>
       <div className={mobile ? classes.mobileIntroHeader : classes.introHeader}>
-        <Image
-          containerClassName={containerClass}
-          imgClassName={imgClass}
-          src={
-            "https://res.cloudinary.com/dbfv0bfmw/image/upload/v1529793665/ade_logo.png"
-          }
-        />
         <div className={classes.heroContent}>
           <Typography
-            variant={mobile ? "h2" : "h3"}
+            variant={mobile ? "h2" : "h4"}
             align={mobile ? "center" : "left"}
             color="textPrimary"
-            gutterBottom
           >
             {displayContent.title}
           </Typography>
         </div>
       </div>
       <Typography
-        variant="h5"
+        variant="h6"
         align="left"
         color="textSecondary"
         component="p"

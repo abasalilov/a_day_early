@@ -40,7 +40,7 @@ const MobileTextFieldComponent = props => {
     fontSize: "10px",
     textAlign: "center",
     margin: "6px 0",
-    fontFamily: "Raleway"
+    fontFamily: "Raleway-ExtraBold"
   };
 
   const fieldContainterStyle = { width: "100%" };

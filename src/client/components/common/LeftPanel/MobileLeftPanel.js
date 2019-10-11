@@ -61,7 +61,7 @@ const MobileLeftPanelComponent = props => {
   return (
     <div className={classes.mobileLeft}>
       <div className={classes.top}>
-        <img src="https://res.cloudinary.com/dbfv0bfmw/image/upload/v1529793665/ade_logo.png" />
+        <img src="https://res.cloudinary.com/dbfv0bfmw/image/upload/v1570753007/heroImg.png" />
         <div className={classes.space}>&nbsp;</div>
         <h1 className="bright-blue">
           <strong>A Day Early!</strong>

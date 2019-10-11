@@ -2,9 +2,34 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+
+const iconStyles = {
+  color: "#0C5297",
+  marginBottom: ".5rem",
+  marginLeft: ".5rem"
+};
+
+const flexStules = {
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-between",
+  alignItems: "center",
+  alingContent: "center"
+};
 
 const HeaderLinkComponent = props => {
-  const { className, to, title, isHref, navKey, ...otherProps } = props;
+  const {
+    className,
+    to,
+    title,
+    isHref,
+    navKey,
+    hasIcon,
+    ...otherProps
+  } = props;
+  let styles = {};
+  console.log("hasIcon", hasIcon, "isHref", isHref);
   if (isHref) {
     return (
       <div className={className} key={navKey}>
@@ -19,11 +44,17 @@ const HeaderLinkComponent = props => {
             {title}
           </Typography>
         </a>
+        {hasIcon ? <AccountCircle style={iconStyles} /> : null}
       </div>
     );
   }
+
+  if (hasIcon) {
+    styles = flexStules;
+  }
+
   return (
-    <div className={className} {...otherProps} key={navKey}>
+    <div className={className} style={styles} {...otherProps} key={navKey}>
       <Link to={to} style={{ textDecoration: "none" }}>
         <Typography
           variant="h6"
@@ -35,6 +66,7 @@ const HeaderLinkComponent = props => {
           {title}
         </Typography>
       </Link>
+      {hasIcon ? <AccountCircle style={iconStyles} /> : null}
     </div>
   );
 };

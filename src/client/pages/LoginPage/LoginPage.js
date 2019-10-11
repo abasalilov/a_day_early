@@ -251,7 +251,7 @@ class Login extends React.Component {
               containerClassName={containerClass}
               imgClassName={imgClass}
               src={
-                "https://res.cloudinary.com/dbfv0bfmw/image/upload/v1529793665/ade_logo.png"
+                "https://res.cloudinary.com/dbfv0bfmw/image/upload/v1570753007/heroImg.png"
               }
             />
             <form

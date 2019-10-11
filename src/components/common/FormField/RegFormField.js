@@ -43,7 +43,7 @@ export const RegFormField = props => {
             visibility: showErr ? "visible" : "hidden",
             color: showErr ? (showGreen ? "green" : "red") : "transparent",
             width: "18rem",
-            fontFamily: "Raleway",
+            fontFamily: "Raleway-ExtraBold",
             fontSize: "14px"
           }}
         >
