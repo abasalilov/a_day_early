@@ -24,7 +24,6 @@ const HeroSectionComponent = props => {
   return (
     heroProps && (
       <React.Fragment>
-        <Divider style={{ width: "100%", margin: "3rem 0" }} />
         <div className={classes.heroContent} id="About-Us">
           <Typography
             variant={mobile ? "display4" : "h2"}

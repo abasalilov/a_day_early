@@ -12,14 +12,7 @@ class AmortizationCalculatorComponent extends Component {
   render() {
     return (
       <Container style={colStyle}>
-        <Col
-          xs={12}
-          sm={12}
-          md={12}
-          lg={12}
-          xl={6}
-          offset={{ md: 1, lg: 1, xl: 3 }}
-        >
+        <Col xs={12} xl={6} offset={{ md: 1, lg: 1, xl: 3 }}>
           <AmortizationCalcApp />
         </Col>
       </Container>

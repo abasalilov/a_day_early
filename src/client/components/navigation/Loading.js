@@ -21,7 +21,7 @@ const LoadingComponent = props => {
     <div className={props.classname}>
       <div style={isImage ? isImageStyle : showStyle}>
         <h1>Loading</h1>
-        <ReactLoading type={"spin"} color={"#0C5297"} delay={0} />
+        <ReactLoading type={"spin"} color={"#303290"} delay={0} />
       </div>
     </div>
   );

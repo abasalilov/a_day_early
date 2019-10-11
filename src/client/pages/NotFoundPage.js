@@ -6,9 +6,7 @@ const NotFoundPageComponent = props => {
   return (
     <div>
       <div>
-        <h1
-          style={{ marginTop: "20rem", marginLeft: "-10rem", width: "24rem" }}
-        >
+        <h1 style={{ marginTop: "20rem", width: "24rem" }}>
           Whooops, route not found.
         </h1>
       </div>

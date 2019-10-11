@@ -5,7 +5,7 @@ const TOS = () => (
         <div
             id={'tos'}
             style={{
-                border: 'solid #0C5297',
+                border: 'solid #303290',
                 margin: '2rem 4rem',
                 padding: '2rem',
                 color: '#666',

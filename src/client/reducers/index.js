@@ -3,6 +3,7 @@ import usersReducer from "./usersReducer";
 import authReducer from "./authReducer";
 import mobileReducer from "./mobileReducer";
 import emailReducer from "./emailReducer";
+import calcReducer from "./calcReducer";
 import { reducer as form } from "redux-form";
 
 export default combineReducers({
@@ -10,5 +11,6 @@ export default combineReducers({
   auth: authReducer,
   mobile: mobileReducer,
   email: emailReducer,
+  input: calcReducer,
   form
 });

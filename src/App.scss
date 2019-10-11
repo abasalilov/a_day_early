@@ -1,6 +1,6 @@
 // @import url(https://fonts.googleapis.com/css?family=Raleway-ExtraBold:100, 400);
 
-$main-bg-color: #f1f2f0;
+$main-bg-color: #ffffff;
 $accent-blue: #37bbe4;
 $accent-gray: #e1e0dd;
 $accent-black: #35342f;
@@ -103,7 +103,6 @@ footer {
 #root {
   width: 100%;
   background-color: $main-bg-color;
-  color: $accent-black;
   display: flex;
   justify-content: center;
   font-family: "Raleway-ExtraBold", sans-serif;

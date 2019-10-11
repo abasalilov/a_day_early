@@ -9,7 +9,7 @@ const styles = {
   ref: {
     margin: "2rem",
     textDecoration: "none",
-    color: "#0C5297",
+    color: "#303290",
     paddingTop: "2rem"
   },
   section: { marginTop: "1rem" },

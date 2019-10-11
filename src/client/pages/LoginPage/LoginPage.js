@@ -116,7 +116,7 @@ const styles = {
   },
   regLink: {
     textDecoration: "none",
-    color: "#0C5297"
+    color: "#303290"
   },
   mobileLoginForm: {},
   loginForm: {},

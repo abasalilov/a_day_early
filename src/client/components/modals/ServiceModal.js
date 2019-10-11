@@ -66,7 +66,7 @@ const getExample = example => {
   const fontSize = "1.3rem";
 
   const noExampleStyle = {
-    color: "#0C5297",
+    color: "#303290",
     fontWeight: "700",
     textDecoration: "none",
     fontSize

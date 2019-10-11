@@ -9,6 +9,7 @@ import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { ServiceModal } from "../../modals";
+import { AmortizationCalculator } from "../../AmortizationCalculator";
 
 const styles = theme => ({
   expansionHeader: {
@@ -39,7 +40,7 @@ const styles = theme => ({
     padding: "1rem"
   },
   subMenuOption: {
-    border: "solid #0C5297 2px",
+    border: "solid #303290 2px",
     color: theme.palette.text.secondary,
     display: "flex",
     alignItems: "center",

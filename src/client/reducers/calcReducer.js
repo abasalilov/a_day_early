@@ -4,7 +4,10 @@ import {
   SET_BEGIN_DATE
 } from "../actions";
 import { amortizationSchedule } from "amortization";
-import update from "react-addons-update";
+
+const amortizationSchedule = (a, b, c, d) => {
+  return [a, b, c, d];
+};
 
 export const defaultState = {
   default: true,
@@ -46,10 +49,10 @@ export default function input(state = defaultState, action) {
         return state;
       }
       const amortization = amortizationSchedule(loanAmount, term, interestRate);
-      console.log("loanAmount", loanAmount);
-      console.log("term", term);
-      console.log("interestRate", interestRate);
-      console.log("amortization", amortization);
+      // console.log("loanAmount", loanAmount);
+      // console.log("term", term);
+      // console.log("interestRate", interestRate);
+      // console.log("amortization", amortization);
 
       return update(state, {
         amortization: {

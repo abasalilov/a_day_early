@@ -352,6 +352,13 @@ ajv@^6.1.0, ajv@^6.10.2:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
+amortization@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/amortization/-/amortization-1.1.1.tgz#7f66212b50f6a2b3a708a846e9c4b0956a52b5dc"
+  integrity sha1-f2YhK1D2orOnCKhG6cSwlWpStdw=
+  dependencies:
+    financejs "4.0.0"
+
 ansi-align@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ansi-align/-/ansi-align-2.0.0.tgz#c36aeccba563b89ceb556f3690f0b1d9e3547f7f"
@@ -2839,6 +2846,11 @@ finalhandler@~1.1.2:
     parseurl "~1.3.3"
     statuses "~1.5.0"
     unpipe "~1.0.0"
+
+financejs@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/financejs/-/financejs-4.0.0.tgz#8c0b869da8bfda62112dc5592e328ca4ae993c73"
+  integrity sha1-jAuGnai/2mIRLcVZLjKMpK6ZPHM=
 
 find-cache-dir@^1.0.0:
   version "1.0.0"

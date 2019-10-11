@@ -8,7 +8,6 @@ import { Image } from "../../common";
 const styles = () => {
   return {
     pic: {
-      width: "80%",
       margin: "3rem auto",
       textAlign: "center"
     },
@@ -47,7 +46,7 @@ export const IntroSectionComponent = props => {
   } = props;
 
   const mobileVariantStyle = {
-    fontSize: !mobile && "1.5rem",
+    fontSize: !mobile && "1.3rem",
     margin: "2rem 0"
   };
   const containerClass = mobile ? classes.mobilePic : classes.pic;

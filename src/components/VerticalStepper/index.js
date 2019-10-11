@@ -1,1 +1,0 @@
-export { VerticalStepper } from "./VerticalStepper";

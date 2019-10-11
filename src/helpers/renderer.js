@@ -70,7 +70,7 @@ export default (req, store, context) => {
                 }
 
                 #Home > div > div > p {
-                  color: #0C5297
+                  color: #303290
                 }
 
                 .react-reveal {
@@ -78,19 +78,19 @@ export default (req, store, context) => {
                     justify-content: space-between;
                 }
                 #Home > div > div > div > div > h3 > p {
-                  color: #0C5297
+                  color: #303290
                 }
 
                 #Calculator > h3 {
-                  color: #0C5297
+                  color: #303290
                 }
 
                 #Home > div > div > h4:nth-child(4){
-                  color: #0C5297
+                  color: #303290
                 }
 
                 #Home > div > div > h4:nth-child(5) {
-                  color: #0C5297
+                  color: #303290
                 }
 
                 #Contact-Us {

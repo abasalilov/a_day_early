@@ -1,1 +1,0 @@
-export { LearnMoreDescription } from './LearnMoreDescription';
