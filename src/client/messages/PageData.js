@@ -18,7 +18,7 @@ const CONTACT_US = "CONTACT_US";
 /** data **/
 
 const introContent = {
-  title: "Exponentional Mortgage Acceleration",
+  title: "MONTHLY PAYMENT",
   top: "Your Financial Freedom Awaits... aDay Early",
   middle:
     "Launching Fall 2019. If you would like to be part of our Beta Release, let us know",
@@ -34,12 +34,12 @@ const servicesContent = [
     content: [
       {
         anchor: "wp",
-        name: "Exponentional Mortgage Acceleration",
+        name: "MONTHLY PAYMENT",
         icon: style => <Create style={style} />,
         description: [],
         list: [],
         example: {
-          customer: "Exponentional Mortgage Acceleration",
+          customer: "MONTHLY PAYMENT",
           service: "Mortgage Acceleration",
           address: ""
         }
@@ -48,11 +48,11 @@ const servicesContent = [
         anchor: "token",
         name: "Have an Existing Mortgage to Accelerate?",
         icon: style => <MonetizationOn style={style} />,
-        description: ["Exponentional Mortgage Acceleration"],
+        description: ["MONTHLY PAYMENT"],
         list: [],
         example: {
-          customer: "Exponentional Mortgage Acceleration",
-          service: "Exponentional Mortgage Acceleration",
+          customer: "MONTHLY PAYMENT",
+          service: "MONTHLY PAYMENT",
           address: ""
         }
       }
@@ -63,26 +63,26 @@ const servicesContent = [
     icon: style => <PlayCircleOutline style={style} />,
     content: [
       {
-        anchor: "Exponentional Mortgage Acceleration",
-        name: "Exponentional Mortgage Acceleration",
+        anchor: "MONTHLY PAYMENT",
+        name: "MONTHLY PAYMENT",
         icon: style => <PlayCircleFilled style={style} />,
         description: [""],
         list: [""],
         example: {
-          address: "Exponentional Mortgage Acceleration",
-          service: "Exponentional Mortgage Acceleration",
-          customer: "Exponentional Mortgage Acceleration"
+          address: "MONTHLY PAYMENT",
+          service: "MONTHLY PAYMENT",
+          customer: "MONTHLY PAYMENT"
         }
       },
       {
         anchor: "pr",
-        name: "Exponentional Mortgage Acceleration",
+        name: "MONTHLY PAYMENT",
         icon: style => <ShowChart style={style} />,
-        description: ["Exponentional Mortgage Acceleration"],
-        list: ["Exponentional Mortgage Acceleration"],
+        description: ["MONTHLY PAYMENT"],
+        list: ["MONTHLY PAYMENT"],
         example: {
-          customer: "Exponentional Mortgage Acceleration",
-          service: "Exponentional Mortgage Acceleration",
+          customer: "MONTHLY PAYMENT",
+          service: "MONTHLY PAYMENT",
           address: ""
         }
       }
@@ -93,32 +93,32 @@ const servicesContent = [
     icon: style => <Code style={style} />,
     content: [
       {
-        anchor: "Exponentional Mortgage Acceleration",
-        name: "Exponentional Mortgage Acceleration",
+        anchor: "MONTHLY PAYMENT",
+        name: "MONTHLY PAYMENT",
         icon: style => <MonetizationOn style={style} />,
-        description: ["Exponentional Mortgage Acceleration"],
+        description: ["MONTHLY PAYMENT"],
         list: [],
         example: {}
       },
       {
-        anchor: "Exponentional Mortgage Acceleration",
-        name: "Exponentional Mortgage Acceleration",
+        anchor: "MONTHLY PAYMENT",
+        name: "MONTHLY PAYMENT",
         icon: style => <TouchApp style={style} />,
         description: [""],
         list: [],
         example: {}
       },
       {
-        anchor: "Exponentional Mortgage Acceleration",
-        name: "Exponentional Mortgage Acceleration",
+        anchor: "MONTHLY PAYMENT",
+        name: "MONTHLY PAYMENT",
         icon: style => <Code style={style} />,
         description: [""],
         list: [],
         example: {}
       },
       {
-        anchor: "Exponentional Mortgage Acceleration",
-        name: "Exponentional Mortgage Acceleration",
+        anchor: "MONTHLY PAYMENT",
+        name: "MONTHLY PAYMENT",
         icon: style => <PersonAdd style={style} />,
         description: [""],
         list: [""],
@@ -132,7 +132,7 @@ const servicesContent = [
     content: [
       {
         anchor: "reg",
-        name: "Exponentional Mortgage Acceleration",
+        name: "MONTHLY PAYMENT",
         icon: style => <Gavel style={style} />,
         description: [""],
         list: [],
@@ -140,13 +140,13 @@ const servicesContent = [
       },
       {
         anchor: "wp",
-        name: "Exponentional Mortgage Acceleration",
+        name: "MONTHLY PAYMENT",
         icon: style => <Search style={style} />,
         description: [""],
         list: [""],
         example: {
-          customer: "Exponentional Mortgage Acceleration",
-          service: "Exponentional Mortgage Acceleration",
+          customer: "MONTHLY PAYMENT",
+          service: "MONTHLY PAYMENT",
           address: ""
         }
       }

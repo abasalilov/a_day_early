@@ -25,7 +25,7 @@ const theme = createMuiTheme({
       root: {
         // Some CSS
         background:
-          "linear-gradient(45deg, #b9e8e2 5%, #80bcb5 65%, #51a39a 95%)",
+          "linear-gradient(45deg, #b9e8e2 5%, #80bcb5 65%, #0C5297 95%)",
         borderRadius: 3,
         border: 0,
         color: "white !important",

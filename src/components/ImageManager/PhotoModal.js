@@ -83,7 +83,7 @@ const styles = theme => ({
   },
   regLink: {
     textDecoration: "none",
-    color: "#51a39a"
+    color: "#0C5297"
   },
   title: {
     margin: "2rem 0",
@@ -92,7 +92,7 @@ const styles = theme => ({
   pending: {
     margin: "1rem",
     padding: "1rem",
-    border: "solid #51a39a 3px"
+    border: "solid #0C5297 3px"
   }
 });
 

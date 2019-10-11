@@ -31,7 +31,7 @@ const styles = theme => ({
     justifyContent: "center",
     alignItems: "center",
     minHeight: "9rem",
-    border: "solid #51a39a 1px"
+    border: "solid #0C5297 1px"
   },
   selectedContainer: {
     display: "flex",
@@ -39,7 +39,7 @@ const styles = theme => ({
     justifyContent: "center",
     alignItems: "center",
     minHeight: "9rem",
-    backgroundColor: "#51a39a"
+    backgroundColor: "#0C5297"
   },
   actions: {
     display: "flex",

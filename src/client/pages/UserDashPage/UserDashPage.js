@@ -12,7 +12,7 @@ import { FooterSection } from "../../components/Sections/SubSections/FooterSecti
 
 const styles = {
   dash: {
-    border: "solid #51a39a 2px",
+    border: "solid #0C5297 2px",
     padding: "1rem",
     borderRadius: "1rem",
     width: "90%",
@@ -21,7 +21,7 @@ const styles = {
   },
   mobileDash: {
     textAlign: "center",
-    border: "solid #51a39a 2px",
+    border: "solid #0C5297 2px",
     padding: "1rem",
     width: "90%",
     borderRadius: "1rem",

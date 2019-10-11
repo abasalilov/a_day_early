@@ -115,7 +115,7 @@ const styles = theme => ({
   },
   regLink: {
     textDecoration: "none",
-    color: "#51a39a"
+    color: "#0C5297"
   },
   title: {
     margin: "2rem 0",

@@ -59,7 +59,7 @@ const styles = theme => ({
   },
   div: {
     width: "90%",
-    border: "solid #51a39a 1px",
+    border: "solid #0C5297 1px",
     margin: "2rem"
   },
   grid: {

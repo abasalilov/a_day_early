@@ -11,7 +11,7 @@ const HeaderLinkComponent = props => {
         <a href={to} style={{ textDecoration: "none" }}>
           <Typography
             variant="h6"
-            style={{ color: "#51a39a" }}
+            style={{ color: "#0C5297" }}
             id="modal-title"
             align="center"
             gutterBottom
@@ -27,7 +27,7 @@ const HeaderLinkComponent = props => {
       <Link to={to} style={{ textDecoration: "none" }}>
         <Typography
           variant="h6"
-          style={{ color: "#51a39a" }}
+          style={{ color: "#0C5297" }}
           id="modal-title"
           align="center"
           gutterBottom

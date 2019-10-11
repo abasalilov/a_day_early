@@ -50,7 +50,7 @@ const styles = {
   },
   w3Button: {
     userSelect: "none",
-    color: "#51a39a",
+    color: "#0C5297",
     "&:hover": {
       backgroundColor: "#fff",
       color: "#03c0fe",
@@ -75,7 +75,7 @@ const styles = {
 };
 
 const externalHeaderLinks = [
-  "Home",
+  "HOME",
   "WHO WE ARE",
   "CALCULATOR",
   "CONTACT US",
@@ -101,7 +101,7 @@ const NavButton = props => {
     classes
   } = props;
   let button;
-  const style = { color: "#51a39a", textDecoration: "none" };
+  const style = { color: "#0C5297", textDecoration: "none" };
   const linkClassName = classNames(classes.w3BarItem, classes.w3Button);
   const linkPath = getTitle(title);
   if (attempted && result === "OK" && title === "LOGIN") {

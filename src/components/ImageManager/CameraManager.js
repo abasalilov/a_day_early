@@ -58,7 +58,7 @@ const styles = {
     backgroundColor: "orange"
   },
   notFlipped: {
-    border: "solid #51a39a 3px",
+    border: "solid #0C5297 3px",
     borderRadius: "50%",
     backgroundColor: "orange"
   },
