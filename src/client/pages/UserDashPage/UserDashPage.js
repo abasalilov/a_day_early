@@ -30,11 +30,11 @@ const styles = {
   mobileRoot: {
     flexGrow: 1,
     marginTop: "8rem",
-    backgroundColor: "#F1F3F4"
+    backgroundColor: "#FFFFFF"
   },
   root: {
     flexGrow: 1,
-    backgroundColor: "#F1F3F4",
+    backgroundColor: "#FFFFFF",
     display: "flex",
     justifyContent: "center"
   },
@@ -75,7 +75,7 @@ const styles = {
     margin: "1rem"
   },
   parent: {
-    backgroundColor: "#F1F3F4",
+    backgroundColor: "#FFFFFF",
     paddingTop: "3rem"
   },
   ops: {},

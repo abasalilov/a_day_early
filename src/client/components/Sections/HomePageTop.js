@@ -17,10 +17,10 @@ import {
 const styles = theme => ({
   "@global": {
     body: {
-      backgroundColor: "#F1F3F4"
+      backgroundColor: "#FFFFFF"
     },
     html: {
-      backgroundColor: "#F1F3F4"
+      backgroundColor: "#FFFFFF"
     }
   },
   layout: {
@@ -56,8 +56,8 @@ const SectionComponent = props => {
   const { isLastSection, hasHero, displayType } = sectionProps;
   return (
     <React.Fragment>
+      <h1>A DAY EARLY</h1>
       <section className={classes.layout} id="Home">
-        <h1>A DAY EARLY</h1>
         {/* Hero unit */}
         {hasHero ? (
           <HeroSection mobile={mobile} sectionProps={sectionProps} />

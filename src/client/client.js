@@ -28,7 +28,7 @@ ReactDOM.hydrate(
     <BrowserRouter>
       <div
         style={{
-          backgroundColor: "#F1F3F4"
+          backgroundColor: "#FFFFFF"
         }}
       >
         {/* <Favicon url="https://res.cloudinary.com/dbfv0bfmw/image/upload/v1569108593/ade3.png" /> */}

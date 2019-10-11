@@ -66,7 +66,7 @@ export default (req, store, context) => {
                 }
                 .regRootStyle {
                 margin-top:3rem;
-                background-color:#F1F3F4
+                background-color:#FFFFFF
                 }
 
                 #Home > div > div > p {
@@ -82,6 +82,14 @@ export default (req, store, context) => {
                 }
 
                 #Calculator > h3 {
+                  color: #0C5297
+                }
+
+                #Home > div > div > h4:nth-child(4){
+                  color: #0C5297
+                }
+
+                #Home > div > div > h4:nth-child(5) {
                   color: #0C5297
                 }
 

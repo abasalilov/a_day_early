@@ -17,10 +17,10 @@ import {
 const styles = theme => ({
   "@global": {
     body: {
-      backgroundColor: "#F1F3F4"
+      backgroundColor: "#FFFFFF"
     },
     html: {
-      backgroundColor: "#F1F3F4"
+      backgroundColor: "#FFFFFF"
     }
   },
   layout: {

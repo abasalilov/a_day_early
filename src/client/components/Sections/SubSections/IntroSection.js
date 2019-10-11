@@ -8,10 +8,8 @@ import { Image } from "../../common";
 const styles = () => {
   return {
     pic: {
-      width: "24rem",
+      width: "80%",
       margin: "3rem auto",
-      padding: "2rem 0",
-      height: "17rem",
       textAlign: "center"
     },
     mobilePic: {
@@ -35,11 +33,12 @@ const styles = () => {
       width: "22rem"
     },
     imgContainer: {
-      width: "200%"
+      width: "100%"
     }
   };
 };
-
+// #303290
+//
 export const IntroSectionComponent = props => {
   const {
     classes,
@@ -55,6 +54,14 @@ export const IntroSectionComponent = props => {
   const imgClass = mobile ? classes.mobleImg : classes.imgContainer;
   return (
     <Grid item key={displayContent.title} xs={12}>
+      <Image
+        showSpinner={false}
+        containerClassName={containerClass}
+        imgClassName={imgClass}
+        src={
+          "https://res.cloudinary.com/dbfv0bfmw/image/upload/v1570784174/adeHero.png"
+        }
+      />
       <div className={mobile ? classes.mobileIntroHeader : classes.introHeader}>
         <div className={classes.heroContent}>
           <Typography
