@@ -29,7 +29,6 @@ const HeaderLinkComponent = props => {
     ...otherProps
   } = props;
   let styles = {};
-  console.log("hasIcon", hasIcon, "isHref", isHref);
   if (isHref) {
     return (
       <div className={className} key={navKey}>

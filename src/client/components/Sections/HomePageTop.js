@@ -54,7 +54,6 @@ const styles = theme => ({
 const SectionComponent = props => {
   const { classes, sectionProps = {}, mobile } = props;
   const { isLastSection, hasHero, displayType } = sectionProps;
-  console.log("this.props", this.props);
   return (
     <React.Fragment>
       <section className={classes.layout} id="Home">

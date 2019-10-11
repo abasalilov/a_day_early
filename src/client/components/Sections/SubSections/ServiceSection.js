@@ -138,10 +138,10 @@ class ServiceSectionComponent extends React.Component {
             color="textPrimary"
             style={{ width: "100%" }}
           >
-            Comparison Calculator
+            <p>Comparison Calculator</p>
           </Typography>
-          {displayContent.map(service => (
-            <Grid item key={service.title} xs={mobile ? 12 : 6}>
+          {displayContent.map((service, idx) => (
+            <Grid item key={service.title + idx} xs={mobile ? 12 : 6}>
               {/* Expander start */}
               <ExpansionPanel
                 expanded={expanded === service.title}
