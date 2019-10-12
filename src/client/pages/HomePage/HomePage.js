@@ -11,7 +11,11 @@ import {
 const HomePageComponent = props => (
   <div>
     <Section {...props} sectionProps={IntroSectionData} />
-    <Section {...props} sectionProps={ServicesSectionData} />
+    <Section
+      {...props}
+      sectionProps={ServicesSectionData}
+      isLastSection={true}
+    />
   </div>
 );
 

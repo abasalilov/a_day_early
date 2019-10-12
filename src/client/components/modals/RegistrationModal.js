@@ -21,6 +21,7 @@ import {
   confirmValue,
   isUUIDError
 } from "../../utils";
+import TextField from "@material-ui/core/TextField";
 
 const asyncValidate = (values, dispatch) => {
   if (values.username_email) {
@@ -47,7 +48,7 @@ function getModalStyle(mobile) {
     top: "30%",
     left: mobile ? "25%" : "35%",
     transform: `translate(-20%, -25%)`,
-    width: mobile ? "75%" : "50%"
+    width: mobile ? "75%" : "70%"
   };
 }
 
@@ -60,7 +61,8 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     margin: "1rem",
-    height: "80%",
+    padding: "1rem",
+    height: "90%",
     display: "flex",
     justifyContent: "center",
     overflowY: "visible",
@@ -80,7 +82,8 @@ const styles = theme => ({
   },
   topContainer: {
     display: "flex",
-    flexDirection: "row"
+    flexDirection: "row",
+    justifyContent: "center"
   },
   btnContainer: {
     display: "flex",
@@ -127,6 +130,46 @@ const styles = theme => ({
     fontSize: "4rem"
   }
 });
+
+const renderTextField = ({
+  label,
+  input,
+  meta: { touched, invalid, error },
+  type,
+  labelShrink,
+  labelFontSize,
+  ...custom
+}) => (
+  <TextField
+    label={label}
+    placeholder={label}
+    error={touched && invalid}
+    fullWidth
+    helperText={touched && error}
+    {...input}
+    {...custom}
+    style={{
+      border: "solid #049347 2px",
+      borderRadius: "8px",
+      backgroundColor: "#fff"
+    }}
+    margin="normal"
+    InputProps={{
+      type,
+      style: {
+        marginLeft: ".3rem"
+      }
+    }}
+    InputLabelProps={{
+      style: {
+        fontSize: labelFontSize ? labelFontSize : "20px",
+        color: "#303290",
+        marginLeft: ".3rem"
+      },
+      shrink: labelShrink
+    }}
+  />
+);
 
 const RegistrationModalComponent = props => {
   const {
@@ -186,7 +229,7 @@ const RegistrationModalComponent = props => {
                   showborder
                   emailError={emailError}
                   meta={emailError}
-                  component={FormField}
+                  component={renderTextField}
                   validate={[required, email, minLength6]}
                   warn={alphaNumeric}
                 />
@@ -197,7 +240,7 @@ const RegistrationModalComponent = props => {
                   placeholder="Don"
                   margin={"none"}
                   mobile={mobile}
-                  component={FormField}
+                  component={renderTextField}
                   validate={[required]}
                   warn={alphaNumeric}
                   className={classes.field}
@@ -210,7 +253,7 @@ const RegistrationModalComponent = props => {
                   placeholder="Junkin"
                   margin={"none"}
                   mobile={mobile}
-                  component={FormField}
+                  component={renderTextField}
                   validate={[required]}
                   warn={alphaNumeric}
                 />
@@ -222,7 +265,7 @@ const RegistrationModalComponent = props => {
                   margin={"none"}
                   className={classes.field}
                   mobile={mobile}
-                  component={FormField}
+                  component={renderTextField}
                   validate={[required, minLength6]}
                   warn={alphaNumeric}
                 />
@@ -234,7 +277,7 @@ const RegistrationModalComponent = props => {
                   margin={"none"}
                   className={classes.field}
                   mobile={mobile}
-                  component={FormField}
+                  component={renderTextField}
                   validate={[required, minLength6]}
                   warn={alphaNumeric}
                 />

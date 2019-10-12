@@ -8,6 +8,7 @@ import Button from "@material-ui/core/Button";
 import { ServiceModal } from "../../modals";
 import { CalculatorForm } from "../../CalculatorForm";
 import TrendingFlat from "@material-ui/icons/TrendingFlat";
+import { RegistrationModal } from "../../modals/RegistrationModal";
 
 const styles = theme => ({
   expansionHeader: {
@@ -60,10 +61,22 @@ class ServiceSectionComponent extends React.Component {
     this.state = {
       expanded: null,
       showModal: false,
-      selectedService: null
+      selectedService: null,
+      showRegModal: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleToggleModal = this.handleToggleModal.bind(this);
+    this.handleRedirect = this.handleRedirect.bind(this);
+    this.handleToggleRegModal = this.handleToggleRegModal.bind(this);
+  }
+
+  handleToggleRegModal() {
+    this.setState({ showRegModal: false });
+  }
+
+  handleRedirect() {
+    // history
+    this.setState({ showRegModal: true });
   }
 
   handleChange(panel) {
@@ -99,7 +112,7 @@ class ServiceSectionComponent extends React.Component {
 
   render() {
     const { classes, mobile, sectionProps } = this.props;
-    const { expanded, showModal, selectedService } = this.state;
+    const { expanded, showModal, selectedService, showRegModal } = this.state;
     const { displayContent } = sectionProps;
     const dataIconStyle = {
       fontSize: mobile ? "5rem" : "2.5rem"
@@ -126,6 +139,16 @@ class ServiceSectionComponent extends React.Component {
         />
       );
     }
+
+    if (showRegModal) {
+      return (
+        <RegistrationModal
+          open={showRegModal}
+          mobile={mobile}
+          closeClick={this.handleToggleRegModal}
+        />
+      );
+    }
     return (
       <React.Fragment>
         <Divider style={{ width: "100%", marginBottom: "2rem" }} />
@@ -144,7 +167,7 @@ class ServiceSectionComponent extends React.Component {
               justify="space-between"
               alignItems="center"
               direction={"row"}
-              id="Calculddator"
+              id="CALCULATOR"
               style={{
                 minWidth: "20%",
                 backgroundColor: "#f6f6f6"
@@ -171,7 +194,7 @@ class ServiceSectionComponent extends React.Component {
               variant={mobile ? "display4" : "h4"}
               align="left"
               color="textPrimary"
-              style={{ width: "100%", color: "#303290" }}
+              style={{ width: "100%", color: "#303290", marginLeft: "1rem" }}
               gutterBottom
             >
               MONTHLY PAYMENT
@@ -180,7 +203,7 @@ class ServiceSectionComponent extends React.Component {
               variant={mobile ? "display4" : "h1"}
               align="left"
               color="textPrimary"
-              style={{ width: "100%", color: "#049347" }}
+              style={{ width: "100%", color: "#049347", marginLeft: "1rem" }}
               gutterBottom
             >
               $200.00
@@ -194,19 +217,22 @@ class ServiceSectionComponent extends React.Component {
                 color: "#049347",
                 fontWeight: 600,
                 fontFamily: "Raleway-Thin",
-                transform: "scaleY(1.2)"
+                transform: "scaleY(1.2)",
+                marginLeft: "1rem"
               }}
             >
               Learn how our service can help you save on monthly payment
             </Typography>
             <Button
+              onClick={this.handleRedirect}
               variant="outlined"
               size="large"
               color="primary"
               style={{
                 width: "80%",
                 margin: "1rem 1rem 1rem 0",
-                fontSize: "1.5rem"
+                fontSize: "1.5rem",
+                marginLeft: "1rem"
               }}
             >
               Next Step {<TrendingFlat style={{ fontSize: "2rem" }} />}

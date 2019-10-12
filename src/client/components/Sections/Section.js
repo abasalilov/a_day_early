@@ -52,8 +52,9 @@ const styles = theme => ({
 });
 
 const SectionComponent = props => {
-  const { classes, sectionProps = {}, mobile } = props;
-  const { isLastSection, hasHero, displayType } = sectionProps;
+  console.log("is history here?", props);
+  const { classes, sectionProps = {}, mobile, history, isLastSection } = props;
+  const { hasHero, displayType } = sectionProps;
   return (
     <React.Fragment>
       <section className={classes.layout} id="Home">
@@ -69,7 +70,11 @@ const SectionComponent = props => {
         ) : null}
         {displayType === CALCULATOR ? (
           <Grid container spacing={mobile ? 40 : 24} alignItems="flex-end">
-            <ServiceSection mobile={mobile} sectionProps={sectionProps} />
+            <ServiceSection
+              mobile={mobile}
+              sectionProps={sectionProps}
+              history={history}
+            />
           </Grid>
         ) : null}
       </section>

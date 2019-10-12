@@ -83,7 +83,7 @@ const SectionComponent = props => {
         </section>
       ) : null}
       {/* Footer */}
-      {isLastSection ? <FooterSection mobile={mobile} /> : null}
+      <FooterSection mobile={mobile} />
       {/* End footer */}
     </React.Fragment>
   );
