@@ -63,7 +63,8 @@ const styles = theme => ({
     height: "80%",
     display: "flex",
     justifyContent: "center",
-    overflowY: "visible"
+    overflowY: "visible",
+    borderRadius: "1rem"
   },
   modalHeader: {
     display: "flex",
@@ -74,8 +75,12 @@ const styles = theme => ({
     border: "solid black 1px",
     borderRadius: "50%",
     alignSelf: "center",
-    margin: "3rem auto 0 auto",
-    fontSize: "5rem"
+    margin: "0 0 2rem 1rem",
+    fontSize: "2rem"
+  },
+  topContainer: {
+    display: "flex",
+    flexDirection: "row"
   },
   btnContainer: {
     display: "flex",
@@ -156,15 +161,19 @@ const RegistrationModalComponent = props => {
             justify="center"
           >
             <Grid item>
-              <Typography
-                variant="h5"
-                align="center"
-                color="textPrimary"
-                className={classes.title}
-                gutterBottom
-              >
-                Registration Form
-              </Typography>
+              <div className={classes.topContainer}>
+                <Typography
+                  variant="h5"
+                  align="center"
+                  color="textPrimary"
+                  className={classes.title}
+                  gutterBottom
+                >
+                  Registration Form
+                </Typography>
+                <Close onClick={closeClick} className={classes.modalCloseBtn} />
+              </div>
+
               <form onSubmit={handleSubmit}>
                 <Field
                   name="username_email"
@@ -185,7 +194,7 @@ const RegistrationModalComponent = props => {
                   type="text"
                   label="First Name"
                   name="firstName"
-                  placeholder="Erlich"
+                  placeholder="Don"
                   margin={"none"}
                   mobile={mobile}
                   component={FormField}
@@ -198,7 +207,7 @@ const RegistrationModalComponent = props => {
                   className={classes.field}
                   label="Last Name"
                   name="lastName"
-                  placeholder="Bachman"
+                  placeholder="Junkin"
                   margin={"none"}
                   mobile={mobile}
                   component={FormField}
@@ -259,7 +268,6 @@ const RegistrationModalComponent = props => {
                     </Link>
                   </Typography>
                 </span>
-                <Close onClick={closeClick} className={classes.modalCloseBtn} />
               </div>
             </Grid>
           </Grid>

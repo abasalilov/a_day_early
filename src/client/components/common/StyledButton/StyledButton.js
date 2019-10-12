@@ -9,7 +9,10 @@ const regBtnStyle = {
   width: "10rem",
   fontSize: "1rem",
   textAlign: "center",
-  marginRight: "5px"
+  marginRight: "5px",
+  "&hover": {
+    backgroundColor: "red"
+  }
 };
 
 const ButtonComponent = props => {

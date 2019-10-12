@@ -8,7 +8,7 @@ import { Image } from "../../common";
 const styles = () => {
   return {
     pic: {
-      margin: "3rem auto",
+      margin: "0 auto",
       textAlign: "center"
     },
     mobilePic: {
@@ -21,7 +21,7 @@ const styles = () => {
     introHeader: {
       alignItems: "center",
       height: "30%",
-      marginTop: "4rem"
+      marginTop: "1rem"
     },
     mobileIntroHeader: {
       marginBottom: "1.5rem",

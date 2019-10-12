@@ -7,76 +7,100 @@ import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { DatePicker } from "@material-ui/pickers";
 import Button from "@material-ui/core/Button";
 import { FormField } from "../common/FormField";
+import TextField from "@material-ui/core/TextField";
 
 const validate = values => {
   const errors = {};
   return errors;
 };
 
+const renderTextField = ({
+  label,
+  input,
+  meta: { touched, invalid, error },
+  type,
+  labelShrink,
+  labelFontSize,
+  ...custom
+}) => (
+  <TextField
+    label={label}
+    placeholder={label}
+    error={touched && invalid}
+    fullWidth
+    helperText={touched && error}
+    {...input}
+    {...custom}
+    style={{
+      border: "solid #049347 2px",
+      borderRadius: "8px",
+      backgroundColor: "#fff"
+    }}
+    margin="normal"
+    InputProps={{
+      type,
+      style: {
+        marginLeft: ".3rem"
+      }
+    }}
+    InputLabelProps={{
+      style: {
+        fontSize: labelFontSize ? labelFontSize : "20px",
+        color: "#303290",
+        marginLeft: ".3rem"
+      },
+      shrink: labelShrink
+    }}
+  />
+);
+
 class InputFormComponent extends React.Component {
   constructor(props, context) {
     super(props, context);
   }
 
-  componentDidUpdate() {
-    const one = this.props.updateAmortization();
-  }
+  componentDidUpdate() {}
 
   render() {
     return (
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <div name="input">
-          <Col xs={12} sm={12} md={6} lg={6} xl={6}>
-            <Row>
-              <Field
-                name="loanAmount"
-                label="Loan Amount ($)"
-                type="number"
-                component={FormField}
-                mobile={false}
-                meta={{ touched: false, error: false }}
-              />
-              <Field
-                name="interestRate"
-                component={FormField}
-                label="Interest Rate (%)"
-                type="number"
-                meta={{ touched: false, error: false }}
-                value={this.props.input.interestRate}
-              />
-            </Row>
-          </Col>
-          <Row>
-            <Field
-              name="term"
-              component={FormField}
-              label="Loan Term (Years)"
-              type="number"
-              max="50"
-              value={this.props.input.term}
-              meta={{ touched: false, error: false }}
-            />
-            <DatePicker
-              disableToolbar
-              variant="inline"
-              format="MM/dd/yyyy"
-              autoOk
-              margin="normal"
-              id="date-picker-inline"
-              label="Date picker inline"
-              value={this.props.input.beginDate}
-              onChange={date => this.props.setBeginDate(date)} // eslint-disable-line react/jsx-no-bind, max-len
-              KeyboardButtonProps={{
-                "aria-label": "change date"
-              }}
-            />
-          </Row>
-          <Row>
-            <Button
-              label="Reset"
-              onClick={() => this.props.resetAmortization()} // eslint-disable-line react/jsx-no-bind, max-len
-            />
-          </Row>
+        <div>
+          <Field
+            name="loanAmount"
+            label="Original Loan Amount"
+            type="number"
+            component={renderTextField}
+            mobile={false}
+          />
+        </div>
+        <div>
+          <Field
+            name="firstPayment"
+            label="First Payment Date"
+            type="date"
+            component={renderTextField}
+            mobile={false}
+            labelFontSize={"26px"}
+            labelShrink={true}
+          />
+        </div>
+        <div>
+          <Field
+            name="interestRate"
+            component={renderTextField}
+            label="Interest Rate (%)"
+            type="number"
+            mobile={false}
+          />
+        </div>
+        <div>
+          <Field
+            name="term"
+            component={renderTextField}
+            label="Loan Term (Years)"
+            type="number"
+            max="50"
+          />
         </div>
       </MuiPickersUtilsProvider>
     );
@@ -90,7 +114,7 @@ const calcForm = reduxForm({
 
 function mapStateToProps(state) {
   return {
-    initialValues: state.input
+    input: state.input
   };
 }
 

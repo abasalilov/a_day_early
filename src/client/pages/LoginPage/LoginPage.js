@@ -55,16 +55,12 @@ const styles = {
   spinContainer: {
     position: "relative",
     display: "flex",
-    margin: "1rem auto",
+    margin: "0 auto",
     flexDirection: "column"
   },
-  buttons: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between"
-  },
+  buttons: {},
   btn: {
-    margin: "1rem auto",
+    margin: "0 auto",
     width: "50% !important"
   },
   err: {
@@ -91,7 +87,7 @@ const styles = {
     marginTop: "3rem"
   },
   img: {
-    width: "18rem"
+    width: "28rem"
   },
   mobileImg: {
     marginBottom: "1rem",
@@ -121,8 +117,9 @@ const styles = {
   mobileLoginForm: {},
   loginForm: {},
   picContainer: {
-    height: "18rem",
-    marginBottom: "2rem"
+    height: "8rem",
+    marginBottom: "2rem",
+    width: "50%"
   },
   mobilePic: {
     width: "22rem",
@@ -248,10 +245,11 @@ class Login extends React.Component {
         >
           <Grid item xs={12} md={6} style={{ minWidth }}>
             <Image
+              showSpinner={false}
               containerClassName={containerClass}
               imgClassName={imgClass}
               src={
-                "https://res.cloudinary.com/dbfv0bfmw/image/upload/v1570753007/heroImg.png"
+                "https://res.cloudinary.com/dbfv0bfmw/image/upload/v1570784174/adeHero.png"
               }
             />
             <form

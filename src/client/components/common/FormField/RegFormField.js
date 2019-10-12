@@ -35,7 +35,7 @@ export const RegFormField = props => {
         {...props.input}
         {...props}
         style={{ borderRadius: ".3rem" }}
-        fullWidth={false}
+        fullWidth={true}
       />
       <div style={keepVisible}>
         <strong
@@ -44,7 +44,7 @@ export const RegFormField = props => {
             color: showErr ? (showGreen ? "green" : "red") : "transparent",
             width: "18rem",
             fontFamily: "Raleway-ExtraBold",
-            fontSize: "14px"
+            fontSize: "20px"
           }}
         >
           {showEmailMsg ? errorMsg : meta.error}

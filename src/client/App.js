@@ -24,16 +24,19 @@ const theme = createMuiTheme({
       // Name of the rule
       root: {
         // Some CSS
-        background:
-          "linear-gradient(45deg, #b9e8e2 5%, #80bcb5 65%, #303290 95%)",
+        background: "#049347",
         borderRadius: 3,
         border: 0,
-        color: "white !important",
         height: 48,
         padding: "0 30px",
         boxShadow: "0 3px 5px 2px rgba(85, 144, 245, .3)",
         letterSpacing: "2px",
         fontWeight: "600"
+      }
+    },
+    MuiInputBase: {
+      root: {
+        fontSize: "20px"
       }
     }
   }

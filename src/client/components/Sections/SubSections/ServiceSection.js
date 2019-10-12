@@ -3,13 +3,11 @@ import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
 import { withStyles } from "@material-ui/core/styles";
-import ExpansionPanel from "@material-ui/core/ExpansionPanel";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import Typography from "@material-ui/core/Typography";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import Button from "@material-ui/core/Button";
 import { ServiceModal } from "../../modals";
-import { AmortizationCalculator } from "../../AmortizationCalculator";
+import { CalculatorForm } from "../../CalculatorForm";
+import TrendingFlat from "@material-ui/icons/TrendingFlat";
 
 const styles = theme => ({
   expansionHeader: {
@@ -131,17 +129,89 @@ class ServiceSectionComponent extends React.Component {
     return (
       <React.Fragment>
         <Divider style={{ width: "100%", marginBottom: "2rem" }} />
-        <Grid container key={"dsf"} id="Calculator">
-          <Typography
-            variant={mobile ? "display4" : "h3"}
-            gutterBottom
-            align="center"
-            color="textPrimary"
-            style={{ width: "100%" }}
-          >
-            <p>Comparison Calculator</p>
-          </Typography>
-          <AmortizationCalculator />
+        <Grid
+          container
+          key={"dsf"}
+          justify="space-apart"
+          alignItems="center"
+          direction={"row"}
+          id="Calculator"
+        >
+          <Grid item xs={7}>
+            <Grid
+              container
+              key={"dddsf"}
+              justify="space-between"
+              alignItems="center"
+              direction={"row"}
+              id="Calculddator"
+              style={{
+                minWidth: "20%",
+                backgroundColor: "#f6f6f6"
+              }}
+            >
+              <Grid item xs={4}>
+                <Typography
+                  variant={mobile ? "display4" : "h4"}
+                  gutterBottom
+                  align="center"
+                  color="textPrimary"
+                  style={{ width: "100%", color: "#303290" }}
+                >
+                  Let's Start With The Basics
+                </Typography>
+              </Grid>
+              <Grid item xs={7} style={{ width: "100%", marginRight: "1rem" }}>
+                <CalculatorForm />
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item xs={5}>
+            <Typography
+              variant={mobile ? "display4" : "h4"}
+              align="left"
+              color="textPrimary"
+              style={{ width: "100%", color: "#303290" }}
+              gutterBottom
+            >
+              MONTHLY PAYMENT
+            </Typography>
+            <Typography
+              variant={mobile ? "display4" : "h1"}
+              align="left"
+              color="textPrimary"
+              style={{ width: "100%", color: "#049347" }}
+              gutterBottom
+            >
+              $200.00
+            </Typography>
+            <Typography
+              variant={mobile ? "display4" : "h6"}
+              align="left"
+              color="textPrimary"
+              style={{
+                width: "100%",
+                color: "#049347",
+                fontWeight: 600,
+                fontFamily: "Raleway-Thin",
+                transform: "scaleY(1.2)"
+              }}
+            >
+              Learn how our service can help you save on monthly payment
+            </Typography>
+            <Button
+              variant="outlined"
+              size="large"
+              color="primary"
+              style={{
+                width: "80%",
+                margin: "1rem 1rem 1rem 0",
+                fontSize: "1.5rem"
+              }}
+            >
+              Next Step {<TrendingFlat style={{ fontSize: "2rem" }} />}
+            </Button>
+          </Grid>
         </Grid>
       </React.Fragment>
     );

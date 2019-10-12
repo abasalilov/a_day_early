@@ -70,7 +70,7 @@ class RegPasswordFieldComponent extends React.Component {
     const fieldContainterStyle = { width: "100%" };
     fieldContainterStyle.display = showPasswordStyle ? "flex" : undefined;
     fieldContainterStyle.flexDirection = showPasswordStyle ? "row" : undefined;
-    const gridItemStyle = { width: "22rem" };
+    const gridItemStyle = { width: "28rem" };
     const showErr = meta.touched && meta.error !== "Required";
     const keepVisible = {
       height: "1.5rem",

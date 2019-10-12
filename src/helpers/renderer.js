@@ -108,6 +108,14 @@ export default (req, store, context) => {
                   padding-top: 100px;
                 }
 
+                #Home > div > h3 > p {
+                  color: #303290
+                }
+
+                #Calculddator > div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-6 > h4 {
+                  color: #303290
+                }
+
               </style>
               <link rel="shortcut icon" href="favicon.ico">
                 ${helmet.title.toString()}
