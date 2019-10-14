@@ -1,33 +1,41 @@
 import {
   UPDATE_AMORTIZATION,
   RESET_AMORTIZATION,
-  SET_BEGIN_DATE
+  SET_BEGIN_DATE,
+  UPDATE_AMORT_GRAPH
 } from "../actions";
 import { amortizationSchedule } from "amortization";
 import update from "react-addons-update";
+import calculate from "../components/CalculatorGraph/calculations";
+
+function getFormattedDate() {
+  var date = new Date();
+  var year = date.getFullYear();
+
+  var month = (1 + date.getMonth()).toString();
+  month = month.length > 1 ? month : "0" + month;
+
+  var day = date.getDate().toString();
+  day = day.length > 1 ? day : "0" + day;
+
+  return month + "/" + day + "/" + year;
+}
 
 export const defaultState = {
-  default: true,
-  loanAmount: 200000,
-  interestRate: 3.2,
-  term: 10,
-  beginDate: new Date(),
-  isMortgage: false,
-  taxRate: 1.5,
-  insuranceAmount: 1000,
-  amortization: []
+  loanAmount: 450000,
+  interestRate: 3.625,
+  term: 30,
+  firstPayment: getFormattedDate(),
+  monthlyPayment: 2200,
+  monthlyOverpayment: 0
 };
 
 export const resetState = {
-  default: true,
-  loanAmount: 200000,
-  interestRate: 3.2,
-  term: 10,
-  beginDate: new Date(),
-  isMortgage: false,
-  taxRate: 1.5,
-  insuranceAmount: 1000,
-  amortization: []
+  loanAmount: 450000,
+  interestRate: 3.625,
+  term: 30,
+  firstPayment: getFormattedDate(),
+  monthlyPayment: 2052.23
 };
 
 export default function input(state = defaultState, action) {
@@ -64,6 +72,22 @@ export default function input(state = defaultState, action) {
           $set: action.date
         }
       });
+    case UPDATE_AMORT_GRAPH:
+      const updatedState = Object.assign({}, state);
+      const { st } = action;
+      console.log("updated", st);
+      console.log("updatedState", updatedState);
+      const { monthlyPayment } = calculate(
+        st.loanAmount,
+        st.term,
+        st.interestRate
+      );
+      updatedState.loanAmount = st.loanAmount;
+      updatedState.monthlyPayment = st.monthlyPayment;
+      updatedState.term = st.term;
+      updatedState.interestRate = st.interestRate;
+
+      return updatedState;
     default:
       return state;
   }

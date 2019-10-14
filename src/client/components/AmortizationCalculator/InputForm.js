@@ -8,6 +8,7 @@ import { DatePicker } from "@material-ui/pickers";
 import Button from "@material-ui/core/Button";
 import { FormField } from "../common/FormField";
 import TextField from "@material-ui/core/TextField";
+import { updateAmortGraph } from "../../actions";
 
 const validate = values => {
   const errors = {};
@@ -57,9 +58,23 @@ const renderTextField = ({
 class InputFormComponent extends React.Component {
   constructor(props, context) {
     super(props, context);
+    this.state = {
+      loanAmount: 450000,
+      firstPayment: new Date(),
+      interestRate: 3.625,
+      term: 30
+    };
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidUpdate() {}
+
+  handleChange(name, e) {
+    this.setState({ [name]: e.target.value }, () => {
+      this.props.onChangeMortValues(this.state);
+    });
+    console.log("new", this.state);
+  }
 
   render() {
     return (
@@ -69,6 +84,7 @@ class InputFormComponent extends React.Component {
             name="loanAmount"
             label="Original Loan Amount"
             type="number"
+            onChange={e => this.handleChange("loanAmount", e)}
             component={renderTextField}
             mobile={false}
           />
@@ -79,6 +95,7 @@ class InputFormComponent extends React.Component {
             label="First Payment Date"
             type="date"
             component={renderTextField}
+            onChange={e => this.handleChange("firstPayment", e)}
             mobile={false}
             labelFontSize={"26px"}
             labelShrink={true}
@@ -90,6 +107,7 @@ class InputFormComponent extends React.Component {
             component={renderTextField}
             label="Interest Rate (%)"
             type="number"
+            onChange={e => this.handleChange("interestRate", e)}
             mobile={false}
           />
         </div>
@@ -99,6 +117,7 @@ class InputFormComponent extends React.Component {
             component={renderTextField}
             label="Loan Term (Years)"
             type="number"
+            onChange={e => this.handleChange("term", e)}
             max="50"
           />
         </div>
@@ -114,11 +133,25 @@ const calcForm = reduxForm({
 
 function mapStateToProps(state) {
   return {
-    input: state.input
+    input: state.input,
+    monthly: state.input.monthlyPayment,
+    initialValues: {
+      firstPayment: state.input.firstPayment,
+      term: state.input.term,
+      interestRate: state.input.interestRate,
+      loanAmount: state.input.loanAmount
+    }
   };
 }
+const mapDispatchToProps = dispatch => {
+  return {
+    updateCalc: st => {
+      dispatch(updateAmortGraph(st));
+    }
+  };
+};
 
 export const InputForm = connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(calcForm);

@@ -52,7 +52,6 @@ const styles = theme => ({
 });
 
 const SectionComponent = props => {
-  console.log("is history here?", props);
   const { classes, sectionProps = {}, mobile, history, isLastSection } = props;
   const { hasHero, displayType } = sectionProps;
   return (

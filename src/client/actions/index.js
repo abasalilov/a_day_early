@@ -1,5 +1,4 @@
-import axios from "axios";
-import { email } from "../utils";
+import { calculate } from "../components/CalculatorGraph/calculations";
 
 export const UPDATE_ACTIVE_USER = "update_active_user";
 export const updateActiveUser = username => async (dispatch, getState, api) => {
@@ -136,4 +135,11 @@ export const resetAmortization = () => ({
 export const setBeginDate = date => ({
   type: SET_BEGIN_DATE,
   date
+});
+
+export const UPDATE_AMORT_GRAPH = "UPDATE_AMORT_GRAPH";
+
+export const updateAmortGraph = st => ({
+  type: UPDATE_AMORT_GRAPH,
+  st
 });

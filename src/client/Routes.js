@@ -5,7 +5,7 @@ import {
   TermsPage,
   LoginPage,
   UserDashPage,
-  TestPage,
+  CalculatorPage,
   NotFoundPage
 } from "./pages";
 
@@ -31,6 +31,11 @@ export default [
       {
         ...TermsPage,
         path: "/terms",
+        exact: true
+      },
+      {
+        ...CalculatorPage,
+        path: "/calculator",
         exact: true
       },
       {

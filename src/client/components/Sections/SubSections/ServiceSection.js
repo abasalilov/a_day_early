@@ -9,6 +9,9 @@ import { ServiceModal } from "../../modals";
 import { CalculatorForm } from "../../CalculatorForm";
 import TrendingFlat from "@material-ui/icons/TrendingFlat";
 import { RegistrationModal } from "../../modals/RegistrationModal";
+import calculate from "../../CalculatorGraph/calculations";
+import { updateAmortGraph as updateGraph } from "../../../actions";
+import { connect } from "react-redux";
 
 const styles = theme => ({
   expansionHeader: {
@@ -68,15 +71,29 @@ class ServiceSectionComponent extends React.Component {
     this.handleToggleModal = this.handleToggleModal.bind(this);
     this.handleRedirect = this.handleRedirect.bind(this);
     this.handleToggleRegModal = this.handleToggleRegModal.bind(this);
+    this.getUpdatedMontlyPayment = this.getUpdatedMontlyPayment.bind(this);
   }
 
   handleToggleRegModal() {
     this.setState({ showRegModal: false });
   }
 
+  getUpdatedMontlyPayment() {
+    const { input } = this.props;
+    const { monthlyPayment } = calculate(
+      input.loanAmount,
+      input.term,
+      input.interestRate,
+      input.monthlyOverpayment
+    );
+    console.log("input", input);
+    console.log("getUpdatedMontlyPayment", monthlyPayment);
+    return monthlyPayment;
+  }
+
   handleRedirect() {
-    // history
-    this.setState({ showRegModal: true });
+    // this.setState({ showRegModal: true });
+    this.props.history.push("/calculator");
   }
 
   handleChange(panel) {
@@ -111,7 +128,7 @@ class ServiceSectionComponent extends React.Component {
   }
 
   render() {
-    const { classes, mobile, sectionProps } = this.props;
+    const { classes, mobile, sectionProps, input } = this.props;
     const { expanded, showModal, selectedService, showRegModal } = this.state;
     const { displayContent } = sectionProps;
     const dataIconStyle = {
@@ -185,7 +202,7 @@ class ServiceSectionComponent extends React.Component {
                 </Typography>
               </Grid>
               <Grid item xs={7} style={{ width: "100%", marginRight: "1rem" }}>
-                <CalculatorForm />
+                <CalculatorForm onCalculate={this.props.updatePaymentGraph} />
               </Grid>
             </Grid>
           </Grid>
@@ -206,7 +223,7 @@ class ServiceSectionComponent extends React.Component {
               style={{ width: "100%", color: "#049347", marginLeft: "1rem" }}
               gutterBottom
             >
-              $200.00
+              {this.getUpdatedMontlyPayment()}
             </Typography>
             <Typography
               variant={mobile ? "display4" : "h6"}
@@ -221,7 +238,8 @@ class ServiceSectionComponent extends React.Component {
                 marginLeft: "1rem"
               }}
             >
-              Learn how our service can help you save on monthly payment
+              Learn how our service can help you pay down your mortgage much
+              earlier
             </Typography>
             <Button
               onClick={this.handleRedirect}
@@ -250,4 +268,19 @@ ServiceSectionComponent.propTypes = {
   sectionProps: PropTypes.object
 };
 
-export const ServiceSection = withStyles(styles)(ServiceSectionComponent);
+const StyledServiceSection = withStyles(styles)(ServiceSectionComponent);
+
+const mapDispatchToProps = dispatch => {
+  return {
+    updatePaymentGraph: st => dispatch(updateGraph(st))
+  };
+};
+
+const mapStateToProps = state => ({
+  input: state.input
+});
+
+export const ServiceSection = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(StyledServiceSection);
