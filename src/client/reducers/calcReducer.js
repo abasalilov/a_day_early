@@ -54,10 +54,6 @@ export default function input(state = defaultState, action) {
         return state;
       }
       const amortization = amortizationSchedule(loanAmount, term, interestRate);
-      // console.log("loanAmount", loanAmount);
-      // console.log("term", term);
-      // console.log("interestRate", interestRate);
-      // console.log("amortization", amortization);
 
       return update(state, {
         amortization: {
@@ -75,8 +71,6 @@ export default function input(state = defaultState, action) {
     case UPDATE_AMORT_GRAPH:
       const updatedState = Object.assign({}, state);
       const { st } = action;
-      console.log("updated", st);
-      console.log("updatedState", updatedState);
       const { monthlyPayment } = calculate(
         st.loanAmount,
         st.term,

@@ -73,7 +73,6 @@ class InputFormComponent extends React.Component {
     this.setState({ [name]: e.target.value }, () => {
       this.props.onChangeMortValues(this.state);
     });
-    console.log("new", this.state);
   }
 
   render() {
@@ -82,7 +81,7 @@ class InputFormComponent extends React.Component {
         <div>
           <Field
             name="loanAmount"
-            label="Original Loan Amount"
+            label="Desired Loan Amount"
             type="number"
             onChange={e => this.handleChange("loanAmount", e)}
             component={renderTextField}
@@ -105,7 +104,7 @@ class InputFormComponent extends React.Component {
           <Field
             name="interestRate"
             component={renderTextField}
-            label="Interest Rate (%)"
+            label="Anticipated Interest Rate (%)"
             type="number"
             onChange={e => this.handleChange("interestRate", e)}
             mobile={false}
@@ -115,7 +114,7 @@ class InputFormComponent extends React.Component {
           <Field
             name="term"
             component={renderTextField}
-            label="Loan Term (Years)"
+            label="Loan Term Desired (Years)"
             type="number"
             onChange={e => this.handleChange("term", e)}
             max="50"

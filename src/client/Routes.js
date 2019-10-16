@@ -6,6 +6,7 @@ import {
   LoginPage,
   UserDashPage,
   CalculatorPage,
+  LandingPage,
   NotFoundPage
 } from "./pages";
 
@@ -15,12 +16,17 @@ export default [
     routes: [
       {
         ...HomePage,
-        path: "/",
+        path: "/home",
         exact: true
       },
       {
         ...LoginPage,
         path: "/login",
+        exact: true
+      },
+      {
+        ...LandingPage,
+        path: "/",
         exact: true
       },
       {

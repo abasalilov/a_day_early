@@ -5,6 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 import {
   CARD_LIST,
   INTRO,
+  NOLOGO,
   CALCULATOR,
   CONTACT_US,
   HeroSection,
@@ -64,7 +65,20 @@ const SectionComponent = props => {
         {/* End hero unit */}
         {displayType === INTRO ? (
           <Grid container spacing={mobile ? 40 : 24} alignItems="flex-end">
-            <IntroSection mobile={mobile} sectionProps={sectionProps} />
+            <IntroSection
+              mobile={mobile}
+              history={history}
+              sectionProps={sectionProps}
+            />
+          </Grid>
+        ) : null}
+        {displayType === NOLOGO ? (
+          <Grid container spacing={mobile ? 40 : 24} alignItems="flex-end">
+            <IntroSection
+              mobile={mobile}
+              history={history}
+              sectionProps={sectionProps}
+            />
           </Grid>
         ) : null}
         {displayType === CALCULATOR ? (

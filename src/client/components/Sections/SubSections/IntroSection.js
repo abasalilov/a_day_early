@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
+import TrendingFlat from "@material-ui/icons/TrendingFlat";
 import { withStyles } from "@material-ui/core/styles";
 import { Image } from "../../common";
 
@@ -33,6 +35,31 @@ const styles = () => {
     },
     imgContainer: {
       width: "100%"
+    },
+    logoContainer: {
+      display: "flex",
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+      margin: "2rem"
+    },
+    linkText: {
+      textDecoration: "none",
+      display: "flex",
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+      margin: "2rem"
+    },
+    introLink: {
+      color: "#303290",
+      "&:hover": {
+        color: "#049347"
+      },
+      textDecoration: "none"
+    },
+    adeText: {
+      color: "#303290 !important"
     }
   };
 };
@@ -42,6 +69,7 @@ export const IntroSectionComponent = props => {
   const {
     classes,
     mobile,
+    history,
     sectionProps: { displayContent }
   } = props;
 
@@ -51,16 +79,29 @@ export const IntroSectionComponent = props => {
   };
   const containerClass = mobile ? classes.mobilePic : classes.pic;
   const imgClass = mobile ? classes.mobleImg : classes.imgContainer;
+
   return (
     <Grid item key={displayContent.title} xs={12}>
-      <Image
-        showSpinner={false}
-        containerClassName={containerClass}
-        imgClassName={imgClass}
-        src={
-          "https://res.cloudinary.com/dbfv0bfmw/image/upload/v1570784174/adeHero.png"
-        }
-      />
+      {props.sectionProps.displayType !== "NOLOGO" && (
+        <div className={classes.logoContainer}>
+          <Image
+            showSpinner={false}
+            containerClassName={containerClass}
+            imgClassName={imgClass}
+            src={
+              "https://res.cloudinary.com/dbfv0bfmw/image/upload/v1571170225/adeLogo.png"
+            }
+          />
+          <Image
+            showSpinner={false}
+            containerClassName={containerClass}
+            imgClassName={imgClass}
+            src={
+              "https://res.cloudinary.com/dbfv0bfmw/image/upload/v1571170238/adeLogoPro.png"
+            }
+          />
+        </div>
+      )}
       <div className={mobile ? classes.mobileIntroHeader : classes.introHeader}>
         <div className={classes.heroContent}>
           <Typography
@@ -88,7 +129,7 @@ export const IntroSectionComponent = props => {
             variant="h4"
             align="left"
             style={mobileVariantStyle}
-            color="textSecondary"
+            color="primary"
             gutterBottom
           >
             {displayContent.middle}
@@ -102,6 +143,84 @@ export const IntroSectionComponent = props => {
           >
             {displayContent.bottom}
           </Typography>
+          {props.sectionProps.displayType !== "NOLOGO" && (
+            <div className={classes.linkText}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center"
+                }}
+              >
+                <Typography
+                  variant="h5"
+                  align="left"
+                  className={classes.adeText}
+                  gutterBottom
+                >
+                  Are you a{" "}
+                  <a
+                    className={classes.introLink}
+                    style={{ textDecoration: "none" }}
+                    href="/homeowner"
+                  >
+                    homeowner?
+                  </a>
+                </Typography>
+                <Button
+                  onClick={() => history.push("/home")}
+                  variant="outlined"
+                  size="large"
+                  color="primary"
+                  style={{
+                    width: "80%",
+                    margin: "3rem",
+                    fontSize: "1rem"
+                  }}
+                >
+                  Home Owner
+                </Button>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center"
+                }}
+              >
+                <Typography
+                  variant="h5"
+                  align="left"
+                  gutterBottom
+                  className={classes.adeText}
+                >
+                  Or a{" "}
+                  <a
+                    className={classes.introLink}
+                    style={{ textDecoration: "none" }}
+                    href="/lender"
+                  >
+                    mortgage lender?
+                  </a>
+                </Typography>
+                <Button
+                  onClick={props.handleRedirect}
+                  variant="outlined"
+                  size="large"
+                  color="primary"
+                  style={{
+                    width: "80%",
+                    margin: "3rem",
+                    fontSize: "1rem"
+                  }}
+                >
+                  Mortgage Lender
+                </Button>
+              </div>
+            </div>
+          )}
         </React.Fragment>
       )}
     </Grid>

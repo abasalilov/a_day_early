@@ -15,14 +15,16 @@ const CARD_LIST = "CARD_LIST";
 const INTRO = "INTRO";
 const CALCULATOR = "CALCULATOR";
 const CONTACT_US = "CONTACT_US";
+const NOLOGO = "NOLOGO";
 /** data **/
 
-const introContent = {
-  title: "Exponential Mortgage Acceleration",
+const introContent = {};
+
+const homeIntroContent = {
   top:
-    "Your Financial Freedom Awaits...A Day Early ... ADD MORE MARKETING COPY HERE",
+    "Save money and cut months or years off your mortgage!  Have an existing mortgage?  Just enter some information below to get started.  Getting a new mortgage?",
   middle:
-    "Launching Fall 2019. If you would like to be part of our Beta Release, let us know",
+    "Try our simulator (hotlink) to see how much you can save using aDayEarly.",
   bottom:
     "You set the pace, we accelerate, take a look at our comparisons calculator below"
 };
@@ -180,6 +182,21 @@ export const IntroSectionData = {
   hasHero: false,
   heroProps: {
     title: introContent.title,
+    secondaryText: ``,
+    hasImage: false,
+    imageUrl:
+      "https://res.cloudinary.com/dbfv0bfmw/image/upload/v1569108593/ade3.png"
+  }
+};
+
+export const HomeIntroSectionData = {
+  displayType: NOLOGO,
+  displayContent: homeIntroContent,
+  isLastSection: false,
+  isFirstSection: true,
+  hasHero: false,
+  heroProps: {
+    title: homeIntroContent.title,
     secondaryText: ``,
     hasImage: false,
     imageUrl:

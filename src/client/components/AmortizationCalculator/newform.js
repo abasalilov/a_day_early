@@ -45,7 +45,7 @@ class InputFormComponent extends React.Component {
             here
             <Field
               name="originalLoanAmount"
-              label="Original Loan Amount ($)"
+              label="Desired Loan Amount ($)"
               type="number"
               component={
                 <TextField
@@ -73,7 +73,7 @@ class InputFormComponent extends React.Component {
               <Field
                 name="interestRate"
                 component={FormField}
-                label="Interest Rate (%)"
+                label="Anticipated Interest Rate (%)"
                 type="number"
                 meta={{ touched: false, error: false }}
                 value={this.props.input.interestRate || ""}
@@ -84,7 +84,7 @@ class InputFormComponent extends React.Component {
             <Field
               name="term"
               component={FormField}
-              label="Loan Term (Years)"
+              label="Loan Term Desired (Years)"
               type="number"
               max="50"
               value={this.props.input.term}

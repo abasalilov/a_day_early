@@ -86,8 +86,6 @@ class ServiceSectionComponent extends React.Component {
       input.interestRate,
       input.monthlyOverpayment
     );
-    console.log("input", input);
-    console.log("getUpdatedMontlyPayment", monthlyPayment);
     return monthlyPayment;
   }
 

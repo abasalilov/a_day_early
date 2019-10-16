@@ -1,5 +1,6 @@
 export {
   IntroSectionData,
   ServicesSectionData,
-  ContactUsSectionData
+  ContactUsSectionData,
+  HomeIntroSectionData
 } from "./PageData";

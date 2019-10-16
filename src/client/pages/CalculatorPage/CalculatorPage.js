@@ -11,7 +11,6 @@ const styles = {
 };
 
 const CalculatorPageComponent = props => {
-  console.log("props", props);
   const { classes } = props;
   return (
     <div>

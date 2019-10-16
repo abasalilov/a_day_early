@@ -65,7 +65,7 @@ export const CalculatorGraph = () => {
           </div>
           <div className="col-sm-8">
             <div>
-              <h2>Overpayment</h2>
+              <h2>Please add any extra principal payments you made so far.</h2>
               <label>Monthly</label>
               <input
                 type="number"
