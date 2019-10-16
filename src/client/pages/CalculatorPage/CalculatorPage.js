@@ -5,7 +5,6 @@ import { CalculatorGraph } from "../../components/CalculatorGraph";
 
 const styles = {
   container: {
-    border: "solid red 3px",
     margin: "4rem"
   }
 };

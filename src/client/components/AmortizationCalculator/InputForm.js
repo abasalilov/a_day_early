@@ -60,7 +60,7 @@ class InputFormComponent extends React.Component {
     super(props, context);
     this.state = {
       loanAmount: 450000,
-      firstPayment: new Date(),
+      originationDate: new Date(),
       interestRate: 3.625,
       term: 30
     };
@@ -74,6 +74,7 @@ class InputFormComponent extends React.Component {
       this.props.onChangeMortValues(this.state);
     });
   }
+  // Current Loan Balance
 
   render() {
     return (
@@ -90,11 +91,11 @@ class InputFormComponent extends React.Component {
         </div>
         <div>
           <Field
-            name="firstPayment"
-            label="First Payment Date"
+            name="originationDate"
+            label="Origination Date"
             type="date"
             component={renderTextField}
-            onChange={e => this.handleChange("firstPayment", e)}
+            onChange={e => this.handleChange("originationDate", e)}
             mobile={false}
             labelFontSize={"26px"}
             labelShrink={true}
@@ -120,6 +121,38 @@ class InputFormComponent extends React.Component {
             max="50"
           />
         </div>
+        <div>
+          <Field
+            name="paymentAmount"
+            component={renderTextField}
+            label="Payment Amount"
+            type="number"
+            onChange={e => this.handleChange("paymentAmount", e)}
+            mobile={false}
+          />
+        </div>
+        <div>
+          <Field
+            name="currentLoanAmount"
+            component={renderTextField}
+            label="Current Loan Amount"
+            type="number"
+            onChange={e => this.handleChange("currentLoanAmount", e)}
+            mobile={false}
+          />
+        </div>
+        <div>
+          <Field
+            name="payOffDate"
+            label="Pay Off Date"
+            type="date"
+            component={renderTextField}
+            onChange={e => this.handleChange("payOffDate", e)}
+            mobile={false}
+            labelFontSize={"26px"}
+            labelShrink={true}
+          />
+        </div>
       </MuiPickersUtilsProvider>
     );
   }
@@ -135,7 +168,7 @@ function mapStateToProps(state) {
     input: state.input,
     monthly: state.input.monthlyPayment,
     initialValues: {
-      firstPayment: state.input.firstPayment,
+      originationDate: state.input.originationDate,
       term: state.input.term,
       interestRate: state.input.interestRate,
       loanAmount: state.input.loanAmount
