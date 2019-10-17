@@ -198,6 +198,15 @@ class ServiceSectionComponent extends React.Component {
                 >
                   Let's Start With The Basics
                 </Typography>
+                <Typography
+                  variant={mobile ? "display5" : "h5"}
+                  gutterBottom
+                  align="center"
+                  color="textPrimary"
+                  style={{ width: "100%", color: "#303290" }}
+                >
+                  (Please fill out 3 of the following fields)
+                </Typography>
               </Grid>
               <Grid item xs={7} style={{ width: "100%", marginRight: "1rem" }}>
                 <CalculatorForm onCalculate={this.props.updatePaymentGraph} />
@@ -205,24 +214,6 @@ class ServiceSectionComponent extends React.Component {
             </Grid>
           </Grid>
           <Grid item xs={5}>
-            <Typography
-              variant={mobile ? "display4" : "h4"}
-              align="left"
-              color="textPrimary"
-              style={{ width: "100%", color: "#303290", marginLeft: "1rem" }}
-              gutterBottom
-            >
-              MONTHLY PAYMENT
-            </Typography>
-            <Typography
-              variant={mobile ? "display4" : "h1"}
-              align="left"
-              color="textPrimary"
-              style={{ width: "100%", color: "#049347", marginLeft: "1rem" }}
-              gutterBottom
-            >
-              {this.getUpdatedMontlyPayment()}
-            </Typography>
             <Typography
               variant={mobile ? "display4" : "h6"}
               align="left"
@@ -239,20 +230,22 @@ class ServiceSectionComponent extends React.Component {
               Learn how our service can help you pay down your mortgage much
               earlier
             </Typography>
-            <Button
-              onClick={this.handleRedirect}
-              variant="outlined"
-              size="large"
-              color="primary"
-              style={{
-                width: "80%",
-                margin: "1rem 1rem 1rem 0",
-                fontSize: "1.5rem",
-                marginLeft: "1rem"
-              }}
-            >
-              Next Step {<TrendingFlat style={{ fontSize: "2rem" }} />}
-            </Button>
+            {input.canCalculate && (
+              <Button
+                onClick={this.handleRedirect}
+                variant="outlined"
+                size="large"
+                color="primary"
+                style={{
+                  width: "80%",
+                  margin: "1rem 1rem 1rem 0",
+                  fontSize: "1.5rem",
+                  marginLeft: "1rem"
+                }}
+              >
+                Next Step {<TrendingFlat style={{ fontSize: "2rem" }} />}
+              </Button>
+            )}
           </Grid>
         </Grid>
       </React.Fragment>

@@ -8,7 +8,7 @@ import { DatePicker } from "@material-ui/pickers";
 import Button from "@material-ui/core/Button";
 import { FormField } from "../common/FormField";
 import TextField from "@material-ui/core/TextField";
-import { updateAmortGraph } from "../../actions";
+import { updateAmortGraph, updateInfoForm } from "../../actions";
 
 const validate = values => {
   const errors = {};
@@ -59,10 +59,13 @@ class InputFormComponent extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      loanAmount: 450000,
-      originationDate: new Date(),
-      interestRate: 3.625,
-      term: 30
+      loanAmount: null,
+      originationDate: null,
+      interestRate: null,
+      term: null,
+      paymentAmount: null,
+      currentLoanAmount: null,
+      payOffDate: null
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -71,7 +74,7 @@ class InputFormComponent extends React.Component {
 
   handleChange(name, e) {
     this.setState({ [name]: e.target.value }, () => {
-      this.props.onChangeMortValues(this.state);
+      this.props.updateInputForm(this.state);
     });
   }
   // Current Loan Balance
@@ -82,7 +85,7 @@ class InputFormComponent extends React.Component {
         <div>
           <Field
             name="loanAmount"
-            label="Desired Loan Amount"
+            label="Anticipated Loan Amount"
             type="number"
             onChange={e => this.handleChange("loanAmount", e)}
             component={renderTextField}
@@ -179,6 +182,9 @@ const mapDispatchToProps = dispatch => {
   return {
     updateCalc: st => {
       dispatch(updateAmortGraph(st));
+    },
+    updateInputForm: st => {
+      dispatch(updateInfoForm(st));
     }
   };
 };

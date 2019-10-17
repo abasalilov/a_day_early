@@ -7,10 +7,10 @@ import calculate from "./calculations";
 const defaultOverpayment = { month: "1", year: "0", amount: "400" };
 
 export const CalculatorGraph = () => {
-  const [initial, setInitial] = useState("450000");
-  const [rate, setRate] = useState("3.625");
-  const [years, setYears] = useState("30");
-  const [monthlyOverpayment, setMonthlyOverpayment] = useState("100");
+  const [initial, setInitial] = useState(null);
+  const [rate, setRate] = useState(null);
+  const [years, setYears] = useState(null);
+  const [monthlyOverpayment, setMonthlyOverpayment] = useState(null);
   const [overpayments, setOverpayments] = useState([defaultOverpayment]);
 
   const updateOverpayment = index => ({ target }) =>

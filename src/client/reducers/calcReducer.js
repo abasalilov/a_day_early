@@ -2,7 +2,8 @@ import {
   UPDATE_AMORTIZATION,
   RESET_AMORTIZATION,
   SET_BEGIN_DATE,
-  UPDATE_AMORT_GRAPH
+  UPDATE_AMORT_GRAPH,
+  UPDATE_INFO_FORM
 } from "../actions";
 import { amortizationSchedule } from "amortization";
 import update from "react-addons-update";
@@ -22,20 +23,31 @@ function getFormattedDate() {
 }
 
 export const defaultState = {
-  loanAmount: 450000,
-  interestRate: 3.625,
-  term: 30,
-  firstPayment: getFormattedDate(),
-  monthlyPayment: 2200,
-  monthlyOverpayment: 0
+  loanAmount: null,
+  interestRate: null,
+  term: null,
+  firstPayment: null,
+  monthlyPayment: null,
+  monthlyOverpayment: 0,
+  originationDate: new Date(),
+  paymentAmount: 0,
+  currentLoanAmount: 0,
+  payOffDate: "",
+  canCalculate: false
 };
 
 export const resetState = {
-  loanAmount: 450000,
-  interestRate: 3.625,
-  term: 30,
-  firstPayment: getFormattedDate(),
-  monthlyPayment: 2052.23
+  loanAmount: null,
+  interestRate: null,
+  term: null,
+  firstPayment: null,
+  monthlyPayment: null,
+  monthlyOverpayment: 0,
+  originationDate: new Date(),
+  paymentAmount: 0,
+  currentLoanAmount: 0,
+  payOffDate: "",
+  canCalculate: false
 };
 
 export default function input(state = defaultState, action) {
@@ -82,6 +94,14 @@ export default function input(state = defaultState, action) {
       updatedState.interestRate = st.interestRate;
 
       return updatedState;
+    case UPDATE_INFO_FORM:
+      const updatedInfoFormState = Object.assign({}, state);
+      const canCalculate =
+        Object.keys(action.st).filter(item => {
+          return action.st[item] !== null;
+        }).length >= 3;
+      updatedInfoFormState.canCalculate = canCalculate;
+      return updatedInfoFormState;
     default:
       return state;
   }

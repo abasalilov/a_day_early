@@ -143,3 +143,10 @@ export const updateAmortGraph = st => ({
   type: UPDATE_AMORT_GRAPH,
   st
 });
+
+export const UPDATE_INFO_FORM = "UPDATE_INFO_FORM";
+
+export const updateInfoForm = st => ({
+  type: UPDATE_INFO_FORM,
+  st
+});
