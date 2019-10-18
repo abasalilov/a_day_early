@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FlyOut } from "../common/FlyOut";
 
 import Table from "./Table";
 import Chart from "./Chart";
@@ -54,7 +55,7 @@ export const CalculatorGraph = () => {
               />
             </div>
             <div>
-              <label>Rate</label>
+              <label>Interest Rate</label>
               <input
                 type="number"
                 step={0.1}
@@ -62,6 +63,7 @@ export const CalculatorGraph = () => {
                 onChange={e => setRate(e.target.value)}
               />
             </div>
+            <FlyOut show={true} />
           </div>
           <div className="col-sm-8">
             <div>

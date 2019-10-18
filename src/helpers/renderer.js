@@ -115,6 +115,35 @@ export default (req, store, context) => {
                 #Calculddator > div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-6 > h4 {
                   color: #303290
                 }
+                .arrow_box {
+                  position: relative;
+                  background: #88b7d5;
+                  border: 4px solid #c2e1f5;
+                }
+                .arrow_box:after, .arrow_box:before {
+                  right: 90%;
+                  top: 50%;
+                  border: solid transparent;
+                  content: " ";
+                  height: 0;
+                  width: 0;
+                  position: absolute;
+                  pointer-events: none;
+                }
+
+                .arrow_box:after {
+                  border-color: rgba(136, 183, 213, 0);
+                  border-right-color: #88b7d5;
+                  border-width: 30px;
+                  margin-top: -30px;
+                }
+                .arrow_box:before {
+                  border-color: rgba(194, 225, 245, 0);
+                  border-right-color: #c2e1f5;
+                  border-width: 24px;
+                  margin-top: -24px;
+                  height: 20px;
+                }
 
               </style>
               <link rel="shortcut icon" href="favicon.ico">
