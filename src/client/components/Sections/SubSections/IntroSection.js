@@ -176,7 +176,8 @@ export const IntroSectionComponent = props => {
                   style={{
                     width: "80%",
                     margin: "3rem",
-                    fontSize: "1rem"
+                    fontSize: "1rem",
+                    textShadow: "1px 1px #7280ce"
                   }}
                 >
                   Home Owner

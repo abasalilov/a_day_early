@@ -166,7 +166,7 @@ class ServiceSectionComponent extends React.Component {
     }
     return (
       <React.Fragment>
-        <Divider style={{ width: "100%", marginBottom: "2rem" }} />
+        <Divider style={{ width: "100%", marginBottom: "2rem" }} id="basics" />
         <Grid
           container
           key={"dsf"}

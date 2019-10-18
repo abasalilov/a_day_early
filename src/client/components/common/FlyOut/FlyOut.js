@@ -28,13 +28,14 @@ const useStyles = makeStyles(theme => ({
 export const FlyOut = props => {
   const classes = useStyles();
   const checked = props.show;
+  let message = props.message ? props.message : "Add message here";
 
   return (
     <Zoom
       in={checked}
       style={{
         transitionDelay: checked ? "750ms" : "0ms",
-        width: "10rem",
+        width: "20%",
         borderRadius: "1rem"
       }}
     >
@@ -42,12 +43,15 @@ export const FlyOut = props => {
         <a>
           <Typography
             variant="h6"
-            style={{ color: "#303290" }}
+            style={{
+              color: "#3f51b5",
+              textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)"
+            }}
             id="modal-title"
             align="center"
             gutterBottom
           >
-            Here yo
+            {message}
           </Typography>
         </a>
       </div>

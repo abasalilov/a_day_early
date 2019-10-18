@@ -9,16 +9,29 @@ const styles = {
   }
 };
 
-const CalculatorPageComponent = props => {
-  const { classes } = props;
-  return (
-    <div>
+class CalculatorPageComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  componentDidMount() {
+    // TODO: UNCOMMENT DURING DEPLOYMENT
+    // let redirect = this.props.input.canCalculate;
+    // if (redirect) {
+    //   this.props.history.push("/home#basics");
+    // }
+  }
+
+  render() {
+    const { classes, input } = this.props;
+    return (
       <div className={classes.container}>
-        <CalculatorGraph />
+        <CalculatorGraph {...input} />
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 const mapStateToProps = state => ({
   mobile: state.mobile,

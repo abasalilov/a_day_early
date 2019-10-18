@@ -33,7 +33,6 @@ export const CalculatorGraph = () => {
   return (
     <div>
       <div className="container-fluid">
-        <h4>Todo: add styles layer</h4>
         <div className="col-md-8 col-sm-12">
           <div className="col-sm-4">
             <div>

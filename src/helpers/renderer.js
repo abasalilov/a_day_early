@@ -117,11 +117,11 @@ export default (req, store, context) => {
                 }
                 .arrow_box {
                   position: relative;
-                  background: #88b7d5;
-                  border: 3px solid #c2e1f5;
+                  background: #fff;
+                  border: 4px solid #3f51b5;
                 }
                 .arrow_box:after, .arrow_box:before {
-                  right: 99%;
+                  right: 100%;
                   top: 50%;
                   border: solid transparent;
                   content: " ";
@@ -132,18 +132,16 @@ export default (req, store, context) => {
                 }
 
                 .arrow_box:after {
-                  border-color: rgba(136, 183, 213, 0);
-                  border-right-color: #88b7d5;
-                  border-width: 10px;
-                  margin-top: -10px;
+                  border-color: rgba(255, 255, 255, 0);
+                  border-width: 15px;
+                  margin-top: -15px;
                 }
                 .arrow_box:before {
-                  border-color: rgba(194, 225, 245, 0);
-                  border-right-color: #c2e1f5;
-                  border-width: 14px;
-                  margin-top: -14px;
+                  border-color: rgba(63, 81, 181, 0);
+                  border-right-color: #3f51b5;
+                  border-width: 12px;
+                  margin-top: -12px;
                 }
-
               </style>
               <link rel="shortcut icon" href="favicon.ico">
                 ${helmet.title.toString()}

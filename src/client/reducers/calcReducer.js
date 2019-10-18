@@ -33,7 +33,9 @@ export const defaultState = {
   paymentAmount: 0,
   currentLoanAmount: 0,
   payOffDate: "",
-  canCalculate: false
+  canCalculate: false,
+  hasError: false,
+  missingFields: []
 };
 
 export const resetState = {
@@ -47,8 +49,42 @@ export const resetState = {
   paymentAmount: 0,
   currentLoanAmount: 0,
   payOffDate: "",
-  canCalculate: false
+  canCalculate: false,
+  hasError: false,
+  missingFields: []
 };
+
+function checkForMissingFields(fields) {
+  let hasInterest = false;
+  let hasAmount = false;
+  let hasTerm = false;
+  let missing = [];
+  fields.map(field => {
+    console.log("field", field);
+    if (field === "loanAmount") {
+      hasAmount = true;
+    }
+    if (field === "interestRate") {
+      hasInterest = true;
+    }
+    if (field === "term") {
+      hasTerm = true;
+    }
+  });
+  const hasRequiredFields = hasAmount && hasInterest && hasTerm;
+  if (!hasRequiredFields) {
+    if (!hasAmount) {
+      missing.push("loanAmount");
+    }
+    if (!hasInterest) {
+      missing.push("interestRate");
+    }
+    if (!hasTerm) {
+      missing.push("term");
+    }
+  }
+  return { hasRequiredFields, missing };
+}
 
 export default function input(state = defaultState, action) {
   switch (action.type) {
@@ -81,26 +117,42 @@ export default function input(state = defaultState, action) {
         }
       });
     case UPDATE_AMORT_GRAPH:
-      const updatedState = Object.assign({}, state);
       const { st } = action;
-      const { monthlyPayment } = calculate(
-        st.loanAmount,
-        st.term,
-        st.interestRate
-      );
-      updatedState.loanAmount = st.loanAmount;
-      updatedState.monthlyPayment = st.monthlyPayment;
-      updatedState.term = st.term;
+      // TODO: DO YOU NEED THESE?
+      // const { monthlyPayment } = calculate(
+      //   st.loanAmount,
+      //   st.term,
+      //   st.interestRate
+      // );
+      const updatedState = Object.assign({}, state);
+
+      updatedState.currentLoanAmount = st.currentLoanAmount;
       updatedState.interestRate = st.interestRate;
+      updatedState.loanAmount = st.loanAmount;
+      updatedState.originationDate = st.originationDate;
+      updatedState.payOffDate = st.payOffDate;
+      updatedState.paymentAmount = st.paymentAmount;
+      updatedState.term = st.term;
 
       return updatedState;
     case UPDATE_INFO_FORM:
       const updatedInfoFormState = Object.assign({}, state);
-      const canCalculate =
-        Object.keys(action.st).filter(item => {
-          return action.st[item] !== null;
-        }).length >= 3;
-      updatedInfoFormState.canCalculate = canCalculate;
+      updatedInfoFormState.currentLoanAmount = action.st.currentLoanAmount;
+      updatedInfoFormState.interestRate = action.st.interestRate;
+      updatedInfoFormState.loanAmount = action.st.loanAmount;
+      updatedInfoFormState.originationDate = action.st.originationDate;
+      updatedInfoFormState.payOffDate = action.st.payOffDate;
+      updatedInfoFormState.paymentAmount = action.st.paymentAmount;
+      updatedInfoFormState.term = action.st.term;
+
+      const canCalculate = Object.keys(action.st).filter(item => {
+        return action.st[item] !== null;
+      });
+      const hasMissingFields = checkForMissingFields(canCalculate);
+      const shouldCalculate =
+        canCalculate.length >= 3 && hasMissingFields.hasRequiredFields;
+      updatedInfoFormState.canCalculate = shouldCalculate;
+      updatedInfoFormState.missingFields = hasMissingFields.missing;
       return updatedInfoFormState;
     default:
       return state;
