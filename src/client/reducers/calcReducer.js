@@ -60,7 +60,6 @@ function checkForMissingFields(fields) {
   let hasTerm = false;
   let missing = [];
   fields.map(field => {
-    console.log("field", field);
     if (field === "loanAmount") {
       hasAmount = true;
     }
@@ -149,8 +148,7 @@ export default function input(state = defaultState, action) {
         return action.st[item] !== null;
       });
       const hasMissingFields = checkForMissingFields(canCalculate);
-      const shouldCalculate =
-        canCalculate.length >= 3 && hasMissingFields.hasRequiredFields;
+      const shouldCalculate = canCalculate.length >= 3;
       updatedInfoFormState.canCalculate = shouldCalculate;
       updatedInfoFormState.missingFields = hasMissingFields.missing;
       return updatedInfoFormState;

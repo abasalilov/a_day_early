@@ -35,7 +35,6 @@ export const FlyOut = props => {
       in={checked}
       style={{
         transitionDelay: checked ? "750ms" : "0ms",
-        width: "20%",
         borderRadius: "1rem"
       }}
     >
@@ -45,10 +44,11 @@ export const FlyOut = props => {
             variant="h6"
             style={{
               color: "#3f51b5",
-              textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)"
+              textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
+              padding: "1rem"
             }}
             id="modal-title"
-            align="center"
+            align="left"
             gutterBottom
           >
             {message}

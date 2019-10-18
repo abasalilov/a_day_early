@@ -12,6 +12,7 @@ import { RegistrationModal } from "../../modals/RegistrationModal";
 import calculate from "../../CalculatorGraph/calculations";
 import { updateAmortGraph as updateGraph } from "../../../actions";
 import { connect } from "react-redux";
+import { FlyOut } from "../../common";
 
 const styles = theme => ({
   expansionHeader: {
@@ -58,6 +59,50 @@ const mobileTitle = title => {
   return title;
 };
 
+const makeFlyoutMessage = msgs => {
+  let missingInterest = false;
+  let missingTerm = false;
+  let missingAmount = false;
+  let count = 0;
+  msgs.map(missingField => {
+    if (missingField === "interestRate") {
+      missingInterest = true;
+      count++;
+    }
+    if (missingField === "term") {
+      missingTerm = true;
+      count++;
+    }
+    if (missingField === "loanAmount") {
+      missingAmount = true;
+      count++;
+    }
+  });
+  let msg = "The following field(s) are required: ";
+  if (missingInterest) {
+    msg += " Interest Rate";
+    if (count > 1) {
+      count--;
+      msg += ",";
+    }
+  }
+  if (missingTerm) {
+    msg += " Loan Term";
+    if (count > 1) {
+      count--;
+      msg += ",";
+    }
+  }
+  if (missingAmount) {
+    msg += " Loan Amount";
+    if (count > 1) {
+      count--;
+      msg += ",";
+    }
+  }
+  return msg;
+};
+
 class ServiceSectionComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -65,7 +110,8 @@ class ServiceSectionComponent extends React.Component {
       expanded: null,
       showModal: false,
       selectedService: null,
-      showRegModal: false
+      showRegModal: false,
+      showFlyout: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleToggleModal = this.handleToggleModal.bind(this);
@@ -91,7 +137,11 @@ class ServiceSectionComponent extends React.Component {
 
   handleRedirect() {
     // this.setState({ showRegModal: true });
-    this.props.history.push("/calculator");
+    if (this.props.input.missingFields.length > 0) {
+      this.setState({ showFlyout: true });
+    } else {
+      this.props.history.push("/calculator");
+    }
   }
 
   handleChange(panel) {
@@ -127,8 +177,9 @@ class ServiceSectionComponent extends React.Component {
 
   render() {
     const { classes, mobile, sectionProps, input } = this.props;
-    const { expanded, showModal, selectedService, showRegModal } = this.state;
+    const { showFlyout, showModal, selectedService, showRegModal } = this.state;
     const { displayContent } = sectionProps;
+    const hasMessages = input.missingFields.length > 0;
     const dataIconStyle = {
       fontSize: mobile ? "5rem" : "2.5rem"
     };
@@ -173,7 +224,7 @@ class ServiceSectionComponent extends React.Component {
           justify="space-apart"
           alignItems="center"
           direction={"row"}
-          id="Calculator"
+          id="CALCULATOR"
         >
           <Grid item xs={7}>
             <Grid
@@ -208,12 +259,35 @@ class ServiceSectionComponent extends React.Component {
                   (Please fill out 3 of the following fields)
                 </Typography>
               </Grid>
-              <Grid item xs={7} style={{ width: "100%", marginRight: "1rem" }}>
+              <Grid
+                item
+                xs={7}
+                style={{
+                  width: "100%",
+                  marginRight: "1rem"
+                }}
+              >
                 <CalculatorForm onCalculate={this.props.updatePaymentGraph} />
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={5}>
+          <Grid
+            item
+            xs={5}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              padding: "1rem"
+            }}
+          >
+            {showFlyout && hasMessages && (
+              <FlyOut
+                show={showFlyout}
+                style={{ margin: "0 0 2rem 1rem" }}
+                message={makeFlyoutMessage(input.missingFields)}
+              />
+            )}
+
             <Typography
               variant={mobile ? "display4" : "h6"}
               align="left"
@@ -224,12 +298,13 @@ class ServiceSectionComponent extends React.Component {
                 fontWeight: 600,
                 fontFamily: "Raleway-Thin",
                 transform: "scaleY(1.2)",
-                marginLeft: "1rem"
+                margin: "1rem"
               }}
             >
               Learn how our service can help you pay down your mortgage much
               earlier
             </Typography>
+
             {input.canCalculate && (
               <Button
                 onClick={this.handleRedirect}
