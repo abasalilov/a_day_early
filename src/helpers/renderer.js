@@ -118,10 +118,10 @@ export default (req, store, context) => {
                 .arrow_box {
                   position: relative;
                   background: #88b7d5;
-                  border: 4px solid #c2e1f5;
+                  border: 3px solid #c2e1f5;
                 }
                 .arrow_box:after, .arrow_box:before {
-                  right: 90%;
+                  right: 99%;
                   top: 50%;
                   border: solid transparent;
                   content: " ";
@@ -134,15 +134,14 @@ export default (req, store, context) => {
                 .arrow_box:after {
                   border-color: rgba(136, 183, 213, 0);
                   border-right-color: #88b7d5;
-                  border-width: 30px;
-                  margin-top: -30px;
+                  border-width: 10px;
+                  margin-top: -10px;
                 }
                 .arrow_box:before {
                   border-color: rgba(194, 225, 245, 0);
                   border-right-color: #c2e1f5;
-                  border-width: 24px;
-                  margin-top: -24px;
-                  height: 20px;
+                  border-width: 14px;
+                  margin-top: -14px;
                 }
 
               </style>

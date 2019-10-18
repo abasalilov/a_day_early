@@ -34,10 +34,8 @@ export const FlyOut = props => {
       in={checked}
       style={{
         transitionDelay: checked ? "750ms" : "0ms",
-        border: "solid red",
         width: "10rem",
-        borderRadius: "3rem",
-        height: "2rem"
+        borderRadius: "1rem"
       }}
     >
       <div className="arrow_box">
