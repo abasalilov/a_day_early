@@ -6,9 +6,9 @@ import { scaleLinear } from "d3-scale";
 import { axisBottom, axisLeft } from "d3-axis";
 import "d3-transition";
 
-const margin = { top: 20, right: 20, bottom: 20, left: 80 },
-  fullWidth = 800,
-  fullHeight = 300,
+const margin = { top: 0, right: 20, bottom: 20, left: 60 },
+  fullWidth = 500,
+  fullHeight = 200,
   width = fullWidth - margin.left - margin.right,
   height = fullHeight - margin.top - margin.bottom;
 
@@ -52,8 +52,8 @@ export default ({ payments }) => {
   return (
     <svg
       ref={chart}
-      height="100%"
-      width="100%"
+      height="75%"
+      width="75%"
       viewBox={`0 0 ${fullWidth} ${fullHeight}`}
     >
       <g transform={`translate(${margin.left},${margin.top})`}>

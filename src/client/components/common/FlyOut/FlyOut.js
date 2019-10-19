@@ -42,6 +42,7 @@ export const FlyOut = props => {
         <a>
           <Typography
             variant="h6"
+            {...props}
             style={{
               color: "#3f51b5",
               textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",

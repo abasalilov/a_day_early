@@ -24,10 +24,10 @@ class CalculatorPageComponent extends React.Component {
   }
 
   render() {
-    const { classes, input } = this.props;
+    const { classes, input, history } = this.props;
     return (
       <div className={classes.container}>
-        <CalculatorGraph {...input} />
+        <CalculatorGraph {...input} {...history} />
       </div>
     );
   }

@@ -1,4 +1,11 @@
 import React from "react";
+import Typography from "@material-ui/core/Typography";
+
+const labelStyle = {
+  color: "#3f51b5",
+  textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
+  padding: "1rem"
+};
 
 export default ({ payments, className }) => {
   let output = payments
@@ -25,17 +32,67 @@ export default ({ payments, className }) => {
       <table className={className}>
         <thead>
           <tr>
-            <th>Years</th>
-            <th>Interest</th>
-            <th>Overpayment</th>
-            <th>Balance</th>
+            <th>
+              <Typography
+                variant="h6"
+                style={labelStyle}
+                id="modal-title"
+                align="left"
+                gutterBottom
+              >
+                Years
+              </Typography>
+            </th>
+            <th>
+              <Typography
+                variant="h6"
+                style={labelStyle}
+                id="modal-title"
+                align="left"
+                gutterBottom
+              >
+                Interest
+              </Typography>
+            </th>
+            <th>
+              <Typography
+                variant="h6"
+                style={labelStyle}
+                id="modal-title"
+                align="left"
+                gutterBottom
+              >
+                Overpayment
+              </Typography>
+            </th>
+            <th>
+              <Typography
+                variant="h6"
+                style={labelStyle}
+                id="modal-title"
+                align="left"
+                gutterBottom
+              >
+                Balance
+              </Typography>
+            </th>
           </tr>
         </thead>
         <tbody>
           {output.rows.map((row, index) => (
             <tr key={index}>
               {row.map((d, i) => (
-                <td key={i}>{d.toLocaleString()}</td>
+                <td key={i}>
+                  <Typography
+                    variant="subtitle1"
+                    style={labelStyle}
+                    id="modal-title"
+                    align="left"
+                    gutterBottom
+                  >
+                    {d.toLocaleString()}
+                  </Typography>
+                </td>
               ))}
             </tr>
           ))}
@@ -43,9 +100,27 @@ export default ({ payments, className }) => {
         <tfoot>
           <tr>
             <td colSpan={2}>
-              {Math.round(output.interestTotal).toLocaleString()}
+              <Typography
+                variant="subtitle1"
+                style={labelStyle}
+                id="modal-title"
+                align="left"
+                gutterBottom
+              >
+                {Math.round(output.interestTotal).toLocaleString()}
+              </Typography>
             </td>
-            <td>{Math.round(output.overpaymentTotal).toLocaleString()}</td>
+            <td>
+              <Typography
+                variant="subtitle1"
+                style={labelStyle}
+                id="modal-title"
+                align="left"
+                gutterBottom
+              >
+                {Math.round(output.overpaymentTotal).toLocaleString()}
+              </Typography>
+            </td>
             <td />
           </tr>
         </tfoot>
