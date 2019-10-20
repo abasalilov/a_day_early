@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Typography from "@material-ui/core/Typography";
-import { FlyOut } from "../common/FlyOut";
+import { FlyOut, LenderSelect } from "../common";
 import Divider from "@material-ui/core/Divider";
 
 import Table from "./Table";
@@ -9,8 +9,15 @@ import calculate from "./calculations";
 import Grid from "@material-ui/core/Grid";
 const defaultOverpayment = { month: "1", year: "0", amount: "400" };
 
+const lenders = ["Chase", "Wells Fargo", "Quicken Loans", "SoFi", "Other"];
+
 export const CalculatorGraph = props => {
-  const { loanAmount = null, interestRate = null, term = null } = props;
+  const {
+    loanAmount = null,
+    interestRate = null,
+    term = null,
+    showMessages = false
+  } = props;
   const [initial, setInitial] = useState(loanAmount);
   const [rate, setRate] = useState(interestRate);
   const [years, setYears] = useState(term);
@@ -61,10 +68,29 @@ export const CalculatorGraph = props => {
     +monthlyOverpayment,
     overpayments
   );
+
   return (
     <div className="container-fluid">
       <div className="col-md-8 col-sm-12">
         <div className="col-sm-4">
+          {showMessages && (
+            <div>
+              <Typography
+                variant="h4"
+                style={labelStyle}
+                id="modal-title"
+                align="left"
+                gutterBottom
+              >
+                TODO: Configure snapshot per program
+              </Typography>
+              <div>
+                {props.programMessage.map(msg => {
+                  return <li>{msg}</li>;
+                })}
+              </div>
+            </div>
+          )}
           <div>
             <Typography
               variant="h4"
@@ -168,40 +194,14 @@ export const CalculatorGraph = props => {
         </div>
         <Divider style={{ width: "100%", color: "#3f51b5", margin: "1rem" }} />
 
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            marginTop: "1rem"
-          }}
+        <Grid
+          container
+          spacing={8}
+          justify="left"
+          alignItems="center"
+          direction={"row"}
         >
-          <Typography
-            variant="h5"
-            style={labelStyle}
-            id="modal-title"
-            align="left"
-            gutterBottom
-          >
-            Standard Monthly Payment
-          </Typography>
-          <span className="money">
-            <Typography
-              variant="h6"
-              style={labelStyle}
-              id="modal-title"
-              align="left"
-              gutterBottom
-            >
-              {+monthlyOverpayment + monthlyPayment}
-            </Typography>
-          </span>
-        </div>
-
-        <Divider style={{ width: "100%", color: "#3f51b5", margin: "1rem" }} />
-
-        <div className="col-sm-8">
-          <div style={{ margin: "3rem 0" }}>
+          <Grid item xs={5}>
             <Typography
               variant="h5"
               style={labelStyle}
@@ -209,6 +209,51 @@ export const CalculatorGraph = props => {
               align="left"
               gutterBottom
             >
+              Standard Monthly Payment
+            </Typography>
+          </Grid>
+          <Grid item xs={3}>
+            <span className="money">
+              <Typography variant="h6" style={labelStyle} align="left">
+                {+monthlyOverpayment + monthlyPayment}
+              </Typography>
+            </span>
+          </Grid>
+        </Grid>
+
+        <Grid
+          container
+          spacing={8}
+          justify="left"
+          alignItems="center"
+          direction={"row"}
+        >
+          <Grid item xs={5}>
+            <Typography variant="h5" style={labelStyle} align="left">
+              Who is your mortgage lender?
+            </Typography>{" "}
+          </Grid>
+          <Grid item xs={3} style={{ marginBottom: "1rem" }}>
+            <LenderSelect options={lenders} />
+          </Grid>
+        </Grid>
+
+        <Divider style={{ width: "100%", color: "#3f51b5", margin: "1rem" }} />
+
+        <div className="col-sm-8">
+          <div>
+            <Typography
+              variant="h4"
+              style={labelStyle}
+              id="modal-title"
+              align="left"
+              gutterBottom
+            >
+              Loan Payoff Schedule
+            </Typography>
+          </div>
+          <div style={{ margin: "2rem 0" }}>
+            <Typography variant="h5" style={labelStyle} align="left">
               Please add any extra principal payments you made so far in the
               fields below.
             </Typography>

@@ -3,7 +3,8 @@ import {
   RESET_AMORTIZATION,
   SET_BEGIN_DATE,
   UPDATE_AMORT_GRAPH,
-  UPDATE_INFO_FORM
+  UPDATE_INFO_FORM,
+  ROUTE_PROGRAMS
 } from "../actions";
 import { amortizationSchedule } from "amortization";
 import update from "react-addons-update";
@@ -35,7 +36,8 @@ export const defaultState = {
   payOffDate: "",
   canCalculate: false,
   hasError: false,
-  missingFields: []
+  missingFields: [],
+  programMessage: []
 };
 
 export const resetState = {
@@ -51,7 +53,8 @@ export const resetState = {
   payOffDate: "",
   canCalculate: false,
   hasError: false,
-  missingFields: []
+  missingFields: [],
+  programMessage: []
 };
 
 function checkForMissingFields(fields) {
@@ -152,6 +155,11 @@ export default function input(state = defaultState, action) {
       updatedInfoFormState.canCalculate = shouldCalculate;
       updatedInfoFormState.missingFields = hasMissingFields.missing;
       return updatedInfoFormState;
+    case ROUTE_PROGRAMS:
+      const updatedMsgState = Object.assign({}, state);
+      updatedMsgState.programMessage = action.msg;
+
+      return updatedMsgState;
     default:
       return state;
   }

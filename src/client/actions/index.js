@@ -150,3 +150,10 @@ export const updateInfoForm = st => ({
   type: UPDATE_INFO_FORM,
   st
 });
+
+export const ROUTE_PROGRAMS = "ROUTE_PROGRAMS";
+
+export const routePrograms = msg => ({
+  type: ROUTE_PROGRAMS,
+  msg
+});

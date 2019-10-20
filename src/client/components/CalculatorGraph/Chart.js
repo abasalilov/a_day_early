@@ -26,7 +26,6 @@ const baseline = line()
 
 export default props => {
   const { payments } = props;
-  console.log("props", props);
   const chart = useRef(null);
 
   useEffect(() => {

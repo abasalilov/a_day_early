@@ -78,7 +78,7 @@ const loginStyle = {
 
 const externalHeaderLinks = [
   "HOME",
-  "WHO WE ARE",
+  "PROGRAMS",
   "CALCULATOR",
   "CONTACT US",
   "LOGIN"
@@ -95,6 +95,9 @@ const getTitle = title => {
   const link = title.replace(" ", "-");
   if (title === "LOGIN") {
     return "/login";
+  }
+  if (title === "PROGRAMS") {
+    return "/programs";
   }
   return "/#" + link;
 };

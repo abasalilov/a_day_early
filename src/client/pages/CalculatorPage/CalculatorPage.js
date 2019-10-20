@@ -21,13 +21,23 @@ class CalculatorPageComponent extends React.Component {
     // if (redirect) {
     //   this.props.history.push("/home#basics");
     // }
+    const intRt = Number(this.props.input.interestRate || 2);
+    if (intRt > 4) {
+      this.props.history.push("/interest");
+    }
   }
 
   render() {
     const { classes, input, history } = this.props;
+    let showMessages = input.programMessage.length > 0;
+    console.log("input", input);
     return (
       <div className={classes.container}>
-        <CalculatorGraph {...input} history={history} />
+        <CalculatorGraph
+          {...input}
+          showMessages={showMessages}
+          history={history}
+        />
       </div>
     );
   }
