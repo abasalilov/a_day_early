@@ -119,10 +119,14 @@ export default (req, store, context) => {
                   position: relative;
                   background: #fff;
                   border: 4px solid #3f51b5;
+                  width: 65%;
+                  margin: 1rem 10rem 1rem -1rem;
+                  float: right;
+
                 }
                 .arrow_box:after, .arrow_box:before {
-                  right: 100%;
-                  top: 50%;
+                  bottom: 100%;
+                  left: 75%;
                   border: solid transparent;
                   content: " ";
                   height: 0;
@@ -138,10 +142,11 @@ export default (req, store, context) => {
                 }
                 .arrow_box:before {
                   border-color: rgba(63, 81, 181, 0);
-                  border-right-color: #3f51b5;
+                  border-bottom-color: #3f51b5;
                   border-width: 12px;
                   margin-top: -12px;
                 }
+
               </style>
               <link rel="shortcut icon" href="favicon.ico">
                 ${helmet.title.toString()}

@@ -7,7 +7,7 @@ import { axisBottom, axisLeft } from "d3-axis";
 import "d3-transition";
 
 const margin = { top: 0, right: 20, bottom: 20, left: 60 },
-  fullWidth = 500,
+  fullWidth = 400,
   fullHeight = 200,
   width = fullWidth - margin.left - margin.right,
   height = fullHeight - margin.top - margin.bottom;
@@ -24,7 +24,9 @@ const baseline = line()
   .x((d, i) => x(i))
   .y(d => y(d.baseline));
 
-export default ({ payments }) => {
+export default props => {
+  const { payments } = props;
+  console.log("props", props);
   const chart = useRef(null);
 
   useEffect(() => {
@@ -52,15 +54,37 @@ export default ({ payments }) => {
   return (
     <svg
       ref={chart}
-      height="75%"
-      width="75%"
+      height="100%"
+      width="100%"
+      fill={"#0A8B42"}
       viewBox={`0 0 ${fullWidth} ${fullHeight}`}
     >
+      <text
+        x="240"
+        y="0"
+        textAnchor="end"
+        style={{ color: "black", fontSize: "10px" }}
+      >
+        Table
+      </text>
       <g transform={`translate(${margin.left},${margin.top})`}>
+        <text
+          transform="rotate(-90)"
+          y="-50"
+          x="-120"
+          style={{ fontSize: "10px" }}
+          textAnchor="end"
+        >
+          Principal
+        </text>
         <g className="axis x" transform={`translate(0, ${height})`} />
+
         <g className="axis y" />
-        <path className="line baseline" />
-        <path className="line actual" />
+        <text x="80" y="210" style={{ fontSize: "10px" }} textAnchor="end">
+          Years
+        </text>
+        <path className="line baseline graph" />
+        <path className="line actual graph" />
       </g>
     </svg>
   );
