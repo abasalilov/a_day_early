@@ -6,7 +6,11 @@ import { HomeIntroSectionData, ServicesSectionData } from "../../messages";
 const HomePageComponent = props => {
   return (
     <div>
-      <Section {...props} sectionProps={HomeIntroSectionData} />
+      <Section
+        {...props}
+        sectionProps={HomeIntroSectionData}
+        showHotLink={true}
+      />
       <Section
         {...props}
         sectionProps={ServicesSectionData}

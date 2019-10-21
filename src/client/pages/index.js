@@ -8,3 +8,4 @@ export { InterestPage } from "./InterestPage";
 export { LendersPage } from "./LendersPage";
 export { NotFoundPage } from "./NotFoundPage";
 export { ProgramsPage } from "./ProgramsPage";
+export { NewLoanCalculatorPage } from "./NewLoanCalculatorPage";

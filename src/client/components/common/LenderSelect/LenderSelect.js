@@ -51,7 +51,7 @@ class LenderSelectComponent extends React.Component {
       <FormControl style={{ width: "11rem" }}>
         <InputLabel>
           <Typography variant="h6" style={labelStyle} align="left">
-            Monthly
+            Lender
           </Typography>
         </InputLabel>
         <Select

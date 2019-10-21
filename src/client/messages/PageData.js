@@ -22,7 +22,7 @@ const introContent = {};
 
 const homeIntroContent = {
   top:
-    "Save money and cut months or years off your mortgage!  Have an existing mortgage?  Just enter some information below to get started.  Getting a new mortgage?",
+    "Save money and cut months or years off your mortgage!  Have an existing mortgage?  Just enter some information below to get started.",
   middle:
     "Try our simulator (hotlink) to see how much you can save using aDayEarly.",
   bottom:

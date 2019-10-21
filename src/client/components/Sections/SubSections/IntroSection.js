@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
-import TrendingFlat from "@material-ui/icons/TrendingFlat";
 import { withStyles } from "@material-ui/core/styles";
 import { Image } from "../../common";
 
@@ -70,9 +69,10 @@ export const IntroSectionComponent = props => {
     classes,
     mobile,
     history,
+    showHotLink,
     sectionProps: { displayContent }
   } = props;
-
+  console.log("IntroSectionComponent", props);
   const mobileVariantStyle = {
     fontSize: !mobile && "1.3rem",
     margin: "2rem 0"
@@ -125,15 +125,32 @@ export const IntroSectionComponent = props => {
       </Typography>
       {!mobile && (
         <React.Fragment>
-          <Typography
-            variant="h4"
-            align="left"
-            style={mobileVariantStyle}
-            color="primary"
-            gutterBottom
-          >
-            {displayContent.middle}
-          </Typography>
+          {!showHotLink && (
+            <Typography
+              variant="h6"
+              align="left"
+              color="textSecondary"
+              component="p"
+              style={mobileVariantStyle}
+              gutterBottom
+            >
+              {displayContent.middle}
+            </Typography>
+          )}
+          {showHotLink && (
+            <Typography
+              variant="h6"
+              align="left"
+              color="textPrimary"
+              component="p"
+              style={mobileVariantStyle}
+              gutterBottom
+            >
+              Getting a new mortgage? Try our{" "}
+              <a href="/anticipated-loan-calculator">simulator</a> to see how
+              much you can save using aDayEarly.{" "}
+            </Typography>
+          )}
           <Typography
             variant="h4"
             align="left"

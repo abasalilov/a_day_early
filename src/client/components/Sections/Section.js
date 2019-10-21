@@ -53,7 +53,14 @@ const styles = theme => ({
 });
 
 const SectionComponent = props => {
-  const { classes, sectionProps = {}, mobile, history, isLastSection } = props;
+  const {
+    classes,
+    sectionProps = {},
+    mobile,
+    history,
+    isLastSection,
+    showHotLink
+  } = props;
   const { hasHero, displayType } = sectionProps;
   return (
     <React.Fragment>
@@ -69,6 +76,7 @@ const SectionComponent = props => {
               mobile={mobile}
               history={history}
               sectionProps={sectionProps}
+              showHotLink={showHotLink}
             />
           </Grid>
         ) : null}
@@ -77,6 +85,7 @@ const SectionComponent = props => {
             <IntroSection
               mobile={mobile}
               history={history}
+              showHotLink={showHotLink}
               sectionProps={sectionProps}
             />
           </Grid>

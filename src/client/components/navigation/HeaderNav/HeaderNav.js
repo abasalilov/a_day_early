@@ -99,7 +99,7 @@ const getTitle = title => {
   if (title === "PROGRAMS") {
     return "/programs";
   }
-  return "/#" + link;
+  return link;
 };
 
 const isLogin = title => title === "LOGIN";

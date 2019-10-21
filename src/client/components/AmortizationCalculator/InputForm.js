@@ -85,7 +85,7 @@ class InputFormComponent extends React.Component {
         <div>
           <Field
             name="loanAmount"
-            label="Anticipated Loan Amount"
+            label="Loan Amount"
             type="number"
             onChange={e => this.handleChange("loanAmount", e)}
             component={renderTextField}
@@ -108,7 +108,7 @@ class InputFormComponent extends React.Component {
           <Field
             name="interestRate"
             component={renderTextField}
-            label="Anticipated Interest Rate (%)"
+            label="Interest Rate (%)"
             type="number"
             onChange={e => this.handleChange("interestRate", e)}
             mobile={false}
