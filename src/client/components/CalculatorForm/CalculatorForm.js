@@ -9,9 +9,10 @@ class CalculatorFormComponent extends React.Component {
   componentDidUpdate() {}
 
   render() {
+    const { anticipated, onCalculate } = this.props;
     return (
       <div>
-        <InputForm onChangeMortValues={this.props.onCalculate} />
+        <InputForm onChangeMortValues={onCalculate} anticipated={anticipated} />
       </div>
     );
   }

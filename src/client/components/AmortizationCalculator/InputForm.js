@@ -80,12 +80,36 @@ class InputFormComponent extends React.Component {
   // Current Loan Balance
 
   render() {
+    const { anticipated } = this.props;
+    const loanLabel = anticipated
+      ? "Anticipated Loan Amount"
+      : "Current Loan Amount";
+    const originationLabel = anticipated
+      ? "Expected Origination Date"
+      : "Origination Date";
+    const interestLabel = anticipated
+      ? "Anticipated Interest Rate"
+      : "Interest Rate (%)";
+    const paymentLabel = anticipated
+      ? "Anticipated Payment Amount ($)"
+      : "Payment Amount ($)";
+    const termLabel = anticipated
+      ? "Loan Term Desired (Years)"
+      : "Loan Term (Years)";
+
+    const loanAmountLabel = anticipated
+      ? "Anticipated Loan Amount"
+      : "Current Loan Amount";
+
+    const payOffLabel = anticipated
+      ? "Anticipated Payoff Date"
+      : "Pay Off Date";
     return (
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <div>
           <Field
             name="loanAmount"
-            label="Loan Amount"
+            label={loanLabel}
             type="number"
             onChange={e => this.handleChange("loanAmount", e)}
             component={renderTextField}
@@ -95,7 +119,7 @@ class InputFormComponent extends React.Component {
         <div>
           <Field
             name="originationDate"
-            label="Origination Date"
+            label={originationLabel}
             type="date"
             component={renderTextField}
             onChange={e => this.handleChange("originationDate", e)}
@@ -108,7 +132,7 @@ class InputFormComponent extends React.Component {
           <Field
             name="interestRate"
             component={renderTextField}
-            label="Interest Rate (%)"
+            label={interestLabel}
             type="number"
             onChange={e => this.handleChange("interestRate", e)}
             mobile={false}
@@ -118,7 +142,7 @@ class InputFormComponent extends React.Component {
           <Field
             name="term"
             component={renderTextField}
-            label="Loan Term Desired (Years)"
+            label={termLabel}
             type="number"
             onChange={e => this.handleChange("term", e)}
             max="50"
@@ -128,7 +152,7 @@ class InputFormComponent extends React.Component {
           <Field
             name="paymentAmount"
             component={renderTextField}
-            label="Payment Amount"
+            label={paymentLabel}
             type="number"
             onChange={e => this.handleChange("paymentAmount", e)}
             mobile={false}
@@ -136,18 +160,8 @@ class InputFormComponent extends React.Component {
         </div>
         <div>
           <Field
-            name="currentLoanAmount"
-            component={renderTextField}
-            label="Current Loan Amount"
-            type="number"
-            onChange={e => this.handleChange("currentLoanAmount", e)}
-            mobile={false}
-          />
-        </div>
-        <div>
-          <Field
             name="payOffDate"
-            label="Pay Off Date"
+            label={payOffLabel}
             type="date"
             component={renderTextField}
             onChange={e => this.handleChange("payOffDate", e)}

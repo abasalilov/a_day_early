@@ -19,6 +19,49 @@ const styles = {
   }
 };
 
+const makeAnticipatedFlyoutMessage = msgs => {
+  let missingInterest = false;
+  let missingTerm = false;
+  let missingAmount = false;
+  let count = 0;
+  msgs.map(missingField => {
+    if (missingField === "interestRate") {
+      missingInterest = true;
+      count++;
+    }
+    if (missingField === "term") {
+      missingTerm = true;
+      count++;
+    }
+    if (missingField === "loanAmount") {
+      missingAmount = true;
+      count++;
+    }
+  });
+  let msg = "The following field(s) are required: ";
+  if (missingInterest) {
+    msg += " Anticipated Interest Rate";
+    if (count > 1) {
+      count--;
+      msg += ",";
+    }
+  }
+  if (missingTerm) {
+    msg += " Loan Term Desired";
+    if (count > 1) {
+      count--;
+      msg += ",";
+    }
+  }
+  if (missingAmount) {
+    msg += " Anticipated Loan Amount";
+    if (count > 1) {
+      count--;
+      msg += ",";
+    }
+  }
+  return msg;
+};
 class NewLoanCalculatorPageComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -119,7 +162,6 @@ class NewLoanCalculatorPageComponent extends React.Component {
     }
     return (
       <React.Fragment>
-        <Divider style={{ width: "100%", marginBottom: "2rem" }} id="basics" />
         <Grid
           container
           key={"dsf"}
@@ -127,19 +169,21 @@ class NewLoanCalculatorPageComponent extends React.Component {
           alignItems="center"
           direction={"row"}
           id="CALCULATOR"
+          style={{
+            marginTop: "6rem"
+          }}
         >
-          <Grid item xs={12}>
+          <Grid item xs={8}>
             <Grid
               container
               key={"dddsf"}
-              justify="space-between"
+              justify="space-around"
               alignItems="center"
-              direction={"row"}
+              direction={"column"}
               id="CALCULATOR"
               style={{
                 minWidth: "20%",
-                backgroundColor: "#f6f6f6",
-                border: "solid red"
+                backgroundColor: "#f6f6f6"
               }}
             >
               <Grid item xs={6}>
@@ -153,7 +197,7 @@ class NewLoanCalculatorPageComponent extends React.Component {
                   Let's Start With The Basics
                 </Typography>
                 <Typography
-                  variant={mobile ? "display5" : "h5"}
+                  variant={mobile ? "display5" : "h6"}
                   gutterBottom
                   align="center"
                   color="textPrimary"
@@ -164,19 +208,22 @@ class NewLoanCalculatorPageComponent extends React.Component {
               </Grid>
               <Grid
                 item
-                xs={6}
+                xs={8}
                 style={{
                   width: "100%",
                   marginRight: "1rem"
                 }}
               >
-                <CalculatorForm onCalculate={this.props.updatePaymentGraph} />
+                <CalculatorForm
+                  anticipated={true}
+                  onCalculate={this.props.updatePaymentGraph}
+                />
               </Grid>
             </Grid>
           </Grid>
           <Grid
             item
-            xs={5}
+            xs={4}
             style={{
               display: "flex",
               flexDirection: "column",
@@ -187,12 +234,13 @@ class NewLoanCalculatorPageComponent extends React.Component {
               <FlyOut
                 show={showFlyout}
                 style={{ margin: "0 0 2rem 1rem" }}
-                message={makeFlyoutMessage(input.missingFields)}
+                direction={"left"}
+                message={makeAnticipatedFlyoutMessage(input.missingFields)}
               />
             )}
 
             <Typography
-              variant={mobile ? "display4" : "h6"}
+              variant={mobile ? "display4" : "h5"}
               align="left"
               color="textPrimary"
               style={{
