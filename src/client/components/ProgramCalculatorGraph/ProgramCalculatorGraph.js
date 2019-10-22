@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import Typography from "@material-ui/core/Typography";
-import { LenderSelect } from "../common";
 import Divider from "@material-ui/core/Divider";
+import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
 
 import Table from "./Table";
 import Chart from "./Chart";
 import calculate from "./calculations";
-import Grid from "@material-ui/core/Grid";
+import { LenderSelect } from "../common";
+
 const defaultOverpayment = { month: "0", year: "0", amount: "0" };
 
-const lenders = ["Chase", "Wells Fargo", "Quicken Loans", "SoFi", "Other"];
+const lenders = ["Chase", "Wells Fargo", "Quicken Loans", "Other"];
 
 const isEmpty = a => typeof a === "undefined";
 const isLenderNameEmpty = a => typeof a === "undefined" || a === "Other";
@@ -18,8 +20,12 @@ const programRef = {
   ADE: {
     name: "A Day Early",
     description:
-      "Make a one time extra principal payment and see the exponential effect of time and money.",
-    limit: 1
+      "Make a one time extra principal payment and see the exponential effect of time and money."
+  },
+  RU: {
+    name: "RoundUp",
+    description:
+      "Round your payment up to the nearest $100, $1000 or create your own round up and see the effects!"
   }
 };
 
@@ -31,6 +37,20 @@ const formatName = nm => {
   return "";
 };
 
+const formatRU = (payment, isRU, roundUp, otherRU) => {
+  if (isRU) {
+    console.log("roundUp", roundUp);
+    if (roundUp === 1000) {
+      return Math.ceil(payment / 1000) * 1000;
+    } else if (roundUp === 100) {
+      return Math.ceil(payment / 100) * 100;
+    } else if (roundUp === "other") {
+      return Math.ceil(payment / otherRU) * otherRU;
+    }
+  }
+  return payment;
+};
+
 const inputStyle = {
   color: "#3f51b5",
   textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
@@ -39,18 +59,61 @@ const inputStyle = {
   fontSize: "1rem"
 };
 
+const labelStyle = {
+  color: "#3f51b5",
+  textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
+  padding: "1rem"
+};
+
+const buttonStyle = {
+  position: "relative",
+  fontSize: "1rem",
+  left: "20%",
+  padding: "1rem",
+  fontSize: "1rem"
+};
+
+const updatedLabelStyle = {
+  color: "#317439",
+  textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
+  padding: "1rem"
+};
+
+const overpaymentStyle = {
+  color: "#3f51b5",
+  textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
+  padding: "1rem",
+  position: "relative",
+  fontSize: "1rem"
+};
+
+const dividerStyle = { width: "100%", color: "#3f51b5", margin: "1rem" };
+
+const ruBtnStyle = {
+  textShadow: "1px 1px #7280ce",
+  marginBottom: ".5rem"
+};
+
+const fieldStyle = {
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "start",
+  alignItems: "center"
+};
+
+const labelHeaderStyle1 = {
+  color: "#3f51b5",
+  textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
+  padding: "1rem"
+};
+
 export const ProgramCalculatorGraph = props => {
   const {
     loanAmount = null,
     interestRate = null,
     term = null,
-    showMessages = false,
-    program
+    program = null
   } = props;
-
-  let calcProps = {
-    limit: 1000
-  };
 
   const [initial, setInitial] = useState(loanAmount);
   const [rate, setRate] = useState(interestRate);
@@ -58,36 +121,31 @@ export const ProgramCalculatorGraph = props => {
   const [lender, setLender] = useState(lender);
   const [otherLender, setOtherLender] = useState(otherLender);
   const [monthlyOverpayment, setMonthlyOverpayment] = useState(null);
+  const [roundUp, setRoundUp] = useState(null);
   const [overpayments, setOverpayments] = useState([defaultOverpayment]);
   const [accuracy, setAccuracy] = useState(accuracy);
+  const [otherRoundUp, setOtherRoundUp] = useState(otherRoundUp);
   let programName = "";
   let isADE = false;
+  let isRU = false;
   if (program) {
-    // calcProps.limit = programRef[program].limit;
     programName = programRef[program].name;
     if (program === "ADE") {
       isADE = true;
     }
+    if (program === "JS") {
+      isADE = true;
+    }
+    if (program === "RU") {
+      isRU = true;
+    }
   }
 
-  let updatedHeader = program ? "Let's Start withe the Basics" : "";
+  let updatedHeader = program ? "Let's Start with the Basics" : "";
 
   let paymentsLabel = isADE
     ? "One time extra principal payment"
     : "Individual Payments";
-
-  const fieldStyle = {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "start",
-    alignItems: "center"
-  };
-
-  const labelHeaderStyle1 = {
-    color: "#3f51b5",
-    textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-    padding: "1rem"
-  };
 
   const updateOverpayment = index => ({ target }) => {
     return setOverpayments(
@@ -99,33 +157,6 @@ export const ProgramCalculatorGraph = props => {
     );
   };
 
-  const labelStyle = {
-    color: "#3f51b5",
-    textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-    padding: "1rem"
-  };
-
-  const buttonStyle = {
-    position: "relative",
-    fontSize: "1rem",
-    left: "20%",
-    padding: "1rem",
-    fontSize: "1rem"
-  };
-
-  const updatedLabelStyle = {
-    color: "#317439",
-    textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-    padding: "1rem"
-  };
-
-  const overpaymentStyle = {
-    color: "#3f51b5",
-    textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-    padding: "1rem",
-    position: "relative",
-    fontSize: "1rem"
-  };
   const { monthlyPayment, payments } = calculate(
     +initial,
     +years,
@@ -152,9 +183,7 @@ export const ProgramCalculatorGraph = props => {
           >
             {updatedHeader}
           </Typography>
-          <Divider
-            style={{ width: "100%", color: "#3f51b5", margin: "1rem" }}
-          />
+          <Divider style={dividerStyle} />
         </div>
         <div className="col-sm-4">
           <Typography
@@ -217,7 +246,77 @@ export const ProgramCalculatorGraph = props => {
             </Grid>
           </Grid>
         </div>
-        <Divider style={{ width: "100%", color: "#3f51b5", margin: "1rem" }} />
+        <Divider style={dividerStyle} />
+
+        {isRU && (
+          <Grid
+            container
+            spacing={8}
+            justify="left"
+            alignItems="center"
+            direction={"row"}
+          >
+            <Grid item xs={5}>
+              <Typography variant="h5" style={labelStyle} align="left">
+                Round your monthly payment to the nearest:
+              </Typography>
+            </Grid>
+            {roundUp !== "other" && (
+              <Grid item xs={2}>
+                <Button
+                  variant="outlined"
+                  size="large"
+                  onClick={() => setRoundUp(100)}
+                  color="primary"
+                  style={ruBtnStyle}
+                >
+                  $100
+                </Button>
+              </Grid>
+            )}
+            {roundUp !== "other" && (
+              <Grid item xs={2}>
+                <Button
+                  variant="outlined"
+                  size="large"
+                  onClick={() => setRoundUp(1000)}
+                  color="primary"
+                  style={ruBtnStyle}
+                >
+                  $1000
+                </Button>
+              </Grid>
+            )}
+            <Grid item xs={2}>
+              <Button
+                variant="outlined"
+                size="large"
+                onClick={() => setRoundUp("other")}
+                color="primary"
+                style={ruBtnStyle}
+              >
+                Other
+              </Button>
+            </Grid>
+            {roundUp === "other" && (
+              <Grid item xs={2}>
+                <input
+                  type="number"
+                  maxLength={5}
+                  value={otherRoundUp}
+                  placeholder="Enter round up amount"
+                  onChange={e => setOtherRoundUp(e.target.value)}
+                  style={{
+                    color: "#3f51b5",
+                    textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
+                    padding: "1rem",
+                    fontSize: "1rem"
+                  }}
+                />
+              </Grid>
+            )}
+          </Grid>
+        )}
 
         <Grid
           container
@@ -230,7 +329,6 @@ export const ProgramCalculatorGraph = props => {
             <Typography
               variant="h5"
               style={labelStyle}
-              id="modal-title"
               align="left"
               gutterBottom
             >
@@ -240,7 +338,12 @@ export const ProgramCalculatorGraph = props => {
           <Grid item xs={3}>
             <span className="money">
               <Typography variant="h6" style={labelStyle} align="left">
-                {+monthlyOverpayment + monthlyPayment}
+                {formatRU(
+                  +monthlyOverpayment + monthlyPayment,
+                  isRU,
+                  roundUp,
+                  otherRoundUp
+                )}
               </Typography>
             </span>
           </Grid>
@@ -256,7 +359,7 @@ export const ProgramCalculatorGraph = props => {
           <Grid item xs={5}>
             <Typography variant="h5" style={labelStyle} align="left">
               Who is your anticipated mortgage lender?
-            </Typography>{" "}
+            </Typography>
           </Grid>
           <Grid
             item
@@ -287,14 +390,13 @@ export const ProgramCalculatorGraph = props => {
           </Grid>
         </Grid>
 
-        <Divider style={{ width: "100%", color: "#3f51b5", margin: "1rem" }} />
+        <Divider style={dividerStyle} />
 
         <div className="col-sm-8">
           <div>
             <Typography
               variant="h4"
               style={updatedLabelStyle}
-              id="modal-title"
               align="left"
               gutterBottom
             >
@@ -323,12 +425,7 @@ export const ProgramCalculatorGraph = props => {
                     maxLength={5}
                     value={monthlyOverpayment}
                     onChange={e => setMonthlyOverpayment(e.target.value)}
-                    style={{
-                      color: "#3f51b5",
-                      textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-                      padding: "1rem",
-                      fontSize: "1rem"
-                    }}
+                    style={inputStyle}
                   />
                 </div>
               </div>

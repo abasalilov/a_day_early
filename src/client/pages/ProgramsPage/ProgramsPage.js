@@ -89,7 +89,6 @@ class ProgramsPageComponent extends React.Component {
   }
 
   handleJumpStart() {
-    console.log("hasJup");
     const js = [
       "JS",
       "Jump Start",
@@ -160,8 +159,7 @@ class ProgramsPageComponent extends React.Component {
                 onClick={this.handleRoundUp}
               >
                 RoundUp: round your payment up to the nearest $100, $1000 or
-                create your own round up and see the effects! $100 / $1000 (show
-                One time and Lifetime of Loan savings when hovered over).
+                custom round up amount and see the effects!
               </Typography>
             </div>
           </Grid>

@@ -9,7 +9,7 @@ import calculate from "./calculations";
 import Grid from "@material-ui/core/Grid";
 const defaultOverpayment = { month: "0", year: "0", amount: "0" };
 
-const lenders = ["Chase", "Wells Fargo", "Quicken Loans", "SoFi", "Other"];
+const lenders = ["Chase", "Wells Fargo", "Quicken Loans", "Other"];
 
 const isEmpty = a => typeof a === "undefined";
 

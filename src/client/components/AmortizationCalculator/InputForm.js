@@ -85,8 +85,8 @@ class InputFormComponent extends React.Component {
       ? "Anticipated Loan Amount"
       : "Current Loan Amount";
     const originationLabel = anticipated
-      ? "Expected Origination Date"
-      : "Origination Date";
+      ? "Expected First Payment Date"
+      : "First Payment Date";
     const interestLabel = anticipated
       ? "Anticipated Interest Rate"
       : "Interest Rate (%)";
