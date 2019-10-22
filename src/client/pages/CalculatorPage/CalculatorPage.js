@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import { CalculatorGraph } from "../../components/CalculatorGraph";
+import { ProgramCalculatorGraph } from "../../components/ProgramCalculatorGraph";
 
 const styles = {
   container: {
@@ -27,15 +28,29 @@ class CalculatorPageComponent extends React.Component {
   render() {
     const { classes, input, history } = this.props;
     let showMessages = input.programMessage.length > 0;
-    return (
-      <div className={classes.container}>
-        <CalculatorGraph
-          {...input}
-          showMessages={showMessages}
-          history={history}
-        />
-      </div>
-    );
+    let program = input.program;
+    if (program === null) {
+      return (
+        <div className={classes.container}>
+          <CalculatorGraph
+            {...input}
+            showMessages={showMessages}
+            history={history}
+          />
+        </div>
+      );
+    } else {
+      return (
+        <div className={classes.container}>
+          <ProgramCalculatorGraph
+            {...input}
+            program={program}
+            showMessages={showMessages}
+            history={history}
+          />
+        </div>
+      );
+    }
   }
 }
 

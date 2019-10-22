@@ -37,6 +37,7 @@ export const defaultState = {
   canCalculate: false,
   hasError: false,
   missingFields: [],
+  program: null,
   programMessage: []
 };
 
@@ -54,6 +55,7 @@ export const resetState = {
   canCalculate: false,
   hasError: false,
   missingFields: [],
+  program: null,
   programMessage: []
 };
 
@@ -157,8 +159,8 @@ export default function input(state = defaultState, action) {
       return updatedInfoFormState;
     case ROUTE_PROGRAMS:
       const updatedMsgState = Object.assign({}, state);
-      updatedMsgState.programMessage = action.msg;
-
+      updatedMsgState.program = action.msg[0];
+      updatedMsgState.programMessage = action.msg.slice(1);
       return updatedMsgState;
     default:
       return state;

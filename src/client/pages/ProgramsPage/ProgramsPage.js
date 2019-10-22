@@ -50,17 +50,18 @@ class ProgramsPageComponent extends React.Component {
   componentDidMount() {}
 
   handleADayEarly() {
-    this.props.routeToProgram(["A Day Early"]);
+    this.props.routeToProgram(["ADE", "A Day Early"]);
     this.props.history.push("/calculator");
   }
 
   handleLeapFrog() {
-    this.props.routeToProgram(["LeapFrog"]);
+    this.props.routeToProgram(["LF", "LeapFrog"]);
     this.props.history.push("/calculator");
   }
 
   handleFlexPay() {
     const fp = [
+      "FP",
       "FlexPay",
       "Dropdown is calculator with these fields:",
       "Extra principal payment amount:",
@@ -76,6 +77,7 @@ class ProgramsPageComponent extends React.Component {
 
   handleEasyStart() {
     const es = [
+      "ES",
       "Easy Start",
       "Interactive Amortization schedule click any future principal payment you want to prepay and see how much you can save.",
       "After user clicks calculate show:  interest savings, time saved and new payoff date",
@@ -89,6 +91,7 @@ class ProgramsPageComponent extends React.Component {
   handleJumpStart() {
     console.log("hasJup");
     const js = [
+      "JS",
       "Jump Start",
       "Mortgage Snapshot",
       "Adjust payoff date and extra principal payment amount to see how you can reach your goals.",
@@ -102,6 +105,7 @@ class ProgramsPageComponent extends React.Component {
   }
   handleRoundUp() {
     const ru = [
+      "RU",
       "Round Up",
       "Dropdown is Calculator with these fields:",
       "Round to nearest: drop down with pick one $100, $500, $1000",

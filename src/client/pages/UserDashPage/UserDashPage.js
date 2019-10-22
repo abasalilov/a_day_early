@@ -108,7 +108,7 @@ class DashBoardContainerPage extends React.Component {
     this.handleToggleModal = this.handleToggleModal.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (!this.props.authStatus) {
       this.props.history.push("/login");
     }
