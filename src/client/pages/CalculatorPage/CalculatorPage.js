@@ -16,14 +16,11 @@ class CalculatorPageComponent extends React.Component {
   }
 
   componentDidMount() {
+    // const intRt = Number(this.props.input.interestRate || 2);
     // TODO: UNCOMMENT DURING DEPLOYMENT
-    // let redirect = this.props.input.canCalculate;
-    // if (redirect) {
-    //   this.props.history.push("/home#basics");
-    // }
-    const intRt = Number(this.props.input.interestRate || 2);
-    if (intRt > 4) {
-      this.props.history.push("/interest");
+    let redirect = !this.props.input.canCalculate;
+    if (redirect) {
+      this.props.history.push("/home#basics");
     }
   }
 

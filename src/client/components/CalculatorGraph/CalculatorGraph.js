@@ -11,6 +11,8 @@ const defaultOverpayment = { month: "1", year: "0", amount: "400" };
 
 const lenders = ["Chase", "Wells Fargo", "Quicken Loans", "SoFi", "Other"];
 
+const isEmpty = a => typeof a === "undefined";
+
 export const CalculatorGraph = props => {
   const {
     loanAmount = null,
@@ -25,6 +27,7 @@ export const CalculatorGraph = props => {
   const [otherLender, setOtherLender] = useState(otherLender);
   const [monthlyOverpayment, setMonthlyOverpayment] = useState(null);
   const [overpayments, setOverpayments] = useState([defaultOverpayment]);
+
   const fieldStyle = {
     display: "flex",
     flexDirection: "row",
@@ -32,12 +35,6 @@ export const CalculatorGraph = props => {
     alignItems: "center"
   };
 
-  const interestFieldStyle = {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "start",
-    alignItems: "center"
-  };
   const msg =
     "Your interest rate is above today's going rate, would you like to get some information and options from a lender? Here's how much you can save:";
   let showInterestRateMessage = Number(interestRate) > 4.5;
@@ -70,6 +67,8 @@ export const CalculatorGraph = props => {
     +monthlyOverpayment,
     overpayments
   );
+
+  const lenderDisplayName = isEmpty(lender) ? otherLender : lender;
 
   return (
     <div className="container-fluid">
@@ -458,7 +457,7 @@ export const CalculatorGraph = props => {
         />
 
         <div className="col-sm-12">
-          <Chart payments={payments} />
+          <Chart payments={payments} lenderName={lenderDisplayName} />
         </div>
       </div>
       <Table className="col-sm-4" payments={payments} />

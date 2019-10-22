@@ -283,6 +283,7 @@ class ServiceSectionComponent extends React.Component {
             {showFlyout && hasMessages && (
               <FlyOut
                 show={showFlyout}
+                direction="left"
                 style={{ margin: "0 0 2rem 1rem" }}
                 message={makeFlyoutMessage(input.missingFields)}
               />

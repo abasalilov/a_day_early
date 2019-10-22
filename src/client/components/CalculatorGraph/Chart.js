@@ -12,6 +12,8 @@ const margin = { top: 0, right: 20, bottom: 20, left: 60 },
   width = fullWidth - margin.left - margin.right,
   height = fullHeight - margin.top - margin.bottom;
 
+const isEmpty = a => typeof a === "undefined";
+
 const x = scaleLinear().range([0, width]);
 
 const y = scaleLinear().range([0, height]);
@@ -25,8 +27,9 @@ const baseline = line()
   .y(d => y(d.baseline));
 
 export default props => {
-  const { payments } = props;
+  const { payments, lenderName } = props;
   const chart = useRef(null);
+  const lender = isEmpty(lenderName) ? "" : lenderName;
 
   useEffect(() => {
     const chartEl = select(chart.current);
@@ -64,7 +67,7 @@ export default props => {
         textAnchor="end"
         style={{ color: "black", fontSize: "10px" }}
       >
-        Table
+        {lender} Loan PayOff Table
       </text>
       <g transform={`translate(${margin.left},${margin.top})`}>
         <text

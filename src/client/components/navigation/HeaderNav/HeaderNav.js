@@ -80,7 +80,7 @@ const externalHeaderLinks = [
   "HOME",
   "PROGRAMS",
   "CALCULATOR",
-  "CONTACT US",
+  "LENDERS",
   "LOGIN"
 ];
 

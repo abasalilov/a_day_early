@@ -193,7 +193,7 @@ const HomePageComponent = props => {
                 <a
                   className={classes.introLink}
                   style={{ textDecoration: "none" }}
-                  href="/lender"
+                  href="/lenders"
                 >
                   mortgage lender?
                 </a>
