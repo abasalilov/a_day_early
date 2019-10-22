@@ -112,6 +112,18 @@ export const IntroSectionComponent = props => {
           </Typography>
         </div>
       </div>
+      {props.sectionProps.displayType === "NOLOGO" && (
+        <Typography
+          variant="h6"
+          align="left"
+          color="textSecondary"
+          component="p"
+          style={mobileVariantStyle}
+          gutterBottom
+        >
+          {displayContent.newTop}
+        </Typography>
+      )}
       <Typography
         variant="h6"
         align="left"
