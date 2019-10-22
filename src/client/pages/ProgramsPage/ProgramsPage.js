@@ -15,7 +15,6 @@ const topLabelStyle = {
   color: "#3f51b5",
   textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
   padding: "1rem",
-  fontSize: "2rem",
   margin: "6rem 1rem 1rem 2rem"
 };
 
@@ -142,8 +141,8 @@ class ProgramsPageComponent extends React.Component {
                 color="primary"
                 onClick={this.handleADayEarly}
               >
-                OneDayEarly : make a one time extra principal payment and see
-                the exponential effect of time and money.
+                OneDayEarly: make a one time extra principal payment and see the
+                exponential effect of time and money.
               </Typography>
             </div>
           </Grid>
@@ -156,7 +155,7 @@ class ProgramsPageComponent extends React.Component {
                 color="primary"
                 onClick={this.handleRoundUp}
               >
-                RoundUp : round your payment up to the nearest $100, $1000 or
+                RoundUp: round your payment up to the nearest $100, $1000 or
                 create your own round up and see the effects! $100 / $1000 (show
                 One time and Lifetime of Loan savings when hovered over).
               </Typography>
@@ -171,7 +170,7 @@ class ProgramsPageComponent extends React.Component {
                 align="left"
                 onClick={this.handleFlexPay}
               >
-                FlexPay : set up a custom payment campaign.
+                FlexPay: set up a custom payment campaign.
               </Typography>
             </div>
           </Grid>
@@ -184,7 +183,7 @@ class ProgramsPageComponent extends React.Component {
                 color="primary"
                 onClick={this.handleEasyStart}
               >
-                EasyStart : get started now accelerating your current loan.
+                EasyStart: get started now accelerating your current loan.
               </Typography>
             </div>
           </Grid>
@@ -196,7 +195,7 @@ class ProgramsPageComponent extends React.Component {
                 color="primary"
                 align="left"
               >
-                LeapFrog : jump ahead to any months payment on your amortization
+                LeapFrog: jump ahead to any months payment on your amortization
                 schedule, pay the principal portion now, aDayEarly, and NEVER
                 pay the associated interest. EVER.
               </Typography>
@@ -210,7 +209,7 @@ class ProgramsPageComponent extends React.Component {
                 style={labelStyle}
                 color="primary"
               >
-                JumpStart - use at origination of your loan, making the first
+                JumpStart: use at origination of your loan, making the first
                 extra principal payment aDayEarly affecting the amortization
                 schedule before it started!
               </Typography>
