@@ -7,7 +7,7 @@ import Table from "./Table";
 import Chart from "./Chart";
 import calculate from "./calculations";
 import Grid from "@material-ui/core/Grid";
-const defaultOverpayment = { month: "1", year: "0", amount: "400" };
+const defaultOverpayment = { month: "0", year: "0", amount: "0" };
 
 const lenders = ["Chase", "Wells Fargo", "Quicken Loans", "SoFi", "Other"];
 
@@ -27,6 +27,7 @@ export const CalculatorGraph = props => {
   const [otherLender, setOtherLender] = useState(otherLender);
   const [monthlyOverpayment, setMonthlyOverpayment] = useState(null);
   const [overpayments, setOverpayments] = useState([defaultOverpayment]);
+  const [accuracy, setAccuracy] = useState(accuracy);
 
   const fieldStyle = {
     display: "flex",
@@ -69,6 +70,7 @@ export const CalculatorGraph = props => {
   );
 
   const lenderDisplayName = isEmpty(lender) ? otherLender : lender;
+  const showQuestion = isEmpty(accuracy);
 
   return (
     <div className="container-fluid">
@@ -274,7 +276,7 @@ export const CalculatorGraph = props => {
               align="left"
               gutterBottom
             >
-              Loan Payoff Schedule
+              Loan Overpayment Information
             </Typography>
           </div>
           <div style={{ margin: "2rem 0" }}>
@@ -452,6 +454,84 @@ export const CalculatorGraph = props => {
             </Grid>
           ))}
         </div>
+        <Divider
+          style={{ width: "100%", color: "#3f51b5", margin: "2rem 1rem" }}
+        />
+
+        {showQuestion && (
+          <Grid
+            container
+            spacing={8}
+            justify="left"
+            alignItems="center"
+            direction={"row"}
+          >
+            <Grid item xs={6}>
+              <div style={fieldStyle}>
+                <Typography variant="h6" style={labelHeaderStyle1} align="left">
+                  Does this look like an accurate snapshot of your mortgage?
+                </Typography>
+              </div>
+            </Grid>
+
+            <Grid item xs={4}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-around"
+                }}
+              >
+                <button
+                  style={{
+                    position: "relative",
+                    fontSize: "1rem",
+                    left: "20%",
+                    fontSize: "1rem",
+                    padding: "1rem"
+                  }}
+                  className="btn btn-xs"
+                  onClick={() => setAccuracy("yes")}
+                >
+                  Yes
+                </button>
+                <button
+                  style={{
+                    position: "relative",
+                    fontSize: "1rem",
+                    left: "20%",
+                    fontSize: "1rem",
+                    padding: "1rem"
+                  }}
+                  className="btn btn-xs"
+                  onClick={() => setAccuracy("no")}
+                >
+                  No
+                </button>
+              </div>
+            </Grid>
+          </Grid>
+        )}
+
+        {!isEmpty(accuracy) && accuracy === "no" && (
+          <div style={fieldStyle}>
+            <Typography variant="h6" style={labelHeaderStyle1} align="left">
+              Please edit the 'Loan Origination Information' section at the top
+              of this page. Otherwise please feel free to reach out{" "}
+              <a href="contact-us">here</a>.
+            </Typography>
+          </div>
+        )}
+
+        {!isEmpty(accuracy) && accuracy === "yes" && (
+          <div style={fieldStyle}>
+            <Typography variant="h6" style={labelHeaderStyle1} align="left">
+              Great! Adjust the fields in the 'Loan Overpayment Information'
+              section above as needed to simulate early loan pay-off.
+            </Typography>
+          </div>
+        )}
+
         <Divider
           style={{ width: "100%", color: "#3f51b5", margin: "2rem 1rem" }}
         />

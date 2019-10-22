@@ -11,7 +11,8 @@ import {
   ProgramsPage,
   LendersPage,
   NotFoundPage,
-  NewLoanCalculatorPage
+  NewLoanCalculatorPage,
+  ContactUsPage
 } from "./pages";
 
 export default [
@@ -51,6 +52,11 @@ export default [
       {
         ...InterestPage,
         path: "/interest",
+        exact: true
+      },
+      {
+        ...ContactUsPage,
+        path: "/contact-us",
         exact: true
       },
       {

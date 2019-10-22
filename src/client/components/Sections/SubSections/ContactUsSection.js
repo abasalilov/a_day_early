@@ -8,6 +8,13 @@ import Divider from "@material-ui/core/Divider";
 import { FormField, StyledButton } from "../../common";
 import { submitContactUsEmail as createSubmitEmailAction } from "../../../actions";
 
+const labelStyle = {
+  color: "#3f51b5",
+  textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
+  padding: "1rem",
+  marginTop: "4rem"
+};
+
 const styles = () => ({
   fields: {
     display: "flex",
@@ -78,13 +85,12 @@ class ContactUsSectionComponent extends Component {
         <Divider style={{ width: "100%" }} />
         <Grid container justify="center" id="Contact-Us">
           <Typography
-            variant={mobile ? "display4" : "h2"}
-            gutterBottom
+            variant="h2"
+            style={labelStyle}
             align="center"
-            color="textPrimary"
-            style={{ width: "100%", margin: "2rem 0" }}
+            gutterBottom
           >
-            CONTACT US
+            Contact Us
           </Typography>
           <Grid item>
             <div>
