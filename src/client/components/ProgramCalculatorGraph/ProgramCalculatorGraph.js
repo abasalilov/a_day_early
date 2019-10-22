@@ -39,7 +39,6 @@ const formatName = nm => {
 
 const formatRU = (payment, isRU, roundUp, otherRU) => {
   if (isRU) {
-    console.log("roundUp", roundUp);
     if (roundUp === 1000) {
       return Math.ceil(payment / 1000) * 1000;
     } else if (roundUp === 100) {

@@ -76,29 +76,10 @@ export const CalculatorGraph = props => {
     <div className="container-fluid">
       <div className="col-md-8 col-sm-12">
         <div className="col-sm-4">
-          {showMessages && (
-            <div>
-              <Typography
-                variant="h4"
-                style={labelStyle}
-                id="modal-title"
-                align="left"
-                gutterBottom
-              >
-                TODO: Configure snapshot per program
-              </Typography>
-              <div>
-                {props.programMessage.map(msg => {
-                  return <li>{msg}</li>;
-                })}
-              </div>
-            </div>
-          )}
           <div>
             <Typography
               variant="h4"
               style={labelStyle}
-              id="modal-title"
               align="left"
               gutterBottom
             >
@@ -114,12 +95,7 @@ export const CalculatorGraph = props => {
           >
             <Grid item xs={4}>
               <div style={fieldStyle}>
-                <Typography
-                  variant="h6"
-                  style={labelStyle}
-                  id="modal-title"
-                  align="left"
-                >
+                <Typography variant="h6" style={labelStyle} align="left">
                   Amount
                 </Typography>
                 <input
@@ -137,12 +113,7 @@ export const CalculatorGraph = props => {
             </Grid>
             <Grid item xs={4}>
               <div style={fieldStyle}>
-                <Typography
-                  variant="h6"
-                  style={labelStyle}
-                  id="modal-title"
-                  align="left"
-                >
+                <Typography variant="h6" style={labelStyle} align="left">
                   Years
                 </Typography>
                 <input
@@ -162,12 +133,7 @@ export const CalculatorGraph = props => {
 
             <Grid item xs={4}>
               <div style={fieldStyle}>
-                <Typography
-                  variant="h6"
-                  style={labelStyle}
-                  id="modal-title"
-                  align="left"
-                >
+                <Typography variant="h6" style={labelStyle} align="left">
                   Interest Rate
                 </Typography>
                 <input
@@ -208,7 +174,6 @@ export const CalculatorGraph = props => {
             <Typography
               variant="h5"
               style={labelStyle}
-              id="modal-title"
               align="left"
               gutterBottom
             >
@@ -272,7 +237,6 @@ export const CalculatorGraph = props => {
             <Typography
               variant="h4"
               style={labelStyle}
-              id="modal-title"
               align="left"
               gutterBottom
             >
@@ -285,12 +249,7 @@ export const CalculatorGraph = props => {
               fields below.
             </Typography>
             <div style={fieldStyle}>
-              <Typography
-                variant="h6"
-                style={labelStyle}
-                id="modal-title"
-                align="left"
-              >
+              <Typography variant="h6" style={labelStyle} align="left">
                 Monthly
               </Typography>
               <div
@@ -318,13 +277,20 @@ export const CalculatorGraph = props => {
           </div>
           <Typography
             variant="h5"
-            style={labelStyle}
-            id="modal-title"
             align="left"
-            gutterBottom
+            style={{
+              ...labelStyle,
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center"
+            }}
           >
-            Individual Payments
+            Individual Payments -{" "}
+            <Typography variant="h6" style={labelStyle} align="left">
+              Add one extra payment at a time and see the savings!
+            </Typography>
           </Typography>
+
           <Grid
             container
             spacing={8}
@@ -333,32 +299,17 @@ export const CalculatorGraph = props => {
             direction={"row"}
           >
             <Grid item xs={3}>
-              <Typography
-                variant="h6"
-                style={labelHeaderStyle1}
-                id="modal-title"
-                align="left"
-              >
+              <Typography variant="h6" style={labelHeaderStyle1} align="left">
                 Year
               </Typography>
             </Grid>
             <Grid item xs={3}>
-              <Typography
-                variant="h6"
-                style={labelHeaderStyle1}
-                id="modal-title"
-                align="left"
-              >
+              <Typography variant="h6" style={labelHeaderStyle1} align="left">
                 Month
               </Typography>
             </Grid>
             <Grid item xs={3}>
-              <Typography
-                variant="h6"
-                style={labelHeaderStyle1}
-                id="modal-title"
-                align="left"
-              >
+              <Typography variant="h6" style={labelHeaderStyle1} align="left">
                 Amount
               </Typography>
             </Grid>
@@ -537,6 +488,14 @@ export const CalculatorGraph = props => {
         />
 
         <div className="col-sm-12">
+          <Typography
+            variant="h4"
+            style={labelStyle}
+            align="center"
+            gutterBottom
+          >
+            Simulator
+          </Typography>
           <Chart payments={payments} lenderName={lenderDisplayName} />
         </div>
       </div>

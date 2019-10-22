@@ -56,7 +56,7 @@ export default props => {
   return (
     <svg
       ref={chart}
-      height="100%"
+      height="80%"
       width="100%"
       fill={"#0A8B42"}
       viewBox={`0 0 ${fullWidth} ${fullHeight}`}
