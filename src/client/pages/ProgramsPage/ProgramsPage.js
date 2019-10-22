@@ -11,11 +11,28 @@ const styles = {
   }
 };
 
-const labelStyle = {
+const topLabelStyle = {
   color: "#3f51b5",
   textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
   padding: "1rem",
-  marginTop: "6rem"
+  fontSize: "2rem",
+  margin: "6rem 1rem 1rem 2rem"
+};
+
+const labelStyle = {
+  color: "#3f51b5",
+  // textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
+  padding: "1rem"
+};
+
+const sectionStyle = {
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "center",
+  alignItems: "center",
+  border: "solid #317439 1px",
+  padding: "1rem",
+  borderRadius: "1rem"
 };
 
 class ProgramsPageComponent extends React.Component {
@@ -69,7 +86,9 @@ class ProgramsPageComponent extends React.Component {
     this.props.routeToProgram(es);
     this.props.history.push("/calculator");
   }
+
   handleJumpStart() {
+    console.log("hasJup");
     const js = [
       "Jump Start",
       "Mortgage Snapshot",
@@ -98,12 +117,11 @@ class ProgramsPageComponent extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{ marginTop: "6rem" }}>
         <Typography
-          variant="h4"
-          style={labelStyle}
-          id="modal-title"
-          align="left"
+          variant="h2"
+          style={topLabelStyle}
+          align="center"
           gutterBottom
         >
           Choose a program (or a combination best for you):
@@ -116,153 +134,85 @@ class ProgramsPageComponent extends React.Component {
           direction={"row"}
         >
           <Grid item xs={8}>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center"
-              }}
-            >
+            <div style={sectionStyle}>
               <Typography
-                variant="h4"
+                variant="h5"
+                align="left"
                 style={labelStyle}
-                variant="outlined"
                 color="primary"
-                style={{
-                  width: "80%",
-                  fontSize: "1rem"
-                }}
+                onClick={this.handleADayEarly}
               >
-                <a onClick={this.handleADayEarly}>OneDayEarly</a> - make a one
-                time extra principal payment and see the exponential effect of
-                time and money.
+                OneDayEarly : make a one time extra principal payment and see
+                the exponential effect of time and money.
               </Typography>
             </div>
           </Grid>
           <Grid item xs={8}>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center"
-              }}
-            >
+            <div style={sectionStyle}>
               <Typography
-                variant="h4"
+                variant="h5"
+                align="left"
                 style={labelStyle}
-                variant="outlined"
                 color="primary"
-                style={{
-                  width: "80%",
-                  fontSize: "1rem"
-                }}
+                onClick={this.handleRoundUp}
               >
-                <a onClick={this.handleRoundUp}>RoundUp</a> - round your payment
-                up to the nearest $100, $1000 or create your own round up and
-                see the effects! $100 / $1000 (show One time and Lifetime of
-                Loan savings when hovered over).
+                RoundUp : round your payment up to the nearest $100, $1000 or
+                create your own round up and see the effects! $100 / $1000 (show
+                One time and Lifetime of Loan savings when hovered over).
               </Typography>
             </div>
           </Grid>
           <Grid item xs={8}>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center"
-              }}
-            >
+            <div style={sectionStyle}>
               <Typography
-                variant="h4"
                 style={labelStyle}
-                variant="outlined"
+                variant="h5"
                 color="primary"
-                style={{
-                  width: "80%",
-                  fontSize: "1rem"
-                }}
+                align="left"
+                onClick={this.handleFlexPay}
               >
-                <a onClick={this.handleFlexPay}>FlexPay</a> - set up a custom
-                payment campaign.
+                FlexPay : set up a custom payment campaign.
               </Typography>
             </div>
           </Grid>
           <Grid item xs={8}>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center"
-              }}
-            >
+            <div style={sectionStyle}>
               <Typography
-                variant="h4"
+                variant="h5"
+                align="left"
                 style={labelStyle}
-                variant="outlined"
                 color="primary"
-                style={{
-                  width: "80%",
-                  fontSize: "1rem"
-                }}
+                onClick={this.handleEasyStart}
               >
-                <a onClick={this.handleEasyStart}>EasyStart</a> - get started
-                now accelerating your current loan.
+                EasyStart : get started now accelerating your current loan.
               </Typography>
             </div>
           </Grid>
           <Grid item xs={8}>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center"
-              }}
-            >
+            <div onClick={this.handleLeapFrog} style={sectionStyle}>
               <Typography
-                variant="h4"
+                variant="h5"
                 style={labelStyle}
-                variant="outlined"
                 color="primary"
-                style={{
-                  width: "80%",
-                  fontSize: "1rem"
-                }}
+                align="left"
               >
-                <a onClick={this.handleLeapFrog}>LeapFrog</a> - jump ahead to
-                any months payment on your amortization schedule, pay the
-                principal portion now, aDayEarly, and NEVER pay the associated
-                interest. EVER.
+                LeapFrog : jump ahead to any months payment on your amortization
+                schedule, pay the principal portion now, aDayEarly, and NEVER
+                pay the associated interest. EVER.
               </Typography>
             </div>
           </Grid>
           <Grid item xs={8}>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center"
-              }}
-            >
+            <div onClick={this.handleJumpStart} style={sectionStyle}>
               <Typography
-                variant="h4"
+                variant="h5"
+                align="left"
                 style={labelStyle}
-                variant="outlined"
                 color="primary"
-                style={{
-                  width: "80%",
-                  fontSize: "1rem"
-                }}
               >
-                <a onClick={this.handleJumpStart}>JumpStart</a> - use at
-                origination of your loan, making the first extra principal
-                payment aDayEarly affecting the amortization schedule before it
-                started!
+                JumpStart - use at origination of your loan, making the first
+                extra principal payment aDayEarly affecting the amortization
+                schedule before it started!
               </Typography>
             </div>
           </Grid>
