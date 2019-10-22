@@ -136,9 +136,14 @@ class ServiceSectionComponent extends React.Component {
   }
 
   handleRedirect() {
+    const { input } = this.props;
+    let redirectToIntPage = Number(input.interestRate) > 4;
+
     // this.setState({ showRegModal: true });
     if (this.props.input.missingFields.length > 0) {
       this.setState({ showFlyout: true });
+    } else if (redirectToIntPage) {
+      this.props.history.push("/interest");
     } else {
       this.props.history.push("/calculator");
     }
@@ -178,11 +183,7 @@ class ServiceSectionComponent extends React.Component {
   render() {
     const { classes, mobile, sectionProps, input } = this.props;
     const { showFlyout, showModal, selectedService, showRegModal } = this.state;
-    const { displayContent } = sectionProps;
     const hasMessages = input.missingFields.length > 0;
-    const dataIconStyle = {
-      fontSize: mobile ? "5rem" : "2.5rem"
-    };
 
     const menuIconStyle = {
       fontSize: mobile ? "4rem" : "2.5rem",
