@@ -41,12 +41,13 @@ class LenderSelectComponent extends React.Component {
     this.setState({
       value: event.target.value
     });
+    this.props.onLenderSelect(event.target.value);
   }
 
   render() {
     const { value } = this.state;
     const { options } = this.props;
-
+    console.log("this.props lenders elect", this.props);
     return (
       <FormControl style={{ width: "11rem" }}>
         <InputLabel>

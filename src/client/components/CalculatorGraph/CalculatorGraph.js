@@ -21,6 +21,8 @@ export const CalculatorGraph = props => {
   const [initial, setInitial] = useState(loanAmount);
   const [rate, setRate] = useState(interestRate);
   const [years, setYears] = useState(term);
+  const [lender, setLender] = useState(lender);
+  const [otherLender, setOtherLender] = useState(otherLender);
   const [monthlyOverpayment, setMonthlyOverpayment] = useState(null);
   const [overpayments, setOverpayments] = useState([defaultOverpayment]);
   const fieldStyle = {
@@ -233,8 +235,32 @@ export const CalculatorGraph = props => {
               Who is your mortgage lender?
             </Typography>{" "}
           </Grid>
-          <Grid item xs={3} style={{ marginBottom: "1rem" }}>
-            <LenderSelect options={lenders} />
+          <Grid
+            item
+            xs={3}
+            style={{
+              marginBottom: "1rem",
+              display: "flex",
+              flexDirection: "column",
+              padding: "1rem"
+            }}
+          >
+            <LenderSelect options={lenders} onLenderSelect={setLender} />
+            {lender === "Other" && (
+              <input
+                type="text"
+                maxLength={20}
+                value={otherLender}
+                onChange={e => setOtherLender(e.target.value)}
+                style={{
+                  color: "#3f51b5",
+                  textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
+                  padding: "1rem",
+                  fontSize: "1rem",
+                  margin: "1rem 0rem 0rem 0rem"
+                }}
+              />
+            )}
           </Grid>
         </Grid>
 
