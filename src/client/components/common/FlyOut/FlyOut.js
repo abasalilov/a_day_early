@@ -27,18 +27,20 @@ const useStyles = makeStyles(theme => ({
 
 export const FlyOut = props => {
   const classes = useStyles();
+  const { direction } = props;
   const checked = props.show;
   let message = props.message ? props.message : "Add message here";
-
+  const arrowDirection =
+    direction === "left" ? "arrow_box-left" : "arrow_box-top";
   return (
     <Zoom
       in={checked}
       style={{
-        transitionDelay: checked ? "750ms" : "0ms",
+        transitionDelay: checked ? "500ms" : "0ms",
         borderRadius: "1rem"
       }}
     >
-      <div className="arrow_box">
+      <div className={arrowDirection}>
         <a>
           <Typography
             variant="h6"

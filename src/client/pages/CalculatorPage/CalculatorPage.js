@@ -30,7 +30,6 @@ class CalculatorPageComponent extends React.Component {
   render() {
     const { classes, input, history } = this.props;
     let showMessages = input.programMessage.length > 0;
-    console.log("input", input);
     return (
       <div className={classes.container}>
         <CalculatorGraph

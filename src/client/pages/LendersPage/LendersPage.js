@@ -25,9 +25,7 @@ class LendersPageComponent extends React.Component {
     this.handleNo = this.handleNo.bind(this);
   }
 
-  componentDidMount() {
-    console.log("props", this.props);
-  }
+  componentDidMount() {}
 
   handleYes() {
     this.props.history.push("/lenders");

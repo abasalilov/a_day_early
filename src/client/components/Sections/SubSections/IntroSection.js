@@ -72,7 +72,6 @@ export const IntroSectionComponent = props => {
     showHotLink,
     sectionProps: { displayContent }
   } = props;
-  console.log("IntroSectionComponent", props);
   const mobileVariantStyle = {
     fontSize: !mobile && "1.3rem",
     margin: "2rem 0"

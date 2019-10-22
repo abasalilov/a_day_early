@@ -115,7 +115,7 @@ export default (req, store, context) => {
                 #Calculddator > div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-6 > h4 {
                   color: #303290
                 }
-                .arrow_box {
+                .arrow_box-top {
                   position: relative;
                   background: #fff;
                   border: 4px solid #3f51b5;
@@ -124,7 +124,7 @@ export default (req, store, context) => {
                   float: right;
 
                 }
-                .arrow_box:after, .arrow_box:before {
+                .arrow_box-top:after, .arrow_box-top:before {
                   bottom: 100%;
                   left: 75%;
                   border: solid transparent;
@@ -135,14 +135,46 @@ export default (req, store, context) => {
                   pointer-events: none;
                 }
 
-                .arrow_box:after {
+                .arrow_box-top:after {
                   border-color: rgba(255, 255, 255, 0);
                   border-width: 15px;
                   margin-top: -15px;
                 }
-                .arrow_box:before {
+                .arrow_box-top:before {
                   border-color: rgba(63, 81, 181, 0);
                   border-bottom-color: #3f51b5;
+                  border-width: 12px;
+                  margin-top: -12px;
+                }
+
+                .arrow_box-left {
+                  position: relative;
+                  background: #fff;
+                  border: 4px solid #3f51b5;
+                  width: 65%;
+                  margin: 1rem 7rem 1rem 1rem;
+                  float: right;
+
+                }
+                .arrow_box-left:after, .arrow_box-left:before {
+                  right: 100%;
+                  top: 50%;
+                  border: solid transparent;
+                  content: " ";
+                  height: 0;
+                  width: 0;
+                  position: absolute;
+                  pointer-events: none;
+                }
+
+                .arrow_box-left:after {
+                  border-color: rgba(255, 255, 255, 0);
+                  border-width: 15px;
+                  margin-top: -15px;
+                }
+                .arrow_box-left:before {
+                  border-color: rgba(63, 81, 181, 0);
+                  border-right-color: #3f51b5;
                   border-width: 12px;
                   margin-top: -12px;
                 }
