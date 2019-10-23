@@ -117,9 +117,7 @@ const styles = {
   mobileLoginForm: {},
   loginForm: {},
   picContainer: {
-    height: "8rem",
-    marginBottom: "2rem",
-    width: "50%"
+    marginBottom: "2rem"
   },
   mobilePic: {
     width: "22rem",

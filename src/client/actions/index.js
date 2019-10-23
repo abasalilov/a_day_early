@@ -1,5 +1,3 @@
-import { calculate } from "../components/CalculatorGraph/calculations";
-
 export const UPDATE_ACTIVE_USER = "update_active_user";
 export const updateActiveUser = username => async (dispatch, getState, api) => {
   dispatch({
@@ -16,7 +14,7 @@ export const adeLoginSubmit = (username, pw) => async (
   getState,
   api
 ) => {
-  const res = await api.post(`https://recruitertutor.com/ade-login`, {
+  const res = await api.post(`http://localhost:5000/ade-login`, {
     username,
     pw
   });
@@ -36,7 +34,7 @@ export const adeLoginSubmit = (username, pw) => async (
 
 export const REGISTER_USER = "register_user";
 export const registerUser = data => async (dispatch, getState, api) => {
-  const res = await api.post("https://recruitertutor.com/ade-registration", {
+  const res = await api.post("http://localhost:5000/ade-registration", {
     data
   });
   dispatch({
@@ -47,7 +45,7 @@ export const registerUser = data => async (dispatch, getState, api) => {
 
 export const FETCH_CURRENT_USER = "fetch_current_user";
 export const fetchCurrentUser = () => async (dispatch, getState, api) => {
-  const res = await api.get("https://recruitertutor.com:current_user");
+  const res = await api.get("http://localhost:5000/current-user");
   dispatch({
     type: FETCH_CURRENT_USER,
     payload: res
@@ -60,7 +58,7 @@ export const confirmUniqueUsername = data => async (
   getState,
   api
 ) => {
-  const res = await api.post("https://recruitertutor.com/ade-username-check", {
+  const res = await api.post("http://localhost:5000/ade-username-check", {
     data
   });
 
@@ -97,7 +95,7 @@ export const submitContactUsEmail = data => async (dispatch, getState, api) => {
     type: EMAIL_SUBMIT
   });
 
-  const res = await api.post("https://recruitertutor.com:email", {
+  const res = await api.post("http://localhost:5000/email", {
     data
   });
   if (res.status !== 201) {
