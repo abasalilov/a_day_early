@@ -155,3 +155,20 @@ export const routePrograms = msg => ({
   type: ROUTE_PROGRAMS,
   msg
 });
+
+// adePayPalSuccess as createPayPalSuccessActionCreator,
+// adePayPalFailure as createPayPalFailureActionCreator
+
+export const UPDATE_PAYPAL_SUCCESS = "UPDATE_PAYPAL_SUCCESS";
+
+export const adePayPalSuccess = dt => ({
+  type: UPDATE_PAYPAL_SUCCESS,
+  dt
+});
+
+export const UPDATE_PAYPAL_FAILURE = "UPDATE_PAYPAL_FAILURE";
+
+export const adePayPalFailure = dt => ({
+  type: UPDATE_PAYPAL_FAILURE,
+  dt
+});

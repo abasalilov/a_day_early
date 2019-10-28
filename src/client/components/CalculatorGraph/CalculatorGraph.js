@@ -487,19 +487,40 @@ export const CalculatorGraph = props => {
           style={{ width: "100%", color: "#3f51b5", margin: "2rem 1rem" }}
         />
 
-        <div className="col-sm-12">
-          <Typography
-            variant="h4"
-            style={labelStyle}
-            align="center"
-            gutterBottom
+        {payments.length > 20 && (
+          <Grid
+            container
+            spacing={8}
+            justify="left"
+            alignItems="center"
+            direction={"column"}
           >
-            Simulator
-          </Typography>
-          <Chart payments={payments} lenderName={lenderDisplayName} />
-        </div>
+            <Typography variant="h4" style={labelStyle} align="center">
+              Simulator
+            </Typography>
+
+            <Grid
+              item
+              xs={12}
+              style={{
+                minHeight: "45rem",
+                minWidth: "45rem"
+              }}
+            >
+              <Typography variant="h5" style={labelStyle} align="left">
+                Graph
+              </Typography>
+              <Chart payments={payments} lenderName={lenderDisplayName} />
+            </Grid>
+            <Grid item xs={8}>
+              <Typography variant="h5" style={labelStyle} align="left">
+                Projected Payments
+              </Typography>
+              <Table payments={payments} />
+            </Grid>
+          </Grid>
+        )}
       </div>
-      <Table className="col-sm-4" payments={payments} />
     </div>
   );
 };

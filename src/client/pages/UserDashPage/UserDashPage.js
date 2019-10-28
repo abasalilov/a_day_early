@@ -10,6 +10,7 @@ import { HelpModal } from "../../components/modals";
 import { Image, HelpButton } from "../../components/common";
 import { FooterSection } from "../../components/Sections/SubSections/FooterSection";
 import { ConnectedCalculatorPage } from "../CalculatorPage/CalculatorPage";
+import { PayPalButton } from "../../components/PayPalButton";
 const styles = {
   dash: {
     border: "solid #303290 2px",
@@ -274,6 +275,9 @@ class DashBoardContainerPage extends React.Component {
           <div style={{ margin: "1rem" }}>
             <HelpButton onClick={this.handleToggleModal} />
           </div>
+        </div>
+        <div>
+          <PayPalButton />
         </div>
         <div className={rootName}>
           <Grid

@@ -4,6 +4,7 @@ import authReducer from "./authReducer";
 import mobileReducer from "./mobileReducer";
 import emailReducer from "./emailReducer";
 import calcReducer from "./calcReducer";
+import payPalReducer from "./paypalReducer";
 import { reducer as form } from "redux-form";
 
 export default combineReducers({
@@ -12,5 +13,6 @@ export default combineReducers({
   mobile: mobileReducer,
   email: emailReducer,
   input: calcReducer,
+  paypal: payPalReducer,
   form
 });
