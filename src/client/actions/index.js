@@ -34,7 +34,7 @@ export const adeLoginSubmit = (username, pw) => async (
 
 export const REGISTER_USER = "register_user";
 export const registerUser = data => async (dispatch, getState, api) => {
-  const res = await api.post("http://localhost:5000/ade-registration", {
+  const res = await api.post("http://localhost:5000/ade-register-user", {
     data
   });
   dispatch({
@@ -61,6 +61,8 @@ export const confirmUniqueUsername = data => async (
   const res = await api.post("http://localhost:5000/ade-username-check", {
     data
   });
+
+  console.log("res", res);
 
   dispatch({
     type: CONFIRM_UNIQUE_USERNAME,

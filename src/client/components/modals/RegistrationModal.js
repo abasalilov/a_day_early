@@ -77,13 +77,13 @@ const styles = theme => ({
     border: "solid black 1px",
     borderRadius: "50%",
     alignSelf: "center",
-    margin: "0 0 2rem 1rem",
-    fontSize: "2rem"
+    fontSize: "2rem",
+    marginBottom: "4rem"
   },
   topContainer: {
     display: "flex",
     flexDirection: "row",
-    justifyContent: "center"
+    justifyContent: "space-around"
   },
   btnContainer: {
     display: "flex",
