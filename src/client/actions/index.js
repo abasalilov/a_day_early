@@ -14,7 +14,7 @@ export const adeLoginSubmit = (username, pw) => async (
   getState,
   api
 ) => {
-  const res = await api.post(`http://localhost:5000/ade-login`, {
+  const res = await api.post(`http://localhost:5000/ade-login-user`, {
     username,
     pw
   });
@@ -61,8 +61,6 @@ export const confirmUniqueUsername = data => async (
   const res = await api.post("http://localhost:5000/ade-username-check", {
     data
   });
-
-  console.log("res", res);
 
   dispatch({
     type: CONFIRM_UNIQUE_USERNAME,

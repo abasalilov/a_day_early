@@ -1,6 +1,6 @@
 import {
   FETCH_CURRENT_USER,
-  ade_LOGIN_SUBMIT,
+  ADE_LOGIN_SUBMIT,
   RESET_AUTH,
   UPDATE_ACTIVE_USER
 } from "../actions";
@@ -22,7 +22,7 @@ export default function(
       resetAuthState.attempted = false;
       resetAuthState.result = false;
       return resetAuthState;
-    case ade_LOGIN_SUBMIT:
+    case ADE_LOGIN_SUBMIT:
       const loginState = Object.assign({}, state);
       if (action.payload.statusText) {
         loginState.attempted = true;

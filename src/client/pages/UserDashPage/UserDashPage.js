@@ -9,7 +9,7 @@ import { Loading } from "../../components/navigation";
 import { HelpModal } from "../../components/modals";
 import { Image, HelpButton } from "../../components/common";
 import { FooterSection } from "../../components/Sections/SubSections/FooterSection";
-
+import { ConnectedCalculatorPage } from "../CalculatorPage/CalculatorPage";
 const styles = {
   dash: {
     border: "solid #303290 2px",
@@ -25,7 +25,7 @@ const styles = {
     padding: "1rem",
     width: "90%",
     borderRadius: "1rem",
-    margin: "0 auto"
+    margin: "2rem auto"
   },
   mobileRoot: {
     flexGrow: 1,
@@ -39,7 +39,7 @@ const styles = {
     justifyContent: "center"
   },
   img: {
-    width: "4rem"
+    width: "10rem"
   },
   mobileImg: {
     marginBottom: "1rem",
@@ -211,7 +211,6 @@ class DashBoardContainerPage extends React.Component {
                 Back to Main Menu
               </Button>
             )}
-            <HelpButton onClick={this.handleToggleModal} />
           </div>
         </Grid>
       </div>
@@ -267,17 +266,23 @@ class DashBoardContainerPage extends React.Component {
         <div className={rootName}>
           <Grid
             container
+            direction={mobile ? "column" : "row"}
+            className={gridName}
+          >
+            <Grid item>{`User Dashboard for ${this.props.username}`}</Grid>
+          </Grid>
+          <div style={{ margin: "1rem" }}>
+            <HelpButton onClick={this.handleToggleModal} />
+          </div>
+        </div>
+        <div className={rootName}>
+          <Grid
+            container
             justify="center"
             direction={mobile ? "column" : "row"}
             className={gridName}
           >
-            Stepper was here
-            <div
-              style={containerJusifyStyle}
-              className={mobile ? classes.mobileContainer : classes.container}
-            >
-              Cards were here
-            </div>
+            <ConnectedCalculatorPage />
           </Grid>
         </div>
         <FooterSection mobile={mobile} />

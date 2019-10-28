@@ -59,7 +59,7 @@ const mapStateToProps = state => ({
   input: state.input
 });
 
-const ConnectedCalculatorPage = connect(
+export const ConnectedCalculatorPage = connect(
   mapStateToProps,
   null
 )(withStyles(styles)(CalculatorPageComponent));

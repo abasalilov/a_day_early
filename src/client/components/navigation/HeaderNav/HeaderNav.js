@@ -7,6 +7,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import { HeaderLink } from "../../common";
 import { confirmAuth } from "../../../utils";
 import { resetAuth as createResetAuthAction } from "../../../actions";
+const LOGIN = "LOGIN";
 
 const styles = {
   w3Top: {
@@ -89,11 +90,11 @@ const iconStyles = {
   marginBottom: ".5rem"
 };
 
-const internalHeaderLinks = ["Profile", "LOGIN"];
+const internalHeaderLinks = ["HOME", "LOGIN"];
 
 const getTitle = title => {
   const link = title.replace(" ", "-");
-  if (title === "LOGIN") {
+  if (title === LOGIN) {
     return "/login";
   }
   if (title === "PROGRAMS") {
@@ -102,7 +103,7 @@ const getTitle = title => {
   return link;
 };
 
-const isLogin = title => title === "LOGIN";
+const isLogin = title => title === LOGIN;
 
 const NavButton = props => {
   const {
@@ -118,7 +119,7 @@ const NavButton = props => {
   const linkPath = getTitle(title);
   const isLoginComponent = isLogin(title);
 
-  if (attempted && result === "OK" && title === LOGIN) {
+  if (attempted && result === "OK" && title === "LOGIN") {
     button = (
       <HeaderLink
         className={linkClassName}
