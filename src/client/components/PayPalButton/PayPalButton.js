@@ -122,28 +122,27 @@ class PayPal extends React.Component {
   componentDidMount() {}
 
   render() {
-    console.log("loanData", this.props);
     const { loanData } = this.props;
-    // if (loanData.canCalculate === false) {
-    //   return (
-    //     <div
-    //       style={{
-    //         display: "flex",
-    //         flexDirection: "row",
-    //         justifyContent: "space-around",
-    //         alignItems: "center"
-    //       }}
-    //     >
-    //       <h3 style={{ color: "red" }}>
-    //         If you'd like to make a payment please fill out the required fields
-    //         below in order. Then click "Update"
-    //       </h3>
-    //       <button onClick={() => this.props.makePaymentSuccess({})}>
-    //         Update
-    //       </button>
-    //     </div>
-    //   );
-    // }
+    console.log(loanData.missingFields);
+    if (loanData.missingFields.length > 0) {
+      return (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-around",
+            alignItems: "center"
+          }}
+        >
+          <h3 style={{ color: "red" }}>
+            If you'd like to make a payment please fill out the required fields
+            below to enable making a payment.
+            <br />
+            <sub>* loan amount, interest rate and years</sub>
+          </h3>
+        </div>
+      );
+    }
     const onSuccess = payment => {
       // Congratulation, it came here means everything's fine!
       console.log("The payment has succeeded!", payment);
@@ -195,15 +194,13 @@ const mapStateToProps = state => {
     auth: state.auth,
     mobile: state.mobile,
     paypal: state.paypal,
-    loanData: state.input,
-    stuff: state.paypal
+    loanData: state.input
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     makePaymentSuccess: dt => {
-      console.log("dt", dt);
       return dispatch(createPayPalSuccessActionCreator(dt));
     },
     makePaymentFailure: dt => dispatch(createPayPalFailureActionCreator(dt))

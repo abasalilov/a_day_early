@@ -13,7 +13,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Table from "./Table";
 import Chart from "./Chart";
 import calculate from "./calculations";
-import { updatePayPalAmount } from "../../actions";
+import { updatePayPalAmount, updateInfoForm } from "../../actions";
 const defaultOverpayment = { month: "0", year: "0", amount: "0" };
 
 const selectLabelStyle = {
@@ -61,9 +61,9 @@ class CalculatorGraphComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      initial: null,
-      rate: null,
-      years: null,
+      loanAmount: null,
+      interestRate: null,
+      term: null,
       lender: null,
       otherLender: null,
       monthlyOverpayment: null,
@@ -77,7 +77,12 @@ class CalculatorGraphComponent extends React.Component {
     this.handleAccuracy = this.handleAccuracy.bind(this);
   }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {}
+  componentDidMount() {
+    const { loanAmount, interestRate, term } = this.props;
+    if (!isEmpty(loanAmount) && !isEmpty(interestRate)) {
+      this.setState({ loanAmount, interestRate, term });
+    }
+  }
 
   setLender(e) {
     this.setState({ lender: e });
@@ -93,43 +98,39 @@ class CalculatorGraphComponent extends React.Component {
 
   handleChange(name, e) {
     const {
-      initial,
-      years,
-      rate,
+      loanAmount,
+      term,
+      interestRate,
       monthlyOverpayment,
       overpayments
     } = this.state;
     const { monthlyPayment, payments } = calculate(
-      +initial,
-      +years,
-      +rate,
+      +loanAmount,
+      +term,
+      +interestRate,
       +monthlyOverpayment,
       overpayments
     );
     const monthly = monthlyPayment + monthlyOverpayment;
 
-    this.setState({ [name]: e.target.value, monthly }, () => {});
-    this.props.updatePaypal(monthly, false);
+    this.setState({ [name]: e.target.value, monthly }, () => {
+      this.props.updateInputForm(this.state);
+      this.props.updatePaypal(monthly, false);
+    });
   }
 
   render() {
+    const { showMessages = false } = this.props;
     const {
-      loanAmount = null,
-      interestRate = null,
-      term = null,
-      showMessages = false
-    } = this.props;
-    const {
-      initial,
-      years,
-      rate,
+      loanAmount,
+      term,
+      interestRate,
       lender,
       monthlyOverpayment,
       overpayments,
       otherLender,
       accuracy
     } = this.state;
-    console.log("lender", lender);
     const msg =
       "Your interest rate is above today's going rate, would you like to get some information and options from a lender? Here's how much you can save:";
     let showInterestRateMessage = Number(interestRate) > 4.5;
@@ -144,9 +145,9 @@ class CalculatorGraphComponent extends React.Component {
       );
 
     const { monthlyPayment, payments } = calculate(
-      +initial,
-      +years,
-      +rate,
+      +loanAmount,
+      +term,
+      +interestRate,
       +monthlyOverpayment,
       overpayments
     );
@@ -181,8 +182,8 @@ class CalculatorGraphComponent extends React.Component {
                   </Typography>
                   <input
                     maxLength={7}
-                    value={initial}
-                    onChange={e => this.handleChange("initial", e)}
+                    value={loanAmount}
+                    onChange={e => this.handleChange("loanAmount", e)}
                     style={{
                       color: "#3f51b5",
                       textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
@@ -200,8 +201,8 @@ class CalculatorGraphComponent extends React.Component {
                   <input
                     type="number"
                     maxLength={2}
-                    value={years}
-                    onChange={e => this.handleChange("years", e)}
+                    value={term}
+                    onChange={e => this.handleChange("term", e)}
                     style={{
                       color: "#3f51b5",
                       textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
@@ -220,8 +221,8 @@ class CalculatorGraphComponent extends React.Component {
                   <input
                     type="number"
                     step={0.1}
-                    value={rate}
-                    onChange={e => this.handleChange("rate", e)}
+                    value={interestRate}
+                    onChange={e => this.handleChange("interestRate", e)}
                     style={{
                       color: "#3f51b5",
                       textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
@@ -434,7 +435,7 @@ class CalculatorGraphComponent extends React.Component {
                     type="number"
                     min="0"
                     style={labelHeaderStyle1}
-                    max={years}
+                    max={term}
                     value={year}
                     name="year"
                     onChange={updateOverpayment(i)}
@@ -650,6 +651,9 @@ const mapDispatchToProps = dispatch => {
   return {
     updatePaypal: (amt, bool) => {
       dispatch(updatePayPalAmount(amt, bool));
+    },
+    updateInputForm: st => {
+      dispatch(updateInfoForm(st));
     }
   };
 };

@@ -222,14 +222,7 @@ class DashBoardContainerPage extends React.Component {
   }
 
   render() {
-    const {
-      classes,
-      history,
-      mobile,
-      submit,
-      submitting,
-      payment
-    } = this.props;
+    const { classes, mobile, submit, submitting, payment, input } = this.props;
     const {
       showHelpModal,
       componentIsSet,
@@ -243,6 +236,8 @@ class DashBoardContainerPage extends React.Component {
     const containerJusifyStyle = {
       justifyContent: shouldRender ? "space-between" : "center"
     };
+    console.log("can you pass down and effect chance?", input);
+
     if (!componentIsSet) {
       this.setComponent();
       return <Loading />;
@@ -306,7 +301,8 @@ const mapStateToProps = state => {
     mobile: state.mobile,
     authStatus: state.auth.result,
     username: state.auth.username,
-    profileComplete: true
+    profileComplete: true,
+    input: state.input
   };
 };
 

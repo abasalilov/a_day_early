@@ -37,7 +37,7 @@ export const defaultState = {
   payOffDate: "",
   canCalculate: false,
   hasError: false,
-  missingFields: [],
+  missingFields: [""],
   program: null,
   programMessage: [],
   payPalAmount: 0
@@ -56,7 +56,7 @@ export const resetState = {
   payOffDate: "",
   canCalculate: false,
   hasError: false,
-  missingFields: [],
+  missingFields: [""],
   program: null,
   programMessage: [],
   payPalAmount: 0
