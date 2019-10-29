@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import { CalculatorGraph } from "../../components/CalculatorGraph";
 import { ProgramCalculatorGraph } from "../../components/ProgramCalculatorGraph";
+import { updatePayPalAmount } from "../../actions";
 
 const styles = {
   container: {
@@ -25,8 +26,10 @@ class CalculatorPageComponent extends React.Component {
     // }
   }
 
+  componentDidUpdate() {}
+
   render() {
-    const { classes, input, history } = this.props;
+    const { classes, input, history, updatePaypal } = this.props;
     let showMessages = input.programMessage.length > 0;
     let program = input.program;
     if (program === null) {
@@ -59,9 +62,17 @@ const mapStateToProps = state => ({
   input: state.input
 });
 
+const mapDispatchToProps = dispatch => {
+  return {
+    updatePaypal: (bool, amt) => {
+      dispatch(updatePayPalAmount(bool, amt));
+    }
+  };
+};
+
 export const ConnectedCalculatorPage = connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(withStyles(styles)(CalculatorPageComponent));
 
 export const CalculatorPage = {

@@ -1,12 +1,8 @@
 import React from "react";
 import { reduxForm, Field } from "redux-form";
 import DateFnsUtils from "@date-io/date-fns/build";
-import { Row, Col } from "react-grid-system";
 import { connect } from "react-redux";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
-import { DatePicker } from "@material-ui/pickers";
-import Button from "@material-ui/core/Button";
-import { FormField } from "../common/FormField";
 import TextField from "@material-ui/core/TextField";
 import { updateAmortGraph, updateInfoForm } from "../../actions";
 
@@ -47,7 +43,7 @@ const renderTextField = ({
     InputLabelProps={{
       style: {
         fontSize: labelFontSize ? labelFontSize : "20px",
-        color: "#303290",
+        color: "#2D3190",
         marginLeft: ".3rem"
       },
       shrink: labelShrink
@@ -104,6 +100,7 @@ class InputFormComponent extends React.Component {
     const payOffLabel = anticipated
       ? "Anticipated Payoff Date"
       : "Pay Off Date";
+
     return (
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <div>

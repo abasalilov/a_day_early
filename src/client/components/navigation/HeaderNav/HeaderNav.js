@@ -48,7 +48,7 @@ const styles = {
   },
   w3Button: {
     userSelect: "none",
-    color: "#303290",
+    color: "#2D3190",
     "&:hover": {
       color: "#7BB16",
       textShadow: "1px 1px 4px #7BB16"
@@ -65,8 +65,8 @@ const styles = {
   },
   selected: {
     backgroundColor: "#fff",
-    color: "#303290",
-    textShadow: "1px 1px 4px #303290"
+    color: "#2D3190",
+    textShadow: "1px 1px 4px #2D3190"
   },
   notSelected: {}
 };
@@ -86,7 +86,7 @@ const externalHeaderLinks = [
 ];
 
 const iconStyles = {
-  color: "#303290",
+  color: "#2D3190",
   marginBottom: ".5rem"
 };
 
@@ -114,7 +114,7 @@ const NavButton = props => {
     classes
   } = props;
   let button;
-  const style = { color: "#303290", textDecoration: "none" };
+  const style = { color: "#2D3190", textDecoration: "none" };
   const linkClassName = classNames(classes.w3BarItem, classes.w3Button);
   const linkPath = getTitle(title);
   const isLoginComponent = isLogin(title);

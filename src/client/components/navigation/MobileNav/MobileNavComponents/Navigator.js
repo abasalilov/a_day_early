@@ -22,7 +22,7 @@ const styles = {
   },
   menu: {},
   contactUs: {
-    border: "solid #303290 4px",
+    border: "solid #2D3190 4px",
     borderRadius: "50%",
     display: "flex",
     alignContent: "center",
@@ -35,7 +35,7 @@ const MorphIconBtn = props => (
   <MorphIcon
     onClick={props.clickFn}
     type={props.type}
-    color={"#303290"}
+    color={"#2D3190"}
     size={props.type === "cross" ? 97 : 100}
     thickness={5}
   />
@@ -82,20 +82,20 @@ class MobileNavigator extends React.Component {
     if (loc.pathname.includes("login")) {
       return (
         <a href={"/#Home"} onClick={() => this.handleRoute("/#Home")}>
-          <Home fill={"#303290"} className={classes.contactUs} />
+          <Home fill={"#2D3190"} className={classes.contactUs} />
         </a>
       );
     }
     if (loc.pathname.includes("dash")) {
       return (
         <a href={"/#Contact-Us"} onClick={this.handleLogOutRoute}>
-          <LogOut className={classes.contactUs} fill={"#303290"} />
+          <LogOut className={classes.contactUs} fill={"#2D3190"} />
         </a>
       );
     } else {
       return (
         <a href={"/login"} onClick={() => this.handleRoute("/login")}>
-          <Profile fill={"#303290"} />
+          <Profile fill={"#2D3190"} />
         </a>
       );
     }
@@ -109,21 +109,21 @@ class MobileNavigator extends React.Component {
           href={"/#Contact-Us"}
           onClick={() => this.handleRoute("/#Contact-Us")}
         >
-          <ContactUs className={classes.contactUs} fill={"#303290"} />
+          <ContactUs className={classes.contactUs} fill={"#2D3190"} />
         </a>
       );
     }
     if (loc.hash.includes("Contact")) {
       return (
         <a href={"/#Home"} onClick={() => this.handleRoute("/#Home")}>
-          <Home fill={"#303290"} />
+          <Home fill={"#2D3190"} />
         </a>
       );
     }
     if (loc.pathname.includes("dash")) {
       return (
         <a href={"/#Home"} onClick={this.handleLogOutRoute}>
-          <LogOut fill={"#303290"} />
+          <LogOut fill={"#2D3190"} />
         </a>
       );
     } else {
@@ -132,7 +132,7 @@ class MobileNavigator extends React.Component {
           href={"/#Contact-Us"}
           onClick={() => this.handleRoute("/#Contact-Us")}
         >
-          <ContactUs className={classes.contactUs} fill={"#303290"} />
+          <ContactUs className={classes.contactUs} fill={"#2D3190"} />
         </a>
       );
     }

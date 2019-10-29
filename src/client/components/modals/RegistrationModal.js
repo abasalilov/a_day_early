@@ -8,7 +8,8 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Modal from "@material-ui/core/Modal";
 import Close from "@material-ui/icons/Close";
-import { StyledButton, FormField } from "../../components/common";
+import { StyledButton } from "../../components/common";
+import { BasicCalculatorForm } from "../BasicCalculatorForm";
 import {
   registerUser as createRegisterUserAction,
   confirmUniqueUsername
@@ -123,7 +124,7 @@ const styles = theme => ({
   },
   regLink: {
     textDecoration: "none",
-    color: "#303290"
+    color: "#2D3190"
   },
   title: {
     margin: "2rem 0",
@@ -163,7 +164,7 @@ const renderTextField = ({
     InputLabelProps={{
       style: {
         fontSize: labelFontSize ? labelFontSize : "20px",
-        color: "#303290",
+        color: "#2D3190",
         marginLeft: ".3rem"
       },
       shrink: labelShrink
@@ -190,8 +191,8 @@ const RegistrationModalComponent = props => {
   /*eslint-disable*/
   return (
     <Modal
-      aria-labelledby="simple-modal-title"
-      aria-describedby="simple-modal-description"
+      aria-labelledby="ade-registration-title"
+      aria-describedby="ade-registration-description"
       open={open}
     >
       <div style={getModalStyle(mobile)} className={classes.paper}>
@@ -281,6 +282,7 @@ const RegistrationModalComponent = props => {
                   validate={[required, minLength6]}
                   warn={alphaNumeric}
                 />
+                <BasicCalculatorForm />
                 <div className={classes.buttons}>
                   <StyledButton
                     type="submit"

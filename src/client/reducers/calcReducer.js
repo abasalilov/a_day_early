@@ -4,7 +4,8 @@ import {
   SET_BEGIN_DATE,
   UPDATE_AMORT_GRAPH,
   UPDATE_INFO_FORM,
-  ROUTE_PROGRAMS
+  ROUTE_PROGRAMS,
+  UPDATE_PAYPAL_AMOUNT
 } from "../actions";
 import { amortizationSchedule } from "amortization";
 import update from "react-addons-update";
@@ -38,7 +39,8 @@ export const defaultState = {
   hasError: false,
   missingFields: [],
   program: null,
-  programMessage: []
+  programMessage: [],
+  payPalAmount: 0
 };
 
 export const resetState = {
@@ -56,7 +58,8 @@ export const resetState = {
   hasError: false,
   missingFields: [],
   program: null,
-  programMessage: []
+  programMessage: [],
+  payPalAmount: 0
 };
 
 function checkForMissingFields(fields) {
@@ -114,12 +117,21 @@ export default function input(state = defaultState, action) {
       });
     case RESET_AMORTIZATION:
       return resetState;
+
     case SET_BEGIN_DATE:
       return update(state, {
         beginDate: {
           $set: action.date
         }
       });
+
+    case UPDATE_PAYPAL_AMOUNT:
+      const payPalAmountState = Object.assign({}, state);
+      const { amt } = action;
+
+      payPalAmountState.payPalAmount = amt;
+
+      return payPalAmountState;
     case UPDATE_AMORT_GRAPH:
       const { st } = action;
       // TODO: DO YOU NEED THESE?
@@ -129,7 +141,6 @@ export default function input(state = defaultState, action) {
       //   st.interestRate
       // );
       const updatedState = Object.assign({}, state);
-
       updatedState.currentLoanAmount = st.currentLoanAmount;
       updatedState.interestRate = st.interestRate;
       updatedState.loanAmount = st.loanAmount;
@@ -152,8 +163,19 @@ export default function input(state = defaultState, action) {
       const canCalculate = Object.keys(action.st).filter(item => {
         return action.st[item] !== null;
       });
+
       const hasMissingFields = checkForMissingFields(canCalculate);
       const shouldCalculate = canCalculate.length >= 3;
+      if (shouldCalculate) {
+        const { monthlyPayment } = calculate(
+          +action.st.loanAmount,
+          +action.st.term,
+          +action.st.interestRate
+        );
+        const paymentToReview = monthlyPayment;
+
+        updatedInfoFormState.payPalAmount = paymentToReview;
+      }
       updatedInfoFormState.canCalculate = shouldCalculate;
       updatedInfoFormState.missingFields = hasMissingFields.missing;
       return updatedInfoFormState;

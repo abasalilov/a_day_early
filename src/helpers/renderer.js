@@ -50,6 +50,7 @@ export default (req, store, context) => {
     <html>
       <title>A Day Early</title>
           <head>
+          <link rel="stylesheet" href="https://use.typekit.net/nex3vbe.css">
           <link href="https://fonts.googleapis.com/css?family=Raleway:400,700,700i,800&display=swap" rel="stylesheet">
           <style>
                .mobileRootStyle {
@@ -70,7 +71,7 @@ export default (req, store, context) => {
                 }
 
                 #Home > div > div > p {
-                  color: #303290
+                  color: #2D3190
                 }
 
                 .react-reveal {
@@ -78,19 +79,19 @@ export default (req, store, context) => {
                     justify-content: space-between;
                 }
                 #Home > div > div > div > div > h3 > p {
-                  color: #303290
+                  color: #2D3190
                 }
 
                 #Calculator > h3 {
-                  color: #303290
+                  color: #2D3190
                 }
 
                 #Home > div > div > h4:nth-child(4){
-                  color: #303290
+                  color: #2D3190
                 }
 
                 #Home > div > div > h4:nth-child(5) {
-                  color: #303290
+                  color: #2D3190
                 }
 
                 #Contact-Us {
@@ -109,11 +110,11 @@ export default (req, store, context) => {
                 }
 
                 #Home > div > h3 > p {
-                  color: #303290
+                  color: #2D3190
                 }
 
                 #Calculddator > div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-6 > h4 {
-                  color: #303290
+                  color: #2D3190
                 }
                 .arrow_box-top {
                   position: relative;

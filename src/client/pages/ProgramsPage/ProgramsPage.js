@@ -121,7 +121,7 @@ class ProgramsPageComponent extends React.Component {
     return (
       <div style={{ marginTop: "6rem" }}>
         <Typography
-          variant="h2"
+          variant="h3"
           style={topLabelStyle}
           align="center"
           gutterBottom

@@ -27,7 +27,7 @@ const StyledFieldComponent = props => {
     value
   } = props;
   const borderStyle = showborder
-    ? { border: "solid 2px #303290", width: "100%" }
+    ? { border: "solid 2px #2D3190", width: "100%" }
     : undefined;
   return (
     <Grid item style={style}>

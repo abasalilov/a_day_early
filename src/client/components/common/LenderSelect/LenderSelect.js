@@ -72,12 +72,12 @@ class LenderSelectComponent extends React.Component {
 
 const StyledSelect = withStyles(styles)(LenderSelectComponent);
 
-const mapStateToProps = state => {
-  return {
-    registered: state.input
-  };
-};
+// const mapStateToProps = state => {
+//   return {
+//     registered: state.input
+//   };
+// };
 
-const ConnectedSelect = connect(mapStateToProps)(StyledSelect);
+// const ConnectedSelect = connect(mapStateToProps)(StyledSelect);
 
-export const LenderSelect = ConnectedSelect;
+export const LenderSelect = StyledSelect;

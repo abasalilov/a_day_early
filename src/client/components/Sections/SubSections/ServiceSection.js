@@ -43,7 +43,7 @@ const styles = theme => ({
     padding: "1rem"
   },
   subMenuOption: {
-    border: "solid #303290 2px",
+    border: "solid #2D3190 2px",
     color: theme.palette.text.secondary,
     display: "flex",
     alignItems: "center",
@@ -246,7 +246,7 @@ class ServiceSectionComponent extends React.Component {
                   gutterBottom
                   align="center"
                   color="textPrimary"
-                  style={{ width: "100%", color: "#303290" }}
+                  style={{ width: "100%", color: "#2D3190" }}
                 >
                   Let's Start With The Basics
                 </Typography>
@@ -255,7 +255,7 @@ class ServiceSectionComponent extends React.Component {
                   gutterBottom
                   align="center"
                   color="textPrimary"
-                  style={{ width: "100%", color: "#303290" }}
+                  style={{ width: "100%", color: "#2D3190" }}
                 >
                   (Please fill out 3 of the following fields)
                 </Typography>

@@ -11,9 +11,11 @@ import { Image, HelpButton } from "../../components/common";
 import { FooterSection } from "../../components/Sections/SubSections/FooterSection";
 import { ConnectedCalculatorPage } from "../CalculatorPage/CalculatorPage";
 import { PayPalButton } from "../../components/PayPalButton";
+import Typography from "@material-ui/core/Typography";
+
 const styles = {
   dash: {
-    border: "solid #303290 2px",
+    border: "solid #2D3190 2px",
     padding: "1rem",
     borderRadius: "1rem",
     width: "90%",
@@ -22,7 +24,7 @@ const styles = {
   },
   mobileDash: {
     textAlign: "center",
-    border: "solid #303290 2px",
+    border: "solid #2D3190 2px",
     padding: "1rem",
     width: "90%",
     borderRadius: "1rem",
@@ -110,9 +112,10 @@ class DashBoardContainerPage extends React.Component {
   }
 
   componentDidMount() {
-    if (!this.props.authStatus) {
-      this.props.history.push("/login");
-    }
+    // TODO: UNCOMMENT
+    // if (!this.props.authStatus) {
+    //   this.props.history.push("/login");
+    // }
   }
 
   handleToggleModal() {
@@ -225,9 +228,7 @@ class DashBoardContainerPage extends React.Component {
       mobile,
       submit,
       submitting,
-      profileComplete,
-      isInternal,
-      imgPublicId
+      payment
     } = this.props;
     const {
       showHelpModal,
@@ -237,13 +238,11 @@ class DashBoardContainerPage extends React.Component {
       shouldRender,
       cryptoCard
     } = this.state;
-
     const gridName = mobile ? classes.mobileDash : classes.dash;
     const rootName = mobile ? classes.mobileRoot : classes.root;
     const containerJusifyStyle = {
       justifyContent: shouldRender ? "space-between" : "center"
     };
-
     if (!componentIsSet) {
       this.setComponent();
       return <Loading />;
@@ -277,7 +276,14 @@ class DashBoardContainerPage extends React.Component {
           </div>
         </div>
         <div>
-          <PayPalButton />
+          <div
+            style={{
+              margin: "0 auto",
+              width: "30%"
+            }}
+          >
+            <PayPalButton />
+          </div>
         </div>
         <div className={rootName}>
           <Grid

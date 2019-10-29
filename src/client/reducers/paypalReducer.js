@@ -6,6 +6,8 @@ export default function(
 ) {
   switch (action.type) {
     case UPDATE_PAYPAL_SUCCESS:
+      // const { st } = action;
+
       console.log("action in UPDATE_PAYPAL_SUCCESS", action);
       const payPalSuccessUserState = Object.assign({}, state);
       payPalSuccessUserState.attempted = true;

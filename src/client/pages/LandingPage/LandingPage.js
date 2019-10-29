@@ -68,14 +68,14 @@ const styles = () => {
       margin: "2rem"
     },
     introLink: {
-      color: "#303290",
+      color: "#2D3190",
       "&:hover": {
         color: "#049347"
       },
       textDecoration: "none"
     },
     adeText: {
-      color: "#303290 !important"
+      color: "#2D3190 !important"
     },
     container: {
       display: "flex",

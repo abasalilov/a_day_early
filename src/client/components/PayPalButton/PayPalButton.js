@@ -17,13 +17,13 @@ const styles = {
     textAlign: "center"
   },
   label: {
-    color: "#2C4F4D",
+    color: "#019246",
     fontSize: "1.5rem",
     margin: "1.5rem"
   },
   mobileLabel: {
     fontSize: "5rem",
-    color: "#2C4F4D",
+    color: "#019246",
     margin: "4rem"
   },
   loginField: {
@@ -63,12 +63,12 @@ const styles = {
   },
   link: {
     margin: "1rem auto",
-    color: "#2C4F4D",
+    color: "#019246",
     fontSize: "1.5rem"
   },
   mobileLink: {
     fontSize: "3rem",
-    color: "#2C4F4D",
+    color: "#019246",
     whiteSpace: "pre",
     marginTop: "3rem"
   },
@@ -98,7 +98,7 @@ const styles = {
   },
   regLink: {
     textDecoration: "none",
-    color: "#303290"
+    color: "#2D3190"
   },
   mobileLoginForm: {},
   loginForm: {},
@@ -122,10 +122,32 @@ class PayPal extends React.Component {
   componentDidMount() {}
 
   render() {
-    console.log("props", this.props);
+    console.log("loanData", this.props);
+    const { loanData } = this.props;
+    // if (loanData.canCalculate === false) {
+    //   return (
+    //     <div
+    //       style={{
+    //         display: "flex",
+    //         flexDirection: "row",
+    //         justifyContent: "space-around",
+    //         alignItems: "center"
+    //       }}
+    //     >
+    //       <h3 style={{ color: "red" }}>
+    //         If you'd like to make a payment please fill out the required fields
+    //         below in order. Then click "Update"
+    //       </h3>
+    //       <button onClick={() => this.props.makePaymentSuccess({})}>
+    //         Update
+    //       </button>
+    //     </div>
+    //   );
+    // }
     const onSuccess = payment => {
       // Congratulation, it came here means everything's fine!
       console.log("The payment has succeeded!", payment);
+      this.props.makePaymentSuccess(payment);
       // You can bind the "payment" object's value to your state or props or whatever here, please see below for sample returned data
     };
 
@@ -138,6 +160,7 @@ class PayPal extends React.Component {
     const onError = err => {
       // The main Paypal's script cannot be loaded or somethings block the loading of that script!
       console.log("Error!", err);
+      this.props.makePaymentFailure(payment);
       // Because the Paypal's main script is loaded asynchronously from "https://www.paypalobjects.com/api/checkout.js"
       // => sometimes it may take about 0.5 second for everything to get set, or for the button to appear
     };
@@ -170,15 +193,19 @@ class PayPal extends React.Component {
 const mapStateToProps = state => {
   return {
     auth: state.auth,
-    newUserRegistered: state.users.registered,
     mobile: state.mobile,
-    paypal: state.paypal
+    paypal: state.paypal,
+    loanData: state.input,
+    stuff: state.paypal
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    makePaymentSuccess: dt => dispatch(createPayPalSuccessActionCreator(dt)),
+    makePaymentSuccess: dt => {
+      console.log("dt", dt);
+      return dispatch(createPayPalSuccessActionCreator(dt));
+    },
     makePaymentFailure: dt => dispatch(createPayPalFailureActionCreator(dt))
   };
 };

@@ -149,6 +149,15 @@ export const updateInfoForm = st => ({
   st
 });
 
+export const UPDATE_PAYPAL_AMOUNT = "UPDATE_PAYPAL_AMOUNT";
+
+// TODO: REMOVE BOOL? NO NEED AT THIS POINT
+export const updatePayPalAmount = (amt, bool) => ({
+  type: UPDATE_PAYPAL_AMOUNT,
+  amt,
+  bool
+});
+
 export const ROUTE_PROGRAMS = "ROUTE_PROGRAMS";
 
 export const routePrograms = msg => ({
@@ -161,7 +170,7 @@ export const routePrograms = msg => ({
 
 export const UPDATE_PAYPAL_SUCCESS = "UPDATE_PAYPAL_SUCCESS";
 
-export const adePayPalSuccess = dt => ({
+export const adePayPalSuccess = (dt = {}) => ({
   type: UPDATE_PAYPAL_SUCCESS,
   dt
 });

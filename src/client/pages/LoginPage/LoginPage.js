@@ -31,13 +31,13 @@ const styles = {
     textAlign: "center"
   },
   label: {
-    color: "#2C4F4D",
+    color: "#019246",
     fontSize: "1.5rem",
     margin: "1.5rem"
   },
   mobileLabel: {
     fontSize: "5rem",
-    color: "#2C4F4D",
+    color: "#019246",
     margin: "4rem"
   },
   loginField: {
@@ -77,14 +77,18 @@ const styles = {
   },
   link: {
     margin: "1rem auto",
-    color: "#2C4F4D",
+    color: "#019246",
     fontSize: "1.5rem"
+  },
+  underlineLink: {
+    textDecoration: "underline"
   },
   mobileLink: {
     fontSize: "3rem",
-    color: "#2C4F4D",
+    color: "#019246",
     whiteSpace: "pre",
-    marginTop: "3rem"
+    marginTop: "3rem",
+    textDecoration: "underline"
   },
   img: {
     width: "28rem"
@@ -112,7 +116,7 @@ const styles = {
   },
   regLink: {
     textDecoration: "none",
-    color: "#303290"
+    color: "#2D3190"
   },
   mobileLoginForm: {},
   loginForm: {},
@@ -189,7 +193,12 @@ class Login extends React.Component {
     return (
       <span className={linkName}>
         {tagline}
-        <strong onClick={this.handleToggleModal}>Register</strong>
+        <strong
+          className={classes.underlineLink}
+          onClick={this.handleToggleModal}
+        >
+          Register
+        </strong>
         <br />
       </span>
     );

@@ -54,42 +54,40 @@ export default props => {
   }, [payments]);
 
   return (
-    <div>
-      <svg
-        ref={chart}
-        height="75%"
-        width="100%"
-        fill={"#0A8B42"}
-        viewBox={`0 0 ${fullWidth} ${fullHeight}`}
+    <svg
+      ref={chart}
+      height="15%"
+      width="100%"
+      fill={"#0A8B42"}
+      viewBox={`0 0 ${fullWidth} ${fullHeight}`}
+    >
+      <text
+        x="240"
+        y="0"
+        textAnchor="end"
+        style={{ color: "black", fontSize: "10px" }}
       >
+        {lender} Loan PayOff Table
+      </text>
+      <g transform={`translate(${margin.left},${margin.top})`}>
         <text
-          x="240"
-          y="0"
+          transform="rotate(-90)"
+          y="-50"
+          x="-120"
+          style={{ fontSize: "10px" }}
           textAnchor="end"
-          style={{ color: "black", fontSize: "10px" }}
         >
-          {lender} Loan PayOff Table
+          Principal
         </text>
-        <g transform={`translate(${margin.left},${margin.top})`}>
-          <text
-            transform="rotate(-90)"
-            y="-50"
-            x="-120"
-            style={{ fontSize: "10px" }}
-            textAnchor="end"
-          >
-            Principal
-          </text>
-          <g className="axis x" transform={`translate(0, ${height})`} />
+        <g className="axis x" transform={`translate(0, ${height})`} />
 
-          <g className="axis y" />
-          <text x="40" y="320" style={{ fontSize: "10px" }} textAnchor="end">
-            Years
-          </text>
-          <path className="line baseline graph" />
-          <path className="line actual graph" />
-        </g>
-      </svg>
-    </div>
+        <g className="axis y" />
+        <text x="40" y="320" style={{ fontSize: "10px" }} textAnchor="end">
+          Years
+        </text>
+        <path className="line baseline graph" />
+        <path className="line actual graph" />
+      </g>
+    </svg>
   );
 };
