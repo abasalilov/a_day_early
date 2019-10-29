@@ -236,7 +236,6 @@ class DashBoardContainerPage extends React.Component {
     const containerJusifyStyle = {
       justifyContent: shouldRender ? "space-between" : "center"
     };
-    console.log("can you pass down and effect chance?", input);
 
     if (!componentIsSet) {
       this.setComponent();

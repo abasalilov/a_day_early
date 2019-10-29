@@ -123,7 +123,6 @@ class PayPal extends React.Component {
 
   render() {
     const { loanData } = this.props;
-    console.log(loanData.missingFields);
     if (loanData.missingFields.length > 0) {
       return (
         <div
@@ -166,9 +165,8 @@ class PayPal extends React.Component {
 
     let env = "sandbox"; // you can set here to 'production' for production
     let currency = "USD"; // or you can set this value from your props or state
-    let total = 1200; // same as above, this is the total amount (based on currency) to be paid by using Paypal express checkout
+    let total = this.props.loanData.payPalAmount; // same as above, this is the total amount (based on currency) to be paid by using Paypal express checkout
     // Document on Paypal's currency code: https://developer.paypal.com/docs/classic/api/currency_codes/
-
     const client = {
       sandbox:
         "ARRTv82XMWvdSxhe1L7KjDKXcs1NFgCYkH2FoRCvHye0pKi0EiGxNcBJsdNqW_fKJ5HrAwnMEgjjVMWl",

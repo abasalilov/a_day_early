@@ -69,12 +69,14 @@ class CalculatorGraphComponent extends React.Component {
       monthlyOverpayment: null,
       overpayments: [defaultOverpayment],
       accuracy: null,
-      monthlyUpdated: null
+      monthlyUpdated: null,
+      ready: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.setOverpayments = this.setOverpayments.bind(this);
     this.setLender = this.setLender.bind(this);
     this.handleAccuracy = this.handleAccuracy.bind(this);
+    this.handleRedundancy = this.handleRedundancy.bind(this);
   }
 
   componentDidMount() {
@@ -104,19 +106,31 @@ class CalculatorGraphComponent extends React.Component {
       monthlyOverpayment,
       overpayments
     } = this.state;
-    const { monthlyPayment, payments } = calculate(
+    const { monthlyPayment } = calculate(
       +loanAmount,
       +term,
       +interestRate,
       +monthlyOverpayment,
       overpayments
     );
-    const monthly = monthlyPayment + monthlyOverpayment;
-
-    this.setState({ [name]: e.target.value, monthly }, () => {
+    const monthly = +monthlyOverpayment + monthlyPayment;
+    this.setState({ [name]: e, monthly }, () => {
       this.props.updateInputForm(this.state);
       this.props.updatePaypal(monthly, false);
     });
+    // if (name === "interestRate") {
+    //   this.handleRedundancy(interestRate);
+    // }
+  }
+
+  handleRedundancy(r) {
+    // const rr = Number(r);
+    // if (!Number.isNaN(rr) && rr !== null) {
+    //   const a = rr * 0.99;
+    //   this.handleChange("interestRate", a);
+    //   this.handleChange("interestRate", r);
+    //   // this.setState({ ready: true });
+    // }
   }
 
   render() {
@@ -183,7 +197,9 @@ class CalculatorGraphComponent extends React.Component {
                   <input
                     maxLength={7}
                     value={loanAmount}
-                    onChange={e => this.handleChange("loanAmount", e)}
+                    onChange={e =>
+                      this.handleChange("loanAmount", e.target.value)
+                    }
                     style={{
                       color: "#3f51b5",
                       textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
@@ -202,7 +218,7 @@ class CalculatorGraphComponent extends React.Component {
                     type="number"
                     maxLength={2}
                     value={term}
-                    onChange={e => this.handleChange("term", e)}
+                    onChange={e => this.handleChange("term", e.target.value)}
                     style={{
                       color: "#3f51b5",
                       textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
@@ -222,7 +238,9 @@ class CalculatorGraphComponent extends React.Component {
                     type="number"
                     step={0.1}
                     value={interestRate}
-                    onChange={e => this.handleChange("interestRate", e)}
+                    onChange={e =>
+                      this.handleChange("interestRate", e.target.value)
+                    }
                     style={{
                       color: "#3f51b5",
                       textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",

@@ -127,9 +127,6 @@ export default function input(state = defaultState, action) {
 
     case UPDATE_PAYPAL_AMOUNT:
       const payPalAmountState = Object.assign({}, state);
-      const { amt } = action;
-
-      payPalAmountState.payPalAmount = amt;
 
       return payPalAmountState;
     case UPDATE_AMORT_GRAPH:

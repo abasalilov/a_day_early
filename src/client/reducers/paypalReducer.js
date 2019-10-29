@@ -8,7 +8,6 @@ export default function(
     case UPDATE_PAYPAL_SUCCESS:
       // const { st } = action;
 
-      console.log("action in UPDATE_PAYPAL_SUCCESS", action);
       const payPalSuccessUserState = Object.assign({}, state);
       payPalSuccessUserState.attempted = true;
       payPalSuccessUserState.result = true;
