@@ -9,6 +9,8 @@ export const updateActiveUser = username => async (dispatch, getState, api) => {
 // note might need to regress to   const res = await api.get("/ade-login");
 // style
 export const ADE_LOGIN_SUBMIT = "ade_login_submit";
+export const ADE_LOGIN_MORTGAGE = "ADE_LOGIN_MORTGAGE";
+
 export const adeLoginSubmit = (username, pw) => async (
   dispatch,
   getState,
@@ -24,6 +26,11 @@ export const adeLoginSubmit = (username, pw) => async (
     payload: res
   });
 
+  dispatch({
+    type: ADE_LOGIN_MORTGAGE,
+    payload: res
+  });
+
   if (res.data === "Logged In") {
     dispatch({
       type: UPDATE_ACTIVE_USER,
@@ -33,7 +40,14 @@ export const adeLoginSubmit = (username, pw) => async (
 };
 
 export const REGISTER_USER = "register_user";
-export const registerUser = data => async (dispatch, getState, api) => {
+export const registerUser = info => async (dispatch, getState, api) => {
+  const data = Object.assign({}, info);
+  data.mortgage = {
+    initialAmt: Number(info.loanAmount),
+    termYears: Number(info.term),
+    interestRate: Number(info.interestRate),
+    monthlyPayment: 0
+  };
   const res = await api.post("http://localhost:5000/ade-register-user", {
     data
   });

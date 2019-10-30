@@ -259,6 +259,29 @@ const RegistrationModalComponent = props => {
                   warn={alphaNumeric}
                 />
                 <Field
+                  name="loanAmount"
+                  label={"Loan Amount (USD$)"}
+                  type="number"
+                  component={renderTextField}
+                  mobile={false}
+                  max="20"
+                />
+                <Field
+                  name="interestRate"
+                  component={renderTextField}
+                  label={"Interest Rate (%)"}
+                  type="number"
+                  mobile={false}
+                  max="6"
+                />
+                <Field
+                  name="term"
+                  component={renderTextField}
+                  label={"Loan Term (Years)"}
+                  type="number"
+                  max="3"
+                />
+                <Field
                   type="password"
                   label="Enter a Password"
                   name="registerPassword"
@@ -282,7 +305,7 @@ const RegistrationModalComponent = props => {
                   validate={[required, minLength6]}
                   warn={alphaNumeric}
                 />
-                <BasicCalculatorForm />
+
                 <div className={classes.buttons}>
                   <StyledButton
                     type="submit"

@@ -11,7 +11,6 @@ import { Image, HelpButton } from "../../components/common";
 import { FooterSection } from "../../components/Sections/SubSections/FooterSection";
 import { ConnectedCalculatorPage } from "../CalculatorPage/CalculatorPage";
 import { PayPalButton } from "../../components/PayPalButton";
-import Typography from "@material-ui/core/Typography";
 
 const styles = {
   dash: {
@@ -222,15 +221,8 @@ class DashBoardContainerPage extends React.Component {
   }
 
   render() {
-    const { classes, mobile, submit, submitting, payment, input } = this.props;
-    const {
-      showHelpModal,
-      componentIsSet,
-      socialMedia,
-      selectionMade,
-      shouldRender,
-      cryptoCard
-    } = this.state;
+    const { classes, mobile, payment, input } = this.props;
+    const { showHelpModal, componentIsSet, shouldRender } = this.state;
     const gridName = mobile ? classes.mobileDash : classes.dash;
     const rootName = mobile ? classes.mobileRoot : classes.root;
     const containerJusifyStyle = {
@@ -251,9 +243,7 @@ class DashBoardContainerPage extends React.Component {
         />
       );
     }
-    const dashSectionName = mobile
-      ? classes.mobileDashSection
-      : classes.dashSection;
+
     return (
       <div className={classes.parent}>
         {this.renderTopRow()}
@@ -286,7 +276,7 @@ class DashBoardContainerPage extends React.Component {
             direction={mobile ? "column" : "row"}
             className={gridName}
           >
-            <ConnectedCalculatorPage />
+            <ConnectedCalculatorPage savedMortage={input} />
           </Grid>
         </div>
         <FooterSection mobile={mobile} />

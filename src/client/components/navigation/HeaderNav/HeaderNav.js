@@ -126,7 +126,7 @@ const NavButton = props => {
         to="/"
         style={style}
         onClick={onClick}
-        title={"Logout"}
+        title={"LOGOUT"}
         mobile={mobile ? 1 : 0}
       />
     );

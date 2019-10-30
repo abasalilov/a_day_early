@@ -5,7 +5,8 @@ import {
   UPDATE_AMORT_GRAPH,
   UPDATE_INFO_FORM,
   ROUTE_PROGRAMS,
-  UPDATE_PAYPAL_AMOUNT
+  UPDATE_PAYPAL_AMOUNT,
+  ADE_LOGIN_MORTGAGE
 } from "../actions";
 import { amortizationSchedule } from "amortization";
 import update from "react-addons-update";
@@ -40,7 +41,8 @@ export const defaultState = {
   missingFields: [""],
   program: null,
   programMessage: [],
-  payPalAmount: 0
+  payPalAmount: 0,
+  mortgageLogin: {}
 };
 
 export const resetState = {
@@ -59,7 +61,8 @@ export const resetState = {
   missingFields: [""],
   program: null,
   programMessage: [],
-  payPalAmount: 0
+  payPalAmount: 0,
+  mortgageLogin: {}
 };
 
 function checkForMissingFields(fields) {
@@ -115,6 +118,17 @@ export default function input(state = defaultState, action) {
           $set: amortization
         }
       });
+
+    case ADE_LOGIN_MORTGAGE:
+      const mortgageLoginState = Object.assign({}, state);
+      const data = action.payload.data.mortgage;
+      console.log("data", data);
+      mortgageLoginState.mortgageLogin = data;
+      mortgageLoginState.currentLoanAmount = data.initialAmt;
+      mortgageLoginState.interestRate = data.interestRate;
+      mortgageLoginState.loanAmount = data.initialAmt;
+      mortgageLoginState.term = data.termYears;
+      return mortgageLoginState;
     case RESET_AMORTIZATION:
       return resetState;
 

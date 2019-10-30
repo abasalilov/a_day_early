@@ -86,6 +86,15 @@ class CalculatorGraphComponent extends React.Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if(prevProps.interestRate !== this.props.interestRate){
+      const { loanAmount, interestRate, term } = this.props;
+      if (!isEmpty(loanAmount) && !isEmpty(interestRate)) {
+        this.setState({ loanAmount, interestRate, term });
+      }
+    }
+  }
+
   setLender(e) {
     this.setState({ lender: e });
   }
@@ -113,6 +122,7 @@ class CalculatorGraphComponent extends React.Component {
       +monthlyOverpayment,
       overpayments
     );
+
     const monthly = +monthlyOverpayment + monthlyPayment;
     this.setState({ [name]: e, monthly }, () => {
       this.props.updateInputForm(this.state);
@@ -134,7 +144,7 @@ class CalculatorGraphComponent extends React.Component {
   }
 
   render() {
-    const { showMessages = false } = this.props;
+    const { rdxLoanAmount } = this.props;
     const {
       loanAmount,
       term,
@@ -168,6 +178,7 @@ class CalculatorGraphComponent extends React.Component {
 
     const lenderDisplayName = isEmpty(lender) ? otherLender : lender;
     const showQuestion = isEmpty(accuracy);
+
     return (
       <div className="container-fluid">
         <div className="col-md-8 col-sm-12">
@@ -660,11 +671,6 @@ class CalculatorGraphComponent extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  mobile: state.mobile,
-  input: state.input
-});
-
 const mapDispatchToProps = dispatch => {
   return {
     updatePaypal: (amt, bool) => {
@@ -677,6 +683,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export const CalculatorGraph = connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(withStyles(styles)(CalculatorGraphComponent));
