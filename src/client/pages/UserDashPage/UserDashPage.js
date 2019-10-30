@@ -41,7 +41,7 @@ const styles = {
     justifyContent: "center"
   },
   img: {
-    width: "10rem"
+    width: "12rem"
   },
   mobileImg: {
     marginBottom: "1rem",
@@ -190,33 +190,54 @@ class DashBoardContainerPage extends React.Component {
   }
 
   renderTopRow() {
-    const { classes, mobile, username } = this.props;
+    const { classes, mobile, username, input } = this.props;
+    const gridName = mobile ? classes.mobileDash : classes.dash;
+    const rootName = mobile ? classes.mobileRoot : classes.root;
     const { selectedOptions } = this.state;
     const minWidth = mobile ? "100%" : "22rem";
     const containerClass = mobile ? classes.mobilePic : classes.picContainer;
     const imgClass = mobile ? classes.mobileImg : classes.img;
 
     return (
-      <div className={classes.topRow}>
-        <Grid item xs={12}>
-          <div className={classes.topRowContents}>
-            <Image
-              showSpinner={false}
-              containerClassName={containerClass}
-              imgClassName={imgClass}
-              src={
-                "https://res.cloudinary.com/dbfv0bfmw/image/upload/v1570753007/heroImg.png"
-              }
-            />
-
-            {this.state.selectionMade && (
-              <Button className={classes.dashHeader} onClick={this.handleReset}>
-                Back to Main Menu
-              </Button>
-            )}
+      <React.Fragment>
+        <Grid
+          item
+          xs={4}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+        >
+          <h5>{`User Dashboard for: ${this.props.username}`}</h5>
+          <Image
+            showSpinner={false}
+            containerClassName={containerClass}
+            imgClassName={imgClass}
+            src={
+              "https://res.cloudinary.com/dbfv0bfmw/image/upload/v1570753007/heroImg.png"
+            }
+          />
+        </Grid>
+        <Grid
+          item
+          xs={4}
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "flex-start"
+          }}
+        >
+          <div style={{ margin: "1rem" }}>
+            <PayPalButton />
+          </div>
+          <div style={{ margin: "1rem" }}>
+            <HelpButton onClick={this.handleToggleModal} />
           </div>
         </Grid>
-      </div>
+      </React.Fragment>
     );
   }
 
@@ -225,9 +246,6 @@ class DashBoardContainerPage extends React.Component {
     const { showHelpModal, componentIsSet, shouldRender } = this.state;
     const gridName = mobile ? classes.mobileDash : classes.dash;
     const rootName = mobile ? classes.mobileRoot : classes.root;
-    const containerJusifyStyle = {
-      justifyContent: shouldRender ? "space-between" : "center"
-    };
 
     if (!componentIsSet) {
       this.setComponent();
@@ -246,36 +264,14 @@ class DashBoardContainerPage extends React.Component {
 
     return (
       <div className={classes.parent}>
-        {this.renderTopRow()}
         <div className={rootName}>
           <Grid
             container
+            justify="space-between"
             direction={mobile ? "column" : "row"}
             className={gridName}
           >
-            <Grid item>{`User Dashboard for ${this.props.username}`}</Grid>
-          </Grid>
-          <div style={{ margin: "1rem" }}>
-            <HelpButton onClick={this.handleToggleModal} />
-          </div>
-        </div>
-        <div>
-          <div
-            style={{
-              margin: "0 auto",
-              width: "30%"
-            }}
-          >
-            <PayPalButton />
-          </div>
-        </div>
-        <div className={rootName}>
-          <Grid
-            container
-            justify="center"
-            direction={mobile ? "column" : "row"}
-            className={gridName}
-          >
+            {this.renderTopRow()}
             <ConnectedCalculatorPage savedMortage={input} />
           </Grid>
         </div>

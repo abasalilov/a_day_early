@@ -24,6 +24,7 @@ export default function(
       return resetAuthState;
     case ADE_LOGIN_SUBMIT:
       const loginState = Object.assign({}, state);
+      console.log("action", action);
       if (action.payload.statusText) {
         loginState.attempted = true;
         loginState.result = action.payload.statusText;

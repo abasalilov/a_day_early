@@ -87,7 +87,7 @@ class CalculatorGraphComponent extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(prevProps.interestRate !== this.props.interestRate){
+    if (prevProps.interestRate !== this.props.interestRate) {
       const { loanAmount, interestRate, term } = this.props;
       if (!isEmpty(loanAmount) && !isEmpty(interestRate)) {
         this.setState({ loanAmount, interestRate, term });
@@ -144,7 +144,6 @@ class CalculatorGraphComponent extends React.Component {
   }
 
   render() {
-    const { rdxLoanAmount } = this.props;
     const {
       loanAmount,
       term,
@@ -153,8 +152,17 @@ class CalculatorGraphComponent extends React.Component {
       monthlyOverpayment,
       overpayments,
       otherLender,
-      accuracy
+      accuracy,
+      history
     } = this.state;
+    let checkHx = this.props.history;
+    let alterSize = false;
+    if (checkHx) {
+      console.log("hisotry", checkHx.location.pathname);
+      if (checkHx.location.pathname.includes("calculator")) {
+        alterSize = true;
+      }
+    }
     const msg =
       "Your interest rate is above today's going rate, would you like to get some information and options from a lender? Here's how much you can save:";
     let showInterestRateMessage = Number(interestRate) > 4.5;
@@ -180,8 +188,8 @@ class CalculatorGraphComponent extends React.Component {
     const showQuestion = isEmpty(accuracy);
 
     return (
-      <div className="container-fluid">
-        <div className="col-md-8 col-sm-12">
+      <div>
+        <div>
           <div className="col-sm-4">
             <div>
               <Typography
@@ -654,14 +662,18 @@ class CalculatorGraphComponent extends React.Component {
                 item
                 xs={12}
                 style={{
-                  minHeight: "40rem",
-                  minWidth: "40rem"
+                  minHeight: "45rem",
+                  minWidth: "45rem"
                 }}
               >
                 <Typography variant="h5" style={labelStyle} align="left">
                   Graph
                 </Typography>
-                <Chart payments={payments} lenderName={lenderDisplayName} />
+                <Chart
+                  payments={payments}
+                  alterSize={alterSize}
+                  lenderName={lenderDisplayName}
+                />
               </Grid>
             </Grid>
           )}

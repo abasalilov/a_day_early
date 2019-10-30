@@ -116,13 +116,38 @@ const styles = {
 class PayPal extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      show: false
+    };
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {}
 
+  handleClick() {
+    this.setState({ show: true });
+  }
+
   render() {
     const { loanData } = this.props;
+    const { show } = this.state;
+    if (!show) {
+      return (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-around",
+            alignItems: "center"
+          }}
+        >
+          <button onClick={this.handleClick}>
+            <h3>Click Here to make a payment</h3>
+          </button>
+        </div>
+      );
+    }
+    console.log("loadData.missing", loanData.missingFields);
     if (loanData.missingFields.length > 0) {
       return (
         <div

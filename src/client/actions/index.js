@@ -31,7 +31,7 @@ export const adeLoginSubmit = (username, pw) => async (
     payload: res
   });
 
-  if (res.data === "Logged In") {
+  if (res.data.msg === "Logged In") {
     dispatch({
       type: UPDATE_ACTIVE_USER,
       payload: username

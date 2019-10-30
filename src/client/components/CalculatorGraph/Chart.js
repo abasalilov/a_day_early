@@ -27,10 +27,22 @@ const baseline = line()
   .y(d => y(d.baseline));
 
 export default props => {
-  const { payments, lenderName } = props;
+  const { payments, lenderName, alterSize } = props;
   const chart = useRef(null);
   const lender = isEmpty(lenderName) ? "" : lenderName;
+  console.log("alterSize in chart", alterSize);
 
+  const regSize = {
+    height: "15%",
+    width: "100%"
+  };
+
+  const biggerSize = {
+    height: "65%",
+    width: "100%"
+  };
+
+  const s = alterSize ? biggerSize : regSize;
   useEffect(() => {
     const chartEl = select(chart.current);
     x.domain([0, payments.length - 1]);
@@ -56,7 +68,7 @@ export default props => {
   return (
     <svg
       ref={chart}
-      height="15%"
+      height={s.height}
       width="100%"
       fill={"#0A8B42"}
       viewBox={`0 0 ${fullWidth} ${fullHeight}`}
