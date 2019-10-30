@@ -32,7 +32,6 @@ class CalculatorPageComponent extends React.Component {
     const { classes, input, history } = this.props;
     let showMessages = input.programMessage.length > 0;
     let program = input.program;
-    console.log("input", input);
     if (program === null) {
       return (
         <div className={classes.container}>

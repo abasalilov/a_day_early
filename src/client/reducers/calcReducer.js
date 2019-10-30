@@ -122,7 +122,6 @@ export default function input(state = defaultState, action) {
     case ADE_LOGIN_MORTGAGE:
       const mortgageLoginState = Object.assign({}, state);
       const data = action.payload.data.mortgage;
-      console.log("data", data);
       mortgageLoginState.mortgageLogin = data;
       mortgageLoginState.currentLoanAmount = data.initialAmt;
       mortgageLoginState.interestRate = data.interestRate;
