@@ -14,7 +14,11 @@ const validate = values => {
 const generateFirstDate = () => {
   var date = new Date();
   var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-  return firstDay;
+  var text = new Date(firstDay.getTime() - firstDay.getTimezoneOffset() * 60000)
+    .toISOString()
+    .split("T")[0];
+
+  return text;
 };
 
 const renderTextField = ({
@@ -23,11 +27,12 @@ const renderTextField = ({
   meta: { touched, invalid, error },
   type,
   labelShrink,
+  dateTouched,
   labelFontSize,
   ...custom
 }) => {
   if (type === "date") {
-    console.log("type", type);
+    let updatedDate = dateTouched ? input.value : generateFirstDate();
     return (
       <TextField
         error={touched && invalid}
@@ -44,12 +49,11 @@ const renderTextField = ({
         margin="normal"
         InputProps={{
           type: "date",
-          defaultValue: "2017-05-24",
           style: {
             marginLeft: ".3rem"
-          }
+          },
+          value: updatedDate
         }}
-        defaultValue={"2017-05-24"}
         InputLabelProps={{
           style: {
             fontSize: labelFontSize ? labelFontSize : "20px",
@@ -61,6 +65,7 @@ const renderTextField = ({
       />
     );
   }
+
   return (
     <TextField
       label={label}
@@ -104,7 +109,8 @@ class InputFormComponent extends React.Component {
       term: null,
       paymentAmount: null,
       currentLoanAmount: null,
-      payOffDate: null
+      payOffDate: null,
+      dateTouched: false
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -117,11 +123,15 @@ class InputFormComponent extends React.Component {
     this.setState({ [name]: e.target.value }, () => {
       this.props.updateInputForm(this.state);
     });
+    if (name === "originationDate") {
+      this.setState({ dateTouched: true });
+    }
   }
   // Current Loan Balance
 
   render() {
     const { anticipated } = this.props;
+    const { dateTouched } = this.state;
     const loanLabel = anticipated
       ? "Anticipated Loan Amount"
       : "Current Loan Amount";
@@ -158,6 +168,7 @@ class InputFormComponent extends React.Component {
             component={renderTextField}
             onChange={e => this.handleChange("originationDate", e)}
             mobile={false}
+            dateTouched={dateTouched}
             labelFontSize={"26px"}
             labelShrink={true}
           />
@@ -179,7 +190,6 @@ class InputFormComponent extends React.Component {
             label={termLabel}
             type="number"
             onChange={e => this.handleChange("term", e)}
-            max="4"
           />
         </div>
         <div>

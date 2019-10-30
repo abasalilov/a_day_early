@@ -216,6 +216,7 @@ class ServiceSectionComponent extends React.Component {
         />
       );
     }
+    console.log("here yo");
     return (
       <React.Fragment>
         <Divider style={{ width: "100%", marginBottom: "2rem" }} id="basics" />
