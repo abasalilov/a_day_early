@@ -192,7 +192,7 @@ export const ProgramCalculatorGraph = props => {
             align="left"
             gutterBottom
           >
-            Loan Origination Information
+            Loan Information
           </Typography>
           <Grid
             container

@@ -11,6 +11,12 @@ const validate = values => {
   return errors;
 };
 
+const generateFirstDate = () => {
+  var date = new Date();
+  var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+  return firstDay;
+};
+
 const renderTextField = ({
   label,
   input,
@@ -19,37 +25,74 @@ const renderTextField = ({
   labelShrink,
   labelFontSize,
   ...custom
-}) => (
-  <TextField
-    label={label}
-    placeholder={label}
-    error={touched && invalid}
-    fullWidth
-    helperText={touched && error}
-    {...input}
-    {...custom}
-    style={{
-      border: "solid #049347 2px",
-      borderRadius: "8px",
-      backgroundColor: "#fff"
-    }}
-    margin="normal"
-    InputProps={{
-      type,
-      style: {
-        marginLeft: ".3rem"
-      }
-    }}
-    InputLabelProps={{
-      style: {
-        fontSize: labelFontSize ? labelFontSize : "20px",
-        color: "#2D3190",
-        marginLeft: ".3rem"
-      },
-      shrink: labelShrink
-    }}
-  />
-);
+}) => {
+  if (type === "date") {
+    console.log("type", type);
+    return (
+      <TextField
+        error={touched && invalid}
+        label={label}
+        fullWidth
+        helperText={touched && error}
+        {...input}
+        {...custom}
+        style={{
+          border: "solid #049347 2px",
+          borderRadius: "8px",
+          backgroundColor: "#fff"
+        }}
+        margin="normal"
+        InputProps={{
+          type: "date",
+          defaultValue: "2017-05-24",
+          style: {
+            marginLeft: ".3rem"
+          }
+        }}
+        defaultValue={"2017-05-24"}
+        InputLabelProps={{
+          style: {
+            fontSize: labelFontSize ? labelFontSize : "20px",
+            color: "#2D3190",
+            marginLeft: ".3rem"
+          },
+          shrink: labelShrink
+        }}
+      />
+    );
+  }
+  return (
+    <TextField
+      label={label}
+      placeholder={label}
+      error={touched && invalid}
+      fullWidth
+      helperText={touched && error}
+      {...input}
+      {...custom}
+      style={{
+        border: "solid #049347 2px",
+        borderRadius: "8px",
+        backgroundColor: "#fff"
+      }}
+      margin="normal"
+      InputProps={{
+        type,
+        style: {
+          marginLeft: ".3rem"
+        }
+      }}
+      InputLabelProps={{
+        style: {
+          fontSize: labelFontSize ? labelFontSize : "20px",
+          color: "#2D3190",
+          marginLeft: ".3rem"
+        },
+        shrink: labelShrink
+      }}
+    />
+  );
+};
 
 class InputFormComponent extends React.Component {
   constructor(props, context) {
@@ -66,7 +109,9 @@ class InputFormComponent extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentDidUpdate() {}
+  componentDidMount() {
+    this.setState({ originationDate: generateFirstDate() });
+  }
 
   handleChange(name, e) {
     this.setState({ [name]: e.target.value }, () => {
@@ -87,20 +132,12 @@ class InputFormComponent extends React.Component {
       ? "Anticipated Interest Rate"
       : "Interest Rate (%)";
     const paymentLabel = anticipated
-      ? "Anticipated Payment Amount ($)"
-      : "Payment Amount ($)";
+      ? "Anticipated Monthly Payment Amount ($)"
+      : "Monthly Payment Amount ($)";
     const termLabel = anticipated
       ? "Loan Term Desired (Years)"
       : "Loan Term (Years)";
-
-    const loanAmountLabel = anticipated
-      ? "Anticipated Loan Amount"
-      : "Current Loan Amount";
-
-    const payOffLabel = anticipated
-      ? "Anticipated Payoff Date"
-      : "Pay Off Date";
-
+    console.log("state", this.state);
     return (
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <div>
@@ -142,7 +179,7 @@ class InputFormComponent extends React.Component {
             label={termLabel}
             type="number"
             onChange={e => this.handleChange("term", e)}
-            max="50"
+            max="4"
           />
         </div>
         <div>
@@ -156,16 +193,16 @@ class InputFormComponent extends React.Component {
           />
         </div>
         <div>
-          <Field
-            name="payOffDate"
-            label={payOffLabel}
-            type="date"
-            component={renderTextField}
-            onChange={e => this.handleChange("payOffDate", e)}
-            mobile={false}
-            labelFontSize={"26px"}
-            labelShrink={true}
-          />
+          {!anticipated && (
+            <Field
+              name="originalLoanAmount"
+              component={renderTextField}
+              label={"Original Loan Amount"}
+              type="number"
+              onChange={e => this.handleChange("paymentAmount", e)}
+              mobile={false}
+            />
+          )}
         </div>
       </MuiPickersUtilsProvider>
     );
@@ -182,7 +219,7 @@ function mapStateToProps(state) {
     input: state.input,
     monthly: state.input.monthlyPayment,
     initialValues: {
-      originationDate: state.input.originationDate,
+      originationDate: generateFirstDate,
       term: state.input.term,
       interestRate: state.input.interestRate,
       loanAmount: state.input.loanAmount

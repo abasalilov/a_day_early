@@ -290,23 +290,6 @@ class ServiceSectionComponent extends React.Component {
               />
             )}
 
-            <Typography
-              variant={mobile ? "display4" : "h6"}
-              align="left"
-              color="textPrimary"
-              style={{
-                width: "100%",
-                color: "#049347",
-                fontWeight: 600,
-                fontFamily: "Raleway-Thin",
-                transform: "scaleY(1.2)",
-                margin: "1rem"
-              }}
-            >
-              Learn how our service can help you pay down your mortgage much
-              earlier
-            </Typography>
-
             {input.canCalculate && (
               <Button
                 onClick={this.handleRedirect}

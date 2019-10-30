@@ -198,7 +198,7 @@ class CalculatorGraphComponent extends React.Component {
                 align="left"
                 gutterBottom
               >
-                Loan Origination Information
+                Loan Information
               </Typography>
             </div>
             <Grid
@@ -377,16 +377,6 @@ class CalculatorGraphComponent extends React.Component {
           />
 
           <div className="col-sm-8">
-            <div>
-              <Typography
-                variant="h4"
-                style={labelStyle}
-                align="left"
-                gutterBottom
-              >
-                Loan Overpayment Information
-              </Typography>
-            </div>
             <div style={{ margin: "2rem 0" }}>
               <Typography variant="h5" style={labelStyle} align="left">
                 Please add any extra principal payments you made so far in the
@@ -620,8 +610,8 @@ class CalculatorGraphComponent extends React.Component {
           {!isEmpty(accuracy) && accuracy === "no" && (
             <div style={fieldStyle}>
               <Typography variant="h6" style={labelHeaderStyle1} align="left">
-                Please edit the 'Loan Origination Information' section at the
-                top of this page. Otherwise please feel free to reach out{" "}
+                Please edit the 'Loan Information' section at the top of this
+                page. Otherwise please feel free to reach out{" "}
                 <a href="contact-us">here</a>.
               </Typography>
             </div>
@@ -630,8 +620,8 @@ class CalculatorGraphComponent extends React.Component {
           {!isEmpty(accuracy) && accuracy === "yes" && (
             <div style={fieldStyle}>
               <Typography variant="h6" style={labelHeaderStyle1} align="left">
-                Great! Adjust the fields in the 'Loan Overpayment Information'
-                section above as needed to simulate early loan pay-off.
+                Great! Adjust the fields in the section above as needed to
+                simulate early loan pay-off.
               </Typography>
             </div>
           )}

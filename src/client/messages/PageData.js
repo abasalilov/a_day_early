@@ -22,13 +22,12 @@ const introContent = {};
 
 const homeIntroContent = {
   newTop:
-    "aDayEarly allows you to keep your money for an extra 30 days and make extra principal payments the day before interest accrues, reducing your interest for the life of your loan.",
+    "Make an extra principal payment aDayEarly than your scheduled payment, before that interest accrues and save 30 days interest, and reduce your interest payments for the life of the loan.",
   top:
     "Save money and cut months or years off your mortgage!  Have an existing mortgage?  Just enter some information below to get started.",
   middle:
     "Try our simulator (hotlink) to see how much you can save using aDayEarly.",
-  bottom:
-    "You set the pace, we accelerate, take a look at our comparisons calculator below"
+  bottom: ""
 };
 
 /* eslint-disable */
