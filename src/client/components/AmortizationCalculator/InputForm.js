@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import TextField from "@material-ui/core/TextField";
 import { updateAmortGraph, updateInfoForm } from "../../actions";
+import { CalendarPicker } from "../common";
+import Typography from "@material-ui/core/Typography";
 
 const validate = values => {
   const errors = {};
@@ -21,6 +23,12 @@ const generateFirstDate = () => {
   return text;
 };
 
+const labelStyle = {
+  color: "#3f51b5",
+  textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
+  padding: "1rem"
+};
+
 const renderTextField = ({
   label,
   input,
@@ -32,37 +40,40 @@ const renderTextField = ({
   ...custom
 }) => {
   if (type === "date") {
+    console.log("anticipated", custom);
+    const { ant } = custom;
+    const originationLabel = ant
+      ? "Expected First Payment Date"
+      : "First Payment Date";
     let updatedDate = dateTouched ? input.value : generateFirstDate();
     return (
-      <TextField
-        error={touched && invalid}
-        label={label}
-        fullWidth
-        helperText={touched && error}
-        {...input}
-        {...custom}
+      <div
         style={{
-          border: "solid #049347 2px",
-          borderRadius: "8px",
-          backgroundColor: "#fff"
+          marginLeft: "-8rem",
+          marginTop: "6rem",
+          border: "solid #049347 3px",
+          borderRadius: ".3rem"
         }}
-        margin="normal"
-        InputProps={{
-          type: "date",
-          style: {
-            marginLeft: ".3rem"
-          },
-          value: updatedDate
-        }}
-        InputLabelProps={{
-          style: {
-            fontSize: labelFontSize ? labelFontSize : "20px",
-            color: "#2D3190",
-            marginLeft: ".3rem"
-          },
-          shrink: labelShrink
-        }}
-      />
+      >
+        <Typography variant="h5" style={labelStyle} align="left">
+          {originationLabel}
+        </Typography>
+        <CalendarPicker
+          InputProps={{
+            style: {
+              marginLeft: ".3rem"
+            },
+            value: updatedDate
+          }}
+          InputLabelProps={{
+            style: {
+              fontSize: labelFontSize ? labelFontSize : "20px",
+              color: "#2D3190"
+            },
+            shrink: labelShrink
+          }}
+        />
+      </div>
     );
   }
 
@@ -162,19 +173,6 @@ class InputFormComponent extends React.Component {
         </div>
         <div>
           <Field
-            name="originationDate"
-            label={originationLabel}
-            type="date"
-            component={renderTextField}
-            onChange={e => this.handleChange("originationDate", e)}
-            mobile={false}
-            dateTouched={dateTouched}
-            labelFontSize={"26px"}
-            labelShrink={true}
-          />
-        </div>
-        <div>
-          <Field
             name="interestRate"
             component={renderTextField}
             label={interestLabel}
@@ -213,6 +211,21 @@ class InputFormComponent extends React.Component {
               mobile={false}
             />
           )}
+        </div>
+        <div>
+          <Field
+            name="originationDate"
+            label={originationLabel}
+            type="date"
+            anticipated={anticipated}
+            component={renderTextField}
+            onChange={e => this.handleChange("originationDate", e)}
+            mobile={false}
+            dateTouched={dateTouched}
+            labelFontSize={"26px"}
+            labelShrink={true}
+            ant={false}
+          />
         </div>
       </MuiPickersUtilsProvider>
     );

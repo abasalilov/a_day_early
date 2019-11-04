@@ -247,7 +247,11 @@ class ServiceSectionComponent extends React.Component {
                   gutterBottom
                   align="center"
                   color="textPrimary"
-                  style={{ width: "100%", color: "#2D3190" }}
+                  style={{
+                    width: "100%",
+                    color: "#2D3190",
+                    marginBottom: "3rem"
+                  }}
                 >
                   Let's Start With The Basics
                 </Typography>
@@ -256,7 +260,11 @@ class ServiceSectionComponent extends React.Component {
                   gutterBottom
                   align="center"
                   color="textPrimary"
-                  style={{ width: "100%", color: "#2D3190" }}
+                  style={{
+                    width: "100%",
+                    color: "#2D3190",
+                    marginBottom: "10rem"
+                  }}
                 >
                   (Please fill out 3 of the following fields)
                 </Typography>
