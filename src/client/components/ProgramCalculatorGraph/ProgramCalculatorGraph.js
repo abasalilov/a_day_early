@@ -6,7 +6,11 @@ import Button from "@material-ui/core/Button";
 
 import { Chart, Table, calculations } from "../CalculatorGraph";
 import { LenderSelect } from "../common";
-import { LeapFrogCalculator } from "../Calculators";
+import {
+  LeapFrogCalculator,
+  EasyStartCalculator,
+  FlexCalculator
+} from "../Calculators";
 
 const defaultOverpayment = { month: "0", year: "0", amount: "0" };
 
@@ -204,6 +208,14 @@ export const ProgramCalculatorGraph = props => {
 
   if (isLF) {
     return <LeapFrogCalculator />;
+  }
+
+  if (isES) {
+    return <EasyStartCalculator />;
+  }
+
+  if (isFlex) {
+    return <FlexCalculator />;
   }
 
   return (
