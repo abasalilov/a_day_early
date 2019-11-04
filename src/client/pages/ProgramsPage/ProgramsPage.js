@@ -50,7 +50,7 @@ class ProgramsPageComponent extends React.Component {
   componentDidMount() {}
 
   handleADayEarly() {
-    this.props.routeToProgram(["ADE", "A Day Early"]);
+    this.props.routeToProgram(["ADE", "One Day Early"]);
     this.props.history.push("/calculator");
   }
 
@@ -71,7 +71,7 @@ class ProgramsPageComponent extends React.Component {
       "Let’s get registered and accelerate (button)",
       "*your campaign(s) can be modified at any time"
     ];
-    this.props.routeToProgram(fp);
+    this.props.routeToProgram(["FLEX", "FlexPay"]);
     this.props.history.push("/calculator");
   }
 
@@ -84,7 +84,7 @@ class ProgramsPageComponent extends React.Component {
       "Let’s get registered and accelerate (button)"
     ];
 
-    this.props.routeToProgram(es);
+    this.props.routeToProgram(["ES", "EasyStart"]);
     this.props.history.push("/calculator");
   }
 
@@ -99,7 +99,7 @@ class ProgramsPageComponent extends React.Component {
       "Let’s get registered and accelerate (button)",
       "*your campaign(s) can be modified at any time"
     ];
-    this.props.routeToProgram(js);
+    this.props.routeToProgram(["JS", "JumpStart"]);
     this.props.history.push("/calculator");
   }
   handleRoundUp() {
@@ -113,7 +113,7 @@ class ProgramsPageComponent extends React.Component {
       "Let’s get registered and accelerate (button)",
       "*your campaign(s) can be modified at any time"
     ];
-    this.props.routeToProgram(ru);
+    this.props.routeToProgram(["RU", "RoundUp"]);
     this.props.history.push("/calculator");
   }
 
@@ -213,7 +213,7 @@ class ProgramsPageComponent extends React.Component {
               >
                 JumpStart: use at origination of your loan, making the first
                 extra principal payment aDayEarly affecting the amortization
-                schedule before it started!
+                schedule before it starts!
               </Typography>
             </div>
           </Grid>

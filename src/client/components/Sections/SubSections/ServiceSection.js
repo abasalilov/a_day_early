@@ -9,7 +9,7 @@ import { ServiceModal } from "../../modals";
 import { CalculatorForm } from "../../CalculatorForm";
 import TrendingFlat from "@material-ui/icons/TrendingFlat";
 import { RegistrationModal } from "../../modals/RegistrationModal";
-import calculate from "../../CalculatorGraph/calculations";
+import { calculate } from "../../CalculatorGraph/calculations";
 import { updateAmortGraph as updateGraph } from "../../../actions";
 import { connect } from "react-redux";
 import { FlyOut } from "../../common";

@@ -15,26 +15,37 @@ const styles = {
   checked: {},
   mobile: {
     fontSize: "1.8rem !important",
-    margin: "1rem !important"
+    margin: "1rem !important",
+    color: "#3F51B5"
   },
-  reg: {}
+  reg: {
+    color: "#3F51B5"
+  }
 };
 
 class CheckboxGroup extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      no: false,
+      yes: false
+    };
+  }
+
+  handleChange(v) {
+    const { handleCheckBoxChange } = this.props;
+    // this.setState({});
+    if (v === "no") {
+      this.setState({ no: true, yes: false });
+    } else {
+      this.setState({ no: false, yes: true });
+    }
+    handleCheckBoxChange(v);
   }
 
   render() {
-    const {
-      classes,
-      blogSelected,
-      imageSelected,
-      textSelected,
-      handleCheckBoxChange,
-      mobile
-    } = this.props;
+    const { classes, mobile } = this.props;
+    const { no, yes } = this.state;
 
     const labelClassName = mobile ? classes.mobile : classes.reg;
     const classesObj = {
@@ -47,38 +58,26 @@ class CheckboxGroup extends React.Component {
         <FormControlLabel
           control={
             <Checkbox
-              checked={blogSelected}
-              onChange={() => handleCheckBoxChange("blogSelected")}
-              value="blogSelected"
+              checked={no}
+              onChange={() => this.handleChange("no")}
+              value="no"
               classes={classesObj}
             />
           }
-          label="Blog, article or listicle"
+          label="No"
           classes={{ label: labelClassName }}
         />
         <FormControlLabel
           control={
             <Checkbox
-              checked={imageSelected}
-              onChange={() => handleCheckBoxChange("imageSelected")}
-              value="imageSelected"
+              checked={yes}
+              onChange={() => this.handleChange("yes")}
+              value="yes"
               classes={classesObj}
             />
           }
           classes={{ label: labelClassName }}
-          label="Picture or graphic"
-        />
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={textSelected}
-              onChange={() => handleCheckBoxChange("textSelected")}
-              value="textSelected"
-              classes={classesObj}
-            />
-          }
-          classes={{ label: labelClassName }}
-          label="Text, subtitle or annoucement"
+          label="Yes"
         />
       </FormGroup>
     );

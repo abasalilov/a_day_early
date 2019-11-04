@@ -10,7 +10,7 @@ import {
 } from "../actions";
 import { amortizationSchedule } from "amortization";
 import update from "react-addons-update";
-import calculate from "../components/CalculatorGraph/calculations";
+import { calculations } from "../components/CalculatorGraph/calculations";
 
 function getFormattedDate() {
   var date = new Date();
@@ -145,7 +145,7 @@ export default function input(state = defaultState, action) {
     case UPDATE_AMORT_GRAPH:
       const { st } = action;
       // TODO: DO YOU NEED THESE?
-      // const { monthlyPayment } = calculate(
+      // const { monthlyPayment } = calculations(
       //   st.loanAmount,
       //   st.term,
       //   st.interestRate
@@ -177,7 +177,7 @@ export default function input(state = defaultState, action) {
       const hasMissingFields = checkForMissingFields(canCalculate);
       const shouldCalculate = canCalculate.length >= 3;
       if (shouldCalculate) {
-        const { monthlyPayment } = calculate(
+        const { monthlyPayment } = calculations(
           +action.st.loanAmount,
           +action.st.term,
           +action.st.interestRate

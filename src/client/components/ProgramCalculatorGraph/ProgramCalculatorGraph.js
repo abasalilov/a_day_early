@@ -4,10 +4,9 @@ import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 
-import Table from "./Table";
-import Chart from "./Chart";
-import calculate from "./calculations";
+import { Chart, Table, calculations } from "../CalculatorGraph";
 import { LenderSelect } from "../common";
+import { LeapFrogCalculator } from "../Calculators";
 
 const defaultOverpayment = { month: "0", year: "0", amount: "0" };
 
@@ -18,7 +17,7 @@ const isLenderNameEmpty = a => typeof a === "undefined" || a === "Other";
 
 const programRef = {
   ADE: {
-    name: "A Day Early",
+    name: "One Day Early",
     description:
       "Make a one time extra principal payment and see the exponential effect of time and money."
   },
@@ -26,6 +25,26 @@ const programRef = {
     name: "RoundUp",
     description:
       "Round your payment up to the nearest $100, $1000 or create your own round up and see the effects!"
+  },
+  JS: {
+    name: "Jump Start",
+    description:
+      "Make your first, extra principal payment via the aDayEarly platform directly affecting the amortization schedule before it starts!"
+  },
+  FLEX: {
+    name: "Flex",
+    description:
+      "Make gains toward your goal with the aDayEarly platform when you are ready and able to pay down your mortgage faster. Bottom line it is flexible and you can schedule as many payments as you want on any month you want."
+  },
+  LF: {
+    name: "LeapFrog",
+    description:
+      "Plan a speedy jump ahead at particular future point in your repayment schedule by applying payments toward your mortgage at an accelerated pace down the line."
+  },
+  ES: {
+    name: "EasyStart",
+    description:
+      "Build stepping stones effortlessly with a steady, monthly approach toward paying down your mortgage ahead of time."
   }
 };
 
@@ -127,16 +146,30 @@ export const ProgramCalculatorGraph = props => {
   let programName = "";
   let isADE = false;
   let isRU = false;
+  let isLF = false;
+  let isFlex = false;
+  let isES = false;
+  let isJS = false;
+  console.log("program", program);
   if (program) {
     programName = programRef[program].name;
     if (program === "ADE") {
       isADE = true;
     }
     if (program === "JS") {
-      isADE = true;
+      isJS = true;
     }
     if (program === "RU") {
       isRU = true;
+    }
+    if (program === "LF") {
+      isLF = true;
+    }
+    if (program === "FLEX") {
+      isFlex = true;
+    }
+    if (program === "ES") {
+      isES = true;
     }
   }
 
@@ -156,7 +189,7 @@ export const ProgramCalculatorGraph = props => {
     );
   };
 
-  const { monthlyPayment, payments } = calculate(
+  const { monthlyPayment, payments } = calculations(
     +initial,
     +years,
     +rate,
@@ -168,6 +201,10 @@ export const ProgramCalculatorGraph = props => {
     ? formatName(otherLender)
     : lender;
   const showQuestion = isEmpty(accuracy);
+
+  if (isLF) {
+    return <LeapFrogCalculator />;
+  }
 
   return (
     <div className="container-fluid">
@@ -535,7 +572,11 @@ export const ProgramCalculatorGraph = props => {
         />
 
         <div className="col-sm-12">
-          <Chart payments={payments} lenderName={lenderDisplayName} />
+          <Chart
+            payments={payments}
+            alterSize={true}
+            lenderName={lenderDisplayName}
+          />
         </div>
       </div>
       <Table className="col-sm-4" payments={payments} />

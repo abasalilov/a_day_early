@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import TrendingFlat from "@material-ui/icons/TrendingFlat";
 import { RegistrationModal, ServiceModal } from "../../components/modals";
-import calculate from "../../components/CalculatorGraph/calculations";
+import { calculate } from "../../components/CalculatorGraph/calculations";
 import { updateAmortGraph as updateGraph } from "../../actions";
 import { CalculatorGraph } from "../../components/CalculatorGraph";
 import { CalculatorForm } from "../../components/CalculatorForm";

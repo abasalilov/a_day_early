@@ -116,6 +116,10 @@ export default (req, store, context) => {
                 #Calculddator > div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-6 > h4 {
                   color: #2D3190
                 }
+
+                #root > div > div > div > div.col-sm-8 > div:nth-child(2) > div > div > div > div.MuiToolbar-root.MuiToolbar-regular.MuiPickersToolbar-toolbar.MuiPickersDatePickerRoot-toolbar.MuiPickersDatePickerRoot-toolbarLandscape.MuiPickersToolbar-toolbarLandscape.MuiToolbar-gutters > button.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-text.MuiPickersToolbarButton-toolbarBtn.MuiPickersDatePickerRoot-dateLandscape > span.MuiButton-label > h4{
+                  border: solid red 1px !important;
+                }
                 .arrow_box-top {
                   position: relative;
                   background: #fff;

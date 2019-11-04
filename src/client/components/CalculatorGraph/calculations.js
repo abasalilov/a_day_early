@@ -1,10 +1,11 @@
-export default function calculatePayments(
+export const calculations = function calculatePayments(
   initial,
   years,
   rate,
   monthlyOverpayment,
   overpayments = []
 ) {
+  console.log("calculations");
   const monthlyRatePct = rate / 1200;
   const monthlyPaymentNumber =
     monthlyRatePct === 0
@@ -54,4 +55,4 @@ export default function calculatePayments(
     .slice(0, numStr + 2);
   const monthlyPayment = Number(monthlyPaymentStr);
   return { monthlyPayment, payments };
-}
+};

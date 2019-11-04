@@ -10,9 +10,9 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 
-import Table from "./Table";
-import Chart from "./Chart";
-import calculate from "./calculations";
+import { Table } from "./Table";
+import { Chart } from "./Chart";
+import { calculate } from "./calculations";
 import { updatePayPalAmount, updateInfoForm } from "../../actions";
 const defaultOverpayment = { month: "0", year: "0", amount: "0" };
 
@@ -80,6 +80,7 @@ class CalculatorGraphComponent extends React.Component {
   }
 
   componentDidMount() {
+    console.log("CalculatorGraphComponent");
     const { loanAmount, interestRate, term } = this.props;
     if (!isEmpty(loanAmount) && !isEmpty(interestRate)) {
       this.setState({ loanAmount, interestRate, term });
@@ -158,7 +159,6 @@ class CalculatorGraphComponent extends React.Component {
     let checkHx = this.props.history;
     let alterSize = false;
     if (checkHx) {
-      console.log("hisotry", checkHx.location.pathname);
       if (checkHx.location.pathname.includes("calculator")) {
         alterSize = true;
       }

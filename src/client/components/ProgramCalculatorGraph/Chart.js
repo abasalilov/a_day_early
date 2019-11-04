@@ -27,6 +27,7 @@ const baseline = line()
   .y(d => y(d.baseline));
 
 export default props => {
+  console.log("Chart");
   const { payments, lenderName } = props;
   const chart = useRef(null);
   const lender = isEmpty(lenderName) ? "" : lenderName;
