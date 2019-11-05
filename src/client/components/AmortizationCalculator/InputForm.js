@@ -12,6 +12,21 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import { withStyles, makeStyles } from "@material-ui/core/styles";
+
+const styles = theme => ({
+  root: {
+    display: "flex",
+    flexWrap: "wrap"
+  },
+  formControl: {
+    width: "100% !important",
+    marginTop: "8px"
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2)
+  }
+});
 
 const selectLabelStyle = {
   color: "#3f51b5",
@@ -46,6 +61,7 @@ const renderTextField = ({
   input,
   meta: { touched, invalid, error },
   type,
+  classes,
   labelShrink,
   dateTouched,
   labelFontSize,
@@ -55,29 +71,40 @@ const renderTextField = ({
   if (nonStandardType && nonStandardType === "term") {
     console.log("nonStandardType");
     return (
-      <React.Fragment>
-        <InputLabel>
-          <Typography variant="h6" style={selectLabelStyle} align="left">
-            Term (yrs)
-          </Typography>
+      <FormControl variant="filled" className={classes.formControl}>
+        <InputLabel
+          style={{
+            fontSize: labelFontSize ? labelFontSize : "20px",
+            color: "#2D3190",
+            paddingTop: ".4rem",
+            marginLeft: "-.3rem"
+          }}
+          shrink={labelShrink}
+        >
+          {label}
         </InputLabel>
         <Select
-          value={input.value}
-          onChange={input.onChange}
-          inputProps={{
-            name: "Term"
-          }}
           style={{
             border: "solid #049347 2px",
             borderRadius: "8px",
             backgroundColor: "#fff"
           }}
+          {...input}
+          value={input.value}
+          onChange={input.onChange}
+          inputProps={{
+            style: {
+              color: "#2D3190",
+              fontSize: "20px",
+              textAlign: "left"
+            }
+          }}
         >
-          {["15", "30"].map(option => {
-            return <MenuItem value={option}>{option}</MenuItem>;
-          })}
+          <option value={10}>10</option>
+          <option value={20}>20</option>
+          <option value={30}>30</option>
         </Select>
-      </React.Fragment>
+      </FormControl>
     );
   }
   if (type === "date") {
@@ -114,6 +141,7 @@ const renderTextField = ({
       helperText={touched && error}
       {...input}
       {...custom}
+      disableUnderline={true}
       style={{
         border: "solid #049347 2px",
         borderRadius: "8px",
@@ -172,7 +200,7 @@ class InputFormComponent extends React.Component {
   // Current Loan Balance
 
   render() {
-    const { anticipated } = this.props;
+    const { anticipated, classes } = this.props;
     const { dateTouched } = this.state;
     const loanLabel = anticipated
       ? "Anticipated Loan Amount"
@@ -219,23 +247,13 @@ class InputFormComponent extends React.Component {
               mobile={false}
             />
           </Grid>
-          <Grid
-            item
-            xs={12}
-            style={{
-              marginBottom: "1rem",
-              display: "flex",
-              flexDirection: "column",
-              padding: "1rem"
-            }}
-          >
+          <Grid item xs={12} style={{ textAlign: "center" }}>
             <Field
               name="term"
-              type="term"
               nonStandardType="term"
+              classes={classes}
               component={renderTextField}
               label={termLabel}
-              type="number"
               onChange={e => this.handleChange("term", e)}
             />
           </Grid>
@@ -313,4 +331,4 @@ const mapDispatchToProps = dispatch => {
 export const InputForm = connect(
   mapStateToProps,
   mapDispatchToProps
-)(calcForm);
+)(withStyles(styles)(calcForm));
