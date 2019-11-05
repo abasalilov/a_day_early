@@ -7,11 +7,11 @@
     "clean": "rimraf build && rimraf public",
     "postclean": "npm-run-all --parallel prod:*",
     "dev": "npm-run-all --parallel dev:*",
-    "dev:server": "nodemon --watch build --exec \"node build/bundle.js\"",
     "build": "NODE_ENV=production npm run clean",
     "prod:build-server": "webpack --config webpack.server.js ",
     "prod:build-client": "webpack --config webpack.client.js ",
     "dev:build-client": "webpack --config webpack.client.js --watch",
+    "dev:server": "nodemon --watch build --exec \"node build/bundle.js\"",
     "postbuild": "node build/bundle.js"
   },
   "author": "",

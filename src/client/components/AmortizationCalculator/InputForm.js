@@ -6,8 +6,17 @@ import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import TextField from "@material-ui/core/TextField";
 import { updateAmortGraph, updateInfoForm } from "../../actions";
 import { CalendarPicker } from "../common";
+import InputLabel from "@material-ui/core/InputLabel";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+
+const selectLabelStyle = {
+  color: "#3f51b5",
+  textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)"
+};
 
 const validate = values => {
   const errors = {};
@@ -42,6 +51,35 @@ const renderTextField = ({
   labelFontSize,
   ...custom
 }) => {
+  const { nonStandardType } = custom;
+  if (nonStandardType && nonStandardType === "term") {
+    console.log("nonStandardType");
+    return (
+      <React.Fragment>
+        <InputLabel>
+          <Typography variant="h6" style={selectLabelStyle} align="left">
+            Term (yrs)
+          </Typography>
+        </InputLabel>
+        <Select
+          value={input.value}
+          onChange={input.onChange}
+          inputProps={{
+            name: "Term"
+          }}
+          style={{
+            border: "solid #049347 2px",
+            borderRadius: "8px",
+            backgroundColor: "#fff"
+          }}
+        >
+          {["15", "30"].map(option => {
+            return <MenuItem value={option}>{option}</MenuItem>;
+          })}
+        </Select>
+      </React.Fragment>
+    );
+  }
   if (type === "date") {
     const { ant } = custom;
     const originationLabel = ant
@@ -181,9 +219,20 @@ class InputFormComponent extends React.Component {
               mobile={false}
             />
           </Grid>
-          <Grid item xs={12}>
+          <Grid
+            item
+            xs={12}
+            style={{
+              marginBottom: "1rem",
+              display: "flex",
+              flexDirection: "column",
+              padding: "1rem"
+            }}
+          >
             <Field
               name="term"
+              type="term"
+              nonStandardType="term"
               component={renderTextField}
               label={termLabel}
               type="number"
