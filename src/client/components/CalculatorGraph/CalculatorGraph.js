@@ -383,7 +383,7 @@ class CalculatorGraphComponent extends React.Component {
               </Typography>
               <div style={fieldStyle}>
                 <Typography variant="h6" style={labelStyle} align="left">
-                  Monthly
+                  Prior Monthly Overpayments
                 </Typography>
                 <div
                   style={{
@@ -443,7 +443,7 @@ class CalculatorGraphComponent extends React.Component {
               </Grid>
               <Grid item xs={3}>
                 <Typography variant="h6" style={labelHeaderStyle1} align="left">
-                  Amount
+                  Payment Amount
                 </Typography>
               </Grid>
             </Grid>
@@ -611,7 +611,7 @@ class CalculatorGraphComponent extends React.Component {
               <Typography variant="h6" style={labelHeaderStyle1} align="left">
                 Please edit the 'Loan Information' section at the top of this
                 page. Otherwise please feel free to reach out{" "}
-                <a href="contact-us">here</a>.
+                <a href="/contact-us">here</a>.
               </Typography>
             </div>
           )}
