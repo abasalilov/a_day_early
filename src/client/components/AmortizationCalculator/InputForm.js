@@ -69,7 +69,6 @@ const renderTextField = ({
 }) => {
   const { nonStandardType } = custom;
   if (nonStandardType && nonStandardType === "term") {
-    console.log("nonStandardType");
     return (
       <FormControl variant="filled" className={classes.formControl}>
         <InputLabel
@@ -96,8 +95,10 @@ const renderTextField = ({
             style: {
               color: "#2D3190",
               fontSize: "20px",
-              textAlign: "left"
-            }
+              textAlign: "left",
+              textDecoration: "none"
+            },
+            disableUnderline: true
           }}
         >
           <option value={30}>30</option>
@@ -138,9 +139,9 @@ const renderTextField = ({
       error={touched && invalid}
       fullWidth
       helperText={touched && error}
+      disableUnderline={true}
       {...input}
       {...custom}
-      disableUnderline={true}
       style={{
         border: "solid #049347 2px",
         borderRadius: "8px",
@@ -150,8 +151,10 @@ const renderTextField = ({
       InputProps={{
         type,
         style: {
-          marginLeft: ".3rem"
-        }
+          marginLeft: ".3rem",
+          textDecoration: "none"
+        },
+        disableUnderline: true
       }}
       InputLabelProps={{
         style: {
