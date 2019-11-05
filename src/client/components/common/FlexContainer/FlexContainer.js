@@ -7,7 +7,7 @@ export const FlexContainer = props => {
   return (
     <Grid
       container
-      spacing={mobile ? 8 : 16}
+      spacing={mobile ? 4 : 8}
       justify="center"
       alignItems="center"
       direction={dir}

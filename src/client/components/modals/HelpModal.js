@@ -151,7 +151,7 @@ class HelpModalComponent extends React.Component {
           <div className={classes.modalRoot}>
             <Grid
               container
-              spacing={mobile ? 8 : 24}
+              spacing={mobile ? 8 : 10}
               direction="column"
               alignItems="center"
               justify="center"

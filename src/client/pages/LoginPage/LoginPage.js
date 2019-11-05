@@ -244,7 +244,7 @@ class Login extends React.Component {
         {newUserRegistered ? this.renderWelcome() : ""}
         <Grid
           container
-          spacing={mobile ? 8 : 24}
+          spacing={mobile ? 8 : 10}
           justify="space-between"
           alignItems="center"
           direction={"column"}

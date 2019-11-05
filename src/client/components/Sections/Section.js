@@ -71,7 +71,7 @@ const SectionComponent = props => {
         ) : null}
         {/* End hero unit */}
         {displayType === INTRO ? (
-          <Grid container spacing={mobile ? 40 : 24} alignItems="flex-end">
+          <Grid container spacing={mobile ? 10 : 5} alignItems="flex-end">
             <IntroSection
               mobile={mobile}
               history={history}
@@ -81,7 +81,7 @@ const SectionComponent = props => {
           </Grid>
         ) : null}
         {displayType === NOLOGO ? (
-          <Grid container spacing={mobile ? 40 : 24} alignItems="flex-end">
+          <Grid container spacing={mobile ? 10 : 5} alignItems="flex-end">
             <IntroSection
               mobile={mobile}
               history={history}
@@ -91,7 +91,7 @@ const SectionComponent = props => {
           </Grid>
         ) : null}
         {displayType === CALCULATOR ? (
-          <Grid container spacing={mobile ? 40 : 24} alignItems="flex-end">
+          <Grid container spacing={mobile ? 10 : 5} alignItems="flex-end">
             <ServiceSection
               mobile={mobile}
               sectionProps={sectionProps}
@@ -103,7 +103,7 @@ const SectionComponent = props => {
 
       {displayType === CONTACT_US ? (
         <section className={classes.layout}>
-          <Grid container spacing={mobile ? 40 : 24} alignItems="flex-end">
+          <Grid container spacing={mobile ? 10 : 5} alignItems="flex-end">
             <ContactUsSection mobile={mobile} />
           </Grid>
         </section>

@@ -20,9 +20,10 @@ class CalculatorPageComponent extends React.Component {
   componentDidMount() {
     // const intRt = Number(this.props.input.interestRate || 2);
     // TODO: UNCOMMENT DURING DEPLOYMENT
+    console.log("this", this.props.history);
     let redirect = !this.props.input.canCalculate;
     if (redirect) {
-      this.props.history.push("/home#basics");
+      this.props.history.push("/home#basics", { navBack: true });
     }
   }
 

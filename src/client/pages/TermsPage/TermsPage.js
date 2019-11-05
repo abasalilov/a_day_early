@@ -28,10 +28,10 @@ const TermsPageComponent = props => {
           <strong>Privacy</strong>
         </a>
       </div>
-      <Grid container spacing={40} alignItems="flex-end">
+      <Grid container spacing={10} alignItems="flex-end">
         <TermsOfService />
       </Grid>
-      <Grid container spacing={40} alignItems="flex-end">
+      <Grid container spacing={10} alignItems="flex-end">
         <Privacy />
       </Grid>
     </section>

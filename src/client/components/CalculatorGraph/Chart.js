@@ -37,7 +37,7 @@ export const Chart = props => {
   };
 
   const biggerSize = {
-    height: "65%",
+    height: "55%",
     width: "100%"
   };
 

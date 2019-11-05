@@ -98,7 +98,7 @@ class CardFormComponent extends React.Component {
       <div className={classes.root}>
         <Grid
           container
-          spacing={24}
+          spacing={10}
           direction="column"
           alignItems="center"
           justifyContent="center"

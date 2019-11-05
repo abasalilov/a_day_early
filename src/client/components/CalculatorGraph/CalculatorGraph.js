@@ -200,13 +200,7 @@ class CalculatorGraphComponent extends React.Component {
                 Loan Information
               </Typography>
             </div>
-            <Grid
-              container
-              spacing={8}
-              justify="left"
-              alignItems="center"
-              direction={"row"}
-            >
+            <Grid container spacing={8} alignItems="center" direction={"row"}>
               <Grid item xs={4}>
                 <div style={fieldStyle}>
                   <Typography variant="h6" style={labelStyle} align="left">
@@ -282,7 +276,6 @@ class CalculatorGraphComponent extends React.Component {
           <Divider
             style={{ width: "100%", color: "#3f51b5", margin: "1rem" }}
           />
-
           <Grid
             container
             spacing={8}
@@ -308,7 +301,6 @@ class CalculatorGraphComponent extends React.Component {
               </span>
             </Grid>
           </Grid>
-
           <Grid
             container
             spacing={8}
@@ -370,11 +362,9 @@ class CalculatorGraphComponent extends React.Component {
               )}
             </Grid>
           </Grid>
-
           <Divider
             style={{ width: "100%", color: "#3f51b5", margin: "1rem" }}
           />
-
           <div className="col-sm-8">
             <div style={{ margin: "2rem 0" }}>
               <Typography variant="h5" style={labelStyle} align="left">
@@ -543,7 +533,6 @@ class CalculatorGraphComponent extends React.Component {
           <Divider
             style={{ width: "100%", color: "#3f51b5", margin: "2rem 1rem" }}
           />
-
           {showQuestion && (
             <Grid
               container
@@ -602,7 +591,6 @@ class CalculatorGraphComponent extends React.Component {
               </Grid>
             </Grid>
           )}
-
           {!isEmpty(accuracy) && accuracy === "no" && (
             <div style={fieldStyle}>
               <Typography variant="h6" style={labelHeaderStyle1} align="left">
@@ -612,7 +600,6 @@ class CalculatorGraphComponent extends React.Component {
               </Typography>
             </div>
           )}
-
           {!isEmpty(accuracy) && accuracy === "yes" && (
             <div style={fieldStyle}>
               <Typography variant="h6" style={labelHeaderStyle1} align="left">
@@ -621,47 +608,41 @@ class CalculatorGraphComponent extends React.Component {
               </Typography>
             </div>
           )}
+          <Grid
+            container
+            spacing={8}
+            justify="left"
+            alignItems="center"
+            direction={"column"}
+          >
+            <Typography variant="h4" style={labelStyle} align="center">
+              Simulator
+            </Typography>
 
-          {/* <Divider
-            style={{ width: "100%", color: "#3f51b5", margin: "2rem 1rem" }}
-          /> */}
-
-          {payments.length > 20 && (
-            <Grid
-              container
-              spacing={8}
-              justify="left"
-              alignItems="center"
-              direction={"column"}
-            >
-              <Typography variant="h4" style={labelStyle} align="center">
-                Simulator
+            <Grid item xs={8}>
+              <Typography variant="h5" style={labelStyle} align="left">
+                Projected Payments
               </Typography>
-
-              <Grid item xs={8}>
-                <Typography variant="h5" style={labelStyle} align="left">
-                  Projected Payments
-                </Typography>
-                <Table payments={payments} />
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                style={{
-                  minHeight: "45rem",
-                  minWidth: "45rem"
-                }}
-              >
-                <Typography variant="h5" style={labelStyle} align="left">
-                  Graph
-                </Typography>
-                <Chart
-                  payments={payments}
-                  alterSize={alterSize}
-                  lenderName={lenderDisplayName}
-                />
-              </Grid>
+              <Table payments={payments} />
             </Grid>
+            <Grid
+              item
+              xs={12}
+              style={{
+                minHeight: "45rem",
+                minWidth: "45rem"
+              }}
+            >
+              <Typography variant="h5" style={labelStyle} align="left">
+                Graph
+              </Typography>
+              <Chart
+                payments={payments}
+                alterSize={alterSize}
+                lenderName={lenderDisplayName}
+              />
+            </Grid>
+          </Grid>
           )}
         </div>
       </div>
