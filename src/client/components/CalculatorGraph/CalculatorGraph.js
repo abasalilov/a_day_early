@@ -418,10 +418,7 @@ class CalculatorGraphComponent extends React.Component {
                 alignItems: "center"
               }}
             >
-              Individual Payments -{" "}
-              <Typography variant="h6" style={labelStyle} align="left">
-                Add one extra payment at a time and see the savings!
-              </Typography>
+              Prior Individual Overpayments
             </Typography>
 
             <Grid
