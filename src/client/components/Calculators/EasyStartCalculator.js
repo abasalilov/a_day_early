@@ -96,7 +96,6 @@ class EasyStartCalculatorComponent extends React.Component {
   }
 
   componentDidMount() {
-    console.log("EasyStartCalculatorComponent");
     const { loanAmount, interestRate, term } = this.props;
     if (!isEmpty(loanAmount) && !isEmpty(interestRate)) {
       this.setState({ loanAmount, interestRate, term });
@@ -134,7 +133,6 @@ class EasyStartCalculatorComponent extends React.Component {
 
   handleDate(e) {
     this.setState({ lpDate: e });
-    console.log("e", e);
   }
 
   handleChange(name, e) {
@@ -174,7 +172,6 @@ class EasyStartCalculatorComponent extends React.Component {
   }
 
   render() {
-    console.log("EasyStartCalculator");
     const {
       loanAmount,
       term,

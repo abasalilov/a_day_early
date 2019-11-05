@@ -96,7 +96,6 @@ class FlexCalculatorComponent extends React.Component {
   }
 
   componentDidMount() {
-    console.log("FlexCalculatorComponent");
     const { loanAmount, interestRate, term } = this.props;
     if (!isEmpty(loanAmount) && !isEmpty(interestRate)) {
       this.setState({ loanAmount, interestRate, term });
@@ -134,7 +133,6 @@ class FlexCalculatorComponent extends React.Component {
 
   handleDate(e) {
     this.setState({ lpDate: e });
-    console.log("e", e);
   }
 
   handleChange(name, e) {
@@ -174,7 +172,6 @@ class FlexCalculatorComponent extends React.Component {
   }
 
   render() {
-    console.log("FlexCalculator");
     const {
       loanAmount,
       term,
@@ -190,7 +187,6 @@ class FlexCalculatorComponent extends React.Component {
     let checkHx = this.props.history;
     let alterSize = false;
     if (checkHx) {
-      console.log("hisotry", checkHx.location.pathname);
       if (checkHx.location.pathname.includes("calculator")) {
         alterSize = true;
       }

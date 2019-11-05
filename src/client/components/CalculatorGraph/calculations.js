@@ -5,7 +5,6 @@ export const calculations = function calculatePayments(
   monthlyOverpayment,
   overpayments = []
 ) {
-  console.log("calculations");
   const monthlyRatePct = rate / 1200;
   const monthlyPaymentNumber =
     monthlyRatePct === 0

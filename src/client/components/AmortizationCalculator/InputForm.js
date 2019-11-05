@@ -20,7 +20,10 @@ const generateFirstDate = () => {
     .toISOString()
     .split("T")[0];
 
-  return text;
+  var mo = text.slice(5, 7);
+  var yr = text.slice(0, 4);
+  var d = text.slice(-2);
+  return `${mo}-${d}-${yr}`;
 };
 
 const labelStyle = {
@@ -40,7 +43,6 @@ const renderTextField = ({
   ...custom
 }) => {
   if (type === "date") {
-    console.log("anticipated", custom);
     const { ant } = custom;
     const originationLabel = ant
       ? "Expected First Payment Date"
@@ -59,19 +61,9 @@ const renderTextField = ({
           {originationLabel}
         </Typography>
         <CalendarPicker
-          InputProps={{
-            style: {
-              marginLeft: ".3rem"
-            },
-            value: updatedDate
-          }}
-          InputLabelProps={{
-            style: {
-              fontSize: labelFontSize ? labelFontSize : "20px",
-              color: "#2D3190"
-            },
-            shrink: labelShrink
-          }}
+          onChange={input.onChange}
+          setInitial={true}
+          value={updatedDate}
         />
       </div>
     );
@@ -131,11 +123,14 @@ class InputFormComponent extends React.Component {
   }
 
   handleChange(name, e) {
-    this.setState({ [name]: e.target.value }, () => {
-      this.props.updateInputForm(this.state);
-    });
     if (name === "originationDate") {
-      this.setState({ dateTouched: true });
+      this.setState({ dateTouched: true, originationDate: e }, () =>
+        this.props.updateInputForm(this.state)
+      );
+    } else {
+      this.setState({ [name]: e.target.value }, () => {
+        this.props.updateInputForm(this.state);
+      });
     }
   }
   // Current Loan Balance
@@ -158,7 +153,6 @@ class InputFormComponent extends React.Component {
     const termLabel = anticipated
       ? "Loan Term Desired (Years)"
       : "Loan Term (Years)";
-    console.log("state", this.state);
     return (
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <div>

@@ -216,7 +216,6 @@ class ServiceSectionComponent extends React.Component {
         />
       );
     }
-    console.log("here yo");
     return (
       <React.Fragment>
         <Divider style={{ width: "100%", marginBottom: "2rem" }} id="basics" />
@@ -235,7 +234,6 @@ class ServiceSectionComponent extends React.Component {
               justify="space-between"
               alignItems="center"
               direction={"row"}
-              id="CALCULATOR"
               style={{
                 minWidth: "20%",
                 backgroundColor: "#f6f6f6"

@@ -154,7 +154,7 @@ export const ProgramCalculatorGraph = props => {
   let isFlex = false;
   let isES = false;
   let isJS = false;
-  console.log("program", program);
+
   if (program) {
     programName = programRef[program].name;
     if (program === "ADE") {

@@ -147,7 +147,6 @@ class PayPal extends React.Component {
         </div>
       );
     }
-    console.log("loadData.missing", loanData.missingFields);
     if (loanData.missingFields.length > 0) {
       return (
         <div

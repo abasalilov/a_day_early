@@ -10,7 +10,6 @@ const labelStyle = {
 const isEmpty = a => typeof a === "undefined";
 
 export const Table = ({ payments, className, lenderName }) => {
-  console.log("Table");
   let output = payments
     .filter((year, i) => i > 0 && (year.balance > 0 || year.interestYearly > 0))
     .reduce(

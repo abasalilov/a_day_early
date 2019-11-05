@@ -27,11 +27,9 @@ const baseline = line()
   .y(d => y(d.baseline));
 
 export const Chart = props => {
-  console.log("Chart");
   const { payments, lenderName, alterSize } = props;
   const chart = useRef(null);
   const lender = isEmpty(lenderName) ? "" : lenderName;
-  console.log("alterSize in chart", alterSize);
 
   const regSize = {
     height: "15%",

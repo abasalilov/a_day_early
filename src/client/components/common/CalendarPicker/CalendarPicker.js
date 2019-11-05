@@ -25,14 +25,22 @@ class CalendarPickerComponent extends React.Component {
     this.changeDate = this.changeDate.bind(this);
   }
 
+  componentDidMount() {
+    const { setInitial, value, onChange } = this.props;
+    if (setInitial) {
+      let date = new Date(value);
+      this.setState({ date });
+    }
+  }
+
   changeDate(e) {
+    const dt = e.toString();
     this.setState({ date: e });
-    this.props.onChange(e);
+    this.props.onChange(dt);
   }
 
   render() {
     const { date } = this.state;
-    console.log("props", this.props);
     return (
       <div style={{ backgroundColor: "red" }}>
         <MuiThemeProvider theme={customTheme}>

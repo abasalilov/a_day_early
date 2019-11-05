@@ -80,7 +80,6 @@ class CalculatorGraphComponent extends React.Component {
   }
 
   componentDidMount() {
-    console.log("CalculatorGraphComponent");
     const { loanAmount, interestRate, term } = this.props;
     if (!isEmpty(loanAmount) && !isEmpty(interestRate)) {
       this.setState({ loanAmount, interestRate, term });
