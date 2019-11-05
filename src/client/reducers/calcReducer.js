@@ -169,7 +169,6 @@ export default function input(state = defaultState, action) {
       updatedInfoFormState.payOffDate = action.st.payOffDate;
       updatedInfoFormState.paymentAmount = action.st.paymentAmount;
       updatedInfoFormState.term = action.st.term;
-
       const canCalculate = Object.keys(action.st).filter(item => {
         return action.st[item] !== null;
       });

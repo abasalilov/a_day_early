@@ -7,6 +7,7 @@ import TextField from "@material-ui/core/TextField";
 import { updateAmortGraph, updateInfoForm } from "../../actions";
 import { CalendarPicker } from "../common";
 import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
 
 const validate = values => {
   const errors = {};
@@ -28,8 +29,7 @@ const generateFirstDate = () => {
 
 const labelStyle = {
   color: "#3f51b5",
-  textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-  padding: "1rem"
+  padding: ".5rem"
 };
 
 const renderTextField = ({
@@ -51,8 +51,6 @@ const renderTextField = ({
     return (
       <div
         style={{
-          marginLeft: "-8rem",
-          marginTop: "6rem",
           border: "solid #049347 3px",
           borderRadius: ".3rem"
         }}
@@ -155,72 +153,81 @@ class InputFormComponent extends React.Component {
       : "Loan Term (Years)";
     return (
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <div>
-          <Field
-            name="loanAmount"
-            label={loanLabel}
-            type="number"
-            onChange={e => this.handleChange("loanAmount", e)}
-            component={renderTextField}
-            mobile={false}
-          />
-        </div>
-        <div>
-          <Field
-            name="interestRate"
-            component={renderTextField}
-            label={interestLabel}
-            type="number"
-            onChange={e => this.handleChange("interestRate", e)}
-            mobile={false}
-          />
-        </div>
-        <div>
-          <Field
-            name="term"
-            component={renderTextField}
-            label={termLabel}
-            type="number"
-            onChange={e => this.handleChange("term", e)}
-          />
-        </div>
-        <div>
-          <Field
-            name="paymentAmount"
-            component={renderTextField}
-            label={paymentLabel}
-            type="number"
-            onChange={e => this.handleChange("paymentAmount", e)}
-            mobile={false}
-          />
-        </div>
-        <div>
-          {!anticipated && (
+        <Grid
+          container
+          key={"dsf"}
+          justify="space-apart"
+          alignItems="center"
+          direction={"row"}
+          id="CALCULATOR"
+        >
+          <Grid item xs={12}>
             <Field
-              name="originalLoanAmount"
+              name="loanAmount"
+              label={loanLabel}
+              type="number"
+              onChange={e => this.handleChange("loanAmount", e)}
               component={renderTextField}
-              label={"Original Loan Amount"}
+              mobile={false}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Field
+              name="interestRate"
+              component={renderTextField}
+              label={interestLabel}
+              type="number"
+              onChange={e => this.handleChange("interestRate", e)}
+              mobile={false}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Field
+              name="term"
+              component={renderTextField}
+              label={termLabel}
+              type="number"
+              onChange={e => this.handleChange("term", e)}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Field
+              name="paymentAmount"
+              component={renderTextField}
+              label={paymentLabel}
               type="number"
               onChange={e => this.handleChange("paymentAmount", e)}
               mobile={false}
             />
+          </Grid>
+          {!anticipated && (
+            <Grid item xs={12}>
+              <Field
+                name="originalLoanAmount"
+                component={renderTextField}
+                label={"Original Loan Amount"}
+                type="number"
+                onChange={e => this.handleChange("paymentAmount", e)}
+                mobile={false}
+              />
+            </Grid>
           )}
-        </div>
-        <div>
-          <Field
-            name="originationDate"
-            label={originationLabel}
-            type="date"
-            anticipated={anticipated}
-            component={renderTextField}
-            onChange={e => this.handleChange("originationDate", e)}
-            mobile={false}
-            dateTouched={dateTouched}
-            labelFontSize={"26px"}
-            labelShrink={true}
-            ant={false}
-          />
-        </div>
+          <Grid item xs={12} style={{ padding: ".3rem" }}>
+            <Field
+              name="originationDate"
+              label={originationLabel}
+              type="date"
+              anticipated={anticipated}
+              component={renderTextField}
+              onChange={e => this.handleChange("originationDate", e)}
+              mobile={false}
+              dateTouched={dateTouched}
+              labelFontSize={"26px"}
+              labelShrink={true}
+              ant={false}
+            />
+          </Grid>
+        </Grid>
       </MuiPickersUtilsProvider>
     );
   }

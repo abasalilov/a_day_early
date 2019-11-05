@@ -12,7 +12,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 
 import { Table } from "./Table";
 import { Chart } from "./Chart";
-import { calculate } from "./calculations";
+import { calculations } from "./calculations";
 import { updatePayPalAmount, updateInfoForm } from "../../actions";
 const defaultOverpayment = { month: "0", year: "0", amount: "0" };
 
@@ -115,7 +115,7 @@ class CalculatorGraphComponent extends React.Component {
       monthlyOverpayment,
       overpayments
     } = this.state;
-    const { monthlyPayment } = calculate(
+    const { monthlyPayment } = calculations(
       +loanAmount,
       +term,
       +interestRate,
@@ -175,7 +175,7 @@ class CalculatorGraphComponent extends React.Component {
         )
       );
 
-    const { monthlyPayment, payments } = calculate(
+    const { monthlyPayment, payments } = calculations(
       +loanAmount,
       +term,
       +interestRate,

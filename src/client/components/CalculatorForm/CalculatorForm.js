@@ -11,9 +11,7 @@ class CalculatorFormComponent extends React.Component {
   render() {
     const { anticipated, onCalculate } = this.props;
     return (
-      <div>
-        <InputForm onChangeMortValues={onCalculate} anticipated={anticipated} />
-      </div>
+      <InputForm onChangeMortValues={onCalculate} anticipated={anticipated} />
     );
   }
 }

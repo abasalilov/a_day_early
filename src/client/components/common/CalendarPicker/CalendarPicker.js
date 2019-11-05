@@ -26,7 +26,7 @@ class CalendarPickerComponent extends React.Component {
   }
 
   componentDidMount() {
-    const { setInitial, value, onChange } = this.props;
+    const { setInitial, value } = this.props;
     if (setInitial) {
       let date = new Date(value);
       this.setState({ date });
@@ -34,7 +34,7 @@ class CalendarPickerComponent extends React.Component {
   }
 
   changeDate(e) {
-    const dt = e.toString();
+    const dt = e.toLocaleString();
     this.setState({ date: e });
     this.props.onChange(dt);
   }
@@ -42,20 +42,18 @@ class CalendarPickerComponent extends React.Component {
   render() {
     const { date } = this.state;
     return (
-      <div style={{ backgroundColor: "red" }}>
-        <MuiThemeProvider theme={customTheme}>
-          <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <DatePicker
-              autoOk
-              orientation="landscape"
-              variant="static"
-              openTo="date"
-              value={date}
-              onChange={this.changeDate}
-            />
-          </MuiPickersUtilsProvider>
-        </MuiThemeProvider>
-      </div>
+      <MuiThemeProvider theme={customTheme}>
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <DatePicker
+            autoOk
+            orientation="landscape"
+            variant="static"
+            openTo="date"
+            value={date}
+            onChange={this.changeDate}
+          />
+        </MuiPickersUtilsProvider>
+      </MuiThemeProvider>
     );
   }
 }

@@ -233,13 +233,13 @@ class ServiceSectionComponent extends React.Component {
               key={"dddsf"}
               justify="space-between"
               alignItems="center"
-              direction={"row"}
+              direction={"column"}
               style={{
                 minWidth: "20%",
                 backgroundColor: "#f6f6f6"
               }}
             >
-              <Grid item xs={4}>
+              <Grid item xs={6}>
                 <Typography
                   variant={mobile ? "display4" : "h4"}
                   gutterBottom
@@ -253,6 +253,8 @@ class ServiceSectionComponent extends React.Component {
                 >
                   Let's Start With The Basics
                 </Typography>
+              </Grid>
+              <Grid item xs={6}>
                 <Typography
                   variant={mobile ? "display5" : "h5"}
                   gutterBottom
@@ -260,8 +262,7 @@ class ServiceSectionComponent extends React.Component {
                   color="textPrimary"
                   style={{
                     width: "100%",
-                    color: "#2D3190",
-                    marginBottom: "10rem"
+                    color: "#2D3190"
                   }}
                 >
                   (Please fill out 3 of the following fields)
@@ -269,7 +270,7 @@ class ServiceSectionComponent extends React.Component {
               </Grid>
               <Grid
                 item
-                xs={7}
+                xs={10}
                 style={{
                   width: "100%",
                   marginRight: "1rem"
