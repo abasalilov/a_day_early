@@ -97,8 +97,7 @@ const renderTextField = ({
               fontSize: "20px",
               textAlign: "left",
               textDecoration: "none"
-            },
-            disableUnderline: true
+            }
           }}
         >
           <option value={30}>30</option>
@@ -141,7 +140,6 @@ const renderTextField = ({
       error={touched && invalid}
       fullWidth
       helperText={touched && error}
-      disableUnderline={true}
       {...input}
       {...custom}
       style={{
@@ -226,7 +224,7 @@ class InputFormComponent extends React.Component {
         <Grid
           container
           key={"dsf"}
-          justify="space-apart"
+          justify="space-around"
           alignItems="center"
           direction={"row"}
           id="CALCULATOR"
@@ -238,7 +236,7 @@ class InputFormComponent extends React.Component {
               type="number"
               onChange={e => this.handleChange("loanAmount", e)}
               component={renderTextField}
-              mobile={false}
+              mobile={0}
             />
           </Grid>
           <Grid item xs={12}>
@@ -248,7 +246,7 @@ class InputFormComponent extends React.Component {
               label={interestLabel}
               type="number"
               onChange={e => this.handleChange("interestRate", e)}
-              mobile={false}
+              mobile={0}
             />
           </Grid>
           <Grid item xs={12} style={{ textAlign: "center" }}>
@@ -268,7 +266,7 @@ class InputFormComponent extends React.Component {
               label={paymentLabel}
               type="number"
               onChange={e => this.handleChange("paymentAmount", e)}
-              mobile={false}
+              mobile={0}
             />
           </Grid>
           {!anticipated && (
@@ -279,7 +277,7 @@ class InputFormComponent extends React.Component {
                 label={"Original Loan Amount"}
                 type="number"
                 onChange={e => this.handleChange("paymentAmount", e)}
-                mobile={false}
+                mobile={0}
               />
             </Grid>
           )}
@@ -291,7 +289,7 @@ class InputFormComponent extends React.Component {
               anticipated={anticipated}
               component={renderTextField}
               onChange={e => this.handleChange("originationDate", e)}
-              mobile={false}
+              mobile={0}
               dateTouched={dateTouched}
               labelFontSize={"26px"}
               labelShrink={true}

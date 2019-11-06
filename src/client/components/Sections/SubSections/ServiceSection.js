@@ -222,7 +222,7 @@ class ServiceSectionComponent extends React.Component {
         <Grid
           container
           key={"dsf"}
-          justify="space-apart"
+          justify="space-around"
           alignItems="center"
           direction={"row"}
           id="CALCULATOR"

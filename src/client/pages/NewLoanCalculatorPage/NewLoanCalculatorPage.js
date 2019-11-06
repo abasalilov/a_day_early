@@ -165,7 +165,7 @@ class NewLoanCalculatorPageComponent extends React.Component {
         <Grid
           container
           key={"dsf"}
-          justify="space-apart"
+          justifyContent="space-apart"
           alignItems="center"
           direction={"row"}
           id="CALCULATOR"
@@ -177,7 +177,7 @@ class NewLoanCalculatorPageComponent extends React.Component {
             <Grid
               container
               key={"dddsf"}
-              justify="space-around"
+              justifyContent="space-around"
               alignItems="center"
               direction={"column"}
               id="CALCULATOR"
