@@ -190,9 +190,9 @@ class InputFormComponent extends React.Component {
 
   handleChange(name, e) {
     if (name === "originationDate") {
-      this.setState({ dateTouched: true, originationDate: e }, () =>
-        this.props.updateInputForm(this.state)
-      );
+      this.setState({ dateTouched: true, originationDate: e }, () => {
+        this.props.updateInputForm(this.state);
+      });
     } else {
       this.setState({ [name]: e.target.value }, () => {
         this.props.updateInputForm(this.state);

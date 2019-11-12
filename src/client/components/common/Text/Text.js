@@ -25,7 +25,6 @@ const RegTextComponent = props => {
 };
 
 const TextComponent = props => {
-  console.log("mobile", props.mobile);
   return props.mobile ? (
     <MobileTextComponent {...props} {...props.input} />
   ) : (

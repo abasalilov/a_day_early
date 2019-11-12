@@ -4,7 +4,6 @@ import { Section } from "../../components/Sections";
 import { HomeIntroSectionData, ServicesSectionData } from "../../messages";
 
 const HomePageComponent = props => {
-  console.log("ho props", props);
   return (
     <div>
       <Section

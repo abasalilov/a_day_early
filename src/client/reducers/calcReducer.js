@@ -11,6 +11,7 @@ import {
 import { amortizationSchedule } from "amortization";
 import update from "react-addons-update";
 import { calculations } from "../components/CalculatorGraph/calculations";
+import { fillInTheBlanks } from "../utils/fillInTheBlanks";
 
 function getFormattedDate() {
   var date = new Date();
@@ -24,6 +25,19 @@ function getFormattedDate() {
 
   return month + "/" + day + "/" + year;
 }
+
+const generateFirstDate = () => {
+  var date = new Date();
+  var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+  var text = new Date(firstDay.getTime() - firstDay.getTimezoneOffset() * 60000)
+    .toISOString()
+    .split("T")[0];
+
+  var mo = text.slice(5, 7);
+  var yr = text.slice(0, 4);
+  var d = text.slice(-2);
+  return `${mo}-${d}-${yr}`;
+};
 
 export const defaultState = {
   loanAmount: null,
@@ -144,12 +158,7 @@ export default function input(state = defaultState, action) {
       return payPalAmountState;
     case UPDATE_AMORT_GRAPH:
       const { st } = action;
-      // TODO: DO YOU NEED THESE?
-      // const { monthlyPayment } = calculations(
-      //   st.loanAmount,
-      //   st.term,
-      //   st.interestRate
-      // );
+
       const updatedState = Object.assign({}, state);
       updatedState.currentLoanAmount = st.currentLoanAmount;
       updatedState.interestRate = st.interestRate;
@@ -162,19 +171,59 @@ export default function input(state = defaultState, action) {
       return updatedState;
     case UPDATE_INFO_FORM:
       const updatedInfoFormState = Object.assign({}, state);
-      updatedInfoFormState.currentLoanAmount = action.st.currentLoanAmount;
-      updatedInfoFormState.interestRate = action.st.interestRate;
-      updatedInfoFormState.loanAmount = action.st.loanAmount;
-      updatedInfoFormState.originationDate = action.st.originationDate;
-      updatedInfoFormState.payOffDate = action.st.payOffDate;
-      updatedInfoFormState.paymentAmount = action.st.paymentAmount;
-      updatedInfoFormState.term = action.st.term;
-      const canCalculate = Object.keys(action.st).filter(item => {
-        return action.st[item] !== null;
+      let canCalculate = false;
+      let shouldCalculate = false;
+      let hasMissingFields = false;
+      // const getMissingExample = {
+      //   payments: "360",
+      //   principal: "350,000",
+      //   payment: "4000"
+      // };
+      // let firstPaymentDate = data.firstPaymentDate;
+      // let interestRate = data.interestRate;
+      // let loanAmount = data.loanAmount;
+      // let monthlyPayment = data.monthlyPayment;
+      // let originalLoanAmount = data.originalLoanAmount;
+      // let loanTerm = data.loanTerm;
+      const checkDate = generateFirstDate();
+      const dateSame = action.st.originationDate === checkDate;
+      const fillInData = fillInTheBlanks({
+        firstPaymentDate: dateSame ? null : action.st.originationDate,
+        interestRate: action.st.interestRate,
+        loanAmount: action.st.loanAmount,
+        monthlyPayment: action.st.paymentAmount,
+        originalLoanAmount: action.st.originalLoanAmount,
+        loanTerm: action.st.term
       });
 
-      const hasMissingFields = checkForMissingFields(canCalculate);
-      const shouldCalculate = canCalculate.length >= 3;
+      let donotUpdate =
+        typeof fillInData === "string" && fillInData.indexOf("Three of") !== -1;
+      if (fillInData.updated && !donotUpdate) {
+        console.log("here in updates");
+        updatedInfoFormState.canCalculate = true;
+        updatedInfoFormState.currentLoanAmount = action.st.currentLoanAmount;
+        updatedInfoFormState.interestRate = fillInData.interest;
+        updatedInfoFormState.loanAmount = fillInData.principal;
+        updatedInfoFormState.originationDate = action.st.originationDate;
+        updatedInfoFormState.payOffDate = action.st.payOffDate;
+        updatedInfoFormState.paymentAmount = fillInData.payment;
+        updatedInfoFormState.term = fillInData.payments / 12;
+        console.log("upated", updatedInfoFormState);
+      } else {
+        updatedInfoFormState.currentLoanAmount = action.st.currentLoanAmount;
+        updatedInfoFormState.interestRate = action.st.interestRate;
+        updatedInfoFormState.loanAmount = action.st.loanAmount;
+        updatedInfoFormState.originationDate = action.st.originationDate;
+        updatedInfoFormState.payOffDate = action.st.payOffDate;
+        updatedInfoFormState.paymentAmount = action.st.paymentAmount;
+        updatedInfoFormState.term = action.st.term;
+        canCalculate = Object.keys(action.st).filter(item => {
+          return action.st[item] !== null;
+        });
+        shouldCalculate = canCalculate.length >= 3;
+        hasMissingFields = checkForMissingFields(canCalculate);
+      }
+
       if (shouldCalculate) {
         const { monthlyPayment } = calculations(
           +action.st.loanAmount,
@@ -185,8 +234,8 @@ export default function input(state = defaultState, action) {
 
         updatedInfoFormState.payPalAmount = paymentToReview;
       }
-      updatedInfoFormState.canCalculate = shouldCalculate;
-      updatedInfoFormState.missingFields = hasMissingFields.missing;
+      updatedInfoFormState.missingFields =
+        hasMissingFields && hasMissingFields.missing;
       return updatedInfoFormState;
     case ROUTE_PROGRAMS:
       const updatedMsgState = Object.assign({}, state);

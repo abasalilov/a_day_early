@@ -138,7 +138,6 @@ class ServiceSectionComponent extends React.Component {
   handleRedirect() {
     const { input } = this.props;
     let redirectToIntPage = Number(input.interestRate) > 4;
-
     // this.setState({ showRegModal: true });
     if (this.props.input.missingFields.length > 0) {
       this.setState({ showFlyout: true });
@@ -184,7 +183,7 @@ class ServiceSectionComponent extends React.Component {
     const { classes, mobile, sectionProps, input } = this.props;
     const { showFlyout, showModal, selectedService, showRegModal } = this.state;
     const hasMessages = input.missingFields.length > 0;
-
+    console.log("input", input.canCalculate);
     const menuIconStyle = {
       fontSize: mobile ? "4rem" : "2.5rem",
       marginRight: "1rem"
@@ -320,12 +319,6 @@ class ServiceSectionComponent extends React.Component {
     );
   }
 }
-
-ServiceSectionComponent.propTypes = {
-  classes: PropTypes.object.isRequired,
-  mobile: PropTypes.bool,
-  sectionProps: PropTypes.object
-};
 
 const StyledServiceSection = withStyles(styles)(ServiceSectionComponent);
 

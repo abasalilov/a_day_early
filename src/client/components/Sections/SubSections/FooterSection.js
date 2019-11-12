@@ -61,7 +61,7 @@ export const FooterComponent = props => {
 
   return (
     <footer className={classNames(classes.footer, classes.layout)}>
-      <Grid container spacing={mobile ? 8 : 16} justify="space-evenly">
+      <Grid container spacing={mobile ? 8 : 10} justify="space-evenly">
         {footers.map(footer => (
           <Grid item key={footer.title} xs={mobile ? 6 : 3}>
             <Typography
