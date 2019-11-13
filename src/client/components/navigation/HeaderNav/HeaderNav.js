@@ -149,7 +149,7 @@ const NavButton = props => {
     const isHref = linkPath.includes("#");
     let linkPathVar = "";
     if (title === "HOME") {
-      linkPathVar = isBorrower ? "home" : "lenders";
+      linkPathVar = isBorrower ? "/" : "/";
     } else {
       linkPathVar = linkPath;
     }
