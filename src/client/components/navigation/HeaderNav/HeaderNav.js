@@ -107,7 +107,7 @@ const isLogin = title => title === LOGIN;
 
 const NavButton = props => {
   const {
-    auth: { attempted, result },
+    auth: { attempted, result, isBorrower },
     mobile,
     title,
     onClick,
@@ -118,7 +118,6 @@ const NavButton = props => {
   const linkClassName = classNames(classes.w3BarItem, classes.w3Button);
   const linkPath = getTitle(title);
   const isLoginComponent = isLogin(title);
-
   if (attempted && result === "OK" && title === "LOGIN") {
     button = (
       <HeaderLink
@@ -147,11 +146,17 @@ const NavButton = props => {
     );
   } else {
     const isHref = linkPath.includes("#");
+    let linkPathVar = "";
+    if (title === "HOME") {
+      linkPathVar = isBorrower ? "home" : "lenders";
+    } else {
+      linkPathVar = linkPath;
+    }
     button = (
       <HeaderLink
         isHref={isHref}
         className={linkClassName}
-        to={linkPath}
+        to={linkPathVar}
         title={title}
         mobile={mobile ? 1 : 0}
       />

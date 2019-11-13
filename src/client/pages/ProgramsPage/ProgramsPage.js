@@ -21,7 +21,7 @@ const topLabelStyle = {
 const labelStyle = {
   color: "#3f51b5",
   // textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-  padding: "1rem"
+  padding: ".5rem"
 };
 
 const sectionStyle = {
@@ -121,7 +121,7 @@ class ProgramsPageComponent extends React.Component {
     return (
       <div style={{ marginTop: "6rem" }}>
         <Typography
-          variant="h3"
+          variant="h4"
           style={topLabelStyle}
           align="center"
           gutterBottom
@@ -130,92 +130,121 @@ class ProgramsPageComponent extends React.Component {
         </Typography>
         <Grid
           container
-          spacing={8}
+          spacing={10}
           justify="center"
           alignItems="center"
-          direction={"row"}
+          direction={"column"}
         >
-          <Grid item xs={8}>
-            <div style={sectionStyle}>
-              <Typography
-                variant="h5"
-                align="left"
-                style={labelStyle}
-                color="primary"
-                onClick={this.handleADayEarly}
-              >
-                OneDayEarly: make a one time extra principal payment and see the
-                exponential effect of time and money.
-              </Typography>
-            </div>
+          <Grid
+            container
+            spacing={10}
+            justify="center"
+            alignItems="center"
+            direction={"row"}
+            style={{ marginTop: "2rem" }}
+          >
+            <Grid item xs={4}>
+              <div style={sectionStyle}>
+                <Typography
+                  variant="h5"
+                  align="left"
+                  style={labelStyle}
+                  color="primary"
+                  onClick={this.handleADayEarly}
+                >
+                  OneDayEarly: make a one time extra principal payment and see
+                  the exponential effect of time and money.
+                </Typography>
+              </div>
+            </Grid>
+            <Grid item xs={4}>
+              <div style={sectionStyle}>
+                <Typography
+                  variant="h5"
+                  align="left"
+                  style={labelStyle}
+                  color="primary"
+                  onClick={this.handleRoundUp}
+                >
+                  RoundUp: round your payment up to the nearest $100, $1000 or
+                  custom round up amount and see the effects!
+                </Typography>
+              </div>
+            </Grid>
           </Grid>
-          <Grid item xs={8}>
-            <div style={sectionStyle}>
-              <Typography
-                variant="h5"
-                align="left"
-                style={labelStyle}
-                color="primary"
-                onClick={this.handleRoundUp}
-              >
-                RoundUp: round your payment up to the nearest $100, $1000 or
-                custom round up amount and see the effects!
-              </Typography>
-            </div>
+
+          <Grid
+            container
+            spacing={10}
+            justify="center"
+            alignItems="center"
+            direction={"row"}
+            style={{ marginTop: "2rem" }}
+          >
+            <Grid item xs={4}>
+              <div style={sectionStyle}>
+                <Typography
+                  style={labelStyle}
+                  variant="h5"
+                  color="primary"
+                  align="left"
+                  onClick={this.handleFlexPay}
+                >
+                  FlexPay: set up a custom payment campaign.
+                </Typography>
+              </div>
+            </Grid>
+            <Grid item xs={4}>
+              <div style={sectionStyle}>
+                <Typography
+                  variant="h5"
+                  align="left"
+                  style={labelStyle}
+                  color="primary"
+                  onClick={this.handleEasyStart}
+                >
+                  EasyStart: start accelerating your current loan.
+                </Typography>
+              </div>
+            </Grid>
           </Grid>
-          <Grid item xs={8}>
-            <div style={sectionStyle}>
-              <Typography
-                style={labelStyle}
-                variant="h5"
-                color="primary"
-                align="left"
-                onClick={this.handleFlexPay}
-              >
-                FlexPay: set up a custom payment campaign.
-              </Typography>
-            </div>
-          </Grid>
-          <Grid item xs={8}>
-            <div style={sectionStyle}>
-              <Typography
-                variant="h5"
-                align="left"
-                style={labelStyle}
-                color="primary"
-                onClick={this.handleEasyStart}
-              >
-                EasyStart: get started now accelerating your current loan.
-              </Typography>
-            </div>
-          </Grid>
-          <Grid item xs={8}>
-            <div onClick={this.handleLeapFrog} style={sectionStyle}>
-              <Typography
-                variant="h5"
-                style={labelStyle}
-                color="primary"
-                align="left"
-              >
-                LeapFrog: jump ahead to any months payment on your amortization
-                schedule, pay the principal portion now, aDayEarly, and NEVER
-                pay the associated interest. EVER.
-              </Typography>
-            </div>
-          </Grid>
-          <Grid item xs={8}>
-            <div onClick={this.handleJumpStart} style={sectionStyle}>
-              <Typography
-                variant="h5"
-                align="left"
-                style={labelStyle}
-                color="primary"
-              >
-                JumpStart: use at origination of your loan, making the first
-                extra principal payment aDayEarly affecting the amortization
-                schedule before it starts!
-              </Typography>
-            </div>
+
+          <Grid
+            container
+            spacing={10}
+            justify="center"
+            alignItems="flex-start"
+            direction={"row"}
+            style={{ marginTop: "2rem" }}
+          >
+            <Grid item xs={4}>
+              <div onClick={this.handleLeapFrog} style={sectionStyle}>
+                <Typography
+                  variant="h5"
+                  style={labelStyle}
+                  color="primary"
+                  align="left"
+                >
+                  LeapFrog: jump ahead to any months payment on your
+                  amortization schedule, pay the principal portion now,
+                  aDayEarly, and NEVER pay the associated interest. EVER.
+                </Typography>
+              </div>
+            </Grid>
+            <Grid item xs={4}>
+              <div onClick={this.handleJumpStart} style={sectionStyle}>
+                <Typography
+                  variant="h5"
+                  align="left"
+                  style={labelStyle}
+                  color="primary"
+                >
+                  JumpStart: use at origination of your loan, making the first
+                  extra principal payment aDayEarly affecting the amortization
+                  schedule before it starts!
+                </Typography>
+              </div>
+            </Grid>
           </Grid>
         </Grid>
       </div>

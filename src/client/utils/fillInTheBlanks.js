@@ -518,7 +518,8 @@ export const fillInTheBlanks = data => {
     isUndefined(loanTerm) &&
     isUndefined(interestRate) &&
     isUndefined(originalLoanAmount) &&
-    !isUndefined(monthlyPayment)
+    !isUndefined(monthlyPayment) &&
+    !isUndefined(loanAmount)
   ) {
     // Case 1 = missing_interest_loanTerm_originalLoan
     // var missing_interest_loanTerm_originalLoan = {
@@ -552,7 +553,8 @@ export const fillInTheBlanks = data => {
     isUndefined(monthlyPayment) &&
     isUndefined(interestRate) &&
     isUndefined(originalLoanAmount) &&
-    !isUndefined(interestRate)
+    !isUndefined(interestRate) &&
+    !isUndefined(firstPaymentDate)
   ) {
     // Case 2 = var missing_interest_monthlyPayment_originalLoan = {
     //   firstPaymentDate: "2018-11-11",
@@ -583,7 +585,8 @@ export const fillInTheBlanks = data => {
     isUndefined(monthlyPayment) &&
     isUndefined(interestRate) &&
     isUndefined(loanTerm) &&
-    !isUndefined(originalLoanAmount)
+    !isUndefined(originalLoanAmount) &&
+    !isUndefined(firstPaymentDate)
   ) {
     // Case #3 var missing_interest_monthlyPayment_loanTerm = {
     //   firstPaymentDate: "2017-11-11",
@@ -610,7 +613,8 @@ export const fillInTheBlanks = data => {
     isUndefined(monthlyPayment) &&
     isUndefined(loanTerm) &&
     isUndefined(originalLoanAmount) &&
-    !isUndefined(loanAmount)
+    !isUndefined(loanAmount) &&
+    !isUndefined(firstPaymentDate)
   ) {
     // Case #4 var missing_original_monthlyPayment_loanTerm = {
     //   firstPaymentDate: "2019-08-11",
@@ -638,7 +642,9 @@ export const fillInTheBlanks = data => {
   if (
     isUndefined(interestRate) &&
     isUndefined(firstPaymentDate) &&
-    isUndefined(originalLoanAmount)
+    isUndefined(originalLoanAmount) &&
+    !isUndefined(loanTerm) &&
+    !isUndefined(monthlyPayment)
   ) {
     // Case #5 var missing_original_interestRate_firstPaymentDate = {
     //   loanTerm: "30",
@@ -664,7 +670,8 @@ export const fillInTheBlanks = data => {
     isUndefined(interestRate) &&
     isUndefined(firstPaymentDate) &&
     isUndefined(loanTerm) &&
-    !isUndefined(loanAmount)
+    !isUndefined(loanAmount) &&
+    !isUndefined(monthlyPayment)
   ) {
     // Case #6 var missing_interestRate_firstPaymentDate_loanTerm = {
     // originalLoanAmount: "400,000",

@@ -13,7 +13,6 @@ export default function(
   switch (action.type) {
     case SET_HAVE_HOMEPAGE:
       const setHomePageState = Object.assign({}, state);
-      console.log("here in action", action);
       setHomePageState.isBorrower = action.pg === "/borrower";
       return setHomePageState;
     case FETCH_CURRENT_USER:

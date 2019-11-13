@@ -33,6 +33,11 @@ const selectLabelStyle = {
   textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)"
 };
 
+const numbersOnly = value => {
+  console.log("value", value);
+  return value.replace(/[^\d]/g, "");
+};
+
 const renderInterestSelect = input => {
   return (
     <Select
@@ -244,12 +249,7 @@ const renderTextField = ({
       : "First Payment Date";
     let updatedDate = dateTouched ? input.value : generateFirstDate();
     return (
-      <div
-        style={{
-          border: "solid #049347 3px",
-          borderRadius: ".3rem"
-        }}
-      >
+      <div>
         <Typography variant="h5" style={labelStyle} align="left">
           {originationLabel}
         </Typography>
@@ -356,16 +356,16 @@ class InputFormComponent extends React.Component {
           justify="space-around"
           alignItems="center"
           direction={"row"}
-          id="CALCULATOR"
+          id="calculator"
         >
           <Grid item xs={12}>
             <Field
               name="loanAmount"
               label={loanLabel}
-              type="number"
               onChange={e => this.handleChange("loanAmount", e)}
               component={renderTextField}
               mobile={0}
+              normalize={numbersOnly}
             />
           </Grid>
           <Grid item xs={12} style={{ textAlign: "center" }}>
@@ -404,13 +404,19 @@ class InputFormComponent extends React.Component {
                 name="originalLoanAmount"
                 component={renderTextField}
                 label={"Original Loan Amount"}
-                type="number"
                 onChange={e => this.handleChange("paymentAmount", e)}
                 mobile={0}
               />
             </Grid>
           )}
-          <Grid item xs={12} style={{ padding: ".3rem" }}>
+          <Grid
+            item
+            xs={12}
+            style={{
+              border: "solid #049347 3px",
+              borderRadius: ".3rem"
+            }}
+          >
             <Field
               name="originationDate"
               label={originationLabel}

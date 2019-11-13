@@ -110,11 +110,12 @@ const styles = () => {
 };
 
 const HomePageComponent = props => {
-  const { classes, mobile, history } = props;
+  const { classes, mobile, history, setBackButton } = props;
   const logoClass = mobile ? classes.mobilePic : classes.pic;
   const imgClass = mobile ? classes.mobleImg : classes.imgContainer;
   const containerClass = mobile ? classes.mobileSplit : classes.split;
   const fontClass = mobile ? classes.mobileFont : classes.font;
+  console.log("props", props);
   return (
     <Grid item key={data.title} xs={12}>
       <div className={containerClass}>
@@ -146,12 +147,16 @@ const HomePageComponent = props => {
                 className={classes.introLink}
                 style={{ textDecoration: "none" }}
                 href="/home"
+                onClick={() => setBackButton("/borrower")}
               >
                 homeowner?
               </a>
             </Typography>
             <Button
-              onClick={() => history.push("/home")}
+              onClick={() => {
+                setBackButton("/borrower");
+                history.push("/home");
+              }}
               variant="outlined"
               size="large"
               color="primary"
@@ -195,12 +200,16 @@ const HomePageComponent = props => {
                   className={classes.introLink}
                   style={{ textDecoration: "none" }}
                   href="/lenders"
+                  onClick={() => setBackButton("/lenders")}
                 >
                   mortgage lender?
                 </a>
               </Typography>
               <Button
-                onClick={props.handleRedirect}
+                onClick={() => {
+                  setBackButton("/lenders");
+                  history.push("/lenders");
+                }}
                 variant="outlined"
                 size="large"
                 color="primary"
