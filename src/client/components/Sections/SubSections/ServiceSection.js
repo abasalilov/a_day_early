@@ -181,7 +181,7 @@ class ServiceSectionComponent extends React.Component {
 
   render() {
     const { classes, mobile, sectionProps, input } = this.props;
-    const { showFlyout, showModal, selectedService, showRegModal } = this.state;
+    const { showModal, selectedService, showRegModal } = this.state;
     const hasMessages = input.missingFields.length > 0;
     console.log("input", input.canCalculate);
     const menuIconStyle = {
@@ -288,15 +288,6 @@ class ServiceSectionComponent extends React.Component {
               padding: "1rem"
             }}
           >
-            {showFlyout && hasMessages && (
-              <FlyOut
-                show={showFlyout}
-                direction="left"
-                style={{ margin: "0 0 2rem 1rem" }}
-                message={makeFlyoutMessage(input.missingFields)}
-              />
-            )}
-
             {input.canCalculate && (
               <Button
                 onClick={this.handleRedirect}

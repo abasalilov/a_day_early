@@ -7,11 +7,12 @@ import {
 } from "../actions";
 
 export default function(
-  state = { attempted: false, result: false, username: "" },
+  state = { isBorrower: true, attempted: false, result: false, username: "" },
   action
 ) {
   switch (action.type) {
     case SET_HAVE_HOMEPAGE:
+      console.log("state", state);
       const setHomePageState = Object.assign({}, state);
       setHomePageState.isBorrower = action.pg === "/borrower";
       return setHomePageState;

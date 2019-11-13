@@ -107,11 +107,12 @@ const isLogin = title => title === LOGIN;
 
 const NavButton = props => {
   const {
-    auth: { attempted, result, isBorrower },
+    auth: { attempted, result },
     mobile,
     title,
     onClick,
-    classes
+    classes,
+    isBorrower = true
   } = props;
   let button;
   const style = { color: "#2D3190", textDecoration: "none" };
@@ -149,6 +150,8 @@ const NavButton = props => {
     let linkPathVar = "";
     if (title === "HOME") {
       linkPathVar = isBorrower ? "home" : "lenders";
+      console.log("isBorrower", isBorrower);
+      console.log("linkPathVar", linkPathVar);
     } else {
       linkPathVar = linkPath;
     }
@@ -218,10 +221,11 @@ class HeaderComponent extends React.Component {
 }
 
 const mapStateToProps = state => {
+  console.log("auth", state.auth);
   return {
     auth: state.auth,
     mobile: state.mobile,
-    borrower: state.auth.isBorrower
+    isBorrower: state.auth.isBorrower
   };
 };
 

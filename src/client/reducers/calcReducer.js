@@ -198,6 +198,8 @@ export default function input(state = defaultState, action) {
 
       let donotUpdate =
         typeof fillInData === "string" && fillInData.indexOf("Three of") !== -1;
+      console.log("!donotUpdate", !donotUpdate);
+      console.log("fillInData.updated", fillInData);
       if (fillInData.updated && !donotUpdate) {
         console.log("here in updates");
         updatedInfoFormState.canCalculate = true;

@@ -542,7 +542,6 @@ export const fillInTheBlanks = data => {
     });
   }
 
-  // console.log(
   //   "mont int original",
   //   isUndefined(monthlyPayment) &&
   //     isUndefined(interestRate) &&
@@ -575,7 +574,6 @@ export const fillInTheBlanks = data => {
     });
   }
 
-  // console.log(
   //   "monthly int loan",
   //   isUndefined(monthlyPayment) &&
   //     isUndefined(interestRate) &&
@@ -586,7 +584,8 @@ export const fillInTheBlanks = data => {
     isUndefined(interestRate) &&
     isUndefined(loanTerm) &&
     !isUndefined(originalLoanAmount) &&
-    !isUndefined(firstPaymentDate)
+    !isUndefined(firstPaymentDate) &&
+    !isUndefined(loanAmount)
   ) {
     // Case #3 var missing_interest_monthlyPayment_loanTerm = {
     //   firstPaymentDate: "2017-11-11",
@@ -610,9 +609,7 @@ export const fillInTheBlanks = data => {
   }
 
   if (
-    isUndefined(monthlyPayment) &&
-    isUndefined(loanTerm) &&
-    isUndefined(originalLoanAmount) &&
+    !isUndefined(interestRate) &&
     !isUndefined(loanAmount) &&
     !isUndefined(firstPaymentDate)
   ) {
@@ -633,18 +630,15 @@ export const fillInTheBlanks = data => {
     });
   }
 
-  // console.log(
   //   "int 1st original",
   //   isUndefined(interestRate) &&
   //     isUndefined(firstPaymentDate) &&
   //     isUndefined(originalLoanAmount)
   // );
   if (
-    isUndefined(interestRate) &&
-    isUndefined(firstPaymentDate) &&
-    isUndefined(originalLoanAmount) &&
     !isUndefined(loanTerm) &&
-    !isUndefined(monthlyPayment)
+    !isUndefined(monthlyPayment) &&
+    !isUndefined(loanAmount)
   ) {
     // Case #5 var missing_original_interestRate_firstPaymentDate = {
     //   loanTerm: "30",
@@ -659,7 +653,6 @@ export const fillInTheBlanks = data => {
     });
   }
 
-  // console.log(
   //   "int, 1st, term",
   //   isUndefined(interestRate) &&
   //     isUndefined(firstPaymentDate) &&
@@ -699,9 +692,6 @@ export const fillInTheBlanks = data => {
     });
   }
   if (
-    isUndefined(originalLoanAmount) &&
-    isUndefined(firstPaymentDate) &&
-    isUndefined(loanTerm) &&
     !isUndefined(loanAmount) &&
     !isUndefined(monthlyPayment) &&
     !isUndefined(interestRate)
@@ -720,11 +710,9 @@ export const fillInTheBlanks = data => {
   }
 
   if (
-    isUndefined(interestRate) &&
-    isUndefined(firstPaymentDate) &&
-    isUndefined(monthlyPayment) &&
     !isUndefined(originalLoanAmount) &&
-    !isUndefined(loanAmount)
+    !isUndefined(loanAmount) &&
+    !isUndefined(loanTerm)
   ) {
     // Case #8
     // var missing_interestRate_firstPaymentDate_monthlyPayment = {
@@ -757,10 +745,9 @@ export const fillInTheBlanks = data => {
   }
 
   if (
-    isUndefined(originalLoanAmount) &&
-    isUndefined(firstPaymentDate) &&
-    isUndefined(monthlyPayment) &&
-    !isUndefined(loanAmount)
+    !isUndefined(loanAmount) &&
+    !isUndefined(loanTerm) &&
+    !isUndefined(interestRate)
   ) {
     // Case #9
     // var missing_originalLoanAmount_firstPaymentDate_monthlyPayment = {
@@ -780,7 +767,8 @@ export const fillInTheBlanks = data => {
     isUndefined(loanTerm) &&
     isUndefined(firstPaymentDate) &&
     isUndefined(monthlyPayment) &&
-    !isUndefined(loanAmount)
+    !isUndefined(loanAmount) &&
+    !isUndefined(interestRate)
   ) {
     // Case #10
 
@@ -822,11 +810,9 @@ export const fillInTheBlanks = data => {
   }
 
   if (
-    isUndefined(interestRate) &&
-    isUndefined(loanAmount) &&
-    isUndefined(loanTerm) &&
     !isUndefined(originalLoanAmount) &&
-    !isUndefined(monthlyPayment)
+    !isUndefined(monthlyPayment) &&
+    !isUndefined(firstPaymentDate)
   ) {
     // Case #12
     // var missing_interestRate_loanAmount_loanTerm = {
@@ -868,7 +854,10 @@ export const fillInTheBlanks = data => {
     isUndefined(loanAmount) &&
     isUndefined(interestRate) &&
     isUndefined(monthlyPayment) &&
-    !isUndefined(firstPaymentDate)
+    !isUndefined(firstPaymentDate) &&
+    !isUndefined(loanTerm)
+    // &&
+    // !isUndefined(loanTerm)
   ) {
     // Case #14
 
@@ -916,7 +905,9 @@ export const fillInTheBlanks = data => {
   if (
     isUndefined(loanAmount) &&
     isUndefined(loanTerm) &&
-    isUndefined(monthlyPayment)
+    isUndefined(monthlyPayment) &&
+    !isUndefined(originalLoanAmount) &&
+    !isUndefined(interestRate)
   ) {
     // Case #16
 

@@ -34,7 +34,6 @@ const selectLabelStyle = {
 };
 
 const numbersOnly = value => {
-  console.log("value", value);
   return value.replace(/[^\d]/g, "");
 };
 
@@ -254,7 +253,9 @@ const renderTextField = ({
           {originationLabel}
         </Typography>
         <CalendarPicker
-          onChange={input.onChange}
+          onChange={a => {
+            return input.onChange({ value: a.slice(0, 9) });
+          }}
           setInitial={true}
           value={updatedDate}
         />
@@ -281,7 +282,8 @@ const renderTextField = ({
         type,
         style: {
           marginLeft: ".3rem",
-          textDecoration: "none"
+          textDecoration: "none",
+          textAlign: "center"
         },
         disableUnderline: true
       }}
@@ -297,6 +299,21 @@ const renderTextField = ({
   );
 };
 
+function getFormattedDate(d) {
+  var day = d;
+  var dd = day.getDate();
+  var mm = day.getMonth() + 1; //January is 0!
+
+  var yyyy = day.getFullYear();
+  if (dd < 10) {
+    dd = "0" + dd;
+  }
+  if (mm < 10) {
+    mm = "0" + mm;
+  }
+  return yyyy + "-" + mm + "-" + dd;
+}
+
 class InputFormComponent extends React.Component {
   constructor(props, context) {
     super(props, context);
@@ -308,7 +325,8 @@ class InputFormComponent extends React.Component {
       paymentAmount: null,
       currentLoanAmount: null,
       payOffDate: null,
-      dateTouched: false
+      dateTouched: false,
+      originalLoanAmount: null
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -319,7 +337,10 @@ class InputFormComponent extends React.Component {
 
   handleChange(name, e) {
     if (name === "originationDate") {
-      this.setState({ dateTouched: true, originationDate: e }, () => {
+      const updated = new Date(e.value);
+      const ur = getFormattedDate(updated);
+
+      this.setState({ dateTouched: true, originationDate: ur }, () => {
         this.props.updateInputForm(this.state);
       });
     } else {
@@ -368,7 +389,11 @@ class InputFormComponent extends React.Component {
               normalize={numbersOnly}
             />
           </Grid>
-          <Grid item xs={12} style={{ textAlign: "center" }}>
+          <Grid
+            item
+            xs={12}
+            style={{ textAlign: "center", marginBottom: ".5rem" }}
+          >
             <Field
               name="interestRate"
               nonStandardType="interestRate"
@@ -388,7 +413,7 @@ class InputFormComponent extends React.Component {
               onChange={e => this.handleChange("term", e)}
             />
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} style={{ textAlign: "center" }}>
             <Field
               name="paymentAmount"
               component={renderTextField}
@@ -399,12 +424,16 @@ class InputFormComponent extends React.Component {
             />
           </Grid>
           {!anticipated && (
-            <Grid item xs={12}>
+            <Grid
+              item
+              xs={12}
+              style={{ textAlign: "center", marginBottom: ".5rem" }}
+            >
               <Field
                 name="originalLoanAmount"
                 component={renderTextField}
                 label={"Original Loan Amount"}
-                onChange={e => this.handleChange("paymentAmount", e)}
+                onChange={e => this.handleChange("originalLoanAmount", e)}
                 mobile={0}
               />
             </Grid>
