@@ -95,47 +95,6 @@ class InterestPageComponent extends React.Component {
   }
 }
 
-{
-  /* <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center"
-            }}
-          >
-            <Typography
-              variant="h5"
-              align="left"
-              className={classes.adeText}
-              gutterBottom
-            >
-              Are you a{" "}
-              <a
-                className={classes.introLink}
-                style={{ textDecoration: "none" }}
-                href="/homeowner"
-              >
-                homeowner?
-              </a>
-            </Typography>
-            <Button
-              onClick={this.handleYes}
-              variant="outlined"
-              size="large"
-              color="primary"
-              style={{
-                width: "80%",
-                margin: "3rem",
-                fontSize: "1rem",
-                textShadow: "1px 1px #7280ce"
-              }}
-            >
-              Home Owner
-            </Button>
-          </div> */
-}
-
 const mapStateToProps = state => ({
   mobile: state.mobile,
   input: state.input

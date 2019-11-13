@@ -2,7 +2,8 @@ import {
   FETCH_CURRENT_USER,
   ADE_LOGIN_SUBMIT,
   RESET_AUTH,
-  UPDATE_ACTIVE_USER
+  UPDATE_ACTIVE_USER,
+  SET_HAVE_HOMEPAGE
 } from "../actions";
 
 export default function(
@@ -10,6 +11,11 @@ export default function(
   action
 ) {
   switch (action.type) {
+    case SET_HAVE_HOMEPAGE:
+      const setHomePageState = Object.assign({}, state);
+      console.log("here in action", action);
+      setHomePageState.isBorrower = action.pg === "/borrower";
+      return setHomePageState;
     case FETCH_CURRENT_USER:
       const fetchCurrentUserState = Object.assign({}, state);
       return fetchCurrentUserState;

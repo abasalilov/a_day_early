@@ -215,7 +215,8 @@ class HeaderComponent extends React.Component {
 const mapStateToProps = state => {
   return {
     auth: state.auth,
-    mobile: state.mobile
+    mobile: state.mobile,
+    borrower: state.auth.isBorrower
   };
 };
 

@@ -117,6 +117,16 @@ export default (req, store, context) => {
                   color: #2D3190
                 }
 
+                  #select-term {
+                    text-align:left !important;
+                  }
+
+                .MuiSelect-selectMenu {
+                  text-align:left !important;
+                  border: solid red;
+                  padding:1rem;
+                }
+
                 .arrow_box-top {
                   position: relative;
                   background: #fff;

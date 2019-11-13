@@ -9,6 +9,7 @@ import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
 import { withStyles } from "@material-ui/core/styles";
 import { Image } from "../../components/common";
+import { setNavHomePage } from "../../actions";
 
 const data = {
   displayType: "INTRO",
@@ -223,9 +224,17 @@ const mapStateToProps = state => ({
   mobile: state.mobile
 });
 
+const mapDispatchToProps = dispatch => {
+  return {
+    setBackButton: pg => {
+      dispatch(setNavHomePage(pg));
+    }
+  };
+};
+
 const ConnectedHomePage = connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(withStyles(styles)(HomePageComponent));
 
 export const LandingPage = {

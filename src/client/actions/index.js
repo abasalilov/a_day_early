@@ -195,3 +195,9 @@ export const adePayPalFailure = dt => ({
   type: UPDATE_PAYPAL_FAILURE,
   dt
 });
+
+export const SET_HAVE_HOMEPAGE = "SET_HAVE_HOMEPAGE";
+export const setNavHomePage = pg => ({
+  type: SET_HAVE_HOMEPAGE,
+  pg
+});

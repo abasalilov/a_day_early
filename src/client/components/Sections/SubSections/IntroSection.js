@@ -257,9 +257,3 @@ export const IntroSectionComponent = props => {
 };
 
 export const IntroSection = withStyles(styles)(IntroSectionComponent);
-
-IntroSectionComponent.propTypes = {
-  classes: PropTypes.object.isRequired,
-  mobile: PropTypes.bool,
-  sectionProps: PropTypes.object
-};
