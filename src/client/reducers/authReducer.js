@@ -12,7 +12,6 @@ export default function(
 ) {
   switch (action.type) {
     case SET_HAVE_HOMEPAGE:
-      console.log("state", state);
       const setHomePageState = Object.assign({}, state);
       setHomePageState.isBorrower = action.pg === "/borrower";
       return setHomePageState;

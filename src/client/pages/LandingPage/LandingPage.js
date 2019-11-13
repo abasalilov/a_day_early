@@ -115,7 +115,6 @@ const HomePageComponent = props => {
   const imgClass = mobile ? classes.mobleImg : classes.imgContainer;
   const containerClass = mobile ? classes.mobileSplit : classes.split;
   const fontClass = mobile ? classes.mobileFont : classes.font;
-  console.log("props", props);
   return (
     <Grid item key={data.title} xs={12}>
       <div className={containerClass}>

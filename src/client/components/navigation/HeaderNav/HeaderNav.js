@@ -150,8 +150,6 @@ const NavButton = props => {
     let linkPathVar = "";
     if (title === "HOME") {
       linkPathVar = isBorrower ? "home" : "lenders";
-      console.log("isBorrower", isBorrower);
-      console.log("linkPathVar", linkPathVar);
     } else {
       linkPathVar = linkPath;
     }
@@ -221,7 +219,6 @@ class HeaderComponent extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log("auth", state.auth);
   return {
     auth: state.auth,
     mobile: state.mobile,

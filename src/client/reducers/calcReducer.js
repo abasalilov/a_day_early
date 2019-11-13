@@ -198,10 +198,7 @@ export default function input(state = defaultState, action) {
 
       let donotUpdate =
         typeof fillInData === "string" && fillInData.indexOf("Three of") !== -1;
-      console.log("!donotUpdate", !donotUpdate);
-      console.log("fillInData.updated", fillInData);
       if (fillInData.updated && !donotUpdate) {
-        console.log("here in updates");
         updatedInfoFormState.canCalculate = true;
         updatedInfoFormState.currentLoanAmount = action.st.currentLoanAmount;
         updatedInfoFormState.interestRate = fillInData.interest;
@@ -210,7 +207,6 @@ export default function input(state = defaultState, action) {
         updatedInfoFormState.payOffDate = action.st.payOffDate;
         updatedInfoFormState.paymentAmount = fillInData.payment;
         updatedInfoFormState.term = fillInData.payments / 12;
-        console.log("upated", updatedInfoFormState);
       } else {
         updatedInfoFormState.currentLoanAmount = action.st.currentLoanAmount;
         updatedInfoFormState.interestRate = action.st.interestRate;

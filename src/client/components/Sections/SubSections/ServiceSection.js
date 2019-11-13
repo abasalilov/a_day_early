@@ -183,7 +183,6 @@ class ServiceSectionComponent extends React.Component {
     const { classes, mobile, sectionProps, input } = this.props;
     const { showModal, selectedService, showRegModal } = this.state;
     const hasMessages = input.missingFields.length > 0;
-    console.log("input", input.canCalculate);
     const menuIconStyle = {
       fontSize: mobile ? "4rem" : "2.5rem",
       marginRight: "1rem"
