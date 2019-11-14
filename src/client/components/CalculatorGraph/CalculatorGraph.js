@@ -95,13 +95,21 @@ class CalculatorGraphComponent extends React.Component {
         this.setState({ loanAmount, interestRate, term });
       }
     }
+  }
 
-    console.log("current", this.props.history.location);
-    console.log("old", prevProps);
-    console.log("window.scrollTo(0, 0);", window.scrollTo);
-    if (this.props.history.location !== prevProps.history.location) {
-      window.scrollTo(0, 0);
-    }
+  componentWillUnmount() {
+    this.props.updateInputForm({
+      loanAmount: null,
+      interestRate: null,
+      term: null,
+      lender: null,
+      otherLender: null,
+      monthlyOverpayment: null,
+      overpayments: [defaultOverpayment],
+      accuracy: null,
+      monthlyUpdated: null,
+      ready: false
+    });
   }
 
   setLender(e) {

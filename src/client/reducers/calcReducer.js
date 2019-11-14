@@ -189,21 +189,26 @@ export default function input(state = defaultState, action) {
       const propList = Object.keys(action.st).filter(item => {
         return action.st[item] !== null;
       });
-      if (propList.length > 2) {
-        const checkDate = generateFirstDate();
-        const dateSame = action.st.originationDate === checkDate;
-        const fillInData = fillInTheBlanks({
-          firstPaymentDate: dateSame ? null : action.st.originationDate,
-          interestRate: action.st.interestRate,
-          loanAmount: action.st.loanAmount,
-          monthlyPayment: action.st.paymentAmount,
-          originalLoanAmount: action.st.originalLoanAmount,
-          loanTerm: action.st.term
-        });
 
-        let donotUpdate =
-          typeof fillInData === "string" &&
-          fillInData.indexOf("Three of") !== -1;
+      const fillInData = fillInTheBlanks({
+        firstPaymentDate: action.st.originationDate,
+        interestRate: action.st.interestRate,
+        loanAmount: action.st.loanAmount,
+        monthlyPayment: action.st.paymentAmount,
+        originalLoanAmount: action.st.originalLoanAmount,
+        loanTerm: action.st.term
+      });
+
+      let donotUpdate =
+        typeof fillInData === "string" && fillInData.indexOf("Three of") !== -1;
+      console.log("donotUpdate", donotUpdate);
+      console.log("fillInData", fillInData);
+      console.log("propList", propList);
+
+      if (propList.length >= 2) {
+        // const checkDate = generateFirstDate();
+        // const dateSame = action.st.originationDate === checkDate;
+
         if (fillInData.updated && !donotUpdate) {
           updatedInfoFormState.canCalculate = true;
           updatedInfoFormState.currentLoanAmount = action.st.currentLoanAmount;

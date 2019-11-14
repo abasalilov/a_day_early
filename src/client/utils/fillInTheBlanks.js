@@ -130,7 +130,14 @@ function computeIntRate(numberPayments, principalAmt, monthlyPayment, myGuess) {
   decPlace5Amt = eval(decPlace5PmtAmt) - eval(myNewPmtAmt);
 
   var myPmtDiff = 0;
-
+  //
+  // r = (1/t)(A/P - 1)
+  // A = Total Accrued Amount (principal + interest)
+  // P = Principal Amount
+  // I = Interest Amount
+  // r = Rate of Interest per year in decimal; r = R/100
+  // R = Rate of Interest per year as a percent; R = r * 100
+  // t = Time Period involved in months or years
   if (myNewPmtAmt < monthlyPayment) {
     while (myNewPmtAmt < monthlyPayment) {
       myPmtDiff = eval(monthlyPayment) - eval(myNewPmtAmt);
@@ -321,6 +328,7 @@ function fns(num, places, comma, type, show) {
 }
 
 function getMissing(calc) {
+  console.log("calc for real", calc);
   var filled = 0;
 
   if (calc.principal && calc.principal.length > 0) {
@@ -552,8 +560,9 @@ export const fillInTheBlanks = data => {
     isUndefined(monthlyPayment) &&
     isUndefined(interestRate) &&
     isUndefined(originalLoanAmount) &&
-    !isUndefined(interestRate) &&
-    !isUndefined(firstPaymentDate)
+    !isUndefined(loanTerm) &&
+    !isUndefined(firstPaymentDate) &&
+    !isUndefined(loanAmount)
   ) {
     // Case 2 = var missing_interest_monthlyPayment_originalLoan = {
     //   firstPaymentDate: "2018-11-11",
@@ -561,7 +570,8 @@ export const fillInTheBlanks = data => {
     //   loanTerm: "30"
     // };
     // NEED TO GUESS WITH AVG RATE HERE
-    const yr = firstPaymentDate.slice(0, 4);
+    const yrCut = firstPaymentDate.indexOf("20");
+    const yr = firstPaymentDate.slice(yrCut);
     const guessInterestRate = avg_interest[yr];
     const roundedInterest = (Math.round(guessInterestRate * 4) / 4).toFixed(3);
     loanTerm = 250000 > parseLoanNumber(loanAmount) ? 15 : 30;
@@ -570,7 +580,7 @@ export const fillInTheBlanks = data => {
     return getMissing({
       payments: loanTerm.toString(),
       principal: loanAmount.toString(),
-      interest: interestRate
+      interest: guessInterestRate.toString()
     });
   }
 
@@ -838,6 +848,7 @@ export const fillInTheBlanks = data => {
     !isUndefined(interestRate)
   ) {
     // Case #13
+    console.log("13");
     // var missing_originalLoanAmount_loanAmount_loanTerm = {
     //   monthlyPayment: "4000",
     //   firstPaymentDate: "2017-08-11",
@@ -850,6 +861,30 @@ export const fillInTheBlanks = data => {
       interest: interestRate
     });
   }
+  console.log("final");
+  if (
+    !isUndefined(originalLoanAmount) &&
+    !isUndefined(firstPaymentDate) &&
+    !isUndefined(loanTerm)
+  ) {
+    console.log("case #222");
+    // Case #222
+    // var missing_originalLoanAmount_firstPaymentDate_loanTerm = {
+    //   interestRate: "5.75",
+    //   monthlyPayment: "2,200",
+    //   loanAmount: "350,000"
+    // };
+
+    const yr = firstPaymentDate.slice(0, 4);
+    const guessInterestRate = avg_interest[yr];
+    loanTerm = loanTerm * 12;
+    return getMissing({
+      principal: originalLoanAmount.toString(),
+      payments: loanTerm.toString(),
+      interestRate: guessInterestRate
+    });
+  }
+
   if (
     isUndefined(loanAmount) &&
     isUndefined(interestRate) &&
@@ -951,7 +986,8 @@ export const fillInTheBlanks = data => {
   if (
     isUndefined(loanAmount) &&
     isUndefined(firstPaymentDate) &&
-    isUndefined(originalLoanAmount)
+    isUndefined(originalLoanAmount) &&
+    !isUndefined(interestRate)
   ) {
     // Case #18
 
@@ -971,7 +1007,8 @@ export const fillInTheBlanks = data => {
   if (
     isUndefined(loanAmount) &&
     isUndefined(firstPaymentDate) &&
-    isUndefined(loanTerm)
+    isUndefined(loanTerm) &&
+    !isUndefined(interestRate)
   ) {
     // Case #19
 
@@ -991,7 +1028,8 @@ export const fillInTheBlanks = data => {
   if (
     isUndefined(loanAmount) &&
     isUndefined(firstPaymentDate) &&
-    isUndefined(monthlyPayment)
+    isUndefined(monthlyPayment) &&
+    !isUndefined(interestRate)
   ) {
     // Case #20
 
