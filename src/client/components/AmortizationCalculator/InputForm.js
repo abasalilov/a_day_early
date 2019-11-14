@@ -249,15 +249,31 @@ const renderTextField = ({
     let updatedDate = dateTouched ? input.value : generateFirstDate();
     return (
       <div>
-        <Typography variant="h5" style={labelStyle} align="left">
+        <Typography
+          variant="h5"
+          style={{
+            color: "rgb(45, 49, 144)",
+            padding: ".4rem",
+            fontSize: "20px"
+          }}
+          align="left"
+        >
           {originationLabel}
         </Typography>
         <CalendarPicker
           onChange={a => {
             return input.onChange({ value: a.slice(0, 9) });
           }}
+          variant="inline"
           setInitial={true}
           value={updatedDate}
+          InputLabelProps={{
+            style: {
+              fontSize: labelFontSize ? labelFontSize : "20px",
+              color: "rgb(45, 49, 144)"
+            },
+            shrink: labelShrink
+          }}
         />
       </div>
     );
@@ -326,8 +342,10 @@ class InputFormComponent extends React.Component {
       currentLoanAmount: null,
       payOffDate: null,
       dateTouched: false,
-      originalLoanAmount: null
+      originalLoanAmount: null,
+      openCalendar: false
     };
+    this.handleOpenCalendar = this.handleChange.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -339,7 +357,6 @@ class InputFormComponent extends React.Component {
     if (name === "originationDate") {
       const updated = new Date(e.value);
       const ur = getFormattedDate(updated);
-
       this.setState({ dateTouched: true, originationDate: ur }, () => {
         const oldState = Object.assign({}, this.state);
         delete oldState.dateTouched;
@@ -352,6 +369,11 @@ class InputFormComponent extends React.Component {
         this.props.updateInputForm(oldState);
       });
     }
+  }
+
+  handleOpenCalendar(e) {
+    const oldCal = this.state.openCalendar;
+    this.setState({ openCalendar: !oldCal });
   }
   // Current Loan Balance
 
@@ -373,6 +395,8 @@ class InputFormComponent extends React.Component {
     const termLabel = anticipated
       ? "Loan Term Desired (Years)"
       : "Loan Term (Years)";
+
+    const dateType = this.state.openCalendar ? "date" : "text";
     return (
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <Grid
@@ -454,9 +478,9 @@ class InputFormComponent extends React.Component {
               name="originationDate"
               label={originationLabel}
               type="date"
+              openCalendar={this.state.openCalendar}
               anticipated={anticipated}
               component={renderTextField}
-              onChange={e => this.handleChange("originationDate", e)}
               mobile={0}
               dateTouched={dateTouched}
               labelFontSize={"26px"}

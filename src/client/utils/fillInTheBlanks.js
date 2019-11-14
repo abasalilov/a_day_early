@@ -328,7 +328,6 @@ function fns(num, places, comma, type, show) {
 }
 
 function getMissing(calc) {
-  console.log("calc for real", calc);
   var filled = 0;
 
   if (calc.principal && calc.principal.length > 0) {
@@ -861,7 +860,6 @@ export const fillInTheBlanks = data => {
       interest: interestRate
     });
   }
-  console.log("final");
   if (
     !isUndefined(originalLoanAmount) &&
     !isUndefined(firstPaymentDate) &&

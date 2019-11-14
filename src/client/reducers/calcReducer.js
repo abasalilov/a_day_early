@@ -201,9 +201,6 @@ export default function input(state = defaultState, action) {
 
       let donotUpdate =
         typeof fillInData === "string" && fillInData.indexOf("Three of") !== -1;
-      console.log("donotUpdate", donotUpdate);
-      console.log("fillInData", fillInData);
-      console.log("propList", propList);
 
       if (propList.length >= 2) {
         // const checkDate = generateFirstDate();

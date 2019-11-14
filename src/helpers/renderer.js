@@ -159,6 +159,11 @@ export default (req, store, context) => {
                   margin-top: -12px;
                 }
 
+                .MuiPickersBasePicker-container-301 {
+                  border: solid red 3px;
+                  padding: 1rem;
+                }
+
                 .arrow_box-left {
                   position: relative;
                   background: #fff;

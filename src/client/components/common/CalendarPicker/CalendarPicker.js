@@ -45,11 +45,24 @@ class CalendarPickerComponent extends React.Component {
       <MuiThemeProvider theme={customTheme}>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <DatePicker
+            variant="inline"
+            style={{
+              color: "#2D3190",
+              fontSize: "20px"
+            }}
             autoOk
-            orientation="landscape"
-            variant="static"
             openTo="date"
             value={date}
+            style={{ width: "100%" }}
+            inputProps={{
+              style: {
+                paddingTop: ".4rem",
+                fontSize: "20px",
+                fontWeight: "bold",
+                marginLeft: ".4rem",
+                textDecoration: "none"
+              }
+            }}
             onChange={this.changeDate}
           />
         </MuiPickersUtilsProvider>
