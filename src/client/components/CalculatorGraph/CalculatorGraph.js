@@ -18,7 +18,7 @@ const defaultOverpayment = { month: "0", year: "0", amount: "0" };
 
 const selectLabelStyle = {
   color: "#3f51b5",
-  textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)"
+  textShadow: "0 1px  2px rgba(0, 0, 0, 0.4)"
 };
 
 const lenders = ["Chase", "Wells Fargo", "Quicken Loans", "Other"];
@@ -206,11 +206,23 @@ class CalculatorGraphComponent extends React.Component {
             : overpayment
         )
       );
-
+    console.log("loanAmount", typeof loanAmount, loanAmount);
+    console.log("term", typeof term, term);
+    console.log("interestRate", typeof interestRate, interestRate);
+    console.log(
+      "monthlyOverpayment",
+      typeof monthlyOverpayment,
+      monthlyOverpayment
+    );
+    console.log("overpayments", typeof overpayments, overpayments);
+    const calcInterest = interestRate
+      ? interestRate.replace("%", "")
+      : interestRate;
+    console.log("calcInterest", calcInterest);
     const { monthlyPayment, payments } = calculations(
       +loanAmount,
       +term,
-      +interestRate,
+      +calcInterest,
       +monthlyOverpayment,
       overpayments
     );

@@ -255,7 +255,8 @@ const renderTextField = ({
             color: "rgb(45, 49, 144)",
             padding: ".4rem",
             fontSize: "20px",
-            backgroundColor: "#FFF"
+            backgroundColor: "#FFF",
+            borderRadius: "8px"
           }}
           align="left"
         >
@@ -471,7 +472,7 @@ class InputFormComponent extends React.Component {
             item
             xs={12}
             style={{
-              border: "solid #049347 3px",
+              border: "solid #049347 2px",
               borderRadius: ".3rem"
             }}
           >

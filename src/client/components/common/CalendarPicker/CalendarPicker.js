@@ -54,7 +54,7 @@ class CalendarPickerComponent extends React.Component {
             openTo="date"
             value={date}
             style={{ width: "100%" }}
-            inputProps={{
+            InputProps={{
               style: {
                 backgroundColor: "#fff",
                 color: "#2D3190",
@@ -63,7 +63,8 @@ class CalendarPickerComponent extends React.Component {
                 fontWeight: "bold",
                 marginLeft: ".4rem",
                 textDecoration: "none"
-              }
+              },
+              disableUnderline: true
             }}
             onChange={this.changeDate}
           />
