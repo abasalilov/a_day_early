@@ -928,7 +928,10 @@ export const fillInTheBlanks = data => {
   if (
     isUndefined(loanAmount) &&
     isUndefined(firstPaymentDate) &&
-    isUndefined(interestRate)
+    isUndefined(interestRate) &&
+    !isUndefined(monthlyPayment) &&
+    !isUndefined(originalLoanAmount) &&
+    !isUndefined(loanTerm)
   ) {
     // Case #17
 

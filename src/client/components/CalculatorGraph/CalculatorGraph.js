@@ -77,9 +77,11 @@ class CalculatorGraphComponent extends React.Component {
     this.setLender = this.setLender.bind(this);
     this.handleAccuracy = this.handleAccuracy.bind(this);
     this.handleRedundancy = this.handleRedundancy.bind(this);
+    this.handleUpdatedInterest = this.handleUpdatedInterest.bind(this);
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     const { loanAmount, interestRate, term } = this.props;
     if (!isEmpty(loanAmount) && !isEmpty(interestRate)) {
       this.setState({ loanAmount, interestRate, term });
@@ -92,6 +94,13 @@ class CalculatorGraphComponent extends React.Component {
       if (!isEmpty(loanAmount) && !isEmpty(interestRate)) {
         this.setState({ loanAmount, interestRate, term });
       }
+    }
+
+    console.log("current", this.props.history.location);
+    console.log("old", prevProps);
+    console.log("window.scrollTo(0, 0);", window.scrollTo);
+    if (this.props.history.location !== prevProps.history.location) {
+      window.scrollTo(0, 0);
     }
   }
 
@@ -143,6 +152,20 @@ class CalculatorGraphComponent extends React.Component {
     // }
   }
 
+  handleUpdatedInterest() {
+    const { term, loanAmount, monthlyOverpayment, overpayments } = this.state;
+
+    const interestRate = 4.5;
+    const { monthlyPayment, payments } = calculations(
+      +loanAmount,
+      +term,
+      +interestRate,
+      +monthlyOverpayment,
+      overpayments
+    );
+    return monthlyPayment;
+  }
+
   render() {
     const {
       loanAmount,
@@ -162,8 +185,9 @@ class CalculatorGraphComponent extends React.Component {
         alterSize = true;
       }
     }
-    const msg =
-      "Your interest rate is above today's going rate, would you like to get some information and options from a lender? Here's how much you can save:";
+
+    const withUpdatedInterest = this.handleUpdatedInterest();
+
     let showInterestRateMessage = Number(interestRate) > 4.5;
 
     const updateOverpayment = index => ({ target }) =>
@@ -185,7 +209,16 @@ class CalculatorGraphComponent extends React.Component {
 
     const lenderDisplayName = isEmpty(lender) ? otherLender : lender;
     const showQuestion = isEmpty(accuracy);
+    const updatedInterestRate = this.state.interestRate;
+    let monthly = +monthlyOverpayment + monthlyPayment;
+    if (isNaN(monthlyPayment)) {
+      monthly = this.props.paymentAmount;
+    }
+    const finalPaymentAmount = monthly - withUpdatedInterest;
 
+    const msg = `Your interest rate is above today's going rate, would you like to get some information and options from a lender? Here's how much you can save: ${finalPaymentAmount.toFixed(
+      2
+    )}`;
     return (
       <div>
         <div>
@@ -202,7 +235,7 @@ class CalculatorGraphComponent extends React.Component {
             </div>
             <Grid container spacing={8} alignItems="center" direction={"row"}>
               <Grid item xs={4}>
-                <div style={fieldStyle}>
+                <div id="loanInfo" style={fieldStyle}>
                   <Typography variant="h6" style={labelStyle} align="left">
                     Amount
                   </Typography>
@@ -247,11 +280,12 @@ class CalculatorGraphComponent extends React.Component {
                     Interest Rate
                   </Typography>
                   <input
-                    type="number"
-                    step={0.1}
-                    value={interestRate}
+                    value={updatedInterestRate}
                     onChange={e =>
-                      this.handleChange("interestRate", e.target.value)
+                      this.handleChange(
+                        "interestRate",
+                        e.target.value.replace(/[^0-9$.,]/g, "")
+                      )
                     }
                     style={{
                       color: "#3f51b5",
@@ -296,7 +330,7 @@ class CalculatorGraphComponent extends React.Component {
             <Grid item xs={3}>
               <span className="money">
                 <Typography variant="h6" style={labelStyle} align="left">
-                  {+monthlyOverpayment + monthlyPayment}
+                  {monthly}
                 </Typography>
               </span>
             </Grid>

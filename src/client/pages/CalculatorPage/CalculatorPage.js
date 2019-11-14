@@ -22,7 +22,7 @@ class CalculatorPageComponent extends React.Component {
     // TODO: UNCOMMENT DURING DEPLOYMENT
     let redirect = !this.props.input.canCalculate;
     if (redirect) {
-      this.props.history.push("/home#basics", { navBack: true });
+      this.props.history.push("/", { navBack: true });
     }
   }
 

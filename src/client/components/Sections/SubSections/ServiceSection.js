@@ -144,7 +144,7 @@ class ServiceSectionComponent extends React.Component {
     } else if (redirectToIntPage) {
       this.props.history.push("/interest");
     } else {
-      this.props.history.push("/calculator");
+      this.props.history.push("/calculator#loanInfo");
     }
   }
 

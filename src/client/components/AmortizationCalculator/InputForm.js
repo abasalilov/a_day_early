@@ -341,11 +341,15 @@ class InputFormComponent extends React.Component {
       const ur = getFormattedDate(updated);
 
       this.setState({ dateTouched: true, originationDate: ur }, () => {
-        this.props.updateInputForm(this.state);
+        const oldState = Object.assign({}, this.state);
+        delete oldState.dateTouched;
+        this.props.updateInputForm(oldState);
       });
     } else {
       this.setState({ [name]: e.target.value }, () => {
-        this.props.updateInputForm(this.state);
+        const oldState = Object.assign({}, this.state);
+        delete oldState.dateTouched;
+        this.props.updateInputForm(oldState);
       });
     }
   }

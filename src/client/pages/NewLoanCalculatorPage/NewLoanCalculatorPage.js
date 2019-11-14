@@ -99,7 +99,7 @@ class NewLoanCalculatorPageComponent extends React.Component {
     if (this.props.input.missingFields.length > 0) {
       this.setState({ showFlyout: true });
     } else {
-      this.props.history.push("/calculator");
+      this.props.history.push("/calculator#loanInfo");
     }
   }
 

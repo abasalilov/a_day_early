@@ -185,28 +185,35 @@ export default function input(state = defaultState, action) {
       // let monthlyPayment = data.monthlyPayment;
       // let originalLoanAmount = data.originalLoanAmount;
       // let loanTerm = data.loanTerm;
-      const checkDate = generateFirstDate();
-      const dateSame = action.st.originationDate === checkDate;
-      const fillInData = fillInTheBlanks({
-        firstPaymentDate: dateSame ? null : action.st.originationDate,
-        interestRate: action.st.interestRate,
-        loanAmount: action.st.loanAmount,
-        monthlyPayment: action.st.paymentAmount,
-        originalLoanAmount: action.st.originalLoanAmount,
-        loanTerm: action.st.term
-      });
 
-      let donotUpdate =
-        typeof fillInData === "string" && fillInData.indexOf("Three of") !== -1;
-      if (fillInData.updated && !donotUpdate) {
-        updatedInfoFormState.canCalculate = true;
-        updatedInfoFormState.currentLoanAmount = action.st.currentLoanAmount;
-        updatedInfoFormState.interestRate = fillInData.interest;
-        updatedInfoFormState.loanAmount = fillInData.principal;
-        updatedInfoFormState.originationDate = action.st.originationDate;
-        updatedInfoFormState.payOffDate = action.st.payOffDate;
-        updatedInfoFormState.paymentAmount = fillInData.payment;
-        updatedInfoFormState.term = fillInData.payments / 12;
+      const propList = Object.keys(action.st).filter(item => {
+        return action.st[item] !== null;
+      });
+      if (propList.length > 2) {
+        const checkDate = generateFirstDate();
+        const dateSame = action.st.originationDate === checkDate;
+        const fillInData = fillInTheBlanks({
+          firstPaymentDate: dateSame ? null : action.st.originationDate,
+          interestRate: action.st.interestRate,
+          loanAmount: action.st.loanAmount,
+          monthlyPayment: action.st.paymentAmount,
+          originalLoanAmount: action.st.originalLoanAmount,
+          loanTerm: action.st.term
+        });
+
+        let donotUpdate =
+          typeof fillInData === "string" &&
+          fillInData.indexOf("Three of") !== -1;
+        if (fillInData.updated && !donotUpdate) {
+          updatedInfoFormState.canCalculate = true;
+          updatedInfoFormState.currentLoanAmount = action.st.currentLoanAmount;
+          updatedInfoFormState.interestRate = fillInData.interest;
+          updatedInfoFormState.loanAmount = fillInData.principal;
+          updatedInfoFormState.originationDate = action.st.originationDate;
+          updatedInfoFormState.payOffDate = action.st.payOffDate;
+          updatedInfoFormState.paymentAmount = fillInData.payment;
+          updatedInfoFormState.term = fillInData.payments / 12;
+        }
       } else {
         updatedInfoFormState.currentLoanAmount = action.st.currentLoanAmount;
         updatedInfoFormState.interestRate = action.st.interestRate;
