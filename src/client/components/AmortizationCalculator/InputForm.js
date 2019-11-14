@@ -9,8 +9,6 @@ import { CalendarPicker } from "../common";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 
@@ -53,7 +51,8 @@ const renderInterestSelect = input => {
           color: "#2D3190",
           fontSize: "20px",
           textDecoration: "none"
-        }
+        },
+        disableUnderline: true
       }}
     >
       <option value={"2.000"}>2.000%</option>
@@ -211,7 +210,8 @@ const renderTextField = ({
               color: "#2D3190",
               fontSize: "20px",
               textDecoration: "none"
-            }
+            },
+            disableUnderline: true
           }}
         >
           <option value={15}>15</option>
@@ -248,36 +248,16 @@ const renderTextField = ({
       : "First Payment Date";
     let updatedDate = dateTouched ? input.value : generateFirstDate();
     return (
-      <div>
-        <Typography
-          variant="h5"
-          style={{
-            color: "rgb(45, 49, 144)",
-            padding: ".4rem",
-            fontSize: "20px",
-            backgroundColor: "#FFF",
-            borderRadius: "8px"
-          }}
-          align="left"
-        >
-          {originationLabel}
-        </Typography>
-        <CalendarPicker
-          onChange={a => {
-            return input.onChange({ value: a.slice(0, 9) });
-          }}
-          variant="inline"
-          setInitial={true}
-          value={updatedDate}
-          InputLabelProps={{
-            style: {
-              fontSize: labelFontSize ? labelFontSize : "20px",
-              color: "rgb(45, 49, 144)"
-            },
-            shrink: labelShrink
-          }}
-        />
-      </div>
+      <CalendarPicker
+        onChange={a => {
+          return input.onChange({ value: a.slice(0, 9) });
+        }}
+        labelFontSize={labelFontSize}
+        label={"First Payment Date"}
+        setInitial={true}
+        value={updatedDate}
+        input={input}
+      />
     );
   }
 
@@ -454,11 +434,7 @@ class InputFormComponent extends React.Component {
             />
           </Grid>
           {!anticipated && (
-            <Grid
-              item
-              xs={12}
-              style={{ textAlign: "center", marginBottom: ".5rem" }}
-            >
+            <Grid item xs={12} style={{ textAlign: "center" }}>
               <Field
                 name="originalLoanAmount"
                 component={renderTextField}
@@ -468,14 +444,7 @@ class InputFormComponent extends React.Component {
               />
             </Grid>
           )}
-          <Grid
-            item
-            xs={12}
-            style={{
-              border: "solid #049347 2px",
-              borderRadius: ".3rem"
-            }}
-          >
+          <Grid item xs={12}>
             <Field
               name="originationDate"
               label={originationLabel}
@@ -485,7 +454,6 @@ class InputFormComponent extends React.Component {
               component={renderTextField}
               mobile={0}
               dateTouched={dateTouched}
-              labelFontSize={"26px"}
               labelShrink={true}
               ant={false}
             />

@@ -2,6 +2,8 @@ import React from "react";
 import DateFnsUtils from "@date-io/date-fns/build";
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import { TextField } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
 
 const materialTheme = createMuiTheme({
   overrides: {
@@ -20,9 +22,12 @@ class CalendarPickerComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: new Date()
+      date: new Date(),
+      touched: false,
+      open: false
     };
     this.changeDate = this.changeDate.bind(this);
+    this.handleFlip = this.handleFlip.bind(this);
   }
 
   componentDidMount() {
@@ -35,39 +40,83 @@ class CalendarPickerComponent extends React.Component {
 
   changeDate(e) {
     const dt = e.toLocaleString();
-    this.setState({ date: e });
+    this.setState({ date: e, touched: true });
     this.props.onChange(dt);
+    this.handleFlip();
+  }
+
+  handleFlip() {
+    const { open } = this.state;
+    this.setState({ open: !open });
   }
 
   render() {
-    const { date } = this.state;
+    const { date, open, touched } = this.state;
+    const { label, labelFontSize } = this.props;
+    const simpleDate = this.state.date.toString().slice(0, 16);
     return (
       <MuiThemeProvider theme={materialTheme}>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <DatePicker
-            variant="inline"
-            style={{
-              color: "#2D3190",
-              fontSize: "20px"
-            }}
-            autoOk
-            openTo="date"
-            value={date}
-            style={{ width: "100%" }}
-            InputProps={{
-              style: {
-                backgroundColor: "#fff",
+          {open ? (
+            <DatePicker
+              variant="static"
+              style={{
                 color: "#2D3190",
-                paddingTop: ".4rem",
                 fontSize: "20px",
-                fontWeight: "bold",
-                marginLeft: ".4rem",
-                textDecoration: "none"
-              },
-              disableUnderline: true
-            }}
-            onChange={this.changeDate}
-          />
+                backgroundColor: "#FFF"
+              }}
+              {...this.props}
+              autoOk
+              openTo="date"
+              value={date}
+              style={{ width: "100%" }}
+              placeholder={"here yo"}
+              InputProps={{
+                style: {
+                  backgroundColor: "#fff",
+                  color: "#2D3190",
+                  paddingTop: ".4rem",
+                  fontSize: "20px",
+                  fontWeight: "bold",
+                  marginLeft: ".4rem",
+                  textDecoration: "none"
+                },
+                disableUnderline: true
+              }}
+              onChange={this.changeDate}
+            />
+          ) : (
+            <TextField
+              label={!touched ? label : simpleDate}
+              placeholder={!touched ? label : simpleDate}
+              fullWidth
+              style={{
+                border: "solid #049347 2px",
+                borderRadius: "8px",
+                backgroundColor: "#fff",
+                fontWeight: "900"
+              }}
+              margin="normal"
+              InputProps={{
+                style: {
+                  marginLeft: ".3rem",
+                  textDecoration: "none",
+                  textAlign: "center"
+                },
+                disableUnderline: true
+              }}
+              onClick={this.handleFlip}
+              InputLabelProps={{
+                style: {
+                  fontSize: "20px",
+                  color: !touched ? "rgb(45, 49, 144)" : "#000000",
+                  marginLeft: ".3rem",
+                  fontWeight: "900"
+                },
+                shrink: false
+              }}
+            />
+          )}
         </MuiPickersUtilsProvider>
       </MuiThemeProvider>
     );

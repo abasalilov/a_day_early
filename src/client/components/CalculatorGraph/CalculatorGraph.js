@@ -238,7 +238,6 @@ class CalculatorGraphComponent extends React.Component {
     console.log("showQuectin", showQuestion);
     const updatedInterestRate = this.state.interestRate;
     let monthly = +monthlyOverpayment + monthlyPayment;
-    // TODO: DOES THIS LOOK LIKE?
     if (isNaN(monthlyPayment)) {
       monthly = this.props.paymentAmount;
     }
