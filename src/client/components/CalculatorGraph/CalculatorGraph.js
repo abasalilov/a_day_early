@@ -23,7 +23,12 @@ const selectLabelStyle = {
 
 const lenders = ["Chase", "Wells Fargo", "Quicken Loans", "Other"];
 
-const isEmpty = a => typeof a === "undefined";
+const isEmpty = a => {
+  if (a === null) {
+    return true;
+  }
+  return typeof a === "undefined";
+};
 
 const styles = theme => ({
   root: {
@@ -229,8 +234,11 @@ class CalculatorGraphComponent extends React.Component {
 
     const lenderDisplayName = isEmpty(lender) ? otherLender : lender;
     const showQuestion = isEmpty(accuracy);
+    console.log("accuracy", accuracy);
+    console.log("showQuectin", showQuestion);
     const updatedInterestRate = this.state.interestRate;
     let monthly = +monthlyOverpayment + monthlyPayment;
+    // TODO: DOES THIS LOOK LIKE?
     if (isNaN(monthlyPayment)) {
       monthly = this.props.paymentAmount;
     }
@@ -238,7 +246,7 @@ class CalculatorGraphComponent extends React.Component {
 
     const msg = `Your interest rate is above today's going rate, would you like to get some information and options from a lender? Here's how much you can save: ${finalPaymentAmount.toFixed(
       2
-    )}`;
+    )} every month!`;
     return (
       <div>
         <div>

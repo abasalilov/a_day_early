@@ -534,6 +534,7 @@ export const fillInTheBlanks = data => {
     //   loanAmount: "350,000",
     //   monthlyPayment: "4,000"
     // };
+    console.log("1");
     loan_date_start = new Date(firstPaymentDate);
     let today = new Date();
     monthsPaid = monthDiff(loan_date_start, today);
@@ -568,6 +569,7 @@ export const fillInTheBlanks = data => {
     //   loanAmount: "350,000",
     //   loanTerm: "30"
     // };
+    console.log("2");
     // NEED TO GUESS WITH AVG RATE HERE
     const yrCut = firstPaymentDate.indexOf("20");
     const yr = firstPaymentDate.slice(yrCut);
@@ -589,9 +591,6 @@ export const fillInTheBlanks = data => {
   //     isUndefined(loanTerm)
   // );
   if (
-    isUndefined(monthlyPayment) &&
-    isUndefined(interestRate) &&
-    isUndefined(loanTerm) &&
     !isUndefined(originalLoanAmount) &&
     !isUndefined(firstPaymentDate) &&
     !isUndefined(loanAmount)
@@ -601,6 +600,7 @@ export const fillInTheBlanks = data => {
     //   loanAmount: "350,000",
     //   originalLoanAmount: "400,000"
     // };
+    console.log("3");
     loan_date_start = new Date(firstPaymentDate);
     let today = new Date();
     monthsPaid = monthDiff(loan_date_start, today);
@@ -627,6 +627,7 @@ export const fillInTheBlanks = data => {
     //   interestRate: "5.75",
     //   loanAmount: "400,000"
     // };
+    console.log("4");
     loan_date_start = new Date(firstPaymentDate);
     let today = new Date();
     monthsPaid = monthDiff(loan_date_start, today);
@@ -649,6 +650,8 @@ export const fillInTheBlanks = data => {
     !isUndefined(monthlyPayment) &&
     !isUndefined(loanAmount)
   ) {
+    console.log("5");
+
     // Case #5 var missing_original_interestRate_firstPaymentDate = {
     //   loanTerm: "30",
     //   monthlyPayment: "2,200",
@@ -675,6 +678,7 @@ export const fillInTheBlanks = data => {
     !isUndefined(loanAmount) &&
     !isUndefined(monthlyPayment)
   ) {
+    console.log("6");
     // Case #6 var missing_interestRate_firstPaymentDate_loanTerm = {
     // originalLoanAmount: "400,000",
     // monthlyPayment: "2,200",
@@ -706,6 +710,7 @@ export const fillInTheBlanks = data => {
     !isUndefined(interestRate)
   ) {
     // Case #7
+    console.log("7");
     // var missing_originalLoanAmount_firstPaymentDate_loanTerm = {
     //   interestRate: "5.75",
     //   monthlyPayment: "2,200",
@@ -723,6 +728,7 @@ export const fillInTheBlanks = data => {
     !isUndefined(loanAmount) &&
     !isUndefined(loanTerm)
   ) {
+    console.log("8");
     // Case #8
     // var missing_interestRate_firstPaymentDate_monthlyPayment = {
     //   loanTerm: 30,
@@ -759,6 +765,7 @@ export const fillInTheBlanks = data => {
     !isUndefined(interestRate)
   ) {
     // Case #9
+    console.log("9");
     // var missing_originalLoanAmount_firstPaymentDate_monthlyPayment = {
     //   loanTerm: 30,
     //   loanAmount: "550,000",
@@ -780,7 +787,7 @@ export const fillInTheBlanks = data => {
     !isUndefined(interestRate)
   ) {
     // Case #10
-
+    console.log("10");
     // var missing_loanTerm_firstPaymentDate_monthlyPayment = {
     //   loanAmount: "400,00",
     //   originalLoanAmount: "550,000",
@@ -802,7 +809,7 @@ export const fillInTheBlanks = data => {
     !isUndefined(monthlyPayment)
   ) {
     // Case #11
-
+    console.log("11");
     // var missing_interestRate_loanAmount_originalLoanAmount = {
     //   monthlyPayment: "2,400",
     //   firstPaymentDate: "2017-08-11",
@@ -823,6 +830,7 @@ export const fillInTheBlanks = data => {
     !isUndefined(monthlyPayment) &&
     !isUndefined(firstPaymentDate)
   ) {
+    console.log("12");
     // Case #12
     // var missing_interestRate_loanAmount_loanTerm = {
     //   monthlyPayment: "4000",
@@ -888,12 +896,12 @@ export const fillInTheBlanks = data => {
     isUndefined(interestRate) &&
     isUndefined(monthlyPayment) &&
     !isUndefined(firstPaymentDate) &&
-    !isUndefined(loanTerm)
-    // &&
+    !isUndefined(loanTerm) &&
+    !isUndefined(originalLoanAmount)
     // !isUndefined(loanTerm)
   ) {
     // Case #14
-
+    console.log("14");
     // var missing_loanAmount_interestRate_monthly = {
     //   loanTerm: 30,
     //   firstPaymentDate: "2017-08-11",
@@ -912,13 +920,12 @@ export const fillInTheBlanks = data => {
 
   if (
     isUndefined(loanAmount) &&
-    isUndefined(originalLoanAmount) &&
     isUndefined(monthlyPayment) &&
     !isUndefined(loanTerm) &&
     !isUndefined(interestRate)
   ) {
     // Case #15
-
+    console.log("15");
     // missing_loanAmount_originalLoanAmount_monthly
     // var missing_loanAmount_originalLoanAmount_monthly = {
     //   loanTerm: 30,
@@ -936,14 +943,12 @@ export const fillInTheBlanks = data => {
   }
 
   if (
-    isUndefined(loanAmount) &&
     isUndefined(loanTerm) &&
-    isUndefined(monthlyPayment) &&
     !isUndefined(originalLoanAmount) &&
     !isUndefined(interestRate)
   ) {
     // Case #16
-
+    console.log("16");
     // var missing_loanAmount_monthly_loanTerm = {
     //   originalLoanAmount: "450,000",
     //   firstPaymentDate: "2017-08-11",
@@ -959,15 +964,12 @@ export const fillInTheBlanks = data => {
   }
 
   if (
-    isUndefined(loanAmount) &&
-    isUndefined(firstPaymentDate) &&
-    isUndefined(interestRate) &&
     !isUndefined(monthlyPayment) &&
     !isUndefined(originalLoanAmount) &&
     !isUndefined(loanTerm)
   ) {
     // Case #17
-
+    console.log("17");
     // var missing_originalLoanAmount_firstPaymentDate_interestRate = {
     //   originalLoanAmount: "450,000",
     //   loanTerm: 30,
@@ -982,13 +984,12 @@ export const fillInTheBlanks = data => {
   }
 
   if (
-    isUndefined(loanAmount) &&
-    isUndefined(firstPaymentDate) &&
-    isUndefined(originalLoanAmount) &&
-    !isUndefined(interestRate)
+    !isUndefined(interestRate) &&
+    !isUndefined(monthlyPayment) &&
+    !isUndefined(loanTerm)
   ) {
     // Case #18
-
+    console.log("18");
     // var missing_originalLoanAmount_firstPaymentDate_loanAmount = {
     //   interestRate: "5.75",
     //   loanTerm: 30,
@@ -1003,13 +1004,12 @@ export const fillInTheBlanks = data => {
   }
 
   if (
-    isUndefined(loanAmount) &&
-    isUndefined(firstPaymentDate) &&
-    isUndefined(loanTerm) &&
-    !isUndefined(interestRate)
+    !isUndefined(interestRate) &&
+    !isUndefined(originalLoanAmount) &&
+    !isUndefined(monthlyPayment)
   ) {
     // Case #19
-
+    console.log("19");
     // var missing_loanAmount_firstPaymentDate_loanTerm = {
     //   interestRate: "5.75",
     //   originalLoanAmount: "450,000",
@@ -1024,13 +1024,12 @@ export const fillInTheBlanks = data => {
   }
 
   if (
-    isUndefined(loanAmount) &&
-    isUndefined(firstPaymentDate) &&
-    isUndefined(monthlyPayment) &&
-    !isUndefined(interestRate)
+    !isUndefined(interestRate) &&
+    !isUndefined(loanTerm) &&
+    !isUndefined(originalLoanAmount)
   ) {
     // Case #20
-
+    console.log("20");
     // var missing_loanAmount_firstPaymentDate_monthly = {
     //   interestRate: "5.75",
     //   originalLoanAmount: "450,000",
