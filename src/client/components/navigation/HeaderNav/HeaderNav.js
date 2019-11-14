@@ -52,7 +52,7 @@ const styles = {
     color: "#2D3190",
     "&:hover": {
       color: "#7BB16",
-      textShadow: "1px 1px 4px #7BB16"
+      textShadow: "1px 1px 4px white"
     }
   },
   w3BarItem: {
