@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+body > div:nth-child(3) > div.MuiPaper-root {
+  border: solid red !important;
+  padding: 2rem !important;
+}

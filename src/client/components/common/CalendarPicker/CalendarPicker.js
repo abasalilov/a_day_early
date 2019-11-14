@@ -3,15 +3,15 @@ import DateFnsUtils from "@date-io/date-fns/build";
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
-export const customTheme = createMuiTheme({
-  palette: {
-    primary: {
-      main: "#3F51B5",
-      light: "#c96a6a",
-      dark: "#3F51B5"
+const materialTheme = createMuiTheme({
+  overrides: {
+    MuiPaper: {
+      root: {
+        left: "135px !important"
+      }
     },
-    secondary: {
-      main: "#3F51B5"
+    MuiPickersBasePicker: {
+      container: {}
     }
   }
 });
@@ -42,7 +42,7 @@ class CalendarPickerComponent extends React.Component {
   render() {
     const { date } = this.state;
     return (
-      <MuiThemeProvider theme={customTheme}>
+      <MuiThemeProvider theme={materialTheme}>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <DatePicker
             variant="inline"
@@ -56,6 +56,8 @@ class CalendarPickerComponent extends React.Component {
             style={{ width: "100%" }}
             inputProps={{
               style: {
+                backgroundColor: "#fff",
+                color: "#2D3190",
                 paddingTop: ".4rem",
                 fontSize: "20px",
                 fontWeight: "bold",

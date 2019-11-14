@@ -254,7 +254,8 @@ const renderTextField = ({
           style={{
             color: "rgb(45, 49, 144)",
             padding: ".4rem",
-            fontSize: "20px"
+            fontSize: "20px",
+            backgroundColor: "#FFF"
           }}
           align="left"
         >

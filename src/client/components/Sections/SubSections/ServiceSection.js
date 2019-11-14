@@ -223,12 +223,12 @@ class ServiceSectionComponent extends React.Component {
           justify="space-around"
           alignItems="center"
           direction={"row"}
-          id="CALCULATOR"
+          id="calculatorTop"
+          style={{ marginBottom: "4rem" }}
         >
           <Grid item xs={7}>
             <Grid
               container
-              key={"dddsf"}
               justify="space-between"
               alignItems="center"
               direction={"column"}
