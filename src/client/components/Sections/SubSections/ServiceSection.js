@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
 import { withStyles } from "@material-ui/core/styles";

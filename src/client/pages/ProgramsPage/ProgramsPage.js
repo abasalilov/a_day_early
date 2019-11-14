@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
 import { routePrograms } from "../../actions";
 
 const styles = {
@@ -19,9 +20,8 @@ const topLabelStyle = {
 };
 
 const labelStyle = {
-  color: "#3f51b5",
+  color: "#3f51b5"
   // textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-  padding: ".5rem"
 };
 
 const sectionStyle = {
@@ -139,26 +139,56 @@ class ProgramsPageComponent extends React.Component {
             container
             spacing={10}
             justify="center"
-            alignItems="center"
+            alignItems="flex-start"
             direction={"row"}
             style={{ marginTop: "2rem" }}
           >
             <Grid item xs={4}>
-              <div style={sectionStyle}>
+              <Button
+                style={sectionStyle}
+                variant="outlined"
+                size="large"
+                color="primary"
+                style={{
+                  margin: "2rem",
+                  fontSize: "1rem",
+                  width: "20rem",
+                  height: "16rem"
+                }}
+              >
                 <Typography
-                  variant="h5"
-                  align="left"
                   style={labelStyle}
+                  variant="h5"
                   color="primary"
-                  onClick={this.handleADayEarly}
+                  align="left"
+                  onClick={this.handleFlexPay}
                 >
-                  OneDayEarly: make a one time extra principal payment and see
-                  the exponential effect of time and money.
+                  OneDayEarly:
+                  <Typography
+                    style={labelStyle}
+                    variant="h6"
+                    color="primary"
+                    align="left"
+                  >
+                    make a one time extra principal payment and see the
+                    exponential effect of time and money.
+                  </Typography>
                 </Typography>
-              </div>
+              </Button>
             </Grid>
             <Grid item xs={4}>
-              <div style={sectionStyle}>
+              <Button
+                style={sectionStyle}
+                variant="outlined"
+                size="large"
+                color="primary"
+                style={{
+                  margin: "2rem",
+                  fontSize: "1rem",
+                  width: "20rem",
+                  height: "18rem"
+                }}
+              >
                 <Typography
                   variant="h5"
                   align="left"
@@ -166,10 +196,13 @@ class ProgramsPageComponent extends React.Component {
                   color="primary"
                   onClick={this.handleRoundUp}
                 >
-                  RoundUp: round your payment up to the nearest $100, $1000 or
-                  custom round up amount and see the effects!
+                  RoundUp:
+                  <Typography variant="h6" align="left" color="primary">
+                    round your payment up to the nearest $100, $1000 or custom
+                    round up amount and see the effects!{" "}
+                  </Typography>
                 </Typography>
-              </div>
+              </Button>
             </Grid>
           </Grid>
 
@@ -179,10 +212,20 @@ class ProgramsPageComponent extends React.Component {
             justify="center"
             alignItems="center"
             direction={"row"}
-            style={{ marginTop: "2rem" }}
           >
             <Grid item xs={4}>
-              <div style={sectionStyle}>
+              <Button
+                style={sectionStyle}
+                variant="outlined"
+                size="large"
+                color="primary"
+                style={{
+                  margin: "2rem",
+                  fontSize: "1rem",
+                  width: "20rem",
+                  height: "10rem"
+                }}
+              >
                 <Typography
                   style={labelStyle}
                   variant="h5"
@@ -190,12 +233,31 @@ class ProgramsPageComponent extends React.Component {
                   align="left"
                   onClick={this.handleFlexPay}
                 >
-                  FlexPay: set up a custom payment campaign.
+                  FlexPay:
+                  <Typography
+                    style={labelStyle}
+                    variant="h6"
+                    color="primary"
+                    align="left"
+                  >
+                    set up a custom payment campaign.
+                  </Typography>
                 </Typography>
-              </div>
+              </Button>
             </Grid>
             <Grid item xs={4}>
-              <div style={sectionStyle}>
+              <Button
+                style={sectionStyle}
+                variant="outlined"
+                size="large"
+                color="primary"
+                style={{
+                  margin: "2rem",
+                  fontSize: "1rem",
+                  width: "20rem",
+                  height: "10rem"
+                }}
+              >
                 <Typography
                   variant="h5"
                   align="left"
@@ -203,9 +265,12 @@ class ProgramsPageComponent extends React.Component {
                   color="primary"
                   onClick={this.handleEasyStart}
                 >
-                  EasyStart: start accelerating your current loan.
+                  EasyStart:
+                  <Typography variant="h6" align="left" color="primary">
+                    start accelerating your current loan.
+                  </Typography>
                 </Typography>
-              </div>
+              </Button>
             </Grid>
           </Grid>
 
@@ -215,35 +280,69 @@ class ProgramsPageComponent extends React.Component {
             justify="center"
             alignItems="flex-start"
             direction={"row"}
-            style={{ marginTop: "2rem" }}
           >
             <Grid item xs={4}>
-              <div onClick={this.handleLeapFrog} style={sectionStyle}>
+              <Button
+                style={sectionStyle}
+                variant="outlined"
+                size="large"
+                color="primary"
+                style={{
+                  margin: "2rem",
+                  fontSize: "1rem",
+                  width: "20rem",
+                  height: "24rem"
+                }}
+              >
                 <Typography
                   variant="h5"
+                  align="left"
                   style={labelStyle}
                   color="primary"
-                  align="left"
+                  onClick={this.handleRoundUp}
                 >
-                  LeapFrog: jump ahead to any months payment on your
-                  amortization schedule, pay the principal portion now,
-                  aDayEarly, and NEVER pay the associated interest. EVER.
+                  LeapFrog:
+                  <Typography variant="h6" align="left" color="primary">
+                    jump ahead to any months payment on your amortization
+                    schedule, pay the principal portion now, aDayEarly, and
+                    NEVER pay the associated interest. EVER.{" "}
+                  </Typography>
                 </Typography>
-              </div>
+              </Button>
             </Grid>
             <Grid item xs={4}>
-              <div onClick={this.handleJumpStart} style={sectionStyle}>
+              <Button
+                style={sectionStyle}
+                variant="outlined"
+                size="large"
+                color="primary"
+                style={{
+                  margin: "2rem",
+                  fontSize: "1rem",
+                  width: "20rem",
+                  height: "22rem"
+                }}
+              >
                 <Typography
-                  variant="h5"
-                  align="left"
                   style={labelStyle}
+                  variant="h5"
                   color="primary"
+                  align="left"
+                  onClick={this.handleFlexPay}
                 >
-                  JumpStart: use at origination of your loan, making the first
-                  extra principal payment aDayEarly affecting the amortization
-                  schedule before it starts!
+                  JumpStart:
+                  <Typography
+                    style={labelStyle}
+                    variant="h6"
+                    color="primary"
+                    align="left"
+                  >
+                    use at origination of your loan, making the first extra
+                    principal payment aDayEarly affecting the amortization
+                    schedule before it starts!{" "}
+                  </Typography>
                 </Typography>
-              </div>
+              </Button>
             </Grid>
           </Grid>
         </Grid>

@@ -30,7 +30,8 @@ const styles = {
     top: "0",
     left: "0",
     zIndex: "100",
-    marginBottom: "2rem"
+    marginBottom: "2rem",
+    backgroundColor: "#7fc6a0"
   },
   w3BarAuth: {
     width: "100%",
