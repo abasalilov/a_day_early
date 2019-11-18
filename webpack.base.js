@@ -4,13 +4,16 @@ module.exports = {
     rules: [
       {
         test: /\.js?$/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
         exclude: /node_modules/,
         options: {
           presets: [
-            'react',
-            'stage-0',
-            ['env', { targets: { browsers: ['last 2 versions'] } }]
+            "@babel/preset-env",
+            "react",
+            "stage-0",
+            "stage-3",
+            "latest",
+            ["env", { targets: { browsers: ["last 2 versions"] } }]
           ]
         }
       }

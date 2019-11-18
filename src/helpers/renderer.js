@@ -53,6 +53,26 @@ export default (req, store, context) => {
           <link rel="stylesheet" href="https://use.typekit.net/nex3vbe.css">
           <link href="https://fonts.googleapis.com/css?family=Raleway:400,700,700i,800&display=swap" rel="stylesheet">
           <style>
+
+            body {
+              margin: 0;
+              font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+                "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+                sans-serif;
+              -webkit-font-smoothing: antialiased;
+              -moz-osx-font-smoothing: grayscale;
+            }
+
+            code {
+              font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+                monospace;
+            }
+
+            body > div:nth-child(3) > div.MuiPaper-root {
+              border: solid red !important;
+              padding: 2rem !important;
+            }
+
                .mobileRootStyle {
                 color: #fff;
                 font-size: 3rem;
@@ -110,10 +130,6 @@ export default (req, store, context) => {
                 }
 
                 #Home > div > h3 > p {
-                  color: #2D3190
-                }
-
-                #Calculddator > div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-6 > h4 {
                   color: #2D3190
                 }
 
@@ -189,6 +205,11 @@ export default (req, store, context) => {
                   border-right-color: #3f51b5;
                   border-width: 12px;
                   margin-top: -12px;
+                }
+
+                #Home > div > div > p.MuiTypography-root.MuiTypography-h6.MuiTypography-colorTextPrimary.MuiTypography-gutterBottom.MuiTypography-alignLeft > a {
+                  color: inherit;
+                  textDecoration: none;
                 }
 
               </style>
