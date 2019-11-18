@@ -69,7 +69,6 @@ export default (req, store, context) => {
             }
 
             body > div:nth-child(3) > div.MuiPaper-root {
-              border: solid red !important;
               padding: 2rem !important;
             }
 
@@ -139,7 +138,6 @@ export default (req, store, context) => {
 
                 .MuiSelect-selectMenu {
                   text-align:left !important;
-                  border: solid red;
                   padding:1rem;
                 }
 
