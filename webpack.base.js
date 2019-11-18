@@ -8,11 +8,8 @@ module.exports = {
         exclude: /node_modules/,
         options: {
           presets: [
-            "@babel/preset-env",
             "react",
             "stage-0",
-            "stage-3",
-            "latest",
             ["env", { targets: { browsers: ["last 2 versions"] } }]
           ]
         }

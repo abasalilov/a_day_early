@@ -329,6 +329,12 @@ function fns(num, places, comma, type, show) {
 
 function getMissing(calc) {
   var filled = 0;
+  if (
+    typeof calc.interestRate !== "undefined" &&
+    typeof calc.interestRate !== "string"
+  ) {
+    calc.interest = calc.interestRate.toString();
+  }
 
   if (calc.principal && calc.principal.length > 0) {
     filled = filled + 1;
@@ -375,7 +381,7 @@ function getMissing(calc) {
     } else if (isUndefined(calc.principal) || calc.principal == 0) {
       calc.principal = getPrin(calc);
     } else if (isUndefined(calc.payments) || calc.payments == 0) {
-      calc.payments = getPmts(calc);
+      calc.payments = getPmts(calc).toString();
     } else if (isUndefined(calc.interest) || calc.interest == 0) {
       calc.interest = getInt(calc);
     }
@@ -571,8 +577,8 @@ export const fillInTheBlanks = data => {
     // };
     console.log("2");
     // NEED TO GUESS WITH AVG RATE HERE
-    const yrCut = firstPaymentDate.indexOf("20");
-    const yr = firstPaymentDate.slice(yrCut);
+    const newDate = new Date(firstPaymentDate);
+    const yr = newDate.getFullYear().toString();
     const guessInterestRate = avg_interest[yr];
     const roundedInterest = (Math.round(guessInterestRate * 4) / 4).toFixed(3);
     loanTerm = 250000 > parseLoanNumber(loanAmount) ? 15 : 30;
