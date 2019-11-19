@@ -423,10 +423,19 @@ class EasyStartCalculatorComponent extends React.Component {
               justifyContent: "space-between"
             }}
           >
-            <Typography variant="h5" style={labelStyle} align="left">
+            <Typography
+              variant="h5"
+              style={{ ...labelStyle, marginBottom: "10rem" }}
+              align="left"
+            >
               When would you like to kickoff your EasyStart program?
             </Typography>
-            <div style={fieldStyle}>
+            <div
+              style={{
+                justifyContent: "start",
+                alignItems: "center"
+              }}
+            >
               <div
                 style={{
                   display: "flex",
@@ -468,7 +477,13 @@ class EasyStartCalculatorComponent extends React.Component {
         )}
 
         {payments.length > 20 && (
-          <Grid container spacing={8} alignItems="center" direction={"column"}>
+          <Grid
+            container
+            spacing={8}
+            alignItems="center"
+            justify="center"
+            direction={"column"}
+          >
             <Typography variant="h4" style={labelStyle} align="center">
               Simulator
             </Typography>

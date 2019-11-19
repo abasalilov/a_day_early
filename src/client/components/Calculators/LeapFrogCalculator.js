@@ -521,7 +521,12 @@ class LeapFrogCalculatorComponent extends React.Component {
             <Typography variant="h5" style={labelStyle} align="left">
               Please add your monthly LeapFrog overpayment:
             </Typography>
-            <div style={fieldStyle}>
+            <div
+              style={{
+                justifyContent: "start",
+                alignItems: "center"
+              }}
+            >
               <div
                 style={{
                   display: "flex",
@@ -553,15 +558,25 @@ class LeapFrogCalculatorComponent extends React.Component {
               justifyContent: "space-between"
             }}
           >
-            <Typography variant="h5" style={labelStyle} align="left">
+            <Typography
+              variant="h5"
+              style={{ ...labelStyle, marginBottom: "10rem" }}
+              align="left"
+            >
               When would you like to kickoff your LeapFrog program?
             </Typography>
-            <div style={fieldStyle}>
+            <div
+              style={{
+                justifyContent: "start",
+                alignItems: "center"
+              }}
+            >
               <div
                 style={{
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "center",
+                  alignItems: "start",
                   borderRadius: ".25rem"
                 }}
               >
@@ -647,7 +662,13 @@ class LeapFrogCalculatorComponent extends React.Component {
         )}
 
         {payments.length > 20 && (
-          <Grid container spacing={8} alignItems="center" direction={"column"}>
+          <Grid
+            container
+            spacing={8}
+            alignItems="center"
+            justify="center"
+            direction={"column"}
+          >
             <Typography variant="h4" style={labelStyle} align="center">
               Simulator
             </Typography>
