@@ -509,35 +509,6 @@ class FlexCalculatorComponent extends React.Component {
 
         <Divider style={{ width: "100%", color: "#3f51b5", margin: "1rem" }} />
 
-        <div
-          style={{
-            margin: "2rem 0",
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between"
-          }}
-        >
-          <Typography variant="h5" style={labelStyle} align="left">
-            When would you like to kickoff your Flex program?
-          </Typography>
-          <div style={fieldStyle}>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                borderRadius: ".25rem"
-              }}
-            >
-              <CalendarPicker
-                label={"Flex Pay Date"}
-                setInitial={true}
-                onChange={this.handleDate}
-              />
-            </div>
-          </div>
-        </div>
-
         <div className="col-sm-8">
           <div
             style={{
@@ -623,6 +594,45 @@ class FlexCalculatorComponent extends React.Component {
                   }}
                 />
               </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          style={{
+            margin: "2rem 0",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between"
+          }}
+        >
+          <Typography
+            variant="h5"
+            style={{ ...labelStyle, marginBottom: "10rem" }}
+            align="left"
+          >
+            When would you like to kickoff your Flex program?
+          </Typography>
+          <div
+            style={{
+              justifyContent: "start",
+              alignItems: "center"
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                borderRadius: ".25rem"
+              }}
+            >
+              <CalendarPicker
+                label={"MM/DD/YYYY"}
+                setInitial={true}
+                borderOn={false}
+                onChange={this.handleDate}
+              />
             </div>
           </div>
         </div>

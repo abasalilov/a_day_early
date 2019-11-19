@@ -581,8 +581,9 @@ class LeapFrogCalculatorComponent extends React.Component {
                 }}
               >
                 <CalendarPicker
-                  label={"Leap Frog Date"}
+                  label={"MM/DD/YYYY"}
                   setInitial={true}
+                  borderOn={false}
                   onChange={this.handleDate}
                 />
               </div>

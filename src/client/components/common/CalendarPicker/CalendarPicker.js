@@ -52,7 +52,7 @@ class CalendarPickerComponent extends React.Component {
 
   render() {
     const { date, open, touched } = this.state;
-    const { label, labelFontSize } = this.props;
+    const { label, labelFontSize, borderOn = true } = this.props;
     const simpleDate = this.state.date.toString().slice(0, 16);
     return (
       <MuiThemeProvider theme={materialTheme}>
@@ -70,7 +70,6 @@ class CalendarPickerComponent extends React.Component {
               openTo="date"
               value={date}
               style={{ width: "100%" }}
-              placeholder={"here yo"}
               InputProps={{
                 style: {
                   backgroundColor: "#fff",
@@ -91,8 +90,8 @@ class CalendarPickerComponent extends React.Component {
               placeholder={!touched ? label : simpleDate}
               fullWidth
               style={{
-                border: "solid #049347 2px",
-                borderRadius: "8px",
+                border: borderOn ? "solid #049347 2px" : "1px solid lightgrey",
+                borderRadius: borderOn ? "8px" : "0px",
                 backgroundColor: "#fff",
                 fontWeight: "900"
               }}

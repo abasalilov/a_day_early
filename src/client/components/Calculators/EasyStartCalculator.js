@@ -445,8 +445,9 @@ class EasyStartCalculatorComponent extends React.Component {
                 }}
               >
                 <CalendarPicker
-                  label={"Easy Start Date"}
                   setInitial={true}
+                  label={"MM/DD/YYYY"}
+                  borderOn={false}
                   onChange={this.handleDate}
                 />
               </div>
