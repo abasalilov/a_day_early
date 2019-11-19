@@ -230,13 +230,7 @@ class EasyStartCalculatorComponent extends React.Component {
             </Typography>
             <Divider style={dividerStyle} />
           </div>
-          <Grid
-            container
-            spacing={8}
-            justify="left"
-            alignItems="center"
-            direction={"row"}
-          >
+          <Grid container spacing={8} alignItems="center" direction={"row"}>
             <Grid item xs={4}>
               <div style={fieldStyle}>
                 <Typography variant="h6" style={labelStyle} align="left">
@@ -311,13 +305,7 @@ class EasyStartCalculatorComponent extends React.Component {
         </div>
         <Divider style={{ width: "100%", color: "#3f51b5", margin: "1rem" }} />
 
-        <Grid
-          container
-          spacing={8}
-          justify="left"
-          alignItems="center"
-          direction={"row"}
-        >
+        <Grid container spacing={8} alignItems="center" direction={"row"}>
           <Grid item xs={5}>
             <Typography
               variant="h5"
@@ -337,13 +325,7 @@ class EasyStartCalculatorComponent extends React.Component {
           </Grid>
         </Grid>
 
-        <Grid
-          container
-          spacing={8}
-          justify="left"
-          alignItems="center"
-          direction={"row"}
-        >
+        <Grid container spacing={8} alignItems="center" direction={"row"}>
           <Grid item xs={5}>
             <Typography variant="h5" style={labelStyle} align="left">
               Who is your mortgage lender?
@@ -450,11 +432,14 @@ class EasyStartCalculatorComponent extends React.Component {
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "center",
-                  border: "solid #3F51B5",
                   borderRadius: ".25rem"
                 }}
               >
-                <CalendarPicker onChange={this.handleDate} />
+                <CalendarPicker
+                  label={"Easy Start Date"}
+                  setInitial={true}
+                  onChange={this.handleDate}
+                />
               </div>
             </div>
           </div>
@@ -483,13 +468,7 @@ class EasyStartCalculatorComponent extends React.Component {
         )}
 
         {payments.length > 20 && (
-          <Grid
-            container
-            spacing={8}
-            justify="left"
-            alignItems="center"
-            direction={"column"}
-          >
+          <Grid container spacing={8} alignItems="center" direction={"column"}>
             <Typography variant="h4" style={labelStyle} align="center">
               Simulator
             </Typography>

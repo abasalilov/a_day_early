@@ -243,13 +243,7 @@ export const ProgramCalculatorGraph = props => {
           >
             Loan Information
           </Typography>
-          <Grid
-            container
-            spacing={8}
-            justify="left"
-            alignItems="center"
-            direction={"row"}
-          >
+          <Grid container spacing={8} alignItems="center" direction={"row"}>
             <Grid item xs={4}>
               <div style={fieldStyle}>
                 <Typography variant="h6" style={labelStyle} align="left">
@@ -297,13 +291,7 @@ export const ProgramCalculatorGraph = props => {
         <Divider style={dividerStyle} />
 
         {isRU && (
-          <Grid
-            container
-            spacing={8}
-            justify="left"
-            alignItems="center"
-            direction={"row"}
-          >
+          <Grid container spacing={8} alignItems="center" direction={"row"}>
             <Grid item xs={5}>
               <Typography variant="h5" style={labelStyle} align="left">
                 Round your monthly payment to the nearest:
@@ -366,13 +354,7 @@ export const ProgramCalculatorGraph = props => {
           </Grid>
         )}
 
-        <Grid
-          container
-          spacing={8}
-          justify="left"
-          alignItems="center"
-          direction={"row"}
-        >
+        <Grid container spacing={8} alignItems="center" direction={"row"}>
           <Grid item xs={5}>
             <Typography
               variant="h5"
@@ -397,13 +379,7 @@ export const ProgramCalculatorGraph = props => {
           </Grid>
         </Grid>
 
-        <Grid
-          container
-          spacing={8}
-          justify="left"
-          alignItems="center"
-          direction={"row"}
-        >
+        <Grid container spacing={8} alignItems="center" direction={"row"}>
           <Grid item xs={5}>
             <Typography variant="h5" style={labelStyle} align="left">
               Who is your anticipated mortgage lender?
@@ -488,13 +464,7 @@ export const ProgramCalculatorGraph = props => {
           >
             {paymentsLabel}
           </Typography>
-          <Grid
-            container
-            spacing={8}
-            justify="left"
-            alignItems="center"
-            direction={"row"}
-          >
+          <Grid container spacing={8} alignItems="center" direction={"row"}>
             <Grid item xs={3}>
               <Typography variant="h6" style={labelHeaderStyle1} align="left">
                 Year
@@ -513,13 +483,7 @@ export const ProgramCalculatorGraph = props => {
           </Grid>
 
           {overpayments.map(({ year, month, amount }, i) => (
-            <Grid
-              container
-              spacing={8}
-              justify="left"
-              alignItems="left"
-              direction={"row"}
-            >
+            <Grid container key={i} spacing={8} direction={"row"}>
               <Grid item xs={3}>
                 <input
                   type="number"

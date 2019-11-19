@@ -62,7 +62,11 @@ class LenderSelectComponent extends React.Component {
           }}
         >
           {options.map(option => {
-            return <MenuItem value={option}>{option}</MenuItem>;
+            return (
+              <MenuItem key={option} value={option}>
+                {option}
+              </MenuItem>
+            );
           })}
         </Select>
       </FormControl>

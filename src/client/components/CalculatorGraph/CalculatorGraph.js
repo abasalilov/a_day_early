@@ -337,13 +337,7 @@ class CalculatorGraphComponent extends React.Component {
           <Divider
             style={{ width: "100%", color: "#3f51b5", margin: "1rem" }}
           />
-          <Grid
-            container
-            spacing={8}
-            justify="left"
-            alignItems="center"
-            direction={"row"}
-          >
+          <Grid container spacing={8} alignItems="center" direction={"row"}>
             <Grid item xs={5}>
               <Typography
                 variant="h5"
@@ -362,13 +356,7 @@ class CalculatorGraphComponent extends React.Component {
               </span>
             </Grid>
           </Grid>
-          <Grid
-            container
-            spacing={8}
-            justify="left"
-            alignItems="center"
-            direction={"row"}
-          >
+          <Grid container spacing={8} alignItems="center" direction={"row"}>
             <Grid item xs={5}>
               <Typography variant="h5" style={labelStyle} align="left">
                 Who is your mortgage lender?
@@ -472,13 +460,7 @@ class CalculatorGraphComponent extends React.Component {
               Prior Individual Overpayments
             </Typography>
 
-            <Grid
-              container
-              spacing={8}
-              justify="left"
-              alignItems="center"
-              direction={"row"}
-            >
+            <Grid container spacing={8} alignItems="center" direction={"row"}>
               <Grid item xs={3}>
                 <Typography variant="h6" style={labelHeaderStyle1} align="left">
                   Year
@@ -497,13 +479,7 @@ class CalculatorGraphComponent extends React.Component {
             </Grid>
 
             {overpayments.map(({ year, month, amount }, i) => (
-              <Grid
-                container
-                spacing={8}
-                justify="left"
-                alignItems="center"
-                direction={"row"}
-              >
+              <Grid container spacing={8} alignItems="center" direction={"row"}>
                 <Grid item xs={3}>
                   <input
                     type="number"
@@ -595,13 +571,7 @@ class CalculatorGraphComponent extends React.Component {
             style={{ width: "100%", color: "#3f51b5", margin: "2rem 1rem" }}
           />
           {showQuestion && (
-            <Grid
-              container
-              spacing={8}
-              justify="left"
-              alignItems="center"
-              direction={"row"}
-            >
+            <Grid container spacing={8} alignItems="center" direction={"row"}>
               <Grid item xs={6}>
                 <div style={fieldStyle}>
                   <Typography
@@ -669,13 +639,7 @@ class CalculatorGraphComponent extends React.Component {
               </Typography>
             </div>
           )}
-          <Grid
-            container
-            spacing={8}
-            justify="left"
-            alignItems="center"
-            direction={"column"}
-          >
+          <Grid container spacing={8} alignItems="center" direction={"column"}>
             <Typography variant="h4" style={labelStyle} align="center">
               Simulator
             </Typography>

@@ -161,7 +161,7 @@ class ProgramsPageComponent extends React.Component {
                   variant="h5"
                   color="primary"
                   align="left"
-                  onClick={this.handleFlexPay}
+                  onClick={this.handleADayEarly}
                 >
                   OneDayEarly:
                   <Typography
@@ -299,7 +299,7 @@ class ProgramsPageComponent extends React.Component {
                   align="left"
                   style={labelStyle}
                   color="primary"
-                  onClick={this.handleRoundUp}
+                  onClick={this.handleLeapFrog}
                 >
                   LeapFrog:
                   <Typography variant="h6" align="left" color="primary">
@@ -328,7 +328,7 @@ class ProgramsPageComponent extends React.Component {
                   variant="h5"
                   color="primary"
                   align="left"
-                  onClick={this.handleFlexPay}
+                  onClick={this.handleJumpStart}
                 >
                   JumpStart:
                   <Typography
