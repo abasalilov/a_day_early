@@ -880,7 +880,7 @@ function fillInTheBlanks(data) {
     !isUndefined(loanTerm)
   ) {
     console.log("case #222");
-    // Case #222
+    // Case #21
     // var missing_originalLoanAmount_firstPaymentDate_loanTerm = {
     //   interestRate: "5.75",
     //   monthlyPayment: "2,200",

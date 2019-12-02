@@ -238,6 +238,11 @@
     prop-types "^15.7.2"
     react-is "^16.8.6"
 
+"@mobiscroll/react@^4.9.0":
+  version "4.9.0"
+  resolved "https://npm.mobiscroll.com/@mobiscroll%2freact/-/react-4.9.0.tgz#608fa33b018928dd8195f31de8bfbc708a73e41a"
+  integrity sha512-dJcWG+f16wy8IOPJPxRRbfy5hEG+E7ZPo1ovy0wsj6WApsVw/R6uJeLmBxdTr8G3h5QRqIWVOVqmJOjffRu8jw==
+
 "@types/events@*":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@types/events/-/events-3.0.0.tgz#2862f3f58a9a7f7c3e78d79f130dd4d71c25c2a7"
