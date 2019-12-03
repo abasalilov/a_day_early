@@ -68,6 +68,10 @@ export default (req, store, context) => {
                 monospace;
             }
 
+            .root {
+              height:100%;
+            }
+
             body > div:nth-child(3) > div.MuiPaper-root {
               padding: 2rem !important;
             }

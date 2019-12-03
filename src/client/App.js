@@ -88,6 +88,8 @@ class App extends React.PureComponent<PropsT> {
   render() {
     const { mobile, history, location, route } = this.props;
     const readyToRender = mobile !== null;
+    const readyToRenderNav = mobile !== null && location.pathname !== "/";
+    console.log("readyToRenderNav", readyToRenderNav);
     return (
       <MuiThemeProvider theme={theme}>
         <Helmet>
@@ -98,7 +100,7 @@ class App extends React.PureComponent<PropsT> {
         <Helmet defaultTitle="A Day Early" titleTemplate="A Day Early" />
         <CssBaseline />
         <EventListener target="window" onResize={this.handleWindowSizeChange} />
-        {readyToRender && (
+        {readyToRenderNav && (
           <Navigator loc={location} history={history} mobile={mobile} />
         )}
         {readyToRender && renderRoutes(route.routes)}

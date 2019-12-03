@@ -21,12 +21,18 @@ class ImageComponent extends React.Component {
 
   render() {
     const { loading } = this.state;
-    const { containerClassName, imgClassName, showSpinner = true } = this.props;
+    const {
+      containerClassName,
+      imgClassName,
+      showSpinner = true,
+      style
+    } = this.props;
     const showDecide = loading ? {} : { display: "none", visiblity: "hidden" };
     return (
       <div className={containerClassName}>
         <img
           className={imgClassName}
+          style={style}
           src={this.props.src}
           onLoad={this.handleImageLoaded.bind(this)}
           onError={this.handleImageErrored.bind(this)}

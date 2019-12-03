@@ -12,7 +12,8 @@ import {
   LendersPage,
   NotFoundPage,
   NewLoanCalculatorPage,
-  ContactUsPage
+  ContactUsPage,
+  CountDownPage
 } from "./pages";
 
 export default [
@@ -25,12 +26,17 @@ export default [
         exact: true
       },
       {
+        ...LandingPage,
+        path: "/landing",
+        exact: true
+      },
+      {
         ...LoginPage,
         path: "/login",
         exact: true
       },
       {
-        ...LandingPage,
+        ...CountDownPage,
         path: "/",
         exact: true
       },
