@@ -36,7 +36,7 @@ export default [
         exact: true
       },
       {
-        ...CountDownPage,
+        ...HomePage,
         path: "/",
         exact: true
       },
