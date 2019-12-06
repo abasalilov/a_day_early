@@ -1,1 +1,1 @@
-export { ProgramsPage } from "./ProgramsPage";
+export { ProgramsPage } from "./ProgramsPageMobi";
