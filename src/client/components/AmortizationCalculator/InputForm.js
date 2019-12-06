@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { updateAmortGraph, updateInfoForm } from "../../actions";
 import { withStyles } from "@material-ui/core/styles";
 import mobiscroll from "@mobiscroll/react";
-import "@mobiscroll/react/dist/css/mobiscroll.min.css";
 
 const styles = theme => ({
   root: {

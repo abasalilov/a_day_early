@@ -11,9 +11,6 @@ import { RegistrationModal } from "../../modals/RegistrationModal";
 import { calculate } from "../../CalculatorGraph/calculations";
 import { updateAmortGraph as updateGraph } from "../../../actions";
 import { connect } from "react-redux";
-import { FlyOut } from "../../common";
-import mobiscroll from "@mobiscroll/react";
-import "@mobiscroll/react/dist/css/mobiscroll.min.css";
 
 const styles = theme => ({
   expansionHeader: {
