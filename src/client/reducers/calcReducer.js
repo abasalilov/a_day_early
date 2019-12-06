@@ -190,6 +190,8 @@ export default function input(state = defaultState, action) {
         return action.st[item] !== null;
       });
 
+      console.log("propList", propList);
+
       const fillInData = fillInTheBlanks({
         firstPaymentDate: action.st.originationDate,
         interestRate: action.st.interestRate,
@@ -228,6 +230,7 @@ export default function input(state = defaultState, action) {
           return action.st[item] !== null;
         });
         shouldCalculate = canCalculate.length >= 3;
+
         hasMissingFields = checkForMissingFields(canCalculate);
       }
 
@@ -243,6 +246,9 @@ export default function input(state = defaultState, action) {
       }
       updatedInfoFormState.missingFields =
         hasMissingFields && hasMissingFields.missing;
+
+      console.log("last here in canCalculate", canCalculate);
+
       return updatedInfoFormState;
     case ROUTE_PROGRAMS:
       const updatedMsgState = Object.assign({}, state);

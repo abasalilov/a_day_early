@@ -12,6 +12,8 @@ import { calculate } from "../../CalculatorGraph/calculations";
 import { updateAmortGraph as updateGraph } from "../../../actions";
 import { connect } from "react-redux";
 import { FlyOut } from "../../common";
+import mobiscroll from "@mobiscroll/react";
+import "@mobiscroll/react/dist/css/mobiscroll.min.css";
 
 const styles = theme => ({
   expansionHeader: {
@@ -213,97 +215,74 @@ class ServiceSectionComponent extends React.Component {
         />
       );
     }
+    console.log("decision point - input.calculate", input.canCalculate);
     return (
       <React.Fragment>
         <Divider style={{ width: "100%", marginBottom: "2rem" }} id="basics" />
-        <Grid
-          container
-          key={"dsf"}
-          justify="space-around"
-          alignItems="center"
-          direction={"row"}
-          id="calculatorTop"
-          style={{ marginBottom: "4rem" }}
-        >
-          <Grid item xs={7}>
-            <Grid
-              container
-              justify="space-between"
-              alignItems="center"
-              direction={"column"}
-              style={{
-                minWidth: "20%",
-                backgroundColor: "#f6f6f6"
-              }}
-            >
-              <Grid item xs={6}>
-                <Typography
-                  variant={mobile ? "display4" : "h4"}
-                  gutterBottom
-                  align="center"
-                  color="textPrimary"
+        <div className="mbsc-grid mbsc-row-12">
+          <div class="mbsc-grid" style={{ border: "solid blue" }}>
+            <div className="mbsc-row">
+              <div className="mbsc-col-8" style={{ border: "solid green" }}>
+                <div className="mbsc-row-5">
+                  <Typography
+                    variant={mobile ? "display4" : "h4"}
+                    gutterBottom
+                    align="center"
+                    color="textPrimary"
+                    style={{
+                      width: "100%",
+                      color: "#2D3190",
+                      marginBottom: "2rem"
+                    }}
+                  >
+                    Let's Start With The Basics
+                  </Typography>
+                </div>
+                <div className="mbsc-row-5">
+                  <Typography
+                    variant={mobile ? "display5" : "h5"}
+                    gutterBottom
+                    align="center"
+                    color="textPrimary"
+                    style={{
+                      width: "100%",
+                      color: "#2D3190",
+                      marginBottom: "1rem"
+                    }}
+                  >
+                    (Please fill out 3 of the following fields)
+                  </Typography>
+                </div>
+                <div
+                  className="mbsc-row-10"
                   style={{
                     width: "100%",
-                    color: "#2D3190",
-                    marginBottom: "3rem"
+                    marginRight: "1rem"
                   }}
                 >
-                  Let's Start With The Basics
-                </Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <Typography
-                  variant={mobile ? "display5" : "h5"}
-                  gutterBottom
-                  align="center"
-                  color="textPrimary"
-                  style={{
-                    width: "100%",
-                    color: "#2D3190"
-                  }}
-                >
-                  (Please fill out 3 of the following fields)
-                </Typography>
-              </Grid>
-              <Grid
-                item
-                xs={10}
-                style={{
-                  width: "100%",
-                  marginRight: "1rem"
-                }}
-              >
-                <CalculatorForm onCalculate={this.props.updatePaymentGraph} />
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid
-            item
-            xs={5}
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              padding: "1rem"
-            }}
-          >
-            {input.canCalculate && (
-              <Button
-                onClick={this.handleRedirect}
-                variant="outlined"
-                size="large"
-                color="primary"
-                style={{
-                  width: "80%",
-                  margin: "1rem 1rem 1rem 0",
-                  fontSize: "1.5rem",
-                  marginLeft: "1rem"
-                }}
-              >
-                Next Step {<TrendingFlat style={{ fontSize: "2rem" }} />}
-              </Button>
-            )}
-          </Grid>
-        </Grid>
+                  <CalculatorForm onCalculate={this.props.updatePaymentGraph} />
+                </div>
+              </div>
+              {input.canCalculate && (
+                <div className="mbsc-row-3" style={{ border: "solid blue" }}>
+                  <Button
+                    onClick={this.handleRedirect}
+                    variant="outlined"
+                    size="large"
+                    color="primary"
+                    style={{
+                      width: "90%",
+                      margin: "4rem 1rem 1rem 1rem",
+                      fontSize: "1.5rem"
+                    }}
+                  >
+                    Next Step {<TrendingFlat style={{ fontSize: "2rem" }} />}
+                  </Button>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
       </React.Fragment>
     );
   }
