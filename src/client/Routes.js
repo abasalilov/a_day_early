@@ -21,12 +21,12 @@ export default [
     routes: [
       {
         ...HomePage,
-        path: "/home",
+        path: "/test-home",
         exact: true
       },
       {
         ...LoginPage,
-        path: "/login",
+        path: "/test-login",
         exact: true
       },
       {
@@ -71,7 +71,7 @@ export default [
       },
       {
         ...ProgramsPage,
-        path: "/programs",
+        path: "/test-programs",
         exact: true
       },
       {
