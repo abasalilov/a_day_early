@@ -295,6 +295,7 @@ class InputFormComponent extends React.Component {
             <div className="mbsc-col-12 mbsc-col-lg-8">
               <mobiscroll.Calendar
                 display="bottom"
+                theme="material"
                 touchUi={false}
                 anchor="span"
                 onChange={e => this.handleChange("calendar", e)}

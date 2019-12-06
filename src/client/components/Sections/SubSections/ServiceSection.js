@@ -220,9 +220,9 @@ class ServiceSectionComponent extends React.Component {
       <React.Fragment>
         <Divider style={{ width: "100%", marginBottom: "2rem" }} id="basics" />
         <div className="mbsc-grid mbsc-row-12">
-          <div class="mbsc-grid" style={{ border: "solid blue" }}>
+          <div class="mbsc-grid">
             <div className="mbsc-row">
-              <div className="mbsc-col-8" style={{ border: "solid green" }}>
+              <div className="mbsc-col-8">
                 <div className="mbsc-row-5">
                   <Typography
                     variant={mobile ? "display4" : "h4"}
@@ -264,7 +264,7 @@ class ServiceSectionComponent extends React.Component {
                 </div>
               </div>
               {input.canCalculate && (
-                <div className="mbsc-row-3" style={{ border: "solid blue" }}>
+                <div className="mbsc-row-3">
                   <Button
                     onClick={this.handleRedirect}
                     variant="outlined"
@@ -272,7 +272,7 @@ class ServiceSectionComponent extends React.Component {
                     color="primary"
                     style={{
                       width: "90%",
-                      margin: "4rem 1rem 1rem 1rem",
+                      margin: "8rem 1rem 1rem 1rem",
                       fontSize: "1.5rem"
                     }}
                   >
