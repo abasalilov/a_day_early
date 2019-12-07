@@ -148,9 +148,7 @@ class InputFormComponent extends React.Component {
                 label={loanLabel}
                 onChange={e => this.handleChange("loanAmount", e)}
                 placeholder="Enter Loan Amount ($)"
-              >
-                {loanLabel}
-              </mobiscroll.Input>
+              />
             </div>
             <div className="mbsc-col-12">
               <mobiscroll.Dropdown
