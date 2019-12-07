@@ -11,6 +11,8 @@ import {
   resetAuth as createResetAuthAction,
   resizeEvent as createResizeEventAction
 } from "./actions";
+import mobiscroll from "@mobiscroll/react";
+import "@mobiscroll/react/dist/css/mobiscroll.min.css";
 
 const theme = createMuiTheme({
   typography: {

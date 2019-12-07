@@ -1,14 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
-import mobiscroll from "@mobiscroll/react";
 import { routePrograms } from "../../actions";
+import mobiscroll from "@mobiscroll/react";
+import "@mobiscroll/react/dist/css/mobiscroll.min.css";
 
 const styles = {};
 
 const ListItem = props => {
   const { data, btn } = props;
-  console.log("props", btn);
   return (
     <React.Fragment>
       <li data-icon="home" className="mbsc-ic mbsc-ic-home">
