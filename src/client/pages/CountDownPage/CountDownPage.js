@@ -44,10 +44,6 @@ class CountDownPageComponent extends React.Component {
     let hrs = Math.floor(((secondsCalc / 3600) % 24).toFixed(1));
     let days = Math.floor(secondsCalc / 3600 / 24);
     this.setState({ min, hrs, days });
-    // console.log("seconds", seconds);
-    // console.log("min", min);
-    // console.log("hrs", hrs);
-    // console.log("days", days);
   }
 
   render() {

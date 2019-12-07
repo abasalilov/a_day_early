@@ -91,7 +91,6 @@ class App extends React.PureComponent<PropsT> {
     const { mobile, history, location, route } = this.props;
     const readyToRender = mobile !== null;
     const readyToRenderNav = mobile !== null && location.pathname !== "/";
-    console.log("readyToRenderNav", readyToRenderNav);
     return (
       <MuiThemeProvider theme={theme}>
         <Helmet>
