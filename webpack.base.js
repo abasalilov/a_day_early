@@ -27,7 +27,9 @@
 // };
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 module.exports = {
+  target: "node",
   module: {
     rules: [
       {
@@ -63,7 +65,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "style.css"
+      filename: "style.[contenthash].css"
     })
   ]
 };
