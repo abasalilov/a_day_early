@@ -83,7 +83,6 @@ class CalculatorGraphComponent extends React.Component {
     this.setOverpayments = this.setOverpayments.bind(this);
     this.setLender = this.setLender.bind(this);
     this.handleAccuracy = this.handleAccuracy.bind(this);
-    this.handleRedundancy = this.handleRedundancy.bind(this);
     this.handleUpdatedInterest = this.handleUpdatedInterest.bind(this);
   }
 
@@ -131,7 +130,7 @@ class CalculatorGraphComponent extends React.Component {
     this.setState({ overpayments: arr });
   }
 
-  handleChange(name, e) {
+  handleChange(name, value) {
     const {
       loanAmount,
       term,
@@ -148,23 +147,10 @@ class CalculatorGraphComponent extends React.Component {
     );
 
     const monthly = +monthlyOverpayment + monthlyPayment;
-    this.setState({ [name]: e, monthly }, () => {
+    this.setState({ [name]: value, monthly }, () => {
       this.props.updateInputForm(this.state);
       this.props.updatePaypal(monthly, false);
     });
-    // if (name === "interestRate") {
-    //   this.handleRedundancy(interestRate);
-    // }
-  }
-
-  handleRedundancy(r) {
-    // const rr = Number(r);
-    // if (!Number.isNaN(rr) && rr !== null) {
-    //   const a = rr * 0.99;
-    //   this.handleChange("interestRate", a);
-    //   this.handleChange("interestRate", r);
-    //   // this.setState({ ready: true });
-    // }
   }
 
   handleUpdatedInterest() {
@@ -193,6 +179,7 @@ class CalculatorGraphComponent extends React.Component {
       accuracy,
       history
     } = this.state;
+    console.log("~~~~~monthlyOverpayment", monthlyOverpayment);
     let checkHx = this.props.history;
     let alterSize = false;
     if (checkHx) {
@@ -213,18 +200,18 @@ class CalculatorGraphComponent extends React.Component {
             : overpayment
         )
       );
-    console.log("term", typeof term, term);
-    console.log("interestRate", typeof interestRate, interestRate);
-    console.log(
-      "monthlyOverpayment",
-      typeof monthlyOverpayment,
-      monthlyOverpayment
-    );
-    console.log("overpayments", typeof overpayments, overpayments);
+    // console.log("term", typeof term, term);
+    // console.log("interestRate", typeof interestRate, interestRate);
+    // console.log(
+    //   "monthlyOverpayment",
+    //   typeof monthlyOverpayment,
+    //   monthlyOverpayment
+    // );
+    // console.log("overpayments", typeof overpayments, overpayments);
     const calcInterest = interestRate
       ? interestRate.replace("%", "")
       : interestRate;
-    console.log("calcInterest", calcInterest);
+    // console.log("calcInterest", calcInterest);
     const { monthlyPayment, payments } = calculations(
       +loanAmount,
       +term,
@@ -235,8 +222,8 @@ class CalculatorGraphComponent extends React.Component {
 
     const lenderDisplayName = isEmpty(lender) ? otherLender : lender;
     const showQuestion = isEmpty(accuracy);
-    console.log("accuracy", accuracy);
-    console.log("showQuectin", showQuestion);
+    // console.log("accuracy", accuracy);
+    // console.log("showQuectin", showQuestion);
     const updatedInterestRate = this.state.interestRate;
     let monthly = +monthlyOverpayment + monthlyPayment;
     if (isNaN(monthlyPayment)) {
@@ -285,16 +272,14 @@ class CalculatorGraphComponent extends React.Component {
                 <mobiscroll.Input
                   inputStyle="box"
                   labelStyle="floating"
-                  label={"Term (Yrs)"}
+                  label={"Loan Amount"}
+                  placeholder={"Loan Amount"}
                   type="number"
-                  maxLength={7}
                   value={loanAmount}
                   onChange={e =>
                     this.handleChange("loanAmount", e.target.value)
                   }
-                >
-                  Amount
-                </mobiscroll.Input>
+                />
               </div>
               <div className="mbsc-col-4">
                 <mobiscroll.Dropdown
@@ -527,9 +512,12 @@ class CalculatorGraphComponent extends React.Component {
                   inputStyle="box"
                   labelStyle="floating"
                   type="number"
+                  placeholder="$0"
                   maxLength={5}
                   value={monthlyOverpayment}
-                  onChange={e => this.handleChange("monthlyOverpayment", e)}
+                  onChange={e =>
+                    this.handleChange("monthlyOverpayment", e.target.value)
+                  }
                 />
                 <sub style={{ marginLeft: "3rem" }}>
                   * use if you've paid same amount consistently

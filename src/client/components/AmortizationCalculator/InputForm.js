@@ -127,8 +127,8 @@ class InputFormComponent extends React.Component {
       ? "Anticipated Interest Rate"
       : "Interest Rate (%)";
     const paymentLabel = anticipated
-      ? "Anticipated Monthly Payment Amount ($)"
-      : "Monthly Payment Amount ($)";
+      ? "Anticipated Monthly Payment Amount"
+      : "Monthly Payment Amount";
     const termLabel = anticipated
       ? "Loan Term Desired (Years)"
       : "Loan Term (Years)";
@@ -148,7 +148,9 @@ class InputFormComponent extends React.Component {
                 label={loanLabel}
                 onChange={e => this.handleChange("loanAmount", e)}
                 placeholder="Enter Loan Amount ($)"
-              />
+              >
+                {loanLabel}
+              </mobiscroll.Input>
             </div>
             <div className="mbsc-col-12">
               <mobiscroll.Dropdown
