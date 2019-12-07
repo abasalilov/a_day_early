@@ -33,7 +33,7 @@ class CountDownPageComponent extends React.Component {
   handleTimerSet() {
     let startDate = new Date();
     // Do your operations
-    let endDate = new Date(1575882007000);
+    let endDate = new Date(1575835260000);
     let seconds = (
       (Math.floor(endDate.getTime() - startDate.getTime()) / 1000) %
       60
