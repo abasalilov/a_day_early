@@ -13,7 +13,8 @@ import {
   NotFoundPage,
   NewLoanCalculatorPage,
   ContactUsPage,
-  CountDownPage
+  CountDownPage,
+  TestPage
 } from "./pages";
 
 export default [
@@ -73,6 +74,11 @@ export default [
       {
         ...ProgramsPage,
         path: "/test-programs",
+        exact: true
+      },
+      {
+        ...TestPage,
+        path: "/test",
         exact: true
       },
       {

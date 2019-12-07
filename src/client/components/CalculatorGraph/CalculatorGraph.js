@@ -668,7 +668,6 @@ class CalculatorGraphComponent extends React.Component {
               />
             </Grid>
           </Grid>
-          )}
         </div>
       </div>
     );

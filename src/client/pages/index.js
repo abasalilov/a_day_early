@@ -11,3 +11,4 @@ export { ProgramsPage } from "./ProgramsPage";
 export { NewLoanCalculatorPage } from "./NewLoanCalculatorPage";
 export { ContactUsPage } from "./ContactUsPage";
 export { CountDownPage } from "./CountDownPage";
+export { TestPage } from "./TestPage";
