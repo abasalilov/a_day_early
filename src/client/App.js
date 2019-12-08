@@ -17,7 +17,6 @@ import "@mobiscroll/react/dist/css/mobiscroll.min.css";
 import Modal from "react-modal";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
 
 const NewModal = props => (
   <Modal

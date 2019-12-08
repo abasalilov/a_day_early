@@ -72,9 +72,10 @@ export default [
       },
       {
         ...ProgramsPage,
-        path: "/test-programs",
+        path: "/programs",
         exact: true
       },
+
       {
         ...TestPage,
         path: "/test",
