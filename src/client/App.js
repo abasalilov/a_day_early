@@ -12,7 +12,6 @@ import {
   resetAuth as createResetAuthAction,
   resizeEvent as createResizeEventAction
 } from "./actions";
-import mobiscroll from "@mobiscroll/react";
 import "@mobiscroll/react/dist/css/mobiscroll.min.css";
 import Modal from "react-modal";
 import Typography from "@material-ui/core/Typography";
@@ -121,7 +120,7 @@ class App extends React.PureComponent<PropsT> {
 
   async componentDidMount() {
     this.handleWindowSizeChange();
-    setTimeout(() => this.handleCloseModal(), 4500);
+    setTimeout(() => this.handleCloseModal(), 40);
   }
 
   handleWindowSizeChange() {

@@ -2,14 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
-import { Field, reduxForm } from "redux-form";
+import { Field, reduxForm, formValueSelector } from "redux-form";
 import { Link } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
 import Modal from "@material-ui/core/Modal";
 import Close from "@material-ui/icons/Close";
 import { StyledButton } from "../../components/common";
-import { BasicCalculatorForm } from "../BasicCalculatorForm";
 import {
   registerUser as createRegisterUserAction,
   confirmUniqueUsername
@@ -22,10 +20,28 @@ import {
   confirmValue,
   isUUIDError
 } from "../../utils";
-import TextField from "@material-ui/core/TextField";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
+import "@mobiscroll/react/dist/css/mobiscroll.min.css";
+import mobiscroll from "@mobiscroll/react";
+
+function confirmError(err) {
+  if (typeof err === "undefined") {
+    return "";
+  }
+  if (err.indexOf("Passwords") !== -1) {
+    return "redError";
+  }
+  if (err.indexOf("Good") !== -1) {
+    return "greenError";
+  } else if (err === "Required") {
+    return "redError";
+  }
+  return "redError";
+}
+
+const onSubmit = (values, dispatch, props) =>
+  dispatch(createRegisterUserAction(values));
 
 const asyncValidate = (values, dispatch) => {
   if (values.username_email) {
@@ -34,114 +50,179 @@ const asyncValidate = (values, dispatch) => {
   return sleep(10).then(a => console.log("a", a));
 };
 
-const renderInterestSelect = input => {
+const renderTermSelect = props => {
+  const { input, ...custom } = props;
   return (
-    <Select
+    <div
+      className="mbsc-col-8"
       style={{
-        border: "solid #049347 2px",
-        borderRadius: "8px",
-        backgroundColor: "#fff"
-      }}
-      {...input}
-      value={input.value}
-      onChange={input.onChange}
-      inputProps={{
-        style: {
-          color: "#2D3190",
-          fontSize: "20px",
-          textDecoration: "none"
-        }
+        marginTop: "1rem",
+        fontSize: "1.5rem"
       }}
     >
-      <option value={"2.000"}>2.000%</option>
-      <option value={"2.125"}>2.125%</option>
-      <option value={"2.250"}>2.250%</option>
-      <option value={"2.375"}>2.375%</option>
-      <option value={"2.500"}>2.500%</option>
-      <option value={"2.625"}>2.625%</option>
-      <option value={"2.750"}>2.750%</option>
-      <option value={"2.875"}>2.875%</option>
-      <option value={"3.000"}>3.000%</option>
-      <option value={"3.125"}>3.125%</option>
-      <option value={"3.250"}>3.250%</option>
-      <option value={"3.375"}>3.375%</option>
-      <option value={"3.500"}>3.500%</option>
-      <option value={"3.625"}>3.625%</option>
-      <option value={"3.750"}>3.750%</option>
-      <option value={"3.875"}>3.875%</option>
-      <option value={"4.000"}>4.000%</option>
-      <option value={"4.125"}>4.125%</option>
-      <option value={"4.250"}>4.250%</option>
-      <option value={"4.375"}>4.375%</option>
-      <option value={"4.500"}>4.500%</option>
-      <option value={"4.625"}>4.625%</option>
-      <option value={"4.750"}>4.750%</option>
-      <option value={"4.875"}>4.875%</option>
-      <option value={"5.000"}>5.000%</option>
-      <option value={"5.125"}>5.125%</option>
-      <option value={"5.250"}>5.250%</option>
-      <option value={"5.375"}>5.375%</option>
-      <option value={"5.500"}>5.500%</option>
-      <option value={"5.625"}>5.625%</option>
-      <option value={"5.750"}>5.750%</option>
-      <option value={"5.875"}>5.875%</option>
-      <option value={"6.000"}>6.000%</option>
-      <option value={"6.125"}>6.125%</option>
-      <option value={"6.250"}>6.250%</option>
-      <option value={"6.375"}>6.375%</option>
-      <option value={"6.500"}>6.500%</option>
-      <option value={"6.625"}>6.625%</option>
-      <option value={"6.750"}>6.750%</option>
-      <option value={"6.875"}>6.875%</option>
-      <option value={"7.000"}>7.000%</option>
-      <option value={"7.125"}>7.125%</option>
-      <option value={"7.250"}>7.250%</option>
-      <option value={"7.375"}>7.375%</option>
-      <option value={"7.500"}>7.500%</option>
-      <option value={"7.625"}>7.625%</option>
-      <option value={"7.750"}>7.750%</option>
-      <option value={"7.875"}>7.875%</option>
-      <option value={"8.000"}>8.000%</option>
-      <option value={"8.125"}>8.125%</option>
-      <option value={"8.250"}>8.250%</option>
-      <option value={"8.375"}>8.375%</option>
-      <option value={"8.500"}>8.500%</option>
-      <option value={"8.625"}>8.625%</option>
-      <option value={"8.750"}>8.750%</option>
-      <option value={"8.875"}>8.875%</option>
-      <option value={"9.000"}>9.000%</option>
-      <option value={"9.125"}>9.125%</option>
-      <option value={"9.250"}>9.250%</option>
-      <option value={"9.375"}>9.375%</option>
-      <option value={"9.500"}>9.500%</option>
-      <option value={"9.625"}>9.625%</option>
-      <option value={"9.750"}>9.750%</option>
-      <option value={"9.875"}>9.875%</option>
-      <option value={"10.000"}>10.000%</option>
-      <option value={"10.125"}>10.125%</option>
-      <option value={"10.250"}>10.250%</option>
-      <option value={"10.375"}>10.375%</option>
-      <option value={"10.500"}>10.500%</option>
-      <option value={"10.625"}>10.625%</option>
-      <option value={"10.750"}>10.750%</option>
-      <option value={"10.875"}>10.875%</option>
-      <option value={"11.000"}>11.000%</option>
-      <option value={"11.125"}>11.125%</option>
-      <option value={"11.250"}>11.250%</option>
-      <option value={"11.375"}>11.375%</option>
-      <option value={"11.500"}>11.500%</option>
-      <option value={"11.625"}>11.625%</option>
-      <option value={"11.750"}>11.750%</option>
-      <option value={"11.875"}>11.875%</option>
-      <option value={"12.000"}>12.000%</option>
-      <option value={"12.125"}>12.125%</option>
-      <option value={"12.250"}>12.250%</option>
-      <option value={"12.375"}>12.375%</option>
-      <option value={"12.500"}>12.500%</option>
-      <option value={"12.625"}>12.625%</option>
-      <option value={"12.750"}>12.750%</option>
-      <option value={"12.875"}>12.875%</option>
-    </Select>
+      <mobiscroll.Dropdown
+        label={"Loan Term (Yrs)"}
+        name="term"
+        inputStyle="box"
+        {...input}
+        {...custom}
+        labelStyle="floating"
+        style={{
+          border: "solid #049347 2px"
+        }}
+      >
+        <option></option>
+        <option value={15}>15</option>
+        <option value={20}>20</option>
+        <option value={25}>25</option>
+        <option value={30}>30</option>
+      </mobiscroll.Dropdown>
+    </div>
+  );
+};
+
+const renderAccountSelect = props => {
+  const { input, ...custom } = props;
+
+  return (
+    <div
+      className="mbsc-col-8"
+      style={{
+        marginTop: "1rem",
+        fontSize: "1.5rem"
+      }}
+    >
+      <mobiscroll.Dropdown
+        label={"Account Type"}
+        name="accountType"
+        inputStyle="box"
+        {...input}
+        {...custom}
+        labelStyle="floating"
+        style={{
+          border: "solid #049347 2px"
+        }}
+      >
+        <option></option>
+        <option value={"professional"}>Pro (one time charge of $29)</option>
+        <option value={"free"}>Standard (free)</option>
+      </mobiscroll.Dropdown>
+    </div>
+  );
+};
+
+const renderInterestSelect = props => {
+  const { input, ...custom } = props;
+  return (
+    <div
+      className="mbsc-col-8"
+      style={{
+        marginTop: "1rem",
+        fontSize: "1.5rem"
+      }}
+    >
+      <mobiscroll.Dropdown
+        {...input}
+        {...custom}
+        label={"Interest Rate %"}
+        name="interestRate"
+        inputStyle="box"
+        labelStyle="floating"
+        style={{
+          border: "solid #049347 2px"
+        }}
+      >
+        <option></option>
+        <option value={"2.000"}>2.000%</option>
+        <option value={"2.125"}>2.125%</option>
+        <option value={"2.250"}>2.250%</option>
+        <option value={"2.375"}>2.375%</option>
+        <option value={"2.500"}>2.500%</option>
+        <option value={"2.625"}>2.625%</option>
+        <option value={"2.750"}>2.750%</option>
+        <option value={"2.875"}>2.875%</option>
+        <option value={"3.000"}>3.000%</option>
+        <option value={"3.125"}>3.125%</option>
+        <option value={"3.250"}>3.250%</option>
+        <option value={"3.375"}>3.375%</option>
+        <option value={"3.500"}>3.500%</option>
+        <option value={"3.625"}>3.625%</option>
+        <option value={"3.750"}>3.750%</option>
+        <option value={"3.875"}>3.875%</option>
+        <option value={"4.000"}>4.000%</option>
+        <option value={"4.125"}>4.125%</option>
+        <option value={"4.250"}>4.250%</option>
+        <option value={"4.375"}>4.375%</option>
+        <option value={"4.500"}>4.500%</option>
+        <option value={"4.625"}>4.625%</option>
+        <option value={"4.750"}>4.750%</option>
+        <option value={"4.875"}>4.875%</option>
+        <option value={"5.000"}>5.000%</option>
+        <option value={"5.125"}>5.125%</option>
+        <option value={"5.250"}>5.250%</option>
+        <option value={"5.375"}>5.375%</option>
+        <option value={"5.500"}>5.500%</option>
+        <option value={"5.625"}>5.625%</option>
+        <option value={"5.750"}>5.750%</option>
+        <option value={"5.875"}>5.875%</option>
+        <option value={"6.000"}>6.000%</option>
+        <option value={"6.125"}>6.125%</option>
+        <option value={"6.250"}>6.250%</option>
+        <option value={"6.375"}>6.375%</option>
+        <option value={"6.500"}>6.500%</option>
+        <option value={"6.625"}>6.625%</option>
+        <option value={"6.750"}>6.750%</option>
+        <option value={"6.875"}>6.875%</option>
+        <option value={"7.000"}>7.000%</option>
+        <option value={"7.125"}>7.125%</option>
+        <option value={"7.250"}>7.250%</option>
+        <option value={"7.375"}>7.375%</option>
+        <option value={"7.500"}>7.500%</option>
+        <option value={"7.625"}>7.625%</option>
+        <option value={"7.750"}>7.750%</option>
+        <option value={"7.875"}>7.875%</option>
+        <option value={"8.000"}>8.000%</option>
+        <option value={"8.125"}>8.125%</option>
+        <option value={"8.250"}>8.250%</option>
+        <option value={"8.375"}>8.375%</option>
+        <option value={"8.500"}>8.500%</option>
+        <option value={"8.625"}>8.625%</option>
+        <option value={"8.750"}>8.750%</option>
+        <option value={"8.875"}>8.875%</option>
+        <option value={"9.000"}>9.000%</option>
+        <option value={"9.125"}>9.125%</option>
+        <option value={"9.250"}>9.250%</option>
+        <option value={"9.375"}>9.375%</option>
+        <option value={"9.500"}>9.500%</option>
+        <option value={"9.625"}>9.625%</option>
+        <option value={"9.750"}>9.750%</option>
+        <option value={"9.875"}>9.875%</option>
+        <option value={"10.000"}>10.000%</option>
+        <option value={"10.125"}>10.125%</option>
+        <option value={"10.250"}>10.250%</option>
+        <option value={"10.375"}>10.375%</option>
+        <option value={"10.500"}>10.500%</option>
+        <option value={"10.625"}>10.625%</option>
+        <option value={"10.750"}>10.750%</option>
+        <option value={"10.875"}>10.875%</option>
+        <option value={"11.000"}>11.000%</option>
+        <option value={"11.125"}>11.125%</option>
+        <option value={"11.250"}>11.250%</option>
+        <option value={"11.375"}>11.375%</option>
+        <option value={"11.500"}>11.500%</option>
+        <option value={"11.625"}>11.625%</option>
+        <option value={"11.750"}>11.750%</option>
+        <option value={"11.875"}>11.875%</option>
+        <option value={"12.000"}>12.000%</option>
+        <option value={"12.125"}>12.125%</option>
+        <option value={"12.250"}>12.250%</option>
+        <option value={"12.375"}>12.375%</option>
+        <option value={"12.500"}>12.500%</option>
+        <option value={"12.625"}>12.625%</option>
+        <option value={"12.750"}>12.750%</option>
+        <option value={"12.875"}>12.875%</option>
+      </mobiscroll.Dropdown>
+    </div>
   );
 };
 
@@ -167,9 +248,6 @@ function getModalStyle(mobile) {
   };
 }
 
-const onSubmit = (values, dispatch, props) =>
-  dispatch(createRegisterUserAction(values));
-
 const styles = theme => ({
   root: {
     display: "flex",
@@ -184,7 +262,7 @@ const styles = theme => ({
   },
   paper: {
     position: "absolute",
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: "#cfe0f3 !important",
     boxShadow: theme.shadows[5],
     margin: "1rem",
     padding: "1rem",
@@ -235,7 +313,8 @@ const styles = theme => ({
   },
   buttons: {
     display: "flex",
-    justifyContent: "center"
+    justifyContent: "center",
+    marginTop: "3rem"
   },
   mobileLink: {
     margin: "3rem auto 0 auto"
@@ -257,44 +336,6 @@ const styles = theme => ({
   }
 });
 
-{
-  /* <FormControl variant="filled" className={classes.formControl}>
-<InputLabel
-  style={{
-    fontSize: labelFontSize ? labelFontSize : "20px",
-    color: "#2D3190",
-    paddingTop: ".4rem",
-    marginLeft: "-.3rem"
-  }}
-  shrink={labelShrink}
->
-  {label}
-</InputLabel>
-<Select
-  style={{
-    border: "solid #049347 2px",
-    borderRadius: "8px",
-    backgroundColor: "#fff"
-  }}
-  {...input}
-  value={input.value}
-  onChange={input.onChange}
-  inputProps={{
-    style: {
-      color: "#2D3190",
-      fontSize: "20px",
-      textDecoration: "none"
-    }
-  }}
->
-  <option value={15}>15</option>
-  <option value={20}>20</option>
-  <option value={25}>25</option>
-  <option value={30}>30</option>
-</Select>
-</FormControl> */
-}
-
 const renderTextField = ({
   label,
   input,
@@ -304,276 +345,231 @@ const renderTextField = ({
   labelShrink,
   name,
   labelFontSize,
+  placeholder,
   ...custom
 }) => {
-  if (label === "Interest Rate (%)") {
-    return (
-      <FormControl variant="filled" className={classes.formControl}>
-        <InputLabel
-          style={{
-            fontSize: labelFontSize ? labelFontSize : "20px",
-            color: "#2D3190",
-            paddingTop: ".4rem",
-            marginLeft: "-.3rem"
-          }}
-          shrink={labelShrink}
-        >
-          {label}
-        </InputLabel>
-        {renderInterestSelect(input)}
-      </FormControl>
-    );
-  }
-  if (type === "dropdown") {
-    return (
-      <FormControl variant="filled" className={classes.formControl}>
-        <InputLabel
-          style={{
-            fontSize: labelFontSize ? labelFontSize : "20px",
-            color: "#2D3190",
-            paddingTop: ".4rem",
-            marginLeft: "-.3rem"
-          }}
-          shrink={labelShrink}
-        >
-          {label}
-        </InputLabel>
-        <Select
-          style={{
-            border: "solid #049347 2px",
-            borderRadius: "8px",
-            backgroundColor: "#fff"
-          }}
-          {...input}
-          value={input.value}
-          onChange={input.onChange}
-          inputProps={{
-            style: {
-              color: "#2D3190",
-              fontSize: "20px",
-              textDecoration: "none"
-            }
-          }}
-        >
-          <option value={"professional"}>Pro (one time charge of $29)</option>
-          <option value={"free"}>Standard (free)</option>
-        </Select>
-      </FormControl>
-    );
-  }
   return (
-    <TextField
-      label={label}
-      placeholder={label}
-      error={touched && invalid}
-      fullWidth
-      helperText={touched && error}
-      {...input}
-      {...custom}
-      style={{
-        border: "solid #049347 2px",
-        borderRadius: "8px",
-        backgroundColor: "#fff"
-      }}
-      margin="normal"
-      InputProps={{
-        type,
-        style: {
-          marginLeft: ".3rem"
-        }
-      }}
-      InputLabelProps={{
-        style: {
-          fontSize: labelFontSize ? labelFontSize : "20px",
-          color: "#2D3190",
-          marginLeft: ".3rem"
-        },
-        shrink: labelShrink
-      }}
-    />
-  );
-};
-
-const RegistrationModalComponent = props => {
-  const {
-    classes,
-    open,
-    closeClick,
-    mobile,
-    confirmUserNameMsg,
-    handleSubmit,
-    pristine,
-    submitting,
-    registered
-  } = props;
-  const error = isUUIDError(confirmUserNameMsg)
-    ? confirmUserNameMsg
-    : undefined;
-  const emailError = { error, touched: true };
-  /*eslint-disable*/
-  return (
-    <Modal
-      aria-labelledby="ade-registration-title"
-      aria-describedby="ade-registration-description"
-      open={open}
-    >
-      <div style={getModalStyle(mobile)} className={classes.paper}>
-        <div className={classes.modalRoot}>
-          <Grid
-            container
-            spacing={mobile ? 8 : 10}
-            direction="column"
-            alignItems="center"
-            justify="center"
-          >
-            <Grid item>
-              <div className={classes.topContainer}>
-                <Typography
-                  variant="h5"
-                  align="center"
-                  color="textPrimary"
-                  className={classes.title}
-                  gutterBottom
-                >
-                  Registration Form
-                </Typography>
-                <Close onClick={closeClick} className={classes.modalCloseBtn} />
-              </div>
-
-              <form onSubmit={handleSubmit}>
-                <Field
-                  name="username_email"
-                  type="text"
-                  className={classes.field}
-                  placeholder="Enter email address"
-                  margin={"none"}
-                  label="Email/Username"
-                  mobile={mobile}
-                  showborder
-                  emailError={emailError}
-                  meta={emailError}
-                  component={renderTextField}
-                  validate={[required, email, minLength6]}
-                  warn={alphaNumeric}
-                />
-                <Field
-                  type="text"
-                  label="First Name"
-                  name="firstName"
-                  placeholder="Don"
-                  margin={"none"}
-                  mobile={mobile}
-                  component={renderTextField}
-                  validate={[required]}
-                  warn={alphaNumeric}
-                  className={classes.field}
-                />
-                <Field
-                  type="text"
-                  className={classes.field}
-                  label="Last Name"
-                  name="lastName"
-                  placeholder="Junkin"
-                  margin={"none"}
-                  mobile={mobile}
-                  component={renderTextField}
-                  validate={[required]}
-                  warn={alphaNumeric}
-                />
-                <Field
-                  name="loanAmount"
-                  label={"Loan Amount (USD$)"}
-                  type="number"
-                  component={renderTextField}
-                  mobile={false}
-                  max="20"
-                />
-                <Field
-                  name="interestRate"
-                  component={renderTextField}
-                  label={"Interest Rate (%)"}
-                  classes={classes}
-                  mobile={false}
-                />
-                <Field
-                  name="term"
-                  component={renderTextField}
-                  label={"Loan Term (Years)"}
-                  type="number"
-                  max="3"
-                />
-                <Field
-                  type="password"
-                  label="Enter a Password"
-                  name="registerPassword"
-                  placeholder="password1"
-                  margin={"none"}
-                  className={classes.field}
-                  mobile={mobile}
-                  component={renderTextField}
-                  validate={[required, minLength6]}
-                  warn={alphaNumeric}
-                />
-                <Field
-                  type="password"
-                  label="Confirm Password"
-                  name="confirmPassword"
-                  placeholder="password1"
-                  margin={"none"}
-                  className={classes.field}
-                  mobile={mobile}
-                  component={renderTextField}
-                  validate={[required, minLength6]}
-                  warn={alphaNumeric}
-                />
-
-                <Field
-                  name="profileType"
-                  component={renderTextField}
-                  label={"Profile Type"}
-                  margin={"none"}
-                  classes={classes}
-                  type={"dropdown"}
-                />
-
-                <div className={classes.buttons}>
-                  <StyledButton
-                    type="submit"
-                    label="Register"
-                    onSubmit={handleSubmit}
-                    className={classes.btn}
-                    disabled={pristine || submitting}
-                    mobile={mobile}
-                  />
-                </div>
-              </form>
-              <div className={classes.btnContainer}>
-                {registered ? closeClick() : ""}
-                <span className={mobile ? classes.mobileLink : classes.link}>
-                  <Typography
-                    variant={mobile ? "h3" : "h6"}
-                    align="center"
-                    color="textPrimary"
-                    gutterBottom
-                  >
-                    Have an account?
-                    <Link
-                      className={classes.regLink}
-                      to="/login#register"
-                      onClick={closeClick}
-                    >
-                      <strong> Sign In</strong>
-                    </Link>
-                  </Typography>
-                </span>
-              </div>
-            </Grid>
-          </Grid>
+    <React.Fragment>
+      <mobiscroll.Input
+        placeholder={placeholder}
+        invalid={touched && invalid}
+        {...input}
+        {...custom}
+        inputStyle="box"
+        type={type}
+        labelStyle="floating"
+        style={{
+          border: "solid #049347 2px",
+          fontSize: "1.5rem"
+        }}
+      >
+        {label}
+      </mobiscroll.Input>
+      {touched && error && (
+        <div id={confirmError(error)}>
+          <mobiscroll.Note>{error}</mobiscroll.Note>
         </div>
-      </div>
-    </Modal>
+      )}
+    </React.Fragment>
   );
 };
+
+class RegistrationModalComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  async handleClick(e) {
+    e.preventDefault();
+    const { formValues, registerUser } = this.props;
+    await registerUser(formValues);
+  }
+
+  render() {
+    console.log("this.props", this.props);
+
+    const {
+      classes,
+      open,
+      closeClick,
+      mobile,
+      confirmUserNameMsg,
+      pristine,
+      submitting,
+      registered,
+      handleSubmit,
+      submit
+    } = this.props;
+    const error = isUUIDError(confirmUserNameMsg)
+      ? confirmUserNameMsg
+      : undefined;
+
+    const emailError = { error, touched: true };
+    /*eslint-disable*/
+    return (
+      <Modal
+        aria-labelledby="ade-registration-title"
+        aria-describedby="ade-registration-description"
+        open={open}
+      >
+        <div style={getModalStyle(mobile)} className={classes.paper}>
+          <mobiscroll.Form
+            onSubmit={handleSubmit}
+            className="md-grid-fixed"
+            style={{
+              background: "#cfe0f3"
+            }}
+            theme="ios"
+            themeVariant="light"
+          >
+            <mobiscroll.FormGroup>
+              <div className={classes.modalRoot}>
+                <div className="mbsc-grid-fixed">
+                  <div className="mbsc-col-12 mbsc-justify-content-start">
+                    <div className="mbsc-row mbsc-justify-content-between">
+                      <h1
+                        style={{
+                          color: "rgb(45, 49, 144)",
+                          fontSize: "2rem"
+                        }}
+                      >
+                        Registration Form
+                      </h1>
+                      <Close
+                        onClick={closeClick}
+                        className={classes.modalCloseBtn}
+                      />
+                    </div>
+                    <form>
+                      <Field
+                        name="username_email"
+                        type="text"
+                        className={classes.field}
+                        placeholder="Enter email address"
+                        label="Email/Username"
+                        mobile={mobile}
+                        showborder
+                        emailError={emailError}
+                        meta={emailError}
+                        component={renderTextField}
+                        validate={[required, email, minLength6]}
+                        warn={alphaNumeric}
+                      />
+                      <Field
+                        type="text"
+                        label="First Name"
+                        name="firstName"
+                        placeholder="Don"
+                        mobile={mobile}
+                        component={renderTextField}
+                        validate={[required]}
+                        warn={alphaNumeric}
+                        className={classes.field}
+                      />
+                      <Field
+                        type="text"
+                        className={classes.field}
+                        label="Last Name"
+                        name="lastName"
+                        placeholder="Junkin"
+                        mobile={mobile}
+                        component={renderTextField}
+                        validate={[required]}
+                        warn={alphaNumeric}
+                      />
+                      <Field
+                        name="loanAmount"
+                        label={"Loan Amount (USD$)"}
+                        type="number"
+                        component={renderTextField}
+                        mobile={false}
+                      />
+                      <Field
+                        name="interestRate"
+                        component={renderInterestSelect}
+                        label={"Interest Rate (%)"}
+                        classes={classes}
+                      />
+                      <Field
+                        name="term"
+                        label={"Loan Term (Yrs)"}
+                        component={renderTermSelect}
+                        label={"Loan Term (Years)"}
+                      />
+                      <Field
+                        type="password"
+                        label="Enter a Password"
+                        name="registerPassword"
+                        placeholder="password1"
+                        className={classes.field}
+                        mobile={mobile}
+                        component={renderTextField}
+                        validate={[required, minLength6]}
+                        warn={alphaNumeric}
+                      />
+                      <Field
+                        type="password"
+                        label="Confirm Password"
+                        name="confirmPassword"
+                        placeholder="password1"
+                        className={classes.field}
+                        mobile={mobile}
+                        component={renderTextField}
+                        validate={[required, minLength6]}
+                        warn={alphaNumeric}
+                      />
+
+                      <Field
+                        name="accountType"
+                        component={renderAccountSelect}
+                        classes={classes}
+                        validate={[required]}
+                      />
+
+                      <div className={classes.buttons}>
+                        <StyledButton
+                          label="Register"
+                          className={classes.btn}
+                          disabled={pristine || submitting}
+                          mobile={mobile}
+                          onClick={this.handleClick}
+                        />
+                      </div>
+                    </form>
+                    <div className={classes.btnContainer}>
+                      {registered ? closeClick() : ""}
+                      <span
+                        className={mobile ? classes.mobileLink : classes.link}
+                      >
+                        <Typography
+                          variant={mobile ? "h3" : "h6"}
+                          align="center"
+                          color="textPrimary"
+                          gutterBottom
+                        >
+                          Have an account?
+                          <Link
+                            className={classes.regLink}
+                            to="/login#register"
+                            onClick={closeClick}
+                          >
+                            <strong> Sign In</strong>
+                          </Link>
+                        </Typography>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mobiscroll.FormGroup>
+          </mobiscroll.Form>
+        </div>
+      </Modal>
+    );
+  }
+}
 /*eslint-enable*/
 
 const registrationForm = reduxForm({
@@ -581,14 +577,28 @@ const registrationForm = reduxForm({
   validate,
   asyncValidate,
   onSubmit,
-  asyncBlurFields: ["username_email", "confirmPassword"]
+  asyncBlurFields: ["username_email"]
 })(withStyles(styles)(RegistrationModalComponent));
 
+const selector = formValueSelector("registration"); // <-- same as form name
+
 const mapStateToProps = state => {
+  const value = {};
+  value.term = selector(state, "term");
+  value.firstName = selector(state, "firstName");
+  value.registerPassword = selector(state, "registerPassword");
+  value.confirmPassword = selector(state, "confirmPassword");
+  value.username_email = selector(state, "username_email");
+  value.lastName = selector(state, "lastName");
+  value.interestRate = selector(state, "interestRate");
+  value.accountType = selector(state, "accountType");
+  value.loanAmount = selector(state, "loanAmount");
+
   return {
     registered: state.users.registered,
     confirmUserNameMsg: confirmValue(state.users.confirmUserNameMsg),
-    mobile: state.mobile
+    mobile: state.mobile,
+    formValues: value
   };
 };
 

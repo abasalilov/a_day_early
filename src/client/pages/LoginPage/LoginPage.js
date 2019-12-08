@@ -7,7 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import { adeLoginSubmit as createAuthReqActionCreator } from "../../actions";
 import { StyledButton, FormField } from "../../components/common";
 import { Loading } from "../../components/navigation";
-import { RegistrationModal } from "../../components/modals";
+import { RegistrationModal, MobiModal } from "../../components/modals";
 import { Image } from "../../components/common";
 import {
   required,

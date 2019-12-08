@@ -1,0 +1,45 @@
+.md-grid-responsive [class*="mbsc-col"] {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  color: #454b50;
+}
+
+.md-grid-responsive .mbsc-row {
+  margin: 1em 0;
+}
+
+.mbsc-form {
+  background-color: #cfe0f3 !important;
+}
+
+form > label > span.mbsc-label {
+  font-size: 1.5em !important;
+}
+
+form > div.mbsc-col-8 > label {
+  margin: 0 !important;
+  border: solid #049347 2px !important;
+  margin-left: -10px !important;
+}
+
+.md-grid-fixed.mbsc-comp.mbsc-form.mbsc-no-touch {
+  min-width: 95% !important;
+}
+
+#greenError > div {
+  color: green !important;
+  background-color: white !important;
+  font-size: 1.1rem;
+  border-radius: 1rem;
+  font-weight: bold;
+}
+
+#redError > div {
+  color: red !important;
+  background-color: white !important;
+  font-size: 1.1rem;
+  border-radius: 1rem;
+  font-weight: bold;
+}

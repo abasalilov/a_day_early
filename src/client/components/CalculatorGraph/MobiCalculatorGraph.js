@@ -23,7 +23,6 @@ const selectLabelStyle = {
   textShadow: "0 1px  2px rgba(0, 0, 0, 0.4)"
 };
 
-const lenders = ["Chase", "Wells Fargo", "Quicken Loans", "Other"];
 
 const isEmpty = a => {
   if (a === null) {
@@ -507,7 +506,7 @@ class CalculatorGraphComponent extends React.Component {
                   Prior Recurring Monthly Overpayments
                 </Typography>
               </div>
-              <div className="mbsc-col-4">
+              <div className="mbsc-col-5">
                 <mobiscroll.Input
                   inputStyle="box"
                   labelStyle="floating"
