@@ -728,22 +728,6 @@ class CalculatorGraphComponent extends React.Component {
             </Typography>
             <Table payments={payments} />
           </div>
-          <div
-            className="mbsc-row mbsc-align-items-center"
-            style={{
-              minHeight: "45rem",
-              minWidth: "45rem"
-            }}
-          >
-            <Typography variant="h5" style={labelStyle} align="left">
-              Graph
-            </Typography>
-            <Chart
-              payments={payments}
-              alterSize={alterSize}
-              lenderName={lenderDisplayName}
-            />
-          </div>
         </div>
       </div>
     );

@@ -13,7 +13,6 @@ import {
   NotFoundPage,
   NewLoanCalculatorPage,
   ContactUsPage,
-  CountDownPage,
   TestPage
 } from "./pages";
 
@@ -23,16 +22,16 @@ export default [
     routes: [
       {
         ...HomePage,
-        path: "/test-home",
+        path: "/home",
         exact: true
       },
       {
         ...LoginPage,
-        path: "/test-login",
+        path: "/login",
         exact: true
       },
       {
-        ...CountDownPage,
+        ...LandingPage,
         path: "/",
         exact: true
       },

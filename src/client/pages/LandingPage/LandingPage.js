@@ -1,8 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Section } from "../../components/Sections";
-import { LeftPanel } from "../../components/common";
-import { IntroSectionData } from "../../messages";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";

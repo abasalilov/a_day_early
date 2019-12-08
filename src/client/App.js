@@ -6,6 +6,7 @@ import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import { Helmet } from "react-helmet";
 import { renderRoutes } from "react-router-config";
 import { Navigator, Loading } from "./components/navigation";
+import { Image } from "./components/common";
 import { isHeaderMobile } from "./utils";
 import {
   resetAuth as createResetAuthAction,
@@ -13,6 +14,61 @@ import {
 } from "./actions";
 import mobiscroll from "@mobiscroll/react";
 import "@mobiscroll/react/dist/css/mobiscroll.min.css";
+import Modal from "react-modal";
+import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
+
+const NewModal = props => (
+  <Modal
+    closeTimeoutMS={200}
+    isOpen={props.showModal}
+    onRequestClose={props.closeModal}
+  >
+    <Grid container alignItems="center" justify="center" direction="column">
+      <Grid item xs={12}>
+        <Grid item xs={6}>
+          <Image
+            showSpinner={false}
+            style={{ width: "600px" }}
+            src={
+              "https://res.cloudinary.com/dbfv0bfmw/image/upload/v1571170225/adeLogo.png"
+            }
+          />
+        </Grid>
+      </Grid>
+      <Grid item xs={6} style={{ marginTop: "5rem" }}>
+        <Typography
+          variant="h4"
+          align="center"
+          style={{
+            fontSize: "2rem",
+            marginTop: "2rem",
+            color: "#2D3190"
+          }}
+          gutterBottom
+        >
+          We have launched a day early, please pardon the dust as we refine our
+          functionality for you!
+        </Typography>
+      </Grid>
+      <Grid item xs={6} style={{ marginTop: "2rem" }}>
+        <Typography
+          variant="h4"
+          align="center"
+          style={{
+            fontSize: "2rem",
+            marginTop: "2rem",
+            color: "#2D3190"
+          }}
+          gutterBottom
+        >
+          Navigating to A Day Early in 2 seconds.
+        </Typography>
+      </Grid>
+    </Grid>
+  </Modal>
+);
 
 const theme = createMuiTheme({
   typography: {
@@ -52,7 +108,8 @@ class App extends React.PureComponent<PropsT> {
     super(props);
 
     this.state = {
-      confirmedClassName: ""
+      confirmedClassName: "",
+      modalOpen: true
     };
 
     this.handleWindowSizeChange = this.handleWindowSizeChange.bind(this);
@@ -60,10 +117,12 @@ class App extends React.PureComponent<PropsT> {
     this.handleClassNameConfirmation = this.handleClassNameConfirmation.bind(
       this
     );
+    this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
   async componentDidMount() {
     this.handleWindowSizeChange();
+    setTimeout(() => this.handleCloseModal(), 4500);
   }
 
   handleWindowSizeChange() {
@@ -71,6 +130,10 @@ class App extends React.PureComponent<PropsT> {
     const headerMobile = isHeaderMobile();
     resize(headerMobile);
     this.handleClassNameConfirmation(headerMobile);
+  }
+
+  handleCloseModal() {
+    this.setState({ modalOpen: false });
   }
 
   handleRedirect() {
@@ -104,7 +167,14 @@ class App extends React.PureComponent<PropsT> {
         {readyToRenderNav && (
           <Navigator loc={location} history={history} mobile={mobile} />
         )}
-        {readyToRender && renderRoutes(route.routes)}
+        <div>
+          <NewModal
+            showModal={this.state.modalOpen}
+            closeModal={this.handleCloseModal}
+          />
+          {readyToRender && renderRoutes(route.routes)}
+        </div>
+
         {!readyToRender && <Loading />}
       </MuiThemeProvider>
     );
