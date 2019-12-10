@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Typography from "@material-ui/core/Typography";
-import { FlyOut, LenderSelect } from "../common";
+import { FlyOut, InterestRateDropDown } from "../common";
 import Divider from "@material-ui/core/Divider";
 import { withStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
@@ -214,120 +214,119 @@ class LeapFrogCalculatorComponent extends React.Component {
     const showQuestion = isEmpty(accuracy);
 
     return (
-      <div>
-        <div className="col-sm-4">
-          <div className="col-sm-4">
-            <Typography
-              variant="h4"
-              style={updatedLabelStyle}
-              id="modal-title"
-              align="center"
-              gutterBottom
-            >
-              Let's Start with the Basics for the LeapFrog Program
-            </Typography>
-            <Divider style={dividerStyle} />
+      <mobiscroll.Form
+        className="mbsc-form-grid"
+        theme="ios"
+        themeVariant="light"
+      >
+        <div>
+          <div className="mbsc-grid" style={{ padding: "2rem" }}>
+            <div className="mbsc-row-12">
+              <div className="mbsc-col-12">
+                <Typography
+                  variant="h4"
+                  style={updatedLabelStyle}
+                  id="modal-title"
+                  align="center"
+                  gutterBottom
+                >
+                  Let's Start with the Basics for the LeapFrog Program
+                </Typography>
+                <Divider style={dividerStyle} />
+              </div>
+              <div className="mbsc-col-4">
+                <Typography
+                  variant="h4"
+                  style={labelStyle}
+                  id="modal-title"
+                  align="left"
+                  gutterBottom
+                >
+                  Loan Information
+                </Typography>
+              </div>
+              <div className="mbsc-row">
+                <div style={fieldStyle} className="mbsc-col-4">
+                  <Typography variant="h6" style={labelStyle} align="left">
+                    Amount
+                  </Typography>
+                  <mobiscroll.Input
+                    maxLength={7}
+                    value={loanAmount}
+                    onChange={e =>
+                      this.handleChange("loanAmount", e.target.value)
+                    }
+                    inputStyle="box"
+                    labelStyle="floating"
+                    placeholder="Loan Amount ($)"
+                    label={"Loan Amount ($)"}
+                  />
+                </div>
+                <div style={fieldStyle} className="mbsc-col-4">
+                  <Typography variant="h6" style={labelStyle} align="left">
+                    Term
+                  </Typography>
+                  <mobiscroll.Dropdown
+                    inputStyle="box"
+                    labelStyle="floating"
+                    maxLength={4}
+                    value={term}
+                    onChange={e => this.handleChange("term", e.target.value)}
+                  >
+                    <option>Years</option>
+                    <option value={15}>15</option>
+                    <option value={20}>20</option>
+                    <option value={25}>25</option>
+                    <option value={30}>30</option>
+                  </mobiscroll.Dropdown>
+                </div>
+                <div style={fieldStyle} className="mbsc-col-4">
+                  <Typography variant="h6" style={labelStyle} align="left">
+                    Interest Rate
+                  </Typography>
+                  <InterestRateDropDown
+                    inputStyle="box"
+                    labelStyle="floating"
+                    value={interestRate}
+                    onChange={e =>
+                      this.handleChange("interestRate", e.target.value)
+                    }
+                  />
+                </div>
+              </div>
+            </div>
+            {showInterestRateMessage && (
+              <FlyOut
+                show={true}
+                message={msg}
+                style={{
+                  fontSize: "1rem !important"
+                }}
+              />
+            )}
           </div>
+          <Divider
+            style={{ width: "100%", color: "#3f51b5", margin: "1rem" }}
+          />
+
           <Grid container spacing={8} alignItems="center" direction={"row"}>
-            <Grid item xs={4}>
-              <div style={fieldStyle}>
-                <Typography variant="h6" style={labelStyle} align="left">
-                  Amount
-                </Typography>
-                <input
-                  maxLength={7}
-                  value={loanAmount}
-                  onChange={e =>
-                    this.handleChange("loanAmount", e.target.value)
-                  }
-                  style={{
-                    color: "#3f51b5",
-                    textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-                    padding: "1rem",
-                    fontSize: "1rem"
-                  }}
-                />
-              </div>
-            </Grid>
-            <Grid item xs={4}>
-              <div style={fieldStyle}>
-                <Typography variant="h6" style={labelStyle} align="left">
-                  Years
-                </Typography>
-                <input
-                  type="number"
-                  maxLength={2}
-                  value={term}
-                  onChange={e => this.handleChange("term", e.target.value)}
-                  style={{
-                    color: "#3f51b5",
-                    textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-                    padding: "1rem",
-                    fontSize: "1rem"
-                  }}
-                />
-              </div>
-            </Grid>
-
-            <Grid item xs={4}>
-              <div style={fieldStyle}>
-                <Typography variant="h6" style={labelStyle} align="left">
-                  Interest Rate
-                </Typography>
-                <input
-                  type="number"
-                  step={0.1}
-                  value={interestRate}
-                  onChange={e =>
-                    this.handleChange("interestRate", e.target.value)
-                  }
-                  style={{
-                    color: "#3f51b5",
-                    textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-                    padding: "1rem",
-                    fontSize: "1rem"
-                  }}
-                />
-              </div>
-            </Grid>
-          </Grid>
-          {showInterestRateMessage && (
-            <FlyOut
-              show={true}
-              message={msg}
-              style={{
-                fontSize: "1rem !important"
-              }}
-            />
-          )}
-        </div>
-        <Divider style={{ width: "100%", color: "#3f51b5", margin: "1rem" }} />
-
-        <Grid container spacing={8} alignItems="center" direction={"row"}>
-          <Grid item xs={5}>
-            <Typography
-              variant="h5"
-              style={labelStyle}
-              align="left"
-              gutterBottom
-            >
-              Standard Monthly Payment
-            </Typography>
-          </Grid>
-          <Grid item xs={3}>
-            <span className="money">
-              <Typography variant="h6" style={labelStyle} align="left">
-                {+monthlyOverpayment + monthlyPayment}
+            <Grid item xs={5}>
+              <Typography
+                variant="h5"
+                style={labelStyle}
+                align="left"
+                gutterBottom
+              >
+                Standard Monthly Payment
               </Typography>
-            </span>
-          </Grid>
-        </Grid>
-
-        <Grid container spacing={8} alignItems="center" direction={"row"}>
-          <Grid item xs={5}>
-            <Typography variant="h5" style={labelStyle} align="left">
-              Who is your mortgage lender?
-            </Typography>{" "}
+            </Grid>
+            <Grid item xs={3}>
+              <span className="money">
+                <Typography variant="h6" style={labelStyle} align="left">
+                  {+monthlyOverpayment + monthlyPayment}
+                </Typography>
+              </span>
+            </Grid>
           </Grid>
 
           <div className="mbsc-row mbsc-align-items-center">
@@ -374,336 +373,361 @@ class LeapFrogCalculatorComponent extends React.Component {
               )}
             </Grid>
           </div>
-        </Grid>
 
-        <Divider style={{ width: "100%", color: "#3f51b5", margin: "1rem" }} />
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between"
-          }}
-        >
-          <Typography variant="h6" style={labelStyle} align="left">
-            Have you made any prior overpayments during the life of your
-            mortgage?
-          </Typography>
-          <RadioGroup handleCheckBoxChange={this.handleYes} />
-        </div>
-        {this.state.hasMadePriorPayments && (
-          <div>
+          <Divider
+            style={{ width: "100%", color: "#3f51b5", margin: "1rem" }}
+          />
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between"
+            }}
+          >
+            <Typography variant="h6" style={labelStyle} align="left">
+              Have you made any prior overpayments during the life of your
+              mortgage?
+            </Typography>
+            <RadioGroup handleCheckBoxChange={this.handleYes} />
+          </div>
+          {this.state.hasMadePriorPayments && (
             <div>
-              <Typography variant="h6" style={labelHeaderStyle1} align="left">
-                Please add each prior overpayment you've made to this loan:
-              </Typography>
-            </div>
-            <Grid container spacing={8} alignItems="center" direction={"row"}>
-              <Grid item xs={3}>
+              <div>
                 <Typography variant="h6" style={labelHeaderStyle1} align="left">
-                  Year
+                  Please add each prior overpayment you've made to this loan:
                 </Typography>
-              </Grid>
-              <Grid item xs={3}>
-                <Typography variant="h6" style={labelHeaderStyle1} align="left">
-                  Month
-                </Typography>
-              </Grid>
-              <Grid item xs={3}>
-                <Typography variant="h6" style={labelHeaderStyle1} align="left">
-                  Amount
-                </Typography>
-              </Grid>
-            </Grid>
-
-            {overpayments.map(({ year, month, amount }, i) => (
+              </div>
               <Grid container spacing={8} alignItems="center" direction={"row"}>
                 <Grid item xs={3}>
-                  <input
-                    type="number"
-                    min="0"
+                  <Typography
+                    variant="h6"
                     style={labelHeaderStyle1}
-                    max={term}
-                    value={year}
-                    name="year"
-                    onChange={updateOverpayment(i)}
-                  />
+                    align="left"
+                  >
+                    Year
+                  </Typography>
                 </Grid>
                 <Grid item xs={3}>
-                  <input
-                    type="number"
-                    min="1"
-                    max="12"
-                    value={month}
-                    style={{
-                      color: "#3f51b5",
-                      textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-                      padding: "1rem",
-                      position: "relative",
-                      left: "5%",
-                      fontSize: "1rem"
-                    }}
-                    name="month"
-                    onChange={updateOverpayment(i)}
-                  />
+                  <Typography
+                    variant="h6"
+                    style={labelHeaderStyle1}
+                    align="left"
+                  >
+                    Month
+                  </Typography>
                 </Grid>
                 <Grid item xs={3}>
-                  <input
-                    type="text"
-                    value={amount}
-                    name="amount"
-                    onChange={updateOverpayment(i)}
-                    style={{
-                      color: "#3f51b5",
-                      textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-                      padding: "1rem",
-                      position: "relative",
-                      fontSize: "1rem"
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={3}>
-                  {i === overpayments.length - 1 ? (
-                    <button
-                      className="btn btn-xs"
-                      onClick={() =>
-                        this.setOverpayments([
-                          ...overpayments,
-                          defaultOverpayment
-                        ])
-                      }
-                      style={{
-                        position: "relative",
-                        fontSize: "1rem",
-                        left: "20%",
-                        padding: "1rem",
-                        fontSize: "1rem"
-                      }}
-                    >
-                      +
-                    </button>
-                  ) : (
-                    <button
-                      style={{
-                        position: "relative",
-                        fontSize: "1rem",
-                        left: "20%",
-                        fontSize: "1rem",
-                        padding: "1rem"
-                      }}
-                      className="btn btn-xs"
-                      onClick={() =>
-                        this.setOverpayments(
-                          overpayments.filter((_, j) => j !== i)
-                        )
-                      }
-                    >
-                      X
-                    </button>
-                  )}
+                  <Typography
+                    variant="h6"
+                    style={labelHeaderStyle1}
+                    align="left"
+                  >
+                    Amount
+                  </Typography>
                 </Grid>
               </Grid>
-            ))}
-          </div>
-        )}
 
-        <Divider style={{ width: "100%", color: "#3f51b5", margin: "1rem" }} />
+              {overpayments.map(({ year, month, amount }, i) => (
+                <Grid
+                  container
+                  spacing={8}
+                  alignItems="center"
+                  direction={"row"}
+                >
+                  <Grid item xs={3}>
+                    <input
+                      type="number"
+                      min="0"
+                      style={labelHeaderStyle1}
+                      max={term}
+                      value={year}
+                      name="year"
+                      onChange={updateOverpayment(i)}
+                    />
+                  </Grid>
+                  <Grid item xs={3}>
+                    <input
+                      type="number"
+                      min="1"
+                      max="12"
+                      value={month}
+                      style={{
+                        color: "#3f51b5",
+                        textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
+                        padding: "1rem",
+                        position: "relative",
+                        left: "5%",
+                        fontSize: "1rem"
+                      }}
+                      name="month"
+                      onChange={updateOverpayment(i)}
+                    />
+                  </Grid>
+                  <Grid item xs={3}>
+                    <input
+                      type="text"
+                      value={amount}
+                      name="amount"
+                      onChange={updateOverpayment(i)}
+                      style={{
+                        color: "#3f51b5",
+                        textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
+                        padding: "1rem",
+                        position: "relative",
+                        fontSize: "1rem"
+                      }}
+                    />
+                  </Grid>
+                  <Grid item xs={3}>
+                    {i === overpayments.length - 1 ? (
+                      <button
+                        className="btn btn-xs"
+                        onClick={() =>
+                          this.setOverpayments([
+                            ...overpayments,
+                            defaultOverpayment
+                          ])
+                        }
+                        style={{
+                          position: "relative",
+                          fontSize: "1rem",
+                          left: "20%",
+                          padding: "1rem",
+                          fontSize: "1rem"
+                        }}
+                      >
+                        +
+                      </button>
+                    ) : (
+                      <button
+                        style={{
+                          position: "relative",
+                          fontSize: "1rem",
+                          left: "20%",
+                          fontSize: "1rem",
+                          padding: "1rem"
+                        }}
+                        className="btn btn-xs"
+                        onClick={() =>
+                          this.setOverpayments(
+                            overpayments.filter((_, j) => j !== i)
+                          )
+                        }
+                      >
+                        X
+                      </button>
+                    )}
+                  </Grid>
+                </Grid>
+              ))}
+            </div>
+          )}
 
-        <div className="col-sm-8">
-          <div
-            style={{
-              margin: "2rem 0",
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between"
-            }}
-          >
-            <Typography variant="h5" style={labelStyle} align="left">
-              Please add your monthly LeapFrog overpayment:
-            </Typography>
+          <Divider
+            style={{ width: "100%", color: "#3f51b5", margin: "1rem" }}
+          />
+
+          <div className="col-sm-8">
             <div
               style={{
-                justifyContent: "start",
-                alignItems: "center"
+                margin: "2rem 0",
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between"
               }}
             >
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center"
-                }}
-              >
-                <input
-                  type="number"
-                  maxLength={5}
-                  value={monthlyOverpayment}
-                  onChange={e => this.handleChange("monthlyOverpayment", e)}
-                  style={{
-                    color: "#3f51b5",
-                    textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-                    padding: "1rem",
-                    fontSize: "1rem",
-                    marginLeft: "1rem"
-                  }}
-                />
-              </div>
-            </div>
-          </div>
-          <div
-            style={{
-              margin: "2rem 0",
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between"
-            }}
-          >
-            <Typography
-              variant="h5"
-              style={{ ...labelStyle, marginBottom: "10rem" }}
-              align="left"
-            >
-              When would you like to kickoff your LeapFrog program?
-            </Typography>
-            <div
-              style={{
-                justifyContent: "start",
-                alignItems: "center"
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                  alignItems: "start",
-                  borderRadius: ".25rem"
-                }}
-              >
-                <CalendarPicker
-                  label={"MM/DD/YYYY"}
-                  setInitial={true}
-                  borderOn={false}
-                  onChange={this.handleDate}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <Divider
-          style={{ width: "100%", color: "#3f51b5", margin: "2rem 1rem" }}
-        />
-
-        {showQuestion && (
-          <Grid container spacing={8} alignItems="center" direction={"row"}>
-            <Grid item xs={6}>
-              <div style={fieldStyle}>
-                <Typography variant="h6" style={labelHeaderStyle1} align="left">
-                  Does this look like an accurate snapshot of your mortgage?
-                </Typography>
-              </div>
-            </Grid>
-
-            <Grid item xs={4}>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "space-around"
-                }}
-              >
-                <button
-                  style={{
-                    position: "relative",
-                    fontSize: "1rem",
-                    left: "20%",
-                    fontSize: "1rem",
-                    padding: "1rem"
-                  }}
-                  className="btn btn-xs"
-                  onClick={() => this.handleAccuracy("yes")}
-                >
-                  Yes
-                </button>
-                <button
-                  style={{
-                    position: "relative",
-                    fontSize: "1rem",
-                    left: "20%",
-                    fontSize: "1rem",
-                    padding: "1rem"
-                  }}
-                  className="btn btn-xs"
-                  onClick={() => this.handleAccuracy("no")}
-                >
-                  No
-                </button>
-              </div>
-            </Grid>
-          </Grid>
-        )}
-
-        {!isEmpty(accuracy) && accuracy === "no" && (
-          <div style={fieldStyle}>
-            <Typography variant="h6" style={labelHeaderStyle1} align="left">
-              Please edit the 'Loan Information' section at the top of this
-              page. Otherwise please feel free to reach out{" "}
-              <a href="contact-us">here</a>.
-            </Typography>
-          </div>
-        )}
-
-        {!isEmpty(accuracy) && accuracy === "yes" && (
-          <div style={fieldStyle}>
-            <Typography variant="h6" style={labelHeaderStyle1} align="left">
-              Great! Adjust the fields in the section above as needed to
-              simulate early loan pay-off.
-            </Typography>
-          </div>
-        )}
-
-        {payments.length > 20 && (
-          <Grid
-            container
-            spacing={8}
-            alignItems="center"
-            justify="center"
-            direction={"column"}
-          >
-            <Typography variant="h4" style={labelStyle} align="center">
-              Simulator
-            </Typography>
-
-            <Grid item xs={8}>
               <Typography variant="h5" style={labelStyle} align="left">
-                Projected Payments
+                Please add your monthly LeapFrog overpayment:
               </Typography>
-              <Table payments={payments} />
+              <div
+                style={{
+                  justifyContent: "start",
+                  alignItems: "center"
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center"
+                  }}
+                >
+                  <input
+                    type="number"
+                    maxLength={5}
+                    value={monthlyOverpayment}
+                    onChange={e => this.handleChange("monthlyOverpayment", e)}
+                    style={{
+                      color: "#3f51b5",
+                      textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
+                      padding: "1rem",
+                      fontSize: "1rem",
+                      marginLeft: "1rem"
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              style={{
+                margin: "2rem 0",
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between"
+              }}
+            >
+              <Typography
+                variant="h5"
+                style={{ ...labelStyle, marginBottom: "10rem" }}
+                align="left"
+              >
+                When would you like to kickoff your LeapFrog program?
+              </Typography>
+              <div
+                style={{
+                  justifyContent: "start",
+                  alignItems: "center"
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "start",
+                    borderRadius: ".25rem"
+                  }}
+                >
+                  <CalendarPicker
+                    label={"MM/DD/YYYY"}
+                    setInitial={true}
+                    borderOn={false}
+                    onChange={this.handleDate}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <Divider
+            style={{ width: "100%", color: "#3f51b5", margin: "2rem 1rem" }}
+          />
+
+          {showQuestion && (
+            <Grid container spacing={8} alignItems="center" direction={"row"}>
+              <Grid item xs={6}>
+                <div style={fieldStyle}>
+                  <Typography
+                    variant="h6"
+                    style={labelHeaderStyle1}
+                    align="left"
+                  >
+                    Does this look like an accurate snapshot of your mortgage?
+                  </Typography>
+                </div>
+              </Grid>
+
+              <Grid item xs={4}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-around"
+                  }}
+                >
+                  <button
+                    style={{
+                      position: "relative",
+                      fontSize: "1rem",
+                      left: "20%",
+                      fontSize: "1rem",
+                      padding: "1rem"
+                    }}
+                    className="btn btn-xs"
+                    onClick={() => this.handleAccuracy("yes")}
+                  >
+                    Yes
+                  </button>
+                  <button
+                    style={{
+                      position: "relative",
+                      fontSize: "1rem",
+                      left: "20%",
+                      fontSize: "1rem",
+                      padding: "1rem"
+                    }}
+                    className="btn btn-xs"
+                    onClick={() => this.handleAccuracy("no")}
+                  >
+                    No
+                  </button>
+                </div>
+              </Grid>
             </Grid>
-            <Divider
-              style={{ width: "100%", color: "#3f51b5", margin: "2rem 1rem" }}
-            />
+          )}
+
+          {!isEmpty(accuracy) && accuracy === "no" && (
+            <div style={fieldStyle}>
+              <Typography variant="h6" style={labelHeaderStyle1} align="left">
+                Please edit the 'Loan Information' section at the top of this
+                page. Otherwise please feel free to reach out{" "}
+                <a href="contact-us">here</a>.
+              </Typography>
+            </div>
+          )}
+
+          {!isEmpty(accuracy) && accuracy === "yes" && (
+            <div style={fieldStyle}>
+              <Typography variant="h6" style={labelHeaderStyle1} align="left">
+                Great! Adjust the fields in the section above as needed to
+                simulate early loan pay-off.
+              </Typography>
+            </div>
+          )}
+
+          {payments.length > 20 && (
             <Grid
-              item
-              xs={12}
-              style={{
-                minHeight: "40rem",
-                minWidth: "40rem",
-                marginTop: "5rem"
-              }}
+              container
+              spacing={8}
+              alignItems="center"
+              justify="center"
+              direction={"column"}
             >
-              <Typography variant="h5" style={labelStyle} align="left">
-                Graph
+              <Typography variant="h4" style={labelStyle} align="center">
+                Simulator
               </Typography>
 
-              <Chart
-                payments={payments}
-                alterSize={true}
-                lenderName={lenderDisplayName}
+              <Grid item xs={8}>
+                <Typography variant="h5" style={labelStyle} align="left">
+                  Projected Payments
+                </Typography>
+                <Table payments={payments} />
+              </Grid>
+              <Divider
+                style={{ width: "100%", color: "#3f51b5", margin: "2rem 1rem" }}
               />
+              <Grid
+                item
+                xs={12}
+                style={{
+                  minHeight: "40rem",
+                  minWidth: "40rem",
+                  marginTop: "5rem"
+                }}
+              >
+                <Typography variant="h5" style={labelStyle} align="left">
+                  Graph
+                </Typography>
+
+                <Chart
+                  payments={payments}
+                  alterSize={true}
+                  lenderName={lenderDisplayName}
+                />
+              </Grid>
             </Grid>
-          </Grid>
-        )}
-      </div>
+          )}
+        </div>
+      </mobiscroll.Form>
     );
   }
 }
