@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Typography from "@material-ui/core/Typography";
-import { FlyOut, LenderSelect } from "../common";
+import { FlyOut, InterestRateDropDown } from "../common";
 import Divider from "@material-ui/core/Divider";
 import { withStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
@@ -9,7 +9,8 @@ import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
-
+import mobiscroll from "@mobiscroll/react";
+import "@mobiscroll/react/dist/css/mobiscroll.min.css";
 import { RadioGroup, CalendarPicker } from "../common";
 import { calculations, Table, Chart } from "../CalculatorGraph";
 import { updatePayPalAmount, updateInfoForm } from "../../actions";
@@ -216,310 +217,386 @@ class EasyStartCalculatorComponent extends React.Component {
     const showQuestion = isEmpty(accuracy);
 
     return (
-      <div>
-        <div className="col-sm-4">
-          <div className="col-sm-4">
-            <Typography
-              variant="h4"
-              style={updatedLabelStyle}
-              id="modal-title"
-              align="center"
-              gutterBottom
-            >
-              Let's Start with the Basics for the EasyStart Program
-            </Typography>
-            <Divider style={dividerStyle} />
-          </div>
-          <Grid container spacing={8} alignItems="center" direction={"row"}>
-            <Grid item xs={4}>
-              <div style={fieldStyle}>
-                <Typography variant="h6" style={labelStyle} align="left">
-                  Amount
-                </Typography>
-                <input
-                  maxLength={7}
-                  value={loanAmount}
-                  onChange={e =>
-                    this.handleChange("loanAmount", e.target.value)
-                  }
-                  style={{
-                    color: "#3f51b5",
-                    textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-                    padding: "1rem",
-                    fontSize: "1rem"
-                  }}
-                />
-              </div>
-            </Grid>
-            <Grid item xs={4}>
-              <div style={fieldStyle}>
-                <Typography variant="h6" style={labelStyle} align="left">
-                  Years
-                </Typography>
-                <input
-                  type="number"
-                  maxLength={2}
-                  value={term}
-                  onChange={e => this.handleChange("term", e.target.value)}
-                  style={{
-                    color: "#3f51b5",
-                    textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-                    padding: "1rem",
-                    fontSize: "1rem"
-                  }}
-                />
-              </div>
-            </Grid>
-
-            <Grid item xs={4}>
-              <div style={fieldStyle}>
-                <Typography variant="h6" style={labelStyle} align="left">
-                  Interest Rate
-                </Typography>
-                <input
-                  type="number"
-                  step={0.1}
-                  value={interestRate}
-                  onChange={e =>
-                    this.handleChange("interestRate", e.target.value)
-                  }
-                  style={{
-                    color: "#3f51b5",
-                    textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-                    padding: "1rem",
-                    fontSize: "1rem"
-                  }}
-                />
-              </div>
-            </Grid>
-          </Grid>
-          {showInterestRateMessage && (
-            <FlyOut
-              show={true}
-              message={msg}
-              style={{
-                fontSize: "1rem !important"
-              }}
-            />
-          )}
-        </div>
-        <Divider style={{ width: "100%", color: "#3f51b5", margin: "1rem" }} />
-
-        <Grid container spacing={8} alignItems="center" direction={"row"}>
-          <Grid item xs={5}>
-            <Typography
-              variant="h5"
-              style={labelStyle}
-              align="left"
-              gutterBottom
-            >
-              Standard Monthly Payment
-            </Typography>
-          </Grid>
-          <Grid item xs={3}>
-            <span className="money">
-              <Typography variant="h6" style={labelStyle} align="left">
-                {+monthlyOverpayment + monthlyPayment}
-              </Typography>
-            </span>
-          </Grid>
-        </Grid>
-
-        <Grid container spacing={8} alignItems="center" direction={"row"}>
-          <Grid item xs={5}>
-            <Typography variant="h5" style={labelStyle} align="left">
-              Who is your mortgage lender?
-            </Typography>{" "}
-          </Grid>
-          <Grid
-            item
-            xs={3}
-            style={{
-              marginBottom: "1rem",
-              display: "flex",
-              flexDirection: "column",
-              padding: "1rem"
-            }}
-          >
-            <FormControl style={{ width: "11rem" }}>
-              <InputLabel>
-                <Typography variant="h6" style={selectLabelStyle} align="left">
-                  Lender
-                </Typography>
-              </InputLabel>
-              <Select
-                value={this.state.lender}
-                onChange={e => this.setLender(e.target.value)}
-                inputProps={{
-                  name: "Lender"
-                }}
+      <mobiscroll.Form
+        className="mbsc-form-grid"
+        theme="ios"
+        themeVariant="light"
+      >
+        <div className="mbsc-grid">
+          <div className="mbsc-row-12">
+            <div className="mbsc-col-12">
+              <Typography
+                variant="h4"
+                style={updatedLabelStyle}
+                id="modal-title"
+                align="center"
+                gutterBottom
               >
-                {lenders.map(option => {
-                  return <MenuItem value={option}>{option}</MenuItem>;
-                })}
-              </Select>
-            </FormControl>
-            {lender === "Other" && (
-              <input
-                type="text"
-                maxLength={20}
-                value={otherLender}
-                onChange={e => this.handleChange("otherLender", e)}
+                Let's Start with the Basics for the EasyStart Program
+              </Typography>
+              <Divider style={dividerStyle} />
+            </div>
+            <div className="mbsc-col-4">
+              <Typography
+                variant="h4"
+                style={labelStyle}
+                id="modal-title"
+                align="left"
+                gutterBottom
+              >
+                Loan Information
+              </Typography>
+              <div className="mbsc-grid" style={{ padding: "2rem" }}>
+                <div className="mbsc-row-12">
+                  <div style={fieldStyle} className="mbsc-col-4">
+                    <Typography variant="h6" style={labelStyle} align="left">
+                      Amount
+                    </Typography>
+                    <mobiscroll.Input
+                      maxLength={7}
+                      value={loanAmount}
+                      onChange={e =>
+                        this.handleChange("loanAmount", e.target.value)
+                      }
+                      inputStyle="box"
+                      labelStyle="floating"
+                      placeholder="Loan Amount ($)"
+                      label={"Loan Amount ($)"}
+                    />
+                  </div>
+                  <div style={fieldStyle} className="mbsc-col-4">
+                    <Typography variant="h6" style={labelStyle} align="left">
+                      Term
+                    </Typography>
+                    <mobiscroll.Dropdown
+                      inputStyle="box"
+                      labelStyle="floating"
+                      maxLength={4}
+                      value={term}
+                      onChange={e => this.handleChange("term", e.target.value)}
+                    >
+                      <option>Years</option>
+                      <option value={15}>15</option>
+                      <option value={20}>20</option>
+                      <option value={25}>25</option>
+                      <option value={30}>30</option>
+                    </mobiscroll.Dropdown>
+                  </div>
+                  <div style={fieldStyle} className="mbsc-col-4">
+                    <Typography variant="h6" style={labelStyle} align="left">
+                      Interest Rate
+                    </Typography>
+                    <InterestRateDropDown
+                      inputStyle="box"
+                      labelStyle="floating"
+                      value={interestRate}
+                      onChange={e =>
+                        this.handleChange("interestRate", e.target.value)
+                      }
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <Grid container spacing={8} alignItems="center" direction={"row"}>
+              <Grid item xs={4}>
+                <div style={fieldStyle}>
+                  <Typography variant="h6" style={labelStyle} align="left">
+                    Amount
+                  </Typography>
+                  <input
+                    maxLength={7}
+                    value={loanAmount}
+                    onChange={e =>
+                      this.handleChange("loanAmount", e.target.value)
+                    }
+                    style={{
+                      color: "#3f51b5",
+                      textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
+                      padding: "1rem",
+                      fontSize: "1rem"
+                    }}
+                  />
+                </div>
+              </Grid>
+              <Grid item xs={4}>
+                <div style={fieldStyle}>
+                  <Typography variant="h6" style={labelStyle} align="left">
+                    Years
+                  </Typography>
+                  <input
+                    type="number"
+                    maxLength={2}
+                    value={term}
+                    onChange={e => this.handleChange("term", e.target.value)}
+                    style={{
+                      color: "#3f51b5",
+                      textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
+                      padding: "1rem",
+                      fontSize: "1rem"
+                    }}
+                  />
+                </div>
+              </Grid>
+
+              <Grid item xs={4}>
+                <div style={fieldStyle}>
+                  <Typography variant="h6" style={labelStyle} align="left">
+                    Interest Rate
+                  </Typography>
+                  <input
+                    type="number"
+                    step={0.1}
+                    value={interestRate}
+                    onChange={e =>
+                      this.handleChange("interestRate", e.target.value)
+                    }
+                    style={{
+                      color: "#3f51b5",
+                      textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
+                      padding: "1rem",
+                      fontSize: "1rem"
+                    }}
+                  />
+                </div>
+              </Grid>
+            </Grid>
+            {showInterestRateMessage && (
+              <FlyOut
+                show={true}
+                message={msg}
                 style={{
-                  color: "#3f51b5",
-                  textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-                  padding: "1rem",
-                  fontSize: "1rem",
-                  margin: "1rem 0rem 0rem 0rem"
+                  fontSize: "1rem !important"
                 }}
               />
             )}
-          </Grid>
-        </Grid>
+          </div>
+          <Divider
+            style={{ width: "100%", color: "#3f51b5", margin: "1rem" }}
+          />
 
-        <Divider style={{ width: "100%", color: "#3f51b5", margin: "1rem" }} />
-
-        <div className="col-sm-8">
-          <div
-            style={{
-              margin: "2rem 0",
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between"
-            }}
-          >
-            <Typography variant="h5" style={labelStyle} align="left">
-              Please add your monthly EasyStart overpayment:
-            </Typography>
-            <div style={fieldStyle}>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center"
-                }}
+          <Grid container spacing={8} alignItems="center" direction={"row"}>
+            <Grid item xs={5}>
+              <Typography
+                variant="h5"
+                style={labelStyle}
+                align="left"
+                gutterBottom
               >
+                Standard Monthly Payment
+              </Typography>
+            </Grid>
+            <Grid item xs={3}>
+              <span className="money">
+                <Typography variant="h6" style={labelStyle} align="left">
+                  {+monthlyOverpayment + monthlyPayment}
+                </Typography>
+              </span>
+            </Grid>
+          </Grid>
+
+          <Grid container spacing={8} alignItems="center" direction={"row"}>
+            <Grid item xs={5}>
+              <Typography variant="h5" style={labelStyle} align="left">
+                Who is your mortgage lender?
+              </Typography>{" "}
+            </Grid>
+            <Grid
+              item
+              xs={3}
+              style={{
+                marginBottom: "1rem",
+                display: "flex",
+                flexDirection: "column",
+                padding: "1rem"
+              }}
+            >
+              <FormControl style={{ width: "11rem" }}>
+                <InputLabel>
+                  <Typography
+                    variant="h6"
+                    style={selectLabelStyle}
+                    align="left"
+                  >
+                    Lender
+                  </Typography>
+                </InputLabel>
+                <Select
+                  value={this.state.lender}
+                  onChange={e => this.setLender(e.target.value)}
+                  inputProps={{
+                    name: "Lender"
+                  }}
+                >
+                  {lenders.map(option => {
+                    return <MenuItem value={option}>{option}</MenuItem>;
+                  })}
+                </Select>
+              </FormControl>
+              {lender === "Other" && (
                 <input
-                  type="number"
-                  maxLength={5}
-                  value={monthlyOverpayment}
-                  onChange={e => this.handleChange("monthlyOverpayment", e)}
+                  type="text"
+                  maxLength={20}
+                  value={otherLender}
+                  onChange={e => this.handleChange("otherLender", e)}
                   style={{
                     color: "#3f51b5",
                     textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
                     padding: "1rem",
                     fontSize: "1rem",
-                    marginLeft: "1rem"
+                    margin: "1rem 0rem 0rem 0rem"
                   }}
                 />
-              </div>
-            </div>
-          </div>
-          <div
-            style={{
-              margin: "2rem 0",
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between"
-            }}
-          >
-            <Typography
-              variant="h5"
-              style={{ ...labelStyle, marginBottom: "10rem" }}
-              align="left"
-            >
-              When would you like to kickoff your EasyStart program?
-            </Typography>
-            <div
-              style={{
-                justifyContent: "start",
-                alignItems: "center"
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                  borderRadius: ".25rem"
-                }}
-              >
-                <CalendarPicker
-                  setInitial={true}
-                  label={"MM/DD/YYYY"}
-                  borderOn={false}
-                  onChange={this.handleDate}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <Divider
-          style={{ width: "100%", color: "#3f51b5", margin: "2rem 1rem" }}
-        />
-
-        {!isEmpty(accuracy) && accuracy === "no" && (
-          <div style={fieldStyle}>
-            <Typography variant="h6" style={labelHeaderStyle1} align="left">
-              Please edit the 'Loan Information' section at the top of this
-              page. Otherwise please feel free to reach out{" "}
-              <a href="contact-us">here</a>.
-            </Typography>
-          </div>
-        )}
-
-        {!isEmpty(accuracy) && accuracy === "yes" && (
-          <div style={fieldStyle}>
-            <Typography variant="h6" style={labelHeaderStyle1} align="left">
-              Great! Adjust the fields in the section above as needed to
-              simulate early loan pay-off.
-            </Typography>
-          </div>
-        )}
-
-        {payments.length > 20 && (
-          <Grid
-            container
-            spacing={8}
-            alignItems="center"
-            justify="center"
-            direction={"column"}
-          >
-            <Typography variant="h4" style={labelStyle} align="center">
-              Simulator
-            </Typography>
-
-            <Grid item xs={8}>
-              <Typography variant="h5" style={labelStyle} align="left">
-                Projected Payments
-              </Typography>
-              <Table payments={payments} />
-            </Grid>
-            <Divider
-              style={{ width: "100%", color: "#3f51b5", margin: "2rem 1rem" }}
-            />
-            <Grid
-              item
-              xs={12}
-              style={{
-                minHeight: "40rem",
-                minWidth: "40rem",
-                marginTop: "5rem"
-              }}
-            >
-              <Typography variant="h5" style={labelStyle} align="left">
-                Graph
-              </Typography>
-
-              <Chart
-                payments={payments}
-                alterSize={true}
-                lenderName={lenderDisplayName}
-              />
+              )}
             </Grid>
           </Grid>
-        )}
-      </div>
+
+          <Divider
+            style={{ width: "100%", color: "#3f51b5", margin: "1rem" }}
+          />
+
+          <div className="col-sm-8">
+            <div
+              style={{
+                margin: "2rem 0",
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between"
+              }}
+            >
+              <Typography variant="h5" style={labelStyle} align="left">
+                Please add your monthly EasyStart overpayment:
+              </Typography>
+              <div style={fieldStyle}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center"
+                  }}
+                >
+                  <input
+                    type="number"
+                    maxLength={5}
+                    value={monthlyOverpayment}
+                    onChange={e => this.handleChange("monthlyOverpayment", e)}
+                    style={{
+                      color: "#3f51b5",
+                      textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
+                      padding: "1rem",
+                      fontSize: "1rem",
+                      marginLeft: "1rem"
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              style={{
+                margin: "2rem 0",
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between"
+              }}
+            >
+              <Typography
+                variant="h5"
+                style={{ ...labelStyle, marginBottom: "10rem" }}
+                align="left"
+              >
+                When would you like to kickoff your EasyStart program?
+              </Typography>
+              <div
+                style={{
+                  justifyContent: "start",
+                  alignItems: "center"
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    borderRadius: ".25rem"
+                  }}
+                >
+                  <CalendarPicker
+                    setInitial={true}
+                    label={"MM/DD/YYYY"}
+                    borderOn={false}
+                    onChange={this.handleDate}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <Divider
+            style={{ width: "100%", color: "#3f51b5", margin: "2rem 1rem" }}
+          />
+
+          {!isEmpty(accuracy) && accuracy === "no" && (
+            <div style={fieldStyle}>
+              <Typography variant="h6" style={labelHeaderStyle1} align="left">
+                Please edit the 'Loan Information' section at the top of this
+                page. Otherwise please feel free to reach out{" "}
+                <a href="contact-us">here</a>.
+              </Typography>
+            </div>
+          )}
+
+          {!isEmpty(accuracy) && accuracy === "yes" && (
+            <div style={fieldStyle}>
+              <Typography variant="h6" style={labelHeaderStyle1} align="left">
+                Great! Adjust the fields in the section above as needed to
+                simulate early loan pay-off.
+              </Typography>
+            </div>
+          )}
+
+          {payments.length > 20 && (
+            <Grid
+              container
+              spacing={8}
+              alignItems="center"
+              justify="center"
+              direction={"column"}
+            >
+              <Typography variant="h4" style={labelStyle} align="center">
+                Simulator
+              </Typography>
+
+              <Grid item xs={8}>
+                <Typography variant="h5" style={labelStyle} align="left">
+                  Projected Payments
+                </Typography>
+                <Table payments={payments} />
+              </Grid>
+              <Divider
+                style={{ width: "100%", color: "#3f51b5", margin: "2rem 1rem" }}
+              />
+              <Grid
+                item
+                xs={12}
+                style={{
+                  minHeight: "40rem",
+                  minWidth: "40rem",
+                  marginTop: "5rem"
+                }}
+              >
+                <Typography variant="h5" style={labelStyle} align="left">
+                  Graph
+                </Typography>
+
+                <Chart
+                  payments={payments}
+                  alterSize={true}
+                  lenderName={lenderDisplayName}
+                />
+              </Grid>
+            </Grid>
+          )}
+        </div>
+      </mobiscroll.Form>
     );
   }
 }

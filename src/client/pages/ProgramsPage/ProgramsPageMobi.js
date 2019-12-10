@@ -4,6 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 import { routePrograms } from "../../actions";
 import mobiscroll from "@mobiscroll/react";
 import "@mobiscroll/react/dist/css/mobiscroll.min.css";
+import "./index.css";
 
 const styles = {};
 

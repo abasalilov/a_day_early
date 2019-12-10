@@ -20,8 +20,7 @@ const topLabelStyle = {
 };
 
 const labelStyle = {
-  color: "#3f51b5"
-  // textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
+  textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)"
 };
 
 const sectionStyle = {

@@ -3,9 +3,12 @@ import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
+import mobiscroll from "@mobiscroll/react";
+import "@mobiscroll/react/dist/css/mobiscroll.min.css";
+import "./index.css";
 
 import { Chart, Table, calculations } from "../CalculatorGraph";
-import { LenderSelect } from "../common";
+import { LenderSelect, InterestRateDropDown } from "../common";
 import {
   LeapFrogCalculator,
   EasyStartCalculator,
@@ -53,7 +56,7 @@ const programRef = {
 };
 
 const formatName = nm => {
-  if (!isEmpty(nm)) {
+  if (!isEmpty(nm) && nm[0]) {
     const a = nm[0].toUpperCase();
     return a + nm.slice(1);
   }
@@ -61,16 +64,20 @@ const formatName = nm => {
 };
 
 const formatRU = (payment, isRU, roundUp, otherRU) => {
+  console.log("formaatRN payment", payment);
+  console.log("roundUp", roundUp);
+  console.log("otherRU", otherRU);
+  console.log("isRU", isRU);
   if (isRU) {
     if (roundUp === 1000) {
-      return Math.ceil(payment / 1000) * 1000;
+      return "$" + Math.ceil(payment / 1000) * 1000;
     } else if (roundUp === 100) {
-      return Math.ceil(payment / 100) * 100;
+      return "$" + Math.ceil(payment / 100) * 100;
     } else if (roundUp === "other") {
-      return Math.ceil(payment / otherRU) * otherRU;
+      return "$" + Math.ceil(payment / otherRU) * otherRU;
     }
   }
-  return payment;
+  return "$" + payment;
 };
 
 const inputStyle = {
@@ -218,344 +225,401 @@ export const ProgramCalculatorGraph = props => {
     return <FlexCalculator />;
   }
 
+  let calculatedMonthly = +monthlyOverpayment + monthlyPayment;
+  if (isNaN(calculatedMonthly)) {
+    calculatedMonthly = 0;
+  }
+
   return (
-    <div className="container-fluid">
-      <div className="col-md-8 col-sm-12">
-        <div className="col-sm-4">
-          <Typography
-            variant="h4"
-            style={updatedLabelStyle}
-            id="modal-title"
-            align="center"
-            gutterBottom
-          >
-            {updatedHeader}
-          </Typography>
-          <Divider style={dividerStyle} />
-        </div>
-        <div className="col-sm-4">
-          <Typography
-            variant="h4"
-            style={labelStyle}
-            id="modal-title"
-            align="left"
-            gutterBottom
-          >
-            Loan Information
-          </Typography>
-          <Grid container spacing={8} alignItems="center" direction={"row"}>
-            <Grid item xs={4}>
-              <div style={fieldStyle}>
-                <Typography variant="h6" style={labelStyle} align="left">
-                  Amount
-                </Typography>
-                <input
-                  maxLength={7}
-                  value={initial}
-                  onChange={e => setInitial(e.target.value)}
-                  style={inputStyle}
-                />
-              </div>
-            </Grid>
-            <Grid item xs={4}>
-              <div style={fieldStyle}>
-                <Typography variant="h6" style={labelStyle} align="left">
-                  Years
-                </Typography>
-                <input
-                  type="number"
-                  maxLength={2}
-                  value={years}
-                  onChange={e => setYears(e.target.value)}
-                  style={inputStyle}
-                />
-              </div>
-            </Grid>
-
-            <Grid item xs={4}>
-              <div style={fieldStyle}>
-                <Typography variant="h6" style={labelStyle} align="left">
-                  Interest Rate
-                </Typography>
-                <input
-                  type="number"
-                  step={0.1}
-                  value={rate}
-                  onChange={e => setRate(e.target.value)}
-                  style={inputStyle}
-                />
-              </div>
-            </Grid>
-          </Grid>
-        </div>
-        <Divider style={dividerStyle} />
-
-        {isRU && (
-          <Grid container spacing={8} alignItems="center" direction={"row"}>
-            <Grid item xs={5}>
-              <Typography variant="h5" style={labelStyle} align="left">
-                Round your monthly payment to the nearest:
-              </Typography>
-            </Grid>
-            {roundUp !== "other" && (
-              <Grid item xs={2}>
-                <Button
-                  variant="outlined"
-                  size="large"
-                  onClick={() => setRoundUp(100)}
-                  color="primary"
-                  style={ruBtnStyle}
-                >
-                  $100
-                </Button>
-              </Grid>
-            )}
-            {roundUp !== "other" && (
-              <Grid item xs={2}>
-                <Button
-                  variant="outlined"
-                  size="large"
-                  onClick={() => setRoundUp(1000)}
-                  color="primary"
-                  style={ruBtnStyle}
-                >
-                  $1000
-                </Button>
-              </Grid>
-            )}
-            <Grid item xs={2}>
-              <Button
-                variant="outlined"
-                size="large"
-                onClick={() => setRoundUp("other")}
-                color="primary"
-                style={ruBtnStyle}
-              >
-                Other
-              </Button>
-            </Grid>
-            {roundUp === "other" && (
-              <Grid item xs={2}>
-                <input
-                  type="number"
-                  maxLength={5}
-                  value={otherRoundUp}
-                  placeholder="Enter round up amount"
-                  onChange={e => setOtherRoundUp(e.target.value)}
-                  style={{
-                    color: "#3f51b5",
-                    textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-                    padding: "1rem",
-                    fontSize: "1rem"
-                  }}
-                />
-              </Grid>
-            )}
-          </Grid>
-        )}
-
-        <Grid container spacing={8} alignItems="center" direction={"row"}>
-          <Grid item xs={5}>
-            <Typography
-              variant="h5"
-              style={labelStyle}
-              align="left"
-              gutterBottom
-            >
-              Standard Monthly Payment
-            </Typography>
-          </Grid>
-          <Grid item xs={3}>
-            <span className="money">
-              <Typography variant="h6" style={labelStyle} align="left">
-                {formatRU(
-                  +monthlyOverpayment + monthlyPayment,
-                  isRU,
-                  roundUp,
-                  otherRoundUp
-                )}
-              </Typography>
-            </span>
-          </Grid>
-        </Grid>
-
-        <Grid container spacing={8} alignItems="center" direction={"row"}>
-          <Grid item xs={5}>
-            <Typography variant="h5" style={labelStyle} align="left">
-              Who is your anticipated mortgage lender?
-            </Typography>
-          </Grid>
-          <Grid
-            item
-            xs={3}
-            style={{
-              marginBottom: "1rem",
-              display: "flex",
-              flexDirection: "column",
-              padding: "1rem"
-            }}
-          >
-            <LenderSelect options={lenders} onLenderSelect={setLender} />
-            {lender === "Other" && (
-              <input
-                type="text"
-                maxLength={20}
-                value={otherLender}
-                onChange={e => setOtherLender(e.target.value)}
-                style={{
-                  color: "#3f51b5",
-                  textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-                  padding: "1rem",
-                  fontSize: "1rem",
-                  margin: "1rem 0rem 0rem 0rem"
-                }}
-              />
-            )}
-          </Grid>
-        </Grid>
-
-        <Divider style={dividerStyle} />
-
-        <div className="col-sm-8">
-          <div>
+    <mobiscroll.Form
+      className="mbsc-form-grid"
+      theme="ios"
+      themeVariant="light"
+    >
+      <div className="mbsc-grid">
+        <div className="mbsc-row-12">
+          <div className="mbsc-col-12">
             <Typography
               variant="h4"
               style={updatedLabelStyle}
+              id="modal-title"
+              align="center"
+              gutterBottom
+            >
+              {updatedHeader}
+            </Typography>
+            <Divider style={dividerStyle} />
+          </div>
+          <div className="mbsc-col-12">
+            <Typography
+              variant="h4"
+              style={labelStyle}
+              id="modal-title"
               align="left"
               gutterBottom
             >
-              {`${programName} `} Loan Overpayment Configuration
+              Loan Information
             </Typography>
           </div>
-          {!isADE && (
-            <div style={{ margin: "2rem 0" }}>
-              <Typography variant="h5" style={labelStyle} align="left">
-                Please add any extra principal payments you made so far in the
-                fields below.
-              </Typography>
-              <div style={fieldStyle}>
+
+          <div className="mbsc-row">
+            <div className="mbsc-col-4">
+              <div style={fieldStyle} className="mbsc-row">
                 <Typography variant="h6" style={labelStyle} align="left">
-                  Monthly
+                  Amount
                 </Typography>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center"
-                  }}
-                >
-                  <input
-                    type="number"
-                    maxLength={5}
-                    value={monthlyOverpayment}
-                    onChange={e => setMonthlyOverpayment(e.target.value)}
-                    style={inputStyle}
-                  />
-                </div>
+                <mobiscroll.Input
+                  inputStyle="box"
+                  labelStyle="floating"
+                  value={initial}
+                  onChange={e => setInitial(e.target.value)}
+                  placeholder="Loan Amount ($)"
+                  label={"Loan Amount ($)"}
+                />
               </div>
             </div>
-          )}
-          <Typography
-            variant="h5"
-            style={labelStyle}
-            id="modal-title"
-            align="left"
-            gutterBottom
-          >
-            {paymentsLabel}
-          </Typography>
-          <Grid container spacing={8} alignItems="center" direction={"row"}>
-            <Grid item xs={3}>
-              <Typography variant="h6" style={labelHeaderStyle1} align="left">
-                Year
-              </Typography>
-            </Grid>
-            <Grid item xs={3}>
-              <Typography variant="h6" style={labelHeaderStyle1} align="left">
-                Month
-              </Typography>
-            </Grid>
-            <Grid item xs={3}>
-              <Typography variant="h6" style={labelHeaderStyle1} align="left">
-                Amount
-              </Typography>
-            </Grid>
-          </Grid>
+            <div className="mbsc-col-4">
+              <div style={fieldStyle} className="mbsc-row">
+                <Typography variant="h6" style={labelStyle} align="left">
+                  Term
+                </Typography>
+                <mobiscroll.Dropdown
+                  inputStyle="box"
+                  labelStyle="floating"
+                  value={years}
+                  type="number"
+                  maxLength={4}
+                  onChange={e => setYears(e.target.value)}
+                >
+                  <option>Years</option>
+                  <option value={15}>15</option>
+                  <option value={20}>20</option>
+                  <option value={25}>25</option>
+                  <option value={30}>30</option>
+                </mobiscroll.Dropdown>
+              </div>
+            </div>
+            <div className="mbsc-col-4">
+              <div style={fieldStyle} className="mbsc-row">
+                <Typography variant="h6" style={labelStyle} align="left">
+                  Interest Rate
+                </Typography>
+                <InterestRateDropDown
+                  inputStyle="box"
+                  labelStyle="floating"
+                  value={rate}
+                  onChange={e => setRate(e.target.value)}
+                />
+              </div>
+            </div>
+          </div>
 
-          {overpayments.map(({ year, month, amount }, i) => (
-            <Grid container key={i} spacing={8} direction={"row"}>
-              <Grid item xs={3}>
-                <input
-                  type="number"
-                  min="0"
-                  style={overpaymentStyle}
-                  max={years}
-                  value={year}
-                  name="year"
-                  onChange={updateOverpayment(i)}
-                />
-              </Grid>
-              <Grid item xs={3}>
-                <input
-                  type="number"
-                  min="1"
-                  max="12"
-                  value={month}
-                  style={overpaymentStyle}
-                  name="month"
-                  onChange={updateOverpayment(i)}
-                />
-              </Grid>
-              <Grid item xs={3}>
-                <input
+          {isRU && (
+            <div className="mbsc-row mbsc-align-items-center">
+              <div className="mbsc-col-5">
+                <Typography variant="h5" style={labelStyle} align="left">
+                  Round your monthly payment to the nearest:
+                </Typography>
+              </div>
+              {roundUp !== "other" && (
+                <div className="mbsc-col-2">
+                  <Button
+                    variant="outlined"
+                    size="large"
+                    onClick={() => setRoundUp(100)}
+                    color="primary"
+                    style={ruBtnStyle}
+                  >
+                    $100
+                  </Button>
+                </div>
+              )}
+              {roundUp !== "other" && (
+                <div className="mbsc-col-2">
+                  <Button
+                    variant="outlined"
+                    size="large"
+                    onClick={() => setRoundUp(1000)}
+                    color="primary"
+                    style={ruBtnStyle}
+                  >
+                    $1000
+                  </Button>
+                </div>
+              )}
+              <div className="mbsc-col-2">
+                <Button
+                  variant="outlined"
+                  size="large"
+                  onClick={() => setRoundUp("other")}
+                  color="primary"
+                  style={ruBtnStyle}
+                >
+                  Other
+                </Button>
+              </div>
+              {roundUp === "other" && (
+                <div className="mbsc-col-2">
+                  <mobiscroll.Input
+                    inputStyle="box"
+                    labelStyle="floating"
+                    value={otherRoundUp}
+                    placeholder="Enter round up amount"
+                    onChange={e => setOtherRoundUp(e.target.value)}
+                    style={{
+                      color: "#3f51b5",
+                      textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
+                      padding: "1rem",
+                      fontSize: "1rem"
+                    }}
+                  />
+                </div>
+              )}
+            </div>
+          )}
+
+          <div className="mbsc-row mbsc-align-items-center">
+            <div className="mbsc-col-5">
+              <Typography
+                variant="h5"
+                style={labelStyle}
+                align="left"
+                gutterBottom
+              >
+                Calculated Standard Monthly Payment
+              </Typography>
+            </div>
+            <div className="mbsc-col-3">
+              <span className="money">
+                <Typography variant="h6" style={labelStyle} align="left">
+                  {formatRU(calculatedMonthly, isRU, roundUp, otherRoundUp)}
+                </Typography>
+              </span>
+            </div>
+          </div>
+
+          <div className="mbsc-row mbsc-align-items-center">
+            <Grid item xs={5}>
+              <Typography variant="h5" style={labelStyle} align="left">
+                Who is your anticipated mortgage lender?
+              </Typography>
+            </Grid>
+            <Grid
+              item
+              xs={3}
+              style={{
+                marginBottom: "1rem",
+                display: "flex",
+                flexDirection: "column",
+                padding: "1rem"
+              }}
+            >
+              <mobiscroll.Dropdown
+                inputStyle="box"
+                labelStyle="floating"
+                value={lender}
+                onChange={e => setLender(e.target.value)}
+              >
+                <option></option>
+                <option value={"Chase"}>Chase</option>
+                <option value={"Wells Fargo"}>Wells Fargo</option>
+                <option value={"Quicken Loans"}>Quicken Loans</option>
+                <option value={"Other"}>Other</option>
+              </mobiscroll.Dropdown>
+              {lender === "Other" && (
+                <mobiscroll.Input
                   type="text"
-                  value={amount}
-                  name="amount"
-                  onChange={updateOverpayment(i)}
-                  style={overpaymentStyle}
+                  inputStyle="box"
+                  labelStyle="floating"
+                  maxLength={20}
+                  value={otherLender}
+                  onChange={e => setOtherLender(e.target.value)}
+                  style={{
+                    color: "#3f51b5",
+                    textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)"
+                  }}
                 />
-              </Grid>
-              {!isADE && (
-                <Grid item xs={3}>
-                  {i === overpayments.length - 1 ? (
-                    <button
-                      className="btn btn-xs"
-                      onClick={() =>
-                        setOverpayments([...overpayments, defaultOverpayment])
-                      }
-                      style={buttonStyle}
-                    >
-                      +
-                    </button>
-                  ) : (
-                    <button
-                      style={buttonStyle}
-                      className="btn btn-xs"
-                      onClick={() =>
-                        setOverpayments(overpayments.filter((_, j) => j !== i))
-                      }
-                    >
-                      X
-                    </button>
-                  )}
-                </Grid>
               )}
             </Grid>
-          ))}
-        </div>
-        <Divider
-          style={{ width: "100%", color: "#3f51b5", margin: "2rem 1rem" }}
-        />
+          </div>
 
-        <div className="col-sm-12">
-          <Chart
-            payments={payments}
-            alterSize={true}
-            lenderName={lenderDisplayName}
+          <Divider style={dividerStyle} />
+
+          <div className="col-sm-8">
+            <div>
+              <Typography
+                variant="h4"
+                style={updatedLabelStyle}
+                align="left"
+                gutterBottom
+              >
+                {`${programName} `} Loan Overpayment Configuration
+              </Typography>
+            </div>
+            {!isADE && (
+              <div style={{ margin: "2rem 0" }}>
+                <Typography variant="h5" style={labelStyle} align="left">
+                  Please add any extra principal payments you made so far in the
+                  fields below.
+                </Typography>
+                <div style={fieldStyle}>
+                  <Typography variant="h6" style={labelStyle} align="left">
+                    Monthly
+                  </Typography>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "center"
+                    }}
+                  >
+                    <mobiscroll.Input
+                      inputStyle="box"
+                      labelStyle="floating"
+                      type="number"
+                      maxLength={5}
+                      value={monthlyOverpayment}
+                      onChange={e => setMonthlyOverpayment(e.target.value)}
+                      style={inputStyle}
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+            <Typography
+              variant="h5"
+              style={labelStyle}
+              id="modal-title"
+              align="left"
+              gutterBottom
+            >
+              {paymentsLabel}
+            </Typography>
+            <Grid container spacing={8} alignItems="center" direction={"row"}>
+              <Grid item xs={3}>
+                <Typography variant="h6" style={labelHeaderStyle1} align="left">
+                  Year
+                </Typography>
+              </Grid>
+              <Grid item xs={3}>
+                <Typography variant="h6" style={labelHeaderStyle1} align="left">
+                  Month
+                </Typography>
+              </Grid>
+              <Grid item xs={3}>
+                <Typography variant="h6" style={labelHeaderStyle1} align="left">
+                  Amount
+                </Typography>
+              </Grid>
+            </Grid>
+
+            <div>
+              {overpayments.map(({ year, month, amount }, i) => (
+                <div className="mbsc-row mbsc-align-items-center">
+                  <div
+                    className="mbsc-col-3"
+                    style={{ paddingLeft: "1rem", paddingRight: "2rem" }}
+                  >
+                    <mobiscroll.Input
+                      type="number"
+                      min="0"
+                      inputStyle="box"
+                      labelStyle="floating"
+                      type="number"
+                      style={labelHeaderStyle1}
+                      max={term}
+                      value={year}
+                      name="year"
+                      onChange={updateOverpayment(i)}
+                    />
+                  </div>
+                  <div
+                    className="mbsc-col-3"
+                    style={{ paddingLeft: "1rem", paddingRight: "2rem" }}
+                  >
+                    <mobiscroll.Input
+                      type="number"
+                      min="1"
+                      max="12"
+                      inputStyle="box"
+                      labelStyle="floating"
+                      type="number"
+                      value={month}
+                      name="month"
+                      onChange={updateOverpayment(i)}
+                    />
+                  </div>
+                  <div
+                    className="mbsc-col-3"
+                    style={{ paddingLeft: "1rem", paddingRight: "2rem" }}
+                  >
+                    <mobiscroll.Input
+                      type="text"
+                      value={amount}
+                      name="amount"
+                      inputStyle="box"
+                      labelStyle="floating"
+                      type="number"
+                      onChange={updateOverpayment(i)}
+                    />
+                  </div>
+                  <div
+                    className="mbsc-col-3"
+                    style={{ paddingLeft: "1rem", paddingRight: "2rem" }}
+                  >
+                    {i === overpayments.length - 1 ? (
+                      <button
+                        className="btn btn-xs"
+                        onClick={() =>
+                          this.setOverpayments([
+                            ...overpayments,
+                            defaultOverpayment
+                          ])
+                        }
+                      >
+                        +
+                      </button>
+                    ) : (
+                      <button
+                        className="btn btn-xs"
+                        onClick={() =>
+                          this.setOverpayments(
+                            overpayments.filter((_, j) => j !== i)
+                          )
+                        }
+                      >
+                        X
+                      </button>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <Divider
+            style={{ width: "100%", color: "#3f51b5", margin: "2rem 1rem" }}
           />
+
+          <div className="col-sm-12">
+            <Chart
+              payments={payments}
+              alterSize={true}
+              lenderName={lenderDisplayName}
+            />
+          </div>
+        </div>
+
+        <div className="mbsc-row mbsc-align-items-center">
+          <Divider
+            style={{ width: "100%", color: "#3f51b5", margin: "2rem 1rem" }}
+          />
+          <div className="mbsc-col" />
+          <div className="mbsc-col-6">
+            <Table payments={payments} />
+          </div>
+          <div className="mbsc-col" />
         </div>
       </div>
-      <Table className="col-sm-4" payments={payments} />
-    </div>
+    </mobiscroll.Form>
   );
 };

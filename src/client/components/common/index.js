@@ -20,3 +20,4 @@ export { Text } from "./Text";
 export { FlyOut } from "./FlyOut";
 export { LenderSelect } from "./LenderSelect";
 export { CalendarPicker } from "./CalendarPicker";
+export { InterestRateDropDown, TermDropDown } from "./DropDowns";

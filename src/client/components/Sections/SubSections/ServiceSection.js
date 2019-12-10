@@ -217,7 +217,7 @@ class ServiceSectionComponent extends React.Component {
       <React.Fragment>
         <Divider style={{ width: "100%", marginBottom: "2rem" }} id="basics" />
         <div className="mbsc-grid mbsc-row-12">
-          <div class="mbsc-grid">
+          <div className="mbsc-grid">
             <div className="mbsc-row">
               <div className="mbsc-col-8">
                 <div className="mbsc-row-5">

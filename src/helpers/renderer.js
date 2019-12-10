@@ -47,12 +47,16 @@ export default (req, store, context) => {
   const mobile = isMobile(req.headers["user-agent"]);
 
   return `
-    <html>
+    <html style='background-color: white;'>
       <title>A Day Early</title>
           <head>
           <link rel="stylesheet" href="https://use.typekit.net/nex3vbe.css">
           <link href="https://fonts.googleapis.com/css?family=Raleway:400,700,700i,800&display=swap" rel="stylesheet">
           <style>
+
+            html {
+              background-color: white !important;
+            }
 
             body {
               margin: 0;
@@ -222,7 +226,6 @@ export default (req, store, context) => {
               .ReactModal__Overlay--before-close{
                   opacity: 0;
               }
-
               </style>
               <link rel="shortcut icon" href="favicon.ico">
                 ${helmet.title.toString()}

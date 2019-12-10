@@ -41,3 +41,37 @@ server {
   }
 
 } -->
+
+
+          <div className="mbsc-row" style={{ border: "solid red" }}>
+            <div className="mbsc-col-4">
+              <mobiscroll.Input
+                inputStyle="box"
+                labelStyle="floating"
+                label={"Loan Amount"}
+                placeholder={"Loan Amount"}
+                type="number"
+              />
+            </div>
+            <div className="mbsc-col-4">
+              <mobiscroll.Dropdown label={"Term (Yrs)"} inputStyle="box">
+                <option></option>
+                <option value={15}>15</option>
+                <option value={20}>20</option>
+                <option value={25}>25</option>
+                <option value={30}>30</option>
+              </mobiscroll.Dropdown>
+            </div>
+            <div className="mbsc-col-4">
+              <mobiscroll.Dropdown
+                label={"Interest Rate (%)"}
+                name="interestRate"
+                inputStyle="box"
+                labelStyle="floating"
+              >
+                <option></option>
+                <option value={"2.000"}>2.000%</option>
+                <option value={"2.125"}>2.125%</option>
+              </mobiscroll.Dropdown>
+            </div>
+          </div>

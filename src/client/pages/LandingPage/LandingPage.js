@@ -85,7 +85,8 @@ const styles = () => {
     split: {
       display: "flex",
       flexDirection: "row",
-      marginTop: "6rem"
+      marginTop: "6rem",
+      minHeight: "80rem"
     },
     half: {
       padding: "1rem",

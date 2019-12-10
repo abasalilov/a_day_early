@@ -478,94 +478,79 @@ class CalculatorGraphComponent extends React.Component {
               </Grid>
             </Grid>
 
-            {overpayments.map(({ year, month, amount }, i) => (
-              <Grid container spacing={8} alignItems="center" direction={"row"}>
-                <Grid item xs={3}>
-                  <input
-                    type="number"
-                    min="0"
-                    style={labelHeaderStyle1}
-                    max={term}
-                    value={year}
-                    name="year"
-                    onChange={updateOverpayment(i)}
-                  />
-                </Grid>
-                <Grid item xs={3}>
-                  <input
-                    type="number"
-                    min="1"
-                    max="12"
-                    value={month}
-                    style={{
-                      color: "#3f51b5",
-                      textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-                      padding: "1rem",
-                      position: "relative",
-                      left: "5%",
-                      fontSize: "1rem"
-                    }}
-                    name="month"
-                    onChange={updateOverpayment(i)}
-                  />
-                </Grid>
-                <Grid item xs={3}>
-                  <input
-                    type="text"
-                    value={amount}
-                    name="amount"
-                    onChange={updateOverpayment(i)}
-                    style={{
-                      color: "#3f51b5",
-                      textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-                      padding: "1rem",
-                      position: "relative",
-                      fontSize: "1rem"
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={3}>
-                  {i === overpayments.length - 1 ? (
-                    <button
-                      className="btn btn-xs"
-                      onClick={() =>
-                        this.setOverpayments([
-                          ...overpayments,
-                          defaultOverpayment
-                        ])
-                      }
-                      style={{
-                        position: "relative",
-                        fontSize: "1rem",
-                        left: "20%",
-                        padding: "1rem",
-                        fontSize: "1rem"
-                      }}
-                    >
-                      +
-                    </button>
-                  ) : (
-                    <button
-                      style={{
-                        position: "relative",
-                        fontSize: "1rem",
-                        left: "20%",
-                        fontSize: "1rem",
-                        padding: "1rem"
-                      }}
-                      className="btn btn-xs"
-                      onClick={() =>
-                        this.setOverpayments(
-                          overpayments.filter((_, j) => j !== i)
-                        )
-                      }
-                    >
-                      X
-                    </button>
-                  )}
-                </Grid>
-              </Grid>
-            ))}
+            <div>
+              {overpayments.map(({ year, month, amount }, i) => (
+                <div className="mbsc-row mbsc-align-items-center">
+                  <div className="mbsc-col-3" style={{ paddingRight: "2rem" }}>
+                    <mobiscroll.Input
+                      type="number"
+                      min="0"
+                      inputStyle="box"
+                      labelStyle="floating"
+                      type="number"
+                      style={labelHeaderStyle1}
+                      max={term}
+                      value={year}
+                      name="year"
+                      onChange={updateOverpayment(i)}
+                    />
+                  </div>
+                  <div className="mbsc-col-3" style={{ paddingRight: "2rem" }}>
+                    <mobiscroll.Input
+                      type="number"
+                      min="1"
+                      max="12"
+                      inputStyle="box"
+                      labelStyle="floating"
+                      type="number"
+                      value={month}
+                      name="month"
+                      onChange={updateOverpayment(i)}
+                    />
+                  </div>
+                  <div className="mbsc-col-3" style={{ paddingRight: "2rem" }}>
+                    <mobiscroll.Input
+                      type="text"
+                      value={amount}
+                      name="amount"
+                      inputStyle="box"
+                      labelStyle="floating"
+                      type="number"
+                      onChange={updateOverpayment(i)}
+                    />
+                  </div>
+                  <div
+                    className="mbsc-col-3"
+                    style={{ paddingLeft: "1rem", paddingRight: "2rem" }}
+                  >
+                    {i === overpayments.length - 1 ? (
+                      <button
+                        className="btn btn-xs"
+                        onClick={() =>
+                          this.setOverpayments([
+                            ...overpayments,
+                            defaultOverpayment
+                          ])
+                        }
+                      >
+                        +
+                      </button>
+                    ) : (
+                      <button
+                        className="btn btn-xs"
+                        onClick={() =>
+                          this.setOverpayments(
+                            overpayments.filter((_, j) => j !== i)
+                          )
+                        }
+                      >
+                        X
+                      </button>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
           <Divider
             style={{ width: "100%", color: "#3f51b5", margin: "2rem 1rem" }}
