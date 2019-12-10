@@ -5,10 +5,8 @@ import Divider from "@material-ui/core/Divider";
 import { withStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import Grid from "@material-ui/core/Grid";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
+import mobiscroll from "@mobiscroll/react";
+import "@mobiscroll/react/dist/css/mobiscroll.min.css";
 
 import { RadioGroup, CalendarPicker } from "../common";
 import { calculations, Table, Chart } from "../CalculatorGraph";
@@ -331,50 +329,51 @@ class LeapFrogCalculatorComponent extends React.Component {
               Who is your mortgage lender?
             </Typography>{" "}
           </Grid>
-          <Grid
-            item
-            xs={3}
-            style={{
-              marginBottom: "1rem",
-              display: "flex",
-              flexDirection: "column",
-              padding: "1rem"
-            }}
-          >
-            <FormControl style={{ width: "11rem" }}>
-              <InputLabel>
-                <Typography variant="h6" style={selectLabelStyle} align="left">
-                  Lender
-                </Typography>
-              </InputLabel>
-              <Select
-                value={this.state.lender}
-                onChange={e => this.setLender(e.target.value)}
-                inputProps={{
-                  name: "Lender"
-                }}
+
+          <div className="mbsc-row mbsc-align-items-center">
+            <Grid item xs={5}>
+              <Typography variant="h5" style={labelStyle} align="left">
+                Who is your anticipated mortgage lender?
+              </Typography>
+            </Grid>
+            <Grid
+              item
+              xs={3}
+              style={{
+                marginBottom: "1rem",
+                display: "flex",
+                flexDirection: "column",
+                padding: "1rem"
+              }}
+            >
+              <mobiscroll.Dropdown
+                inputStyle="box"
+                labelStyle="floating"
+                value={lender}
+                onChange={e => setLender(e.target.value)}
               >
-                {lenders.map(option => {
-                  return <MenuItem value={option}>{option}</MenuItem>;
-                })}
-              </Select>
-            </FormControl>
-            {lender === "Other" && (
-              <input
-                type="text"
-                maxLength={20}
-                value={otherLender}
-                onChange={e => this.handleChange("otherLender", e)}
-                style={{
-                  color: "#3f51b5",
-                  textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-                  padding: "1rem",
-                  fontSize: "1rem",
-                  margin: "1rem 0rem 0rem 0rem"
-                }}
-              />
-            )}
-          </Grid>
+                <option></option>
+                <option value={"Chase"}>Chase</option>
+                <option value={"Wells Fargo"}>Wells Fargo</option>
+                <option value={"Quicken Loans"}>Quicken Loans</option>
+                <option value={"Other"}>Other</option>
+              </mobiscroll.Dropdown>
+              {lender === "Other" && (
+                <mobiscroll.Input
+                  type="text"
+                  inputStyle="box"
+                  labelStyle="floating"
+                  maxLength={20}
+                  value={otherLender}
+                  onChange={e => setOtherLender(e.target.value)}
+                  style={{
+                    color: "#3f51b5",
+                    textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)"
+                  }}
+                />
+              )}
+            </Grid>
+          </div>
         </Grid>
 
         <Divider style={{ width: "100%", color: "#3f51b5", margin: "1rem" }} />

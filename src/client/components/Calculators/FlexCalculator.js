@@ -1,19 +1,16 @@
 import React, { useState } from "react";
 import Typography from "@material-ui/core/Typography";
-import { FlyOut, LenderSelect } from "../common";
+import { FlyOut, InterestRateDropDown } from "../common";
 import Divider from "@material-ui/core/Divider";
 import { withStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import Grid from "@material-ui/core/Grid";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-
 import { RadioGroup, CalendarPicker } from "../common";
 import { calculations, Table, Chart } from "../CalculatorGraph";
 import { updatePayPalAmount, updateInfoForm } from "../../actions";
 const defaultOverpayment = { month: "0", year: "0", amount: "0" };
+import mobiscroll from "@mobiscroll/react";
+import "@mobiscroll/react/dist/css/mobiscroll.min.css";
 
 const selectLabelStyle = {
   color: "#3f51b5",
@@ -216,83 +213,86 @@ class FlexCalculatorComponent extends React.Component {
     const showQuestion = isEmpty(accuracy);
 
     return (
-      <div>
-        <div className="col-sm-4">
-          <div className="col-sm-4">
-            <Typography
-              variant="h4"
-              style={updatedLabelStyle}
-              id="modal-title"
-              align="center"
-              gutterBottom
-            >
-              Let's Start with the Basics for the Flex Program
-            </Typography>
-            <Divider style={dividerStyle} />
-          </div>
-          <Grid container spacing={8} alignItems="center" direction={"row"}>
-            <Grid item xs={4}>
-              <div style={fieldStyle}>
+      <mobiscroll.Form
+        className="mbsc-form-grid"
+        theme="ios"
+        themeVariant="light"
+      >
+        <div className="mbsc-grid" style={{ padding: "2rem" }}>
+          <div className="mbsc-row-12">
+            <div className="mbsc-col-12">
+              <Typography
+                variant="h4"
+                style={updatedLabelStyle}
+                id="modal-title"
+                align="center"
+                gutterBottom
+              >
+                Let's Start with the Basics for the FlexPay Program
+              </Typography>
+              <Divider style={dividerStyle} />
+            </div>
+            <div className="mbsc-col-4">
+              <Typography
+                variant="h4"
+                style={labelStyle}
+                id="modal-title"
+                align="left"
+                gutterBottom
+              >
+                Loan Information
+              </Typography>
+            </div>
+            <div className="mbsc-row">
+              <div style={fieldStyle} className="mbsc-col-4">
                 <Typography variant="h6" style={labelStyle} align="left">
                   Amount
                 </Typography>
-                <input
+                <mobiscroll.Input
                   maxLength={7}
                   value={loanAmount}
                   onChange={e =>
                     this.handleChange("loanAmount", e.target.value)
                   }
-                  style={{
-                    color: "#3f51b5",
-                    textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-                    padding: "1rem",
-                    fontSize: "1rem"
-                  }}
+                  inputStyle="box"
+                  labelStyle="floating"
+                  placeholder="Loan Amount ($)"
+                  label={"Loan Amount ($)"}
                 />
               </div>
-            </Grid>
-            <Grid item xs={4}>
-              <div style={fieldStyle}>
+              <div style={fieldStyle} className="mbsc-col-4">
                 <Typography variant="h6" style={labelStyle} align="left">
-                  Years
+                  Term
                 </Typography>
-                <input
-                  type="number"
-                  maxLength={2}
+                <mobiscroll.Dropdown
+                  inputStyle="box"
+                  labelStyle="floating"
+                  maxLength={4}
                   value={term}
                   onChange={e => this.handleChange("term", e.target.value)}
-                  style={{
-                    color: "#3f51b5",
-                    textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-                    padding: "1rem",
-                    fontSize: "1rem"
-                  }}
-                />
+                >
+                  <option>Years</option>
+                  <option value={15}>15</option>
+                  <option value={20}>20</option>
+                  <option value={25}>25</option>
+                  <option value={30}>30</option>
+                </mobiscroll.Dropdown>
               </div>
-            </Grid>
-
-            <Grid item xs={4}>
-              <div style={fieldStyle}>
+              <div style={fieldStyle} className="mbsc-col-4">
                 <Typography variant="h6" style={labelStyle} align="left">
                   Interest Rate
                 </Typography>
-                <input
-                  type="number"
-                  step={0.1}
+                <InterestRateDropDown
+                  inputStyle="box"
+                  labelStyle="floating"
                   value={interestRate}
                   onChange={e =>
                     this.handleChange("interestRate", e.target.value)
                   }
-                  style={{
-                    color: "#3f51b5",
-                    textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-                    padding: "1rem",
-                    fontSize: "1rem"
-                  }}
                 />
               </div>
-            </Grid>
-          </Grid>
+            </div>
+          </div>
           {showInterestRateMessage && (
             <FlyOut
               show={true}
@@ -341,36 +341,29 @@ class FlexCalculatorComponent extends React.Component {
               padding: "1rem"
             }}
           >
-            <FormControl style={{ width: "11rem" }}>
-              <InputLabel>
-                <Typography variant="h6" style={selectLabelStyle} align="left">
-                  Lender
-                </Typography>
-              </InputLabel>
-              <Select
-                value={this.state.lender}
-                onChange={e => this.setLender(e.target.value)}
-                inputProps={{
-                  name: "Lender"
-                }}
-              >
-                {lenders.map(option => {
-                  return <MenuItem value={option}>{option}</MenuItem>;
-                })}
-              </Select>
-            </FormControl>
+            <mobiscroll.Dropdown
+              inputStyle="box"
+              labelStyle="floating"
+              value={lender}
+              onChange={e => this.setLender(e.target.value)}
+            >
+              <option></option>
+              <option value={"Chase"}>Chase</option>
+              <option value={"Wells Fargo"}>Wells Fargo</option>
+              <option value={"Quicken Loans"}>Quicken Loans</option>
+              <option value={"Other"}>Other</option>
+            </mobiscroll.Dropdown>
             {lender === "Other" && (
-              <input
+              <mobiscroll.Input
                 type="text"
+                inputStyle="box"
+                labelStyle="floating"
                 maxLength={20}
                 value={otherLender}
-                onChange={e => this.handleChange("otherLender", e)}
+                onChange={e => this.setOtherLender(e.target.value)}
                 style={{
                   color: "#3f51b5",
-                  textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-                  padding: "1rem",
-                  fontSize: "1rem",
-                  margin: "1rem 0rem 0rem 0rem"
+                  textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)"
                 }}
               />
             )}
@@ -389,7 +382,10 @@ class FlexCalculatorComponent extends React.Component {
             Have you made any prior overpayments during the life of your
             mortgage?
           </Typography>
-          <RadioGroup handleCheckBoxChange={this.handleYes} />
+          <RadioGroup
+            style={{ paddingRight: "2rem" }}
+            handleCheckBoxChange={this.handleYes}
+          />
         </div>
         {this.state.hasMadePriorPayments && (
           <div>
@@ -416,94 +412,77 @@ class FlexCalculatorComponent extends React.Component {
               </Grid>
             </Grid>
 
-            {overpayments.map(({ year, month, amount }, i) => (
-              <Grid container spacing={8} alignItems="center" direction={"row"}>
-                <Grid item xs={3}>
-                  <input
-                    type="number"
-                    min="0"
-                    style={labelHeaderStyle1}
-                    max={term}
-                    value={year}
-                    name="year"
-                    onChange={updateOverpayment(i)}
-                  />
-                </Grid>
-                <Grid item xs={3}>
-                  <input
-                    type="number"
-                    min="1"
-                    max="12"
-                    value={month}
-                    style={{
-                      color: "#3f51b5",
-                      textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-                      padding: "1rem",
-                      position: "relative",
-                      left: "5%",
-                      fontSize: "1rem"
-                    }}
-                    name="month"
-                    onChange={updateOverpayment(i)}
-                  />
-                </Grid>
-                <Grid item xs={3}>
-                  <input
-                    type="text"
-                    value={amount}
-                    name="amount"
-                    onChange={updateOverpayment(i)}
-                    style={{
-                      color: "#3f51b5",
-                      textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-                      padding: "1rem",
-                      position: "relative",
-                      fontSize: "1rem"
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={3}>
-                  {i === overpayments.length - 1 ? (
-                    <button
-                      className="btn btn-xs"
-                      onClick={() =>
-                        this.setOverpayments([
-                          ...overpayments,
-                          defaultOverpayment
-                        ])
-                      }
-                      style={{
-                        position: "relative",
-                        fontSize: "1rem",
-                        left: "20%",
-                        padding: "1rem",
-                        fontSize: "1rem"
-                      }}
-                    >
-                      +
-                    </button>
-                  ) : (
-                    <button
-                      style={{
-                        position: "relative",
-                        fontSize: "1rem",
-                        left: "20%",
-                        fontSize: "1rem",
-                        padding: "1rem"
-                      }}
-                      className="btn btn-xs"
-                      onClick={() =>
-                        this.setOverpayments(
-                          overpayments.filter((_, j) => j !== i)
-                        )
-                      }
-                    >
-                      X
-                    </button>
-                  )}
-                </Grid>
-              </Grid>
-            ))}
+            <div>
+              {overpayments.map(({ year, month, amount }, i) => (
+                <div className="mbsc-row mbsc-align-items-center">
+                  <div className="mbsc-col-3" style={{ paddingRight: "2rem" }}>
+                    <mobiscroll.Input
+                      type="number"
+                      min="0"
+                      inputStyle="box"
+                      labelStyle="floating"
+                      type="number"
+                      style={labelHeaderStyle1}
+                      max={term}
+                      value={year}
+                      name="year"
+                      onChange={updateOverpayment(i)}
+                    />
+                  </div>
+                  <div className="mbsc-col-3" style={{ paddingRight: "2rem" }}>
+                    <mobiscroll.Input
+                      type="number"
+                      min="1"
+                      max="12"
+                      inputStyle="box"
+                      labelStyle="floating"
+                      type="number"
+                      value={month}
+                      name="month"
+                      onChange={updateOverpayment(i)}
+                    />
+                  </div>
+                  <div className="mbsc-col-3" style={{ paddingRight: "2rem" }}>
+                    <mobiscroll.Input
+                      type="text"
+                      value={amount}
+                      name="amount"
+                      inputStyle="box"
+                      labelStyle="floating"
+                      type="number"
+                      onChange={updateOverpayment(i)}
+                    />
+                  </div>
+                  <div
+                    className="mbsc-col-3"
+                    style={{ paddingLeft: "1rem", paddingRight: "2rem" }}
+                  >
+                    {i === overpayments.length - 1 ? (
+                      <button
+                        onClick={() =>
+                          this.setOverpayments([
+                            ...overpayments,
+                            defaultOverpayment
+                          ])
+                        }
+                      >
+                        +
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() =>
+                          this.setOverpayments(
+                            overpayments.filter((_, j) => j !== i)
+                          )
+                        }
+                      >
+                        X
+                      </button>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         )}
 
@@ -530,18 +509,13 @@ class FlexCalculatorComponent extends React.Component {
                   justifyContent: "center"
                 }}
               >
-                <input
+                <mobiscroll.Input
+                  maxLength={7}
                   type="number"
-                  maxLength={5}
                   value={monthlyOverpayment}
                   onChange={e => this.handleChange("monthlyOverpayment", e)}
-                  style={{
-                    color: "#3f51b5",
-                    textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-                    padding: "1rem",
-                    fontSize: "1rem",
-                    marginLeft: "1rem"
-                  }}
+                  inputStyle="box"
+                  labelStyle="floating"
                 />
               </div>
             </div>
@@ -580,18 +554,13 @@ class FlexCalculatorComponent extends React.Component {
                   justifyContent: "center"
                 }}
               >
-                <input
+                <mobiscroll.Input
                   type="number"
                   maxLength={5}
                   value={monthlyOverpayment}
                   onChange={e => this.handleChange("monthlyOverpayment", e)}
-                  style={{
-                    color: "#3f51b5",
-                    textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-                    padding: "1rem",
-                    fontSize: "1rem",
-                    marginLeft: "1rem"
-                  }}
+                  inputStyle="box"
+                  labelStyle="floating"
                 />
               </div>
             </div>
@@ -619,20 +588,17 @@ class FlexCalculatorComponent extends React.Component {
               alignItems: "center"
             }}
           >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                borderRadius: ".25rem"
-              }}
-            >
-              <CalendarPicker
-                label={"MM/DD/YYYY"}
-                setInitial={true}
-                borderOn={false}
+            <div className="mbsc-col-12 mbsc-col-lg-8">
+              <mobiscroll.Calendar
+                display="bubble"
+                theme="material"
+                touchUi={false}
                 onChange={this.handleDate}
-              />
+              >
+                <mobiscroll.Input inputStyle="box" labelStyle="floating">
+                  MM/DD/YYYY
+                </mobiscroll.Input>
+              </mobiscroll.Calendar>
             </div>
           </div>
         </div>
@@ -641,7 +607,7 @@ class FlexCalculatorComponent extends React.Component {
         />
 
         {showQuestion && (
-          <Grid container spacing={8} alignItems="center" direction={"row"}>
+          <div className="mbsc-row-12">
             <Grid item xs={6}>
               <div style={fieldStyle}>
                 <Typography variant="h6" style={labelHeaderStyle1} align="left">
@@ -658,35 +624,15 @@ class FlexCalculatorComponent extends React.Component {
                   justifyContent: "space-around"
                 }}
               >
-                <button
-                  style={{
-                    position: "relative",
-                    fontSize: "1rem",
-                    left: "20%",
-                    fontSize: "1rem",
-                    padding: "1rem"
-                  }}
-                  className="btn btn-xs"
-                  onClick={() => this.handleAccuracy("yes")}
-                >
+                <mobiscroll.Button onClick={() => this.handleAccuracy("yes")}>
                   Yes
-                </button>
-                <button
-                  style={{
-                    position: "relative",
-                    fontSize: "1rem",
-                    left: "20%",
-                    fontSize: "1rem",
-                    padding: "1rem"
-                  }}
-                  className="btn btn-xs"
-                  onClick={() => this.handleAccuracy("no")}
-                >
+                </mobiscroll.Button>
+                <mobiscroll.Button onClick={() => this.handleAccuracy("no")}>
                   No
-                </button>
+                </mobiscroll.Button>
               </div>
             </Grid>
-          </Grid>
+          </div>
         )}
 
         {!isEmpty(accuracy) && accuracy === "no" && (
@@ -744,7 +690,7 @@ class FlexCalculatorComponent extends React.Component {
             </Grid>
           </Grid>
         )}
-      </div>
+      </mobiscroll.Form>
     );
   }
 }

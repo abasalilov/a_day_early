@@ -236,7 +236,7 @@ export const ProgramCalculatorGraph = props => {
       theme="ios"
       themeVariant="light"
     >
-      <div className="mbsc-grid">
+      <div className="mbsc-grid" style={{ padding: "2rem" }}>
         <div className="mbsc-row-12">
           <div className="mbsc-col-12">
             <Typography

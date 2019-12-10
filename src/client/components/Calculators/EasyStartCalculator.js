@@ -5,10 +5,6 @@ import Divider from "@material-ui/core/Divider";
 import { withStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import Grid from "@material-ui/core/Grid";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
 import mobiscroll from "@mobiscroll/react";
 import "@mobiscroll/react/dist/css/mobiscroll.min.css";
 import { RadioGroup, CalendarPicker } from "../common";
@@ -192,6 +188,7 @@ class EasyStartCalculatorComponent extends React.Component {
         alterSize = true;
       }
     }
+
     const msg =
       "Your interest rate is above today's going rate, would you like to get some information and options from a lender? Here's how much you can save:";
     let showInterestRateMessage = Number(interestRate) > 4.5;
@@ -222,7 +219,7 @@ class EasyStartCalculatorComponent extends React.Component {
         theme="ios"
         themeVariant="light"
       >
-        <div className="mbsc-grid">
+        <div className="mbsc-grid" style={{ padding: "2rem" }}>
           <div className="mbsc-row-12">
             <div className="mbsc-col-12">
               <Typography
@@ -246,131 +243,67 @@ class EasyStartCalculatorComponent extends React.Component {
               >
                 Loan Information
               </Typography>
-              <div className="mbsc-grid" style={{ padding: "2rem" }}>
-                <div className="mbsc-row-12">
-                  <div style={fieldStyle} className="mbsc-col-4">
-                    <Typography variant="h6" style={labelStyle} align="left">
-                      Amount
-                    </Typography>
-                    <mobiscroll.Input
-                      maxLength={7}
-                      value={loanAmount}
-                      onChange={e =>
-                        this.handleChange("loanAmount", e.target.value)
-                      }
-                      inputStyle="box"
-                      labelStyle="floating"
-                      placeholder="Loan Amount ($)"
-                      label={"Loan Amount ($)"}
-                    />
-                  </div>
-                  <div style={fieldStyle} className="mbsc-col-4">
-                    <Typography variant="h6" style={labelStyle} align="left">
-                      Term
-                    </Typography>
-                    <mobiscroll.Dropdown
-                      inputStyle="box"
-                      labelStyle="floating"
-                      maxLength={4}
-                      value={term}
-                      onChange={e => this.handleChange("term", e.target.value)}
-                    >
-                      <option>Years</option>
-                      <option value={15}>15</option>
-                      <option value={20}>20</option>
-                      <option value={25}>25</option>
-                      <option value={30}>30</option>
-                    </mobiscroll.Dropdown>
-                  </div>
-                  <div style={fieldStyle} className="mbsc-col-4">
-                    <Typography variant="h6" style={labelStyle} align="left">
-                      Interest Rate
-                    </Typography>
-                    <InterestRateDropDown
-                      inputStyle="box"
-                      labelStyle="floating"
-                      value={interestRate}
-                      onChange={e =>
-                        this.handleChange("interestRate", e.target.value)
-                      }
-                    />
-                  </div>
-                </div>
+            </div>
+            <div className="mbsc-row">
+              <div style={fieldStyle} className="mbsc-col-4">
+                <Typography variant="h6" style={labelStyle} align="left">
+                  Amount
+                </Typography>
+                <mobiscroll.Input
+                  maxLength={7}
+                  value={loanAmount}
+                  onChange={e =>
+                    this.handleChange("loanAmount", e.target.value)
+                  }
+                  inputStyle="box"
+                  labelStyle="floating"
+                  placeholder="Loan Amount ($)"
+                  label={"Loan Amount ($)"}
+                />
+              </div>
+              <div style={fieldStyle} className="mbsc-col-4">
+                <Typography variant="h6" style={labelStyle} align="left">
+                  Term
+                </Typography>
+                <mobiscroll.Dropdown
+                  inputStyle="box"
+                  labelStyle="floating"
+                  maxLength={4}
+                  value={term}
+                  onChange={e => this.handleChange("term", e.target.value)}
+                >
+                  <option>Years</option>
+                  <option value={15}>15</option>
+                  <option value={20}>20</option>
+                  <option value={25}>25</option>
+                  <option value={30}>30</option>
+                </mobiscroll.Dropdown>
+              </div>
+              <div style={fieldStyle} className="mbsc-col-4">
+                <Typography variant="h6" style={labelStyle} align="left">
+                  Interest Rate
+                </Typography>
+                <InterestRateDropDown
+                  inputStyle="box"
+                  labelStyle="floating"
+                  value={interestRate}
+                  onChange={e =>
+                    this.handleChange("interestRate", e.target.value)
+                  }
+                />
               </div>
             </div>
-            <Grid container spacing={8} alignItems="center" direction={"row"}>
-              <Grid item xs={4}>
-                <div style={fieldStyle}>
-                  <Typography variant="h6" style={labelStyle} align="left">
-                    Amount
-                  </Typography>
-                  <input
-                    maxLength={7}
-                    value={loanAmount}
-                    onChange={e =>
-                      this.handleChange("loanAmount", e.target.value)
-                    }
-                    style={{
-                      color: "#3f51b5",
-                      textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-                      padding: "1rem",
-                      fontSize: "1rem"
-                    }}
-                  />
-                </div>
-              </Grid>
-              <Grid item xs={4}>
-                <div style={fieldStyle}>
-                  <Typography variant="h6" style={labelStyle} align="left">
-                    Years
-                  </Typography>
-                  <input
-                    type="number"
-                    maxLength={2}
-                    value={term}
-                    onChange={e => this.handleChange("term", e.target.value)}
-                    style={{
-                      color: "#3f51b5",
-                      textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-                      padding: "1rem",
-                      fontSize: "1rem"
-                    }}
-                  />
-                </div>
-              </Grid>
-
-              <Grid item xs={4}>
-                <div style={fieldStyle}>
-                  <Typography variant="h6" style={labelStyle} align="left">
-                    Interest Rate
-                  </Typography>
-                  <input
-                    type="number"
-                    step={0.1}
-                    value={interestRate}
-                    onChange={e =>
-                      this.handleChange("interestRate", e.target.value)
-                    }
-                    style={{
-                      color: "#3f51b5",
-                      textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-                      padding: "1rem",
-                      fontSize: "1rem"
-                    }}
-                  />
-                </div>
-              </Grid>
-            </Grid>
-            {showInterestRateMessage && (
-              <FlyOut
-                show={true}
-                message={msg}
-                style={{
-                  fontSize: "1rem !important"
-                }}
-              />
-            )}
           </div>
+
+          {showInterestRateMessage && (
+            <FlyOut
+              show={true}
+              message={msg}
+              style={{
+                fontSize: "1rem !important"
+              }}
+            />
+          )}
           <Divider
             style={{ width: "100%", color: "#3f51b5", margin: "1rem" }}
           />
@@ -411,40 +344,29 @@ class EasyStartCalculatorComponent extends React.Component {
                 padding: "1rem"
               }}
             >
-              <FormControl style={{ width: "11rem" }}>
-                <InputLabel>
-                  <Typography
-                    variant="h6"
-                    style={selectLabelStyle}
-                    align="left"
-                  >
-                    Lender
-                  </Typography>
-                </InputLabel>
-                <Select
-                  value={this.state.lender}
-                  onChange={e => this.setLender(e.target.value)}
-                  inputProps={{
-                    name: "Lender"
-                  }}
-                >
-                  {lenders.map(option => {
-                    return <MenuItem value={option}>{option}</MenuItem>;
-                  })}
-                </Select>
-              </FormControl>
+              <mobiscroll.Dropdown
+                inputStyle="box"
+                labelStyle="floating"
+                value={lender}
+                onChange={e => this.setLender(e.target.value)}
+              >
+                <option></option>
+                <option value={"Chase"}>Chase</option>
+                <option value={"Wells Fargo"}>Wells Fargo</option>
+                <option value={"Quicken Loans"}>Quicken Loans</option>
+                <option value={"Other"}>Other</option>
+              </mobiscroll.Dropdown>
               {lender === "Other" && (
-                <input
+                <mobiscroll.Input
                   type="text"
+                  inputStyle="box"
+                  labelStyle="floating"
                   maxLength={20}
                   value={otherLender}
-                  onChange={e => this.handleChange("otherLender", e)}
+                  onChange={e => this.setOtherLender(e.target.value)}
                   style={{
                     color: "#3f51b5",
-                    textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-                    padding: "1rem",
-                    fontSize: "1rem",
-                    margin: "1rem 0rem 0rem 0rem"
+                    textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)"
                   }}
                 />
               )}
@@ -475,19 +397,18 @@ class EasyStartCalculatorComponent extends React.Component {
                     justifyContent: "center"
                   }}
                 >
-                  <input
-                    type="number"
+                  <mobiscroll.Input
+                    type="text"
+                    inputStyle="box"
+                    labelStyle="floating"
                     maxLength={5}
                     value={monthlyOverpayment}
-                    onChange={e => this.handleChange("monthlyOverpayment", e)}
-                    style={{
-                      color: "#3f51b5",
-                      textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
-                      padding: "1rem",
-                      fontSize: "1rem",
-                      marginLeft: "1rem"
-                    }}
-                  />
+                    onChange={e =>
+                      this.handleChange("monthlyOverpayment", e.target.value)
+                    }
+                  >
+                    Overpayment
+                  </mobiscroll.Input>
                 </div>
               </div>
             </div>
@@ -512,20 +433,17 @@ class EasyStartCalculatorComponent extends React.Component {
                   alignItems: "center"
                 }}
               >
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    borderRadius: ".25rem"
-                  }}
-                >
-                  <CalendarPicker
-                    setInitial={true}
-                    label={"MM/DD/YYYY"}
-                    borderOn={false}
+                <div className="mbsc-col-12 mbsc-col-lg-8">
+                  <mobiscroll.Calendar
+                    display="bubble"
+                    theme="material"
+                    touchUi={false}
                     onChange={this.handleDate}
-                  />
+                  >
+                    <mobiscroll.Input inputStyle="box" labelStyle="floating">
+                      MM/DD/YYYY
+                    </mobiscroll.Input>
+                  </mobiscroll.Calendar>
                 </div>
               </div>
             </div>
@@ -616,3 +534,4 @@ export const EasyStartCalculator = connect(
   null,
   mapDispatchToProps
 )(withStyles(styles)(EasyStartCalculatorComponent));
+//                   onChange={this.handleDate}

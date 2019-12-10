@@ -4,6 +4,8 @@ import green from "@material-ui/core/colors/green";
 import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { withStyles } from "@material-ui/core/styles";
+import mobiscroll from "@mobiscroll/react";
+import "@mobiscroll/react/dist/css/mobiscroll.min.css";
 
 const styles = {
   root: {
@@ -54,32 +56,26 @@ class CheckboxGroup extends React.Component {
     };
 
     return (
-      <FormGroup>
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={no}
-              onChange={() => this.handleChange("no")}
-              value="no"
-              classes={classesObj}
-            />
-          }
-          label="No"
-          classes={{ label: labelClassName }}
-        />
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={yes}
-              onChange={() => this.handleChange("yes")}
-              value="yes"
-              classes={classesObj}
-            />
-          }
-          classes={{ label: labelClassName }}
-          label="Yes"
-        />
-      </FormGroup>
+      <mobiscroll.Form theme="ios" themeVariant="light">
+        <mobiscroll.FormGroup>
+          <mobiscroll.Checkbox
+            checked={no}
+            label="No"
+            onChange={() => this.handleChange("no")}
+            value="no"
+          >
+            No
+          </mobiscroll.Checkbox>
+
+          <mobiscroll.Checkbox
+            checked={yes}
+            onChange={() => this.handleChange("yes")}
+            value="yes"
+          >
+            Yes
+          </mobiscroll.Checkbox>
+        </mobiscroll.FormGroup>
+      </mobiscroll.Form>
     );
   }
 }
