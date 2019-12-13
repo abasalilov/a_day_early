@@ -13,7 +13,8 @@ import {
   NotFoundPage,
   NewLoanCalculatorPage,
   ContactUsPage,
-  TestPage
+  TestPage,
+  RegistrationPage
 } from "./pages";
 
 export default [
@@ -28,6 +29,11 @@ export default [
       {
         ...LoginPage,
         path: "/login",
+        exact: true
+      },
+      {
+        ...RegistrationPage,
+        path: "/registration",
         exact: true
       },
       {

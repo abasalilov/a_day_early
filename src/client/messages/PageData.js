@@ -24,7 +24,7 @@ const homeIntroContent = {
   newTop:
     "Make an extra principal payment aDayEarly than your scheduled payment, before that interest accrues and save 30 days interest, and reduce your interest payments for the life of the loan.",
   top:
-    "Save money and cut months or years off your mortgage!  Have an existing mortgage?  Just enter some information below to get started.",
+    "Save a month's interest by paying aDayEarly!  Just enter some information below to see how much you can save. If you are getting a new mortgage you can try our simulator.",
   middle:
     "Try our simulator (hotlink) to see how much you can save using aDayEarly.",
   bottom: ""

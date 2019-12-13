@@ -157,17 +157,17 @@ export const IntroSectionComponent = props => {
               style={mobileVariantStyle}
               gutterBottom
             >
-              Getting a new mortgage? Try our{" "}
+              Getting a new mortgage? Try our
               <a
-                href="/anticipated-loan-calculator"
+                href="/registration"
                 style={{
                   color: "#019246 !important",
                   textDecoration: "none !important"
                 }}
               >
                 simulator
-              </a>{" "}
-              to see how much you can save using aDayEarly.{" "}
+              </a>
+              to see how much you can save using aDayEarly.
             </Typography>
           )}
           <Typography

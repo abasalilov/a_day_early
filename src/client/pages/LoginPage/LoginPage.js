@@ -76,7 +76,7 @@ const styles = {
     margin: "1rem auto"
   },
   link: {
-    margin: "1rem auto",
+    margin: "3rem auto",
     color: "#019246",
     fontSize: "1.5rem"
   },
@@ -103,7 +103,8 @@ const styles = {
   },
   root: {
     flexGrow: 1,
-    marginTop: "4rem"
+    marginTop: "4rem",
+    minHeight: "70rem"
   },
   spinner: {
     background: "#4267b2",

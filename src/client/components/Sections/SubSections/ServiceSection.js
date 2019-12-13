@@ -260,6 +260,21 @@ class ServiceSectionComponent extends React.Component {
                   <CalculatorForm onCalculate={this.props.updatePaymentGraph} />
                 </div>
               </div>
+              <div className="mbsc-row-3">
+                <Button
+                  onClick={this.handleRedirect}
+                  variant="outlined"
+                  size="large"
+                  color="primary"
+                  style={{
+                    width: "90%",
+                    margin: "8rem 1rem 1rem 1rem",
+                    fontSize: "1.5rem"
+                  }}
+                >
+                  Next Step {<TrendingFlat style={{ fontSize: "2rem" }} />}
+                </Button>
+              </div>
               {input.canCalculate && (
                 <div className="mbsc-row-3">
                   <Button
