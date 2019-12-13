@@ -477,25 +477,7 @@ class RegistrationModalComponent extends React.Component {
                         validate={[required]}
                         warn={alphaNumeric}
                       />
-                      <Field
-                        name="loanAmount"
-                        label={"Loan Amount (USD$)"}
-                        type="number"
-                        component={renderTextField}
-                        mobile={false}
-                      />
-                      <Field
-                        name="interestRate"
-                        component={renderInterestSelect}
-                        label={"Interest Rate (%)"}
-                        classes={classes}
-                      />
-                      <Field
-                        name="term"
-                        label={"Loan Term (Yrs)"}
-                        component={renderTermSelect}
-                        label={"Loan Term (Years)"}
-                      />
+
                       <Field
                         type="password"
                         label="Enter a Password"
@@ -582,15 +564,15 @@ const selector = formValueSelector("registration"); // <-- same as form name
 
 const mapStateToProps = state => {
   const value = {};
-  value.term = selector(state, "term");
   value.firstName = selector(state, "firstName");
+  value.lastName = selector(state, "lastName");
   value.registerPassword = selector(state, "registerPassword");
   value.confirmPassword = selector(state, "confirmPassword");
   value.username_email = selector(state, "username_email");
-  value.lastName = selector(state, "lastName");
-  value.interestRate = selector(state, "interestRate");
   value.accountType = selector(state, "accountType");
-  value.loanAmount = selector(state, "loanAmount");
+  // value.term = selector(state, "term");
+  // value.loanAmount = selector(state, "loanAmount");
+  // value.interestRate = selector(state, "interestRate");
 
   return {
     registered: state.users.registered,
