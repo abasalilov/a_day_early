@@ -117,9 +117,10 @@ class InputFormComponent extends React.Component {
 
   render() {
     const { anticipated } = this.props;
-    const loanLabel = anticipated
-      ? "Anticipated Loan Amount"
-      : "Current Loan Amount";
+    // const loanLabel = anticipated
+    //   ? "Anticipated Loan Amount"
+    //   : "Current Loan Amount";
+    const loanLabel = "Loan Amount";
     const originationLabel = anticipated
       ? "Expected First Payment Date"
       : "First Payment Date";
@@ -278,7 +279,7 @@ class InputFormComponent extends React.Component {
                 {paymentLabel}
               </mobiscroll.Input>
             </div>
-            {!anticipated && (
+            {/* {!anticipated && (
               <div className="mbsc-col-12">
                 <mobiscroll.Input
                   name="originalLoanAmount"
@@ -291,7 +292,7 @@ class InputFormComponent extends React.Component {
                   Original Loan Amount
                 </mobiscroll.Input>
               </div>
-            )}
+            )} */}
             <div className="mbsc-col-12 mbsc-col-lg-8">
               <mobiscroll.Calendar
                 display="bottom"

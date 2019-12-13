@@ -229,7 +229,7 @@ export default function input(state = defaultState, action) {
         canCalculate = Object.keys(action.st).filter(item => {
           return action.st[item] !== null;
         });
-        shouldCalculate = canCalculate.length >= 3;
+        shouldCalculate = canCalculate.length >= 2;
 
         hasMissingFields = checkForMissingFields(canCalculate);
       }

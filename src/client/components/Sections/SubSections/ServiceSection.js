@@ -247,7 +247,7 @@ class ServiceSectionComponent extends React.Component {
                       marginBottom: "1rem"
                     }}
                   >
-                    (Please fill out 3 of the following fields)
+                    (Please fill out a few of the following fields)
                   </Typography>
                 </div>
                 <div
@@ -260,7 +260,7 @@ class ServiceSectionComponent extends React.Component {
                   <CalculatorForm onCalculate={this.props.updatePaymentGraph} />
                 </div>
               </div>
-              <div className="mbsc-row-3">
+              {/* <div className="mbsc-row-3">
                 <Button
                   onClick={this.handleRedirect}
                   variant="outlined"
@@ -274,7 +274,7 @@ class ServiceSectionComponent extends React.Component {
                 >
                   Next Step {<TrendingFlat style={{ fontSize: "2rem" }} />}
                 </Button>
-              </div>
+              </div> */}
               {input.canCalculate && (
                 <div className="mbsc-row-3">
                   <Button

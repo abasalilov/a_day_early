@@ -132,8 +132,20 @@ export const IntroSectionComponent = props => {
         style={mobileVariantStyle}
         gutterBottom
       >
-        {displayContent.top}
+        {displayContent.top}{" "}
+        {displayContent.isHome && (
+          <a
+            href="/calculator"
+            style={{
+              color: "#019246 !important",
+              textDecoration: "none !important"
+            }}
+          >
+            simulator.
+          </a>
+        )}
       </Typography>
+
       {!mobile && (
         <React.Fragment>
           {!showHotLink && (
@@ -157,7 +169,6 @@ export const IntroSectionComponent = props => {
               style={mobileVariantStyle}
               gutterBottom
             >
-              Getting a new mortgage? Try our
               <a
                 href="/registration"
                 style={{
@@ -165,9 +176,10 @@ export const IntroSectionComponent = props => {
                   textDecoration: "none !important"
                 }}
               >
-                simulator
+                Register Now{" "}
               </a>
-              to see how much you can save using aDayEarly.
+              for our free Mortgage Insider Newsletter and free access to our
+              live events.
             </Typography>
           )}
           <Typography

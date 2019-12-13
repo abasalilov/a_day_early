@@ -203,7 +203,7 @@ class NewLoanCalculatorPageComponent extends React.Component {
                   color="textPrimary"
                   style={{ width: "100%", color: "#2D3190" }}
                 >
-                  (Please fill out 3 of the following fields)
+                  (Please fill out a few of the following fields)
                 </Typography>
               </Grid>
               <Grid

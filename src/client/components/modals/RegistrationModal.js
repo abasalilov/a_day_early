@@ -388,8 +388,6 @@ class RegistrationModalComponent extends React.Component {
   }
 
   render() {
-    console.log("this.props", this.props);
-
     const {
       classes,
       open,

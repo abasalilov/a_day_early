@@ -180,10 +180,27 @@ class ProgramsPageComponent extends React.Component {
     return (
       <div style={{ marginTop: "4rem !important" }}>
         <div className="mbsc-grid" style={{ marginTop: "4rem !important" }}>
+          <div className="mbsc-row" style={{ marginTop: "8rem" }}>
+            <div className="mbsc-col-2" />
+            <div className="mbsc-col-8">
+              <mobiscroll.CardTitle
+                className="mbsc-bold mbsc-txt-l"
+                style={{ color: "#2d3190" }}
+              >
+                <h2>
+                  Pick a Program and see the results! Try a few options to see
+                  what works best for you. Fill out info for a simulation of
+                  program results.
+                </h2>{" "}
+              </mobiscroll.CardTitle>
+            </div>
+            <div className="mbsc-col-2" />
+          </div>
+
           <div className="mbsc-row">
             <div className="mbsc-col-1" />
 
-            <div className="mbsc-col-4" style={{ marginTop: "8rem" }}>
+            <div className="mbsc-col-4" style={{ marginTop: "4rem" }}>
               <mobiscroll.Accordion theme="ios">
                 <mobiscroll.Card
                   collapsible
@@ -271,39 +288,10 @@ class ProgramsPageComponent extends React.Component {
                     />
                   </mobiscroll.CardContent>
                 </mobiscroll.Card>
-
-                <mobiscroll.Card
-                  collapsible
-                  style={{ margin: "2rem" }}
-                  ref="cont4"
-                  theme="material"
-                  themeVariant="light"
-                >
-                  <mobiscroll.CardHeader>
-                    <mobiscroll.CardTitle className="mbsc-bold">
-                      <h3>DoubleDown</h3>
-                    </mobiscroll.CardTitle>
-                  </mobiscroll.CardHeader>
-                  <mobiscroll.CardContent>
-                    <mobiscroll.Listview
-                      itemType={() => (
-                        <ListItem
-                          data={this.state.items[3]}
-                          btn={this.handleDoubleDown}
-                        />
-                      )}
-                      data={[this.state.items[3]]}
-                      theme="ios"
-                      themeVariant="light"
-                      swipe={true}
-                      enhance={true}
-                    />
-                  </mobiscroll.CardContent>
-                </mobiscroll.Card>
               </mobiscroll.Accordion>
             </div>
             <div className="mbsc-col-1" />
-            <div className="mbsc-col-4" style={{ marginTop: "8rem" }}>
+            <div className="mbsc-col-4" style={{ marginTop: "4rem" }}>
               <mobiscroll.Accordion theme="ios">
                 <mobiscroll.Card
                   collapsible
@@ -384,6 +372,35 @@ class ProgramsPageComponent extends React.Component {
                         />
                       )}
                       data={[this.state.items[6]]}
+                      theme="ios"
+                      themeVariant="light"
+                      swipe={true}
+                      enhance={true}
+                    />
+                  </mobiscroll.CardContent>
+                </mobiscroll.Card>
+
+                <mobiscroll.Card
+                  collapsible
+                  style={{ margin: "2rem" }}
+                  ref="cont4"
+                  theme="material"
+                  themeVariant="light"
+                >
+                  <mobiscroll.CardHeader>
+                    <mobiscroll.CardTitle className="mbsc-bold">
+                      <h3>DoubleDown</h3>
+                    </mobiscroll.CardTitle>
+                  </mobiscroll.CardHeader>
+                  <mobiscroll.CardContent>
+                    <mobiscroll.Listview
+                      itemType={() => (
+                        <ListItem
+                          data={this.state.items[3]}
+                          btn={this.handleDoubleDown}
+                        />
+                      )}
+                      data={[this.state.items[3]]}
                       theme="ios"
                       themeVariant="light"
                       swipe={true}
