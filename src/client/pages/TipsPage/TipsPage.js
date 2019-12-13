@@ -2,6 +2,7 @@ import React from "react";
 import mobiscroll from "@mobiscroll/react";
 import "@mobiscroll/react/dist/css/mobiscroll.min.css";
 import { FooterSection } from "../../components/Sections/SubSections/FooterSection";
+import Typography from "@material-ui/core/Typography";
 
 class ListItem extends React.Component {
   render() {
@@ -30,17 +31,31 @@ class ListItem extends React.Component {
   }
 }
 
+const topLabelStyle = {
+  color: "#3f51b5",
+  textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
+  padding: "1rem",
+  margin: "6rem 1rem 1rem 2rem"
+};
+
 const TipsPageComponent = props => {
   return (
     <div
       style={{
         minHeight: "60rem",
         marginTop: "8rem",
-        backgroundColor: "#7fcfa0",
         alignItems: "center"
       }}
     >
-      <h1>Tips on loan repayment acceleration</h1>
+      <Typography
+        variant="h3"
+        style={topLabelStyle}
+        align="center"
+        gutterBottom
+      >
+        Tips for loan repayment acceleration
+      </Typography>
+
       <mobiscroll.Card theme="ios" themeVariant="light">
         <mobiscroll.CardHeader>
           <mobiscroll.CardTitle>
