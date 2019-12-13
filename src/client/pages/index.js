@@ -12,3 +12,4 @@ export { NewLoanCalculatorPage } from "./NewLoanCalculatorPage";
 export { RegistrationPage } from "./RegistrationPage";
 export { ContactUsPage } from "./ContactUsPage";
 export { TestPage } from "./TestPage";
+export { TipsPage } from "./TipsPage";

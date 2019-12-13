@@ -4,11 +4,7 @@ import { FlyOut, LenderSelect } from "../common";
 import Divider from "@material-ui/core/Divider";
 import { withStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
-import Grid from "@material-ui/core/Grid";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
+
 import mobiscroll from "@mobiscroll/react";
 import "@mobiscroll/react/dist/css/mobiscroll.min.css";
 
@@ -220,8 +216,6 @@ class CalculatorGraphComponent extends React.Component {
 
     const lenderDisplayName = isEmpty(lender) ? otherLender : lender;
     const showQuestion = isEmpty(accuracy);
-    // console.log("accuracy", accuracy);
-    // console.log("showQuectin", showQuestion);
     const updatedInterestRate = this.state.interestRate;
     let monthly = +monthlyOverpayment + monthlyPayment;
     if (isNaN(monthlyPayment)) {
@@ -232,12 +226,15 @@ class CalculatorGraphComponent extends React.Component {
     const msg = `Your interest rate is above today's going rate, would you like to get some information and options from a lender? Here's how much you can save: ${finalPaymentAmount.toFixed(
       2
     )} every month!`;
-    const loanLabel = "loanlabel";
-    const interestLabel = "interestLabel";
-    const termLabel = "termLabel";
-    const paymentLabel = "paymentLabel";
-    const originationLabel = "originationLabel";
-    const anticipated = true;
+    // const loanLabel = "loanlabel";
+    // const interestLabel = "interestLabel";
+    // const termLabel = "termLabel";
+    // const paymentLabel = "paymentLabel";
+    // const originationLabel = "originationLabel";
+    // const anticipated = true;
+    const loanIsNull = loanAmount === null;
+    const termisNull = term === null;
+    const interestIsNull = interestRate === null;
     const generateFirstDate = () => "12/12/12";
     return (
       <div
@@ -278,7 +275,18 @@ class CalculatorGraphComponent extends React.Component {
                     this.handleChange("loanAmount", e.target.value)
                   }
                 />
+                {loanIsNull && (
+                  <FlyOut
+                    show={true}
+                    message={"Loan amount cannot be empty."}
+                    style={{
+                      fontSize: "1rem !important"
+                    }}
+                    short={true}
+                  />
+                )}
               </div>
+
               <div className="mbsc-col-4">
                 <mobiscroll.Dropdown
                   label={"Term (Yrs)"}
@@ -293,6 +301,16 @@ class CalculatorGraphComponent extends React.Component {
                   <option value={25}>25</option>
                   <option value={30}>30</option>
                 </mobiscroll.Dropdown>
+                {termisNull && (
+                  <FlyOut
+                    show={true}
+                    message={"A loan term is required."}
+                    style={{
+                      fontSize: "1rem !important"
+                    }}
+                    short={true}
+                  />
+                )}
               </div>
               <div className="mbsc-col-4">
                 <mobiscroll.Dropdown
@@ -398,6 +416,16 @@ class CalculatorGraphComponent extends React.Component {
                   <option value={"12.750"}>12.750%</option>
                   <option value={"12.875"}>12.875%</option>
                 </mobiscroll.Dropdown>
+                {interestIsNull && (
+                  <FlyOut
+                    show={true}
+                    message={"Interest rate cannot be empty."}
+                    style={{
+                      fontSize: "1rem !important"
+                    }}
+                    short={true}
+                  />
+                )}
               </div>
             </div>
             {showInterestRateMessage && (

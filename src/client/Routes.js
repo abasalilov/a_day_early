@@ -14,6 +14,7 @@ import {
   NewLoanCalculatorPage,
   ContactUsPage,
   TestPage,
+  TipsPage,
   RegistrationPage
 } from "./pages";
 
@@ -29,6 +30,11 @@ export default [
       {
         ...LoginPage,
         path: "/login",
+        exact: true
+      },
+      {
+        ...TipsPage,
+        path: "/tips",
         exact: true
       },
       {

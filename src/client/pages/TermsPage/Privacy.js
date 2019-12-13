@@ -16,7 +16,7 @@ const Privacy = () => (
                 <div>
                     <h1>A Day Early Privacy Policy</h1>
                     <p>
-                        <em>Last updated: Aug 22, 2018</em>
+                        <em>Last updated: Aug 22, 2019</em>
                     </p>
                     <p>
                         A Day Early, (&quot;ade Development&quot;, &quot;we&quot;,

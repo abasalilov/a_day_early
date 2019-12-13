@@ -78,20 +78,18 @@ class StepperComponent extends React.Component {
               <div className="mbsc-row">
                 <div className="mbsc-col-md-6 mbsc-col-12">
                   <mobiscroll.Switch inputStyle="box">
-                    Agree to terms and conditions
+                    Get a free pass to our Mortgage Payoff Event March 7 in
+                    Roseville, CA
+                  </mobiscroll.Switch>
+                  <mobiscroll.Switch inputStyle="box">
+                    Check to receive our monthly newsletter with tips and news
                   </mobiscroll.Switch>
                 </div>
               </div>
-              <div className="mbsc-row">
-                <div className="mbsc-col-6">
-                  <button data-enhance="false" className="custom-button">
-                    Submit
-                  </button>
-                </div>
-              </div>
+              <div className="mbsc-row"></div>
             </mobiscroll.Form>
           </div>
-          <div
+          {/* <div
             className="mbsc-col-md-10 mbsc-col-xl-9 mbsc-form-grid outside-form"
             style={{ border: "solid green" }}
           >
@@ -134,7 +132,7 @@ class StepperComponent extends React.Component {
                 sunt in culpa qui officia deserunt mollit anim id est laborum.
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     );

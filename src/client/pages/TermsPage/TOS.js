@@ -16,7 +16,7 @@ const TOS = () => (
                 <strong>A Day Early Terms of Use</strong>
             </h2>
             <div>
-                <p>[Last revised: 22 Aug 2018]</p>
+                <p>[Last revised: 22 Aug 2019]</p>
                 <p>
                     This agreement is between you and the service operator, A Day Early. By
                     using any services made available through the A Day Early website (
