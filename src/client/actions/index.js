@@ -16,7 +16,7 @@ export const adeLoginSubmit = (username, pw) => async (
   getState,
   api
 ) => {
-  const res = await api.post(`http://localhost:5000/ade-login-user`, {
+  const res = await api.post(`http://165.22.158.201:5000/ade-login-user`, {
     username,
     pw
   });
@@ -48,7 +48,7 @@ export const registerUser = info => async (dispatch, getState, api) => {
     interestRate: Number(info.interestRate),
     monthlyPayment: 0
   };
-  const res = await api.post("http://localhost:5000/ade-register-user", {
+  const res = await api.post("http://165.22.158.201:5000/ade-register-user", {
     data
   });
   console.log("res registerUser", res);
@@ -60,7 +60,7 @@ export const registerUser = info => async (dispatch, getState, api) => {
 
 export const FETCH_CURRENT_USER = "fetch_current_user";
 export const fetchCurrentUser = () => async (dispatch, getState, api) => {
-  const res = await api.get("http://localhost:5000/current-user");
+  const res = await api.get("http://165.22.158.201:5000/current-user");
   dispatch({
     type: FETCH_CURRENT_USER,
     payload: res
@@ -73,10 +73,9 @@ export const confirmUniqueUsername = data => async (
   getState,
   api
 ) => {
-  const res = await api.post("http://localhost:5000/ade-username-check", {
+  const res = await api.post("http://165.22.158.201:5000/ade-username-check", {
     data
   });
-  console.log("confirmUniqueUsername", res);
   dispatch({
     type: CONFIRM_UNIQUE_USERNAME,
     payload: res
@@ -110,7 +109,7 @@ export const submitContactUsEmail = data => async (dispatch, getState, api) => {
     type: EMAIL_SUBMIT
   });
 
-  const res = await api.post("http://localhost:5000/email", {
+  const res = await api.post("http://165.22.158.201:5000/email", {
     data
   });
   if (res.status !== 201) {

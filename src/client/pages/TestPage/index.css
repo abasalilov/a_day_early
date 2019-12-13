@@ -1,0 +1,23 @@
+.mbsc-progress-step-label {
+  border: solid red 1px;
+  font-size: medium !important;
+  width: 5.5em !important;
+  margin-left: -2.75em !important;
+}
+
+div > label > span > span > span > span:nth-child(5) {
+  /* border: solid green !important; */
+}
+
+.mbsc-ic.icon {
+  font-family: inherit;
+  font-weight: normal;
+}
+.mbsc-ic.icon:before {
+  font-family: "Font Awesome\ 5 Free", "Font Awesome\ 5 Brands",
+    "Font Awesome 5 Pro";
+}
+.mbsc-ic.icon.fas:before,
+.mbsc-ic.icon.fa:before {
+  font-weight: 900;
+}

@@ -179,25 +179,6 @@ class ProgramsPageComponent extends React.Component {
   render() {
     return (
       <div style={{ marginTop: "4rem !important" }}>
-        {/* <mobiscroll.Form>
-          <div className="mbsc-btn-group-block">
-            <div className="mbsc-grid">
-              <div className="mbsc-row">
-                <div className="mbsc-col-4">
-                  <mobiscroll.Button onClick={this.toggleLast}>
-                    Explore All Programs
-                  </mobiscroll.Button>
-                </div>
-                <div className="mbsc-col-4" />
-                <div className="mbsc-col-4">
-                  <mobiscroll.Button onClick={this.closeAll}>
-                    Close all Programs
-                  </mobiscroll.Button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </mobiscroll.Form> */}
         <div className="mbsc-grid" style={{ marginTop: "4rem !important" }}>
           <div className="mbsc-row">
             <div className="mbsc-col-1" />
@@ -214,7 +195,7 @@ class ProgramsPageComponent extends React.Component {
                 >
                   <mobiscroll.CardHeader>
                     <mobiscroll.CardTitle className="mbsc-bold mbsc-txt-l">
-                      <h3> OneDayEarly</h3>
+                      <h3>OneDayEarly</h3>
                     </mobiscroll.CardTitle>
                   </mobiscroll.CardHeader>
                   <mobiscroll.CardContent>

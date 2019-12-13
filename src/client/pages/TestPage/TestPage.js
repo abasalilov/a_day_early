@@ -2,10 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
-import { routePrograms } from "../../actions";
-import { MobiNav } from "../../components/navigation";
+import { StepperForm } from "../../components/Forms";
+import { ProgressBar } from "./ProgressSlider";
+import mobiscroll from "@mobiscroll/react";
+import "@mobiscroll/react/dist/css/mobiscroll.min.css";
+import "./index.css";
 
 const styles = {
   container: {
@@ -38,88 +39,75 @@ const sectionStyle = {
 class TestPageComponent extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      panelOpen: true,
+      steps: 50
+    };
 
-    this.handleADayEarly = this.handleADayEarly.bind(this);
-    this.handleLeapFrog = this.handleLeapFrog.bind(this);
-    this.handleJumpStart = this.handleJumpStart.bind(this);
-    this.handleEasyStart = this.handleEasyStart.bind(this);
-    this.handleFlexPay = this.handleFlexPay.bind(this);
-    this.handleRoundUp = this.handleRoundUp.bind(this);
+    this.handleTogglePanel = this.handleTogglePanel.bind(this);
+    this.setSteps = this.setSteps.bind(this);
   }
 
   componentDidMount() {}
 
-  handleADayEarly() {
-    this.props.routeToProgram(["ADE", "One Day Early"]);
-    this.props.history.push("/calculator");
+  handleTogglePanel() {
+    const { panelOpen } = this.state;
+    this.setState({ panelOpen: !panelOpen });
   }
 
-  handleLeapFrog() {
-    this.props.routeToProgram(["LF", "LeapFrog"]);
-    this.props.history.push("/calculator");
-  }
-
-  handleFlexPay() {
-    const fp = [
-      "FP",
-      "FlexPay",
-      "Dropdown is calculator with these fields:",
-      "Extra principal payment amount:",
-      "Payment date:",
-      "(+ add an additional payment)",
-      "Show interest savings, time saved and new payoff date",
-      "Let’s get registered and accelerate (button)",
-      "*your campaign(s) can be modified at any time"
-    ];
-    this.props.routeToProgram(["FLEX", "FlexPay"]);
-    this.props.history.push("/calculator");
-  }
-
-  handleEasyStart() {
-    const es = [
-      "ES",
-      "Easy Start",
-      "Interactive Amortization schedule click any future principal payment you want to prepay and see how much you can save.",
-      "After user clicks calculate show:  interest savings, time saved and new payoff date",
-      "Let’s get registered and accelerate (button)"
-    ];
-
-    this.props.routeToProgram(["ES", "EasyStart"]);
-    this.props.history.push("/calculator");
-  }
-
-  handleJumpStart() {
-    const js = [
-      "JS",
-      "Jump Start",
-      "Mortgage Snapshot",
-      "Adjust payoff date and extra principal payment amount to see how you can reach your goals.",
-      "If I pay an extra $___________ in principal each month my mortgage will be paid off by ____________(date) Calculate (button)",
-      "After user clicks calculate show:  interest savings, time saved and new payoff date",
-      "Let’s get registered and accelerate (button)",
-      "*your campaign(s) can be modified at any time"
-    ];
-    this.props.routeToProgram(["JS", "JumpStart"]);
-    this.props.history.push("/calculator");
-  }
-  handleRoundUp() {
-    const ru = [
-      "RU",
-      "Round Up",
-      "Dropdown is Calculator with these fields:",
-      "Round to nearest: drop down with pick one $100, $500, $1000",
-      "One time or recurring? (hotlinks)",
-      "Show interest savings, time saved and new payoff date",
-      "Let’s get registered and accelerate (button)",
-      "*your campaign(s) can be modified at any time"
-    ];
-    this.props.routeToProgram(["RU", "RoundUp"]);
-    this.props.history.push("/calculator");
+  setSteps(value) {
+    console.log("value", value);
+    this.setState({
+      steps: value
+    });
   }
 
   render() {
-    return <div style={{ marginTop: "6rem" }}>Here</div>;
+    const { panelOpen } = this.state;
+    const formClass = panelOpen ? "mbsc-col-8" : "mbsc-col-10";
+    const panelClass = panelOpen ? "mbsc-col-3" : "mbsc-col-1";
+    return (
+      <div style={{ marginTop: "6rem" }}>
+        <mobiscroll.Form
+          className="mbsc-form-grid"
+          theme="ios"
+          themeVariant="light"
+        >
+          <mobiscroll.Button onClick={this.handleTogglePanel}>
+            Toggle
+          </mobiscroll.Button>
+          <div className="mbsc-grid">
+            <div className="mbsc-col-12">
+              <ProgressBar />
+            </div>
+            <div className="mbsc-col-12">
+              <div className="mbsc-row" style={{ justifyContent: "center" }}>
+                <div className={formClass} style={{ border: "solid red" }}>
+                  <Typography
+                    variant="h4"
+                    style={labelStyle}
+                    align="left"
+                    gutterBottom
+                  >
+                    Loan Information - 2
+                  </Typography>
+                  <div>
+                    <StepperForm />
+                  </div>
+                </div>
+                <div className={panelClass} style={{ border: "solid green" }}>
+                  Here
+                  <span class="mbsc-ic mbsc-ic-close"></span>
+                  <span class="mbsc-ic mbsc-ic-plus"></span>
+                  <span class="mbsc-ic mbsc-ic-arrow-right2"></span>
+                  <span class="mbsc-ic mbsc-ic-arrow-left2"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mobiscroll.Form>
+      </div>
+    );
   }
 }
 
@@ -129,9 +117,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => {
-  return {
-    routeToProgram: msg => dispatch(routePrograms(msg))
-  };
+  return {};
 };
 
 const ConnectedProgramsPage = connect(
@@ -142,3 +128,14 @@ const ConnectedProgramsPage = connect(
 export const TestPage = {
   component: ConnectedProgramsPage
 };
+
+// <div className="mbsc-col-6">
+// <mobiscroll.Input
+//   name="paymentAmount"
+//   placeholder="Payment Amount ($)"
+//   inputStyle="box"
+//   labelStyle="floating"
+// >
+//   {"paymentLabel"}
+// </mobiscroll.Input>
+// </div>
