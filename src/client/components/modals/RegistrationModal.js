@@ -130,7 +130,7 @@ function getModalStyle(mobile) {
     top: "30%",
     left: mobile ? "25%" : "35%",
     transform: `translate(-20%, -25%)`,
-    width: mobile ? "70%" : "50%"
+    width: mobile ? "70%" : "65%"
   };
 }
 
@@ -537,7 +537,6 @@ const mapStateToProps = state => {
   value.accountType = selector(state, "accountType");
   value.event37 = selector(state, "event37");
   value.newsLetter = selector(state, "newsLetter");
-  console.log("valueObj", value);
   return {
     registered: state.users.registered,
     confirmUserNameMsg: confirmValue(state.users.confirmUserNameMsg),
@@ -549,7 +548,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     registerUser: user => {
-      console.log("user", user);
       dispatch(createRegisterUserAction(user));
     }
   };
