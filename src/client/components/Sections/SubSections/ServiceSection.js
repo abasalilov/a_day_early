@@ -163,6 +163,7 @@ class ServiceSectionComponent extends React.Component {
   }
 
   handleToggleModal(selectedService = {}) {
+    console.log("here in modal");
     const { showModal } = this.state;
     if (showModal) {
       this.setState({

@@ -57,7 +57,7 @@ const renderTermSelect = props => {
       className="mbsc-col-8"
       style={{
         marginTop: "1rem",
-        fontSize: "1.5rem"
+        fontSize: "1rem"
       }}
     >
       <mobiscroll.Dropdown
@@ -89,7 +89,8 @@ const renderAccountSelect = props => {
       className="mbsc-col-8"
       style={{
         marginTop: "1rem",
-        fontSize: "1.5rem"
+        fontSize: "1rem",
+        marginLeft: ".8rem"
       }}
     >
       <mobiscroll.Dropdown
@@ -118,7 +119,7 @@ const renderInterestSelect = props => {
       className="mbsc-col-8"
       style={{
         marginTop: "1rem",
-        fontSize: "1.5rem"
+        fontSize: "1rem"
       }}
     >
       <mobiscroll.Dropdown
@@ -244,7 +245,7 @@ function getModalStyle(mobile) {
     top: "30%",
     left: mobile ? "25%" : "35%",
     transform: `translate(-20%, -25%)`,
-    width: mobile ? "75%" : "70%"
+    width: mobile ? "70%" : "50%"
   };
 }
 
@@ -266,7 +267,7 @@ const styles = theme => ({
     boxShadow: theme.shadows[5],
     margin: "1rem",
     padding: "1rem",
-    height: "90%",
+    height: "70%",
     display: "flex",
     justifyContent: "center",
     overflowY: "visible",
@@ -299,8 +300,8 @@ const styles = theme => ({
   },
   modalRoot: {
     flexGrow: 1,
-    height: "100%",
-    overflowY: "scroll"
+    height: "80%"
+    // overflowY: "scroll"
   },
   btn: {
     margin: "1rem auto",
@@ -360,7 +361,7 @@ const renderTextField = ({
         labelStyle="floating"
         style={{
           border: "solid #049347 2px",
-          fontSize: "1.5rem"
+          fontSize: "1rem"
         }}
       >
         {label}
@@ -425,22 +426,25 @@ class RegistrationModalComponent extends React.Component {
             <mobiscroll.FormGroup>
               <div className={classes.modalRoot}>
                 <div className="mbsc-grid-fixed">
-                  <div className="mbsc-col-12 mbsc-justify-content-start">
-                    <div className="mbsc-row mbsc-justify-content-between">
-                      <h1
-                        style={{
-                          color: "rgb(45, 49, 144)",
-                          fontSize: "2rem"
-                        }}
-                      >
-                        Registration Form
-                      </h1>
+                  <div className="mbsc-col-12 mbsc-justify-content-center">
+                    <div style={{ float: "right" }}>
                       <Close
                         onClick={closeClick}
                         className={classes.modalCloseBtn}
                       />
                     </div>
-                    <form>
+                    <div className="mbsc-row mbsc-justify-content-center">
+                      <h1
+                        style={{
+                          color: "rgb(45, 49, 144)",
+                          fontSize: "1.5rem"
+                        }}
+                      >
+                        Registration Form
+                      </h1>
+                    </div>
+
+                    <form className="mbsc-col-12 mbsc-justify-content-center">
                       <Field
                         name="username_email"
                         type="text"
@@ -520,11 +524,9 @@ class RegistrationModalComponent extends React.Component {
                     </form>
                     <div className={classes.btnContainer}>
                       {registered ? closeClick() : ""}
-                      <span
-                        className={mobile ? classes.mobileLink : classes.link}
-                      >
+                      <span className={classes.link}>
                         <Typography
-                          variant={mobile ? "h3" : "h6"}
+                          variant={"h6"}
                           align="center"
                           color="textPrimary"
                           gutterBottom
