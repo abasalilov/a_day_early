@@ -30,6 +30,7 @@ export default function(
     case ADE_LOGIN_SUBMIT:
       const loginState = Object.assign({}, state);
       if (action.payload.statusText) {
+        console.log("action", action);
         loginState.attempted = true;
         loginState.result = action.payload.statusText;
       } else {

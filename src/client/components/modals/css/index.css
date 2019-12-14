@@ -15,7 +15,7 @@
 }
 
 form > label > span.mbsc-label {
-  font-size: 1.5em !important;
+  font-size: 0.9em !important;
 }
 
 form > div.mbsc-col-8 > label {
@@ -31,7 +31,7 @@ form > div.mbsc-col-8 > label {
 #greenError > div {
   color: green !important;
   background-color: white !important;
-  font-size: 1.1rem;
+  font-size: 0.75rem;
   border-radius: 1rem;
   font-weight: bold;
 }
@@ -39,7 +39,7 @@ form > div.mbsc-col-8 > label {
 #redError > div {
   color: red !important;
   background-color: white !important;
-  font-size: 1.1rem;
+  font-size: 0.75rem;
   border-radius: 1rem;
   font-weight: bold;
 }

@@ -121,9 +121,9 @@ class InputFormComponent extends React.Component {
     //   ? "Anticipated Loan Amount"
     //   : "Current Loan Amount";
     const loanLabel = "Loan Amount";
-    const originationLabel = anticipated
-      ? "Expected First Payment Date"
-      : "First Payment Date";
+    // const originationLabel = anticipated
+    //   ? "Expected First Payment Date"
+    //   : "First Payment Date";
     const interestLabel = anticipated
       ? "Anticipated Interest Rate"
       : "Interest Rate (%)";
@@ -293,7 +293,7 @@ class InputFormComponent extends React.Component {
                 </mobiscroll.Input>
               </div>
             )} */}
-            <div className="mbsc-col-12 mbsc-col-lg-8">
+            {/* <div className="mbsc-col-12 mbsc-col-lg-8">
               <mobiscroll.Calendar
                 display="bottom"
                 theme="material"
@@ -310,7 +310,7 @@ class InputFormComponent extends React.Component {
                   {originationLabel}
                 </mobiscroll.Input>
               </mobiscroll.Calendar>
-            </div>
+            </div> */}
           </div>
         </div>
       </mobiscroll.Form>

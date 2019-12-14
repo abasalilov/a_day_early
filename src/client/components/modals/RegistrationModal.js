@@ -585,6 +585,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     registerUser: user => {
+      console.log("user", user);
       dispatch(createRegisterUserAction(user));
     }
   };

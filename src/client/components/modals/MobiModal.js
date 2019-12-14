@@ -324,7 +324,7 @@ class RegistrationModalComponent extends React.Component {
                       <h1
                         style={{
                           color: "rgb(45, 49, 144)",
-                          fontSize: "2rem"
+                          fontSize: "1.5rem"
                         }}
                       >
                         Registration Form
