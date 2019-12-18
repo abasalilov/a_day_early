@@ -150,7 +150,7 @@ export default (req, store, context) => {
                   background: #fff;
                   border: 4px solid #3f51b5;
                   width: 65%;
-                  margin: 1rem 10rem 1rem -1rem;
+                  margin: 1rem 6rem 1rem -1rem;
                   float: right;
 
                 }

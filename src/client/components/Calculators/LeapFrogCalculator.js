@@ -98,6 +98,7 @@ class LeapFrogCalculatorComponent extends React.Component {
     if (!isEmpty(loanAmount) && !isEmpty(interestRate)) {
       this.setState({ loanAmount, interestRate, term });
     }
+    window.scrollTo(0, 0);
   }
 
   componentDidUpdate(prevProps) {
@@ -705,7 +706,7 @@ class LeapFrogCalculatorComponent extends React.Component {
               <Divider
                 style={{ width: "100%", color: "#3f51b5", margin: "2rem 1rem" }}
               />
-              <Grid
+              {/* <Grid
                 item
                 xs={12}
                 style={{
@@ -723,7 +724,7 @@ class LeapFrogCalculatorComponent extends React.Component {
                   alterSize={true}
                   lenderName={lenderDisplayName}
                 />
-              </Grid>
+              </Grid> */}
             </Grid>
           )}
         </div>

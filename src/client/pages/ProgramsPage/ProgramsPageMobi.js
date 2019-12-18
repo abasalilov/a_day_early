@@ -153,7 +153,7 @@ class ProgramsPageComponent extends React.Component {
   }
 
   handleDoubleDown() {
-    const ru = [
+    const dd = [
       "DD",
       "Double Down",
       "Dropdown is Calculator with these fields:",
