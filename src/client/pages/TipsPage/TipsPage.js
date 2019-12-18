@@ -80,7 +80,7 @@ const TipsPageComponent = props => {
           <h2>
             We tip a dollar or two at coffee and eating out. At the end of the
             day put your coins and paper change from the day in to your own
-            aDayEarly tip jar. near the end of the month, bank it and make a
+            aDayEarly tip jar. Near the end of the month, bank it and make a
             OneDayEarly payment.
           </h2>
         </mobiscroll.CardContent>
@@ -105,7 +105,7 @@ const TipsPageComponent = props => {
         </mobiscroll.CardHeader>
         <mobiscroll.CardContent>
           <h2>
-            Sell anything lately? a car, boat, tennis racket? Maybe you have
+            Sell anything lately? A car, boat, tennis racket? Maybe you have
             something you don't need or want. You get the picture. Sell it, bank
             it and use some of that money for a month's end OneDayearly payment.
           </h2>
@@ -118,7 +118,7 @@ const TipsPageComponent = props => {
         </mobiscroll.CardHeader>
         <mobiscroll.CardContent>
           <h2>
-            This is a no brainer. Dicipline all or a portion each year. as soon
+            This is a no brainer. Dicipline all or a portion each year. As soon
             as you receive it, schedule a month's end OneDayEarly payment.
           </h2>
         </mobiscroll.CardContent>
