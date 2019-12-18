@@ -13,14 +13,13 @@ const styles = theme => ({
     marginBottom: "1rem",
     padding: "1rem",
     [theme.breakpoints.up(900 + theme.spacing.unit * 3 * 2)]: {
-      width: 900,
+      width: "85%",
       marginLeft: "auto",
       marginRight: "auto"
     }
   },
   footer: {
-    marginTop: "4rem",
-    borderTop: `1px solid ${theme.palette.divider}`,
+    marginTop: "2rem",
     padding: `${theme.spacing.unit * 3}px 0`
   },
   href: {

@@ -14,7 +14,7 @@ import { PayPalButton } from "../../components/PayPalButton";
 
 const styles = {
   dash: {
-    border: "solid #2D3190 2px",
+    border: "solid #252774 2px",
     padding: "1rem",
     borderRadius: "1rem",
     width: "90%",
@@ -23,7 +23,7 @@ const styles = {
   },
   mobileDash: {
     textAlign: "center",
-    border: "solid #2D3190 2px",
+    border: "solid #252774 2px",
     padding: "1rem",
     width: "90%",
     borderRadius: "1rem",

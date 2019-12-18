@@ -61,7 +61,7 @@ class CalendarPickerComponent extends React.Component {
             <DatePicker
               variant="static"
               style={{
-                color: "#2D3190",
+                color: "#252774",
                 fontSize: "20px",
                 backgroundColor: "#FFF"
               }}
@@ -73,7 +73,7 @@ class CalendarPickerComponent extends React.Component {
               InputProps={{
                 style: {
                   backgroundColor: "#fff",
-                  color: "#2D3190",
+                  color: "#252774",
                   paddingTop: ".4rem",
                   fontSize: "20px",
                   fontWeight: "bold",

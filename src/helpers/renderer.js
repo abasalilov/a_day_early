@@ -94,7 +94,7 @@ export default (req, store, context) => {
                 }
 
                 #Home > div > div > p {
-                  color: #2D3190
+                  color: #252774
                 }
 
                 .react-reveal {
@@ -102,19 +102,19 @@ export default (req, store, context) => {
                     justify-content: space-between;
                 }
                 #Home > div > div > div > div > h3 > p {
-                  color: #2D3190
+                  color: #252774
                 }
 
                 #Calculator > h3 {
-                  color: #2D3190
+                  color: #252774
                 }
 
                 #Home > div > div > h4:nth-child(4){
-                  color: #2D3190
+                  color: #252774
                 }
 
                 #Home > div > div > h4:nth-child(5) {
-                  color: #2D3190
+                  color: #252774
                 }
 
                 #Contact-Us {
@@ -133,7 +133,7 @@ export default (req, store, context) => {
                 }
 
                 #Home > div > h3 > p {
-                  color: #2D3190
+                  color: #252774
                 }
 
                   #select-term {

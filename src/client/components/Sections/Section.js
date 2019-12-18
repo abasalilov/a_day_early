@@ -28,10 +28,7 @@ const styles = theme => ({
     width: "auto",
     marginLeft: theme.spacing.unit * 3,
     marginRight: theme.spacing.unit * 3,
-    marginTop: "2rem",
-    marginBottom: "2rem",
     [theme.breakpoints.up(900 + theme.spacing.unit * 3 * 2)]: {
-      width: 900,
       marginLeft: "auto",
       marginRight: "auto"
     }
@@ -53,14 +50,7 @@ const styles = theme => ({
 });
 
 const SectionComponent = props => {
-  const {
-    classes,
-    sectionProps = {},
-    mobile,
-    history,
-    isLastSection,
-    showHotLink
-  } = props;
+  const { classes, sectionProps = {}, mobile, history, showHotLink } = props;
   const { hasHero, displayType } = sectionProps;
   return (
     <React.Fragment>
@@ -109,8 +99,6 @@ const SectionComponent = props => {
         </section>
       ) : null}
       {/* Footer */}
-      {isLastSection ? <FooterSection mobile={mobile} /> : null}
-      {/* End footer */}
     </React.Fragment>
   );
 };

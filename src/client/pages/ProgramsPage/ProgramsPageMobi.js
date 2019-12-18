@@ -2,8 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import { routePrograms } from "../../actions";
+import { FooterSection } from "../../components/Sections/SubSections";
 import mobiscroll from "@mobiscroll/react";
 import "@mobiscroll/react/dist/css/mobiscroll.min.css";
+import Divider from "@material-ui/core/Divider";
 import "./index.css";
 
 const styles = {};
@@ -16,11 +18,9 @@ const ListItem = props => {
         <h2>{data.description}</h2>
       </li>
       <li>
-        <div className="mbsc-btn-group-block">
-          <mobiscroll.Button onClick={() => btn()}>
-            <h3>{`Explore the ${data.program} program`}</h3>
-          </mobiscroll.Button>
-        </div>
+        <mobiscroll.Button color="info" block={true} onClick={() => btn()}>
+          <h3>{`Explore the ${data.program} program`}</h3>
+        </mobiscroll.Button>
       </li>
     </React.Fragment>
   );
@@ -81,6 +81,8 @@ class ProgramsPageComponent extends React.Component {
     this.handleRoundUp = this.handleRoundUp.bind(this);
     this.handleDoubleDown = this.handleDoubleDown.bind(this);
   }
+
+  componentDidMount() {}
 
   handleADayEarly() {
     this.props.routeToProgram(["ADE", "One Day Early"]);
@@ -153,7 +155,7 @@ class ProgramsPageComponent extends React.Component {
   handleDoubleDown() {
     const ru = [
       "DD",
-      "Round Up",
+      "Double Down",
       "Dropdown is Calculator with these fields:",
       "Round to nearest: drop down with pick one $100, $500, $1000",
       "One time or recurring? (hotlinks)",
@@ -173,7 +175,13 @@ class ProgramsPageComponent extends React.Component {
   }
 
   toggleLast() {
+    this.refs.cont1.instance.toggle();
+    this.refs.cont2.instance.toggle();
+    this.refs.cont3.instance.toggle();
     this.refs.cont4.instance.toggle();
+    this.refs.cont5.instance.toggle();
+    this.refs.cont6.instance.toggle();
+    this.refs.cont7.instance.toggle();
   }
 
   render() {
@@ -185,7 +193,7 @@ class ProgramsPageComponent extends React.Component {
             <div className="mbsc-col-8">
               <mobiscroll.CardTitle
                 className="mbsc-bold mbsc-txt-l"
-                style={{ color: "#2d3190" }}
+                style={{ color: "#252774" }}
               >
                 <h2>
                   Pick a Program and see the results! Try a few options to see
@@ -207,6 +215,7 @@ class ProgramsPageComponent extends React.Component {
                   style={{ margin: "2rem" }}
                   open
                   ref="cont1"
+                  open
                   theme="material"
                   themeVariant="light"
                 >
@@ -236,6 +245,7 @@ class ProgramsPageComponent extends React.Component {
                   collapsible
                   style={{ margin: "2rem" }}
                   ref="cont2"
+                  open
                   theme="material"
                   themeVariant="light"
                 >
@@ -264,6 +274,7 @@ class ProgramsPageComponent extends React.Component {
                   collapsible
                   style={{ margin: "2rem" }}
                   ref="cont3"
+                  open
                   theme="material"
                   themeVariant="light"
                 >
@@ -296,13 +307,16 @@ class ProgramsPageComponent extends React.Component {
                 <mobiscroll.Card
                   collapsible
                   style={{ margin: "2rem" }}
-                  ref="cont1"
+                  ref="cont4"
+                  open
                   theme="material"
                   themeVariant="light"
                 >
                   <mobiscroll.CardHeader>
                     <mobiscroll.CardTitle className="mbsc-bold mbsc-txt-l">
-                      <h3>RoundUp</h3>
+                      <h3 style={{ marginBlockStart: "0rem !important" }}>
+                        RoundUp
+                      </h3>
                     </mobiscroll.CardTitle>
                   </mobiscroll.CardHeader>
                   <mobiscroll.CardContent>
@@ -325,7 +339,8 @@ class ProgramsPageComponent extends React.Component {
                 <mobiscroll.Card
                   collapsible
                   style={{ margin: "2rem" }}
-                  ref="cont2"
+                  ref="cont5"
+                  open
                   theme="material"
                   themeVariant="light"
                 >
@@ -354,7 +369,8 @@ class ProgramsPageComponent extends React.Component {
                 <mobiscroll.Card
                   collapsible
                   style={{ margin: "2rem" }}
-                  ref="cont4"
+                  ref="cont6"
+                  open
                   theme="material"
                   themeVariant="light"
                 >
@@ -383,7 +399,8 @@ class ProgramsPageComponent extends React.Component {
                 <mobiscroll.Card
                   collapsible
                   style={{ margin: "2rem" }}
-                  ref="cont4"
+                  ref="cont7"
+                  open
                   theme="material"
                   themeVariant="light"
                 >
@@ -411,6 +428,20 @@ class ProgramsPageComponent extends React.Component {
               </mobiscroll.Accordion>{" "}
             </div>
             <div className="mbsc-col-1" />
+          </div>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+        >
+          <Divider style={{ margin: "2", width: "90%" }} id="programs-footer" />
+        </div>
+        <div className="mbsc-col-12">
+          <div className="mbsc-row" style={{ justifyContent: "center" }}>
+            <FooterSection />
           </div>
         </div>
       </div>

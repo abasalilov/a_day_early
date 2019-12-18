@@ -1,6 +1,4 @@
 import React from "react";
-import Grid from "@material-ui/core/Grid";
-import Divider from "@material-ui/core/Divider";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
@@ -41,7 +39,7 @@ const styles = theme => ({
     padding: "1rem"
   },
   subMenuOption: {
-    border: "solid #2D3190 2px",
+    border: "solid #252774 2px",
     color: theme.palette.text.secondary,
     display: "flex",
     alignItems: "center",
@@ -216,7 +214,6 @@ class ServiceSectionComponent extends React.Component {
     console.log("decision point - input.calculate", input.canCalculate);
     return (
       <React.Fragment>
-        <Divider style={{ width: "100%", marginBottom: "2rem" }} id="basics" />
         <div className="mbsc-grid mbsc-row-12">
           <div className="mbsc-grid">
             <div className="mbsc-row">
@@ -229,8 +226,9 @@ class ServiceSectionComponent extends React.Component {
                     color="textPrimary"
                     style={{
                       width: "100%",
-                      color: "#2D3190",
-                      marginBottom: "2rem"
+                      color: "#252774",
+                      marginBottom: "2rem",
+                      textShadow: "3px 3px 0px rgba(0,0,0,0.2)"
                     }}
                   >
                     Let's Start With The Basics
@@ -244,8 +242,9 @@ class ServiceSectionComponent extends React.Component {
                     color="textPrimary"
                     style={{
                       width: "100%",
-                      color: "#2D3190",
-                      marginBottom: "1rem"
+                      color: "#252774",
+                      marginBottom: "1rem",
+                      textShadow: "3px 3px 0px rgba(0,0,0,0.2)"
                     }}
                   >
                     (Please fill out a few of the following fields)
@@ -261,21 +260,7 @@ class ServiceSectionComponent extends React.Component {
                   <CalculatorForm onCalculate={this.props.updatePaymentGraph} />
                 </div>
               </div>
-              {/* <div className="mbsc-row-3">
-                <Button
-                  onClick={this.handleRedirect}
-                  variant="outlined"
-                  size="large"
-                  color="primary"
-                  style={{
-                    width: "90%",
-                    margin: "8rem 1rem 1rem 1rem",
-                    fontSize: "1.5rem"
-                  }}
-                >
-                  Next Step {<TrendingFlat style={{ fontSize: "2rem" }} />}
-                </Button>
-              </div> */}
+
               {input.canCalculate && (
                 <div className="mbsc-row-3">
                   <Button

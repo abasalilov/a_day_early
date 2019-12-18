@@ -5,7 +5,7 @@ const Privacy = () => (
         <div
             id={'privacy'}
             style={{
-                border: 'solid #2D3190',
+                border: 'solid #252774',
                 margin: '2rem 4rem',
                 padding: '2rem',
                 color: '#666',

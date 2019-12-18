@@ -43,7 +43,7 @@ const NewModal = props => (
           style={{
             fontSize: "2rem",
             marginTop: "2rem",
-            color: "#2D3190"
+            color: "#252774"
           }}
           gutterBottom
         >
@@ -58,7 +58,7 @@ const NewModal = props => (
           style={{
             fontSize: "2rem",
             marginTop: "2rem",
-            color: "#2D3190"
+            color: "#252774"
           }}
           gutterBottom
         >
@@ -121,7 +121,7 @@ class App extends React.PureComponent<PropsT> {
 
   async componentDidMount() {
     this.handleWindowSizeChange();
-    setTimeout(() => this.handleCloseModal(), 3000);
+    setTimeout(() => this.handleCloseModal(), 30);
   }
 
   handleWindowSizeChange() {

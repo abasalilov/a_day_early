@@ -192,7 +192,7 @@ class NewLoanCalculatorPageComponent extends React.Component {
                   gutterBottom
                   align="center"
                   color="textPrimary"
-                  style={{ width: "100%", color: "#2D3190" }}
+                  style={{ width: "100%", color: "#252774" }}
                 >
                   Let's Start With The Basics
                 </Typography>
@@ -201,7 +201,7 @@ class NewLoanCalculatorPageComponent extends React.Component {
                   gutterBottom
                   align="center"
                   color="textPrimary"
-                  style={{ width: "100%", color: "#2D3190" }}
+                  style={{ width: "100%", color: "#252774" }}
                 >
                   (Please fill out a few of the following fields)
                 </Typography>

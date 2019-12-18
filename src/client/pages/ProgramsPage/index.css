@@ -1,3 +1,25 @@
 div.mbsc-card-header.mbsc-collapsible-header > div {
-  color: #2d3190 !important;
+  color: #252774 !important;
+}
+
+div.mbsc-card-header.mbsc-collapsible-header > div > h3 {
+  margin: 0 !important;
+  margin-block-start: 0 !important;
+  margin-block-end: 0 !important;
+}
+
+div.mbsc-card-header.mbsc-collapsible-header {
+  padding: 0rem !important;
+}
+
+.mbsc-collapsible-header {
+  padding: 0.3em !important;
+}
+
+.mbsc-card-header {
+  padding: 0.3em !important;
+}
+
+.mbsc-card-header {
+  padding: 0em !important;
 }

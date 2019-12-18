@@ -43,7 +43,7 @@ const renderTextField = ({
     InputLabelProps={{
       style: {
         fontSize: labelFontSize ? labelFontSize : "20px",
-        color: "#2D3190",
+        color: "#252774",
         marginLeft: ".3rem"
       },
       shrink: labelShrink

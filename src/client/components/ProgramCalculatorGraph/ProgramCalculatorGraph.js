@@ -137,11 +137,13 @@ const labelHeaderStyle1 = {
 };
 
 export const ProgramCalculatorGraph = props => {
+  console.log("props", props);
   const {
     loanAmount = null,
     interestRate = null,
     term = null,
-    program = null
+    program = null,
+    programMessage = []
   } = props;
 
   const [initial, setInitial] = useState(loanAmount);
@@ -184,7 +186,9 @@ export const ProgramCalculatorGraph = props => {
     }
   }
 
-  let updatedHeader = program ? "Let's Start with the Basics" : "";
+  let updatedHeader = program
+    ? `${programMessage[0]} - Let's Start with the Basics`
+    : "";
 
   let paymentsLabel = isADE
     ? "One time extra principal payment"
@@ -515,7 +519,7 @@ export const ProgramCalculatorGraph = props => {
 
             <div>
               {overpayments.map(({ year, month, amount }, i) => (
-                <div className="mbsc-row mbsc-align-items-center">
+                <div className="mbsc-row mbsc-align-items-center" key={i}>
                   <div
                     className="mbsc-col-3"
                     style={{ paddingLeft: "1rem", paddingRight: "2rem" }}
@@ -596,7 +600,7 @@ export const ProgramCalculatorGraph = props => {
               ))}
             </div>
           </div>
-          <Divider
+          {/* <Divider
             style={{ width: "100%", color: "#3f51b5", margin: "2rem 1rem" }}
           />
 
@@ -606,7 +610,7 @@ export const ProgramCalculatorGraph = props => {
               alterSize={true}
               lenderName={lenderDisplayName}
             />
-          </div>
+          </div> */}
         </div>
 
         <div className="mbsc-row mbsc-align-items-center">

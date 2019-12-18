@@ -23,7 +23,7 @@ const introContent = {};
 const homeIntroContent = {
   newTop: "",
   top:
-    "Save a month's interest by paying aDayEarly!  Just enter some information below to see how much you can save. If you are getting a new mortgage you can try our",
+    "Pay extra principle aDayEarly & Save a month's interest. Enter some information below and see the savings! Try our ",
   middle:
     "Try our simulator (hotlink) to see how much you can save using aDayEarly.",
   bottom: "",

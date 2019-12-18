@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 
 const iconStyles = {
-  color: "#2D3190",
+  color: "#252774",
   marginBottom: ".5rem",
   marginLeft: ".5rem"
 };
@@ -35,7 +35,7 @@ const HeaderLinkComponent = props => {
         <a href={to} style={{ textDecoration: "none" }}>
           <Typography
             variant="h6"
-            style={{ color: "#2D3190" }}
+            style={{ color: "#252774" }}
             id="modal-title"
             align="center"
             gutterBottom
@@ -57,7 +57,7 @@ const HeaderLinkComponent = props => {
       <Link to={to} style={{ textDecoration: "none" }}>
         <Typography
           variant="h6"
-          style={{ color: "#2D3190" }}
+          style={{ color: "#252774" }}
           id="modal-title"
           align="center"
           gutterBottom

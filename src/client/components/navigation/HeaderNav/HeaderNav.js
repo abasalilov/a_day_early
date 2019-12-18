@@ -31,7 +31,7 @@ const styles = {
     left: "0",
     zIndex: "100",
     marginBottom: "2rem",
-    backgroundColor: "#7fc6a0"
+    backgroundColor: "#479e70"
   },
   w3BarAuth: {
     width: "100%",
@@ -49,7 +49,7 @@ const styles = {
   },
   w3Button: {
     userSelect: "none",
-    color: "#2D3190",
+    color: "#252774",
     "&:hover": {
       color: "#7BB16",
       textShadow: "1px 1px 4px white"
@@ -66,8 +66,8 @@ const styles = {
   },
   selected: {
     backgroundColor: "#fff",
-    color: "#2D3190",
-    textShadow: "1px 1px 4px #2D3190"
+    color: "#252774",
+    textShadow: "1px 1px 4px #252774"
   },
   notSelected: {}
 };
@@ -88,7 +88,7 @@ const externalHeaderLinks = [
 ];
 
 const iconStyles = {
-  color: "#2D3190",
+  color: "#252774",
   marginBottom: ".5rem"
 };
 
@@ -117,7 +117,7 @@ const NavButton = props => {
     isBorrower = true
   } = props;
   let button;
-  const style = { color: "#2D3190", textDecoration: "none" };
+  const style = { color: "#252774", textDecoration: "none" };
   const linkClassName = classNames(classes.w3BarItem, classes.w3Button);
   const linkPath = getTitle(title);
   const isLoginComponent = isLogin(title);
