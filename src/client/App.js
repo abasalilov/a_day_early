@@ -121,7 +121,7 @@ class App extends React.PureComponent<PropsT> {
 
   async componentDidMount() {
     this.handleWindowSizeChange();
-    setTimeout(() => this.handleCloseModal(), 30);
+    setTimeout(() => this.handleCloseModal(), 3000);
   }
 
   handleWindowSizeChange() {
