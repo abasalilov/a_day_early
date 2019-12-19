@@ -62,6 +62,13 @@ const labelHeaderStyle1 = {
   padding: "1rem"
 };
 
+const labelHeaderStyle3 = {
+  color: "#3f51b5",
+  textShadow: "0 1px 2px rgb(71, 158, 112)",
+  padding: "1rem"
+};
+
+//  rgb(71, 158, 112
 // Interactive Amortization schedule (from Don) click any future principal payment you want to prepay and see how much you can save.
 // After user clicks calculations show:  interest savings, time saved and new payoff date
 // Let’s get registered and accelerate (button)

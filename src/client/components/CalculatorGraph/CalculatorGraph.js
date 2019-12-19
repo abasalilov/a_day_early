@@ -21,6 +21,12 @@ const selectLabelStyle = {
   textShadow: "0 1px  2px rgba(0, 0, 0, 0.4)"
 };
 
+const labelHeaderStyle3 = {
+  color: "#3f51b5",
+  textShadow: "0 1px 2px rgb(71, 158, 112) !important",
+  padding: "1rem"
+};
+
 const lenders = ["Chase", "Wells Fargo", "Quicken Loans", "Other"];
 
 const isEmpty = a => {
@@ -422,7 +428,7 @@ class CalculatorGraphComponent extends React.Component {
               </Typography>
               <div style={fieldStyle}>
                 <Typography variant="h6" style={labelStyle} align="left">
-                  Prior Monthly Overpayments
+                  Prior Monthly Additional Principal Paydown
                 </Typography>
                 <div
                   style={{
@@ -462,17 +468,17 @@ class CalculatorGraphComponent extends React.Component {
 
             <Grid container spacing={8} alignItems="center" direction={"row"}>
               <Grid item xs={3}>
-                <Typography variant="h6" style={labelHeaderStyle1} align="left">
+                <Typography variant="h6" style={labelHeaderStyle3} align="left">
                   Year
                 </Typography>
               </Grid>
               <Grid item xs={3}>
-                <Typography variant="h6" style={labelHeaderStyle1} align="left">
+                <Typography variant="h6" style={labelHeaderStyle3} align="left">
                   Month
                 </Typography>
               </Grid>
               <Grid item xs={3}>
-                <Typography variant="h6" style={labelHeaderStyle1} align="left">
+                <Typography variant="h6" style={labelHeaderStyle3} align="left">
                   Payment Amount
                 </Typography>
               </Grid>

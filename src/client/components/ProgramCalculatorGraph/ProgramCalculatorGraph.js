@@ -17,8 +17,6 @@ import {
 
 const defaultOverpayment = { month: "0", year: "0", amount: "0" };
 
-const lenders = ["Chase", "Wells Fargo", "Quicken Loans", "Other"];
-
 const isEmpty = a => typeof a === "undefined";
 const isLenderNameEmpty = a => typeof a === "undefined" || a === "Other";
 
@@ -100,6 +98,12 @@ const buttonStyle = {
   left: "20%",
   padding: "1rem",
   fontSize: "1rem"
+};
+
+const labelHeaderStyle3 = {
+  color: "#3f51b5",
+  textShadow: "0 1px 2px rgb(71, 158, 112) !important",
+  padding: "1rem"
 };
 
 const updatedLabelStyle = {
@@ -264,8 +268,17 @@ export const ProgramCalculatorGraph = props => {
 
           <div className="mbsc-row">
             <div className="mbsc-col-4">
-              <div style={fieldStyle} className="mbsc-row">
-                <Typography variant="h6" style={labelStyle} align="left">
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "start",
+                  alignItems: "center",
+                  marginLeft: "1rem"
+                }}
+                className="mbsc-row"
+              >
+                <Typography variant="h5" style={labelStyle} align="left">
                   Amount
                 </Typography>
                 <mobiscroll.Input
@@ -280,7 +293,7 @@ export const ProgramCalculatorGraph = props => {
             </div>
             <div className="mbsc-col-4">
               <div style={fieldStyle} className="mbsc-row">
-                <Typography variant="h6" style={labelStyle} align="left">
+                <Typography variant="h5" style={labelStyle} align="left">
                   Term
                 </Typography>
                 <mobiscroll.Dropdown
@@ -301,7 +314,7 @@ export const ProgramCalculatorGraph = props => {
             </div>
             <div className="mbsc-col-4">
               <div style={fieldStyle} className="mbsc-row">
-                <Typography variant="h6" style={labelStyle} align="left">
+                <Typography variant="h5" style={labelStyle} align="left">
                   Interest Rate
                 </Typography>
                 <InterestRateDropDown
@@ -382,7 +395,11 @@ export const ProgramCalculatorGraph = props => {
             <div className="mbsc-col-5">
               <Typography
                 variant="h5"
-                style={labelStyle}
+                style={{
+                  color: "#3f51b5",
+                  textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
+                  padding: "1rem 1rem 1rem 2rem"
+                }}
                 align="left"
                 gutterBottom
               >
@@ -391,7 +408,7 @@ export const ProgramCalculatorGraph = props => {
             </div>
             <div className="mbsc-col-3">
               <span className="money">
-                <Typography variant="h6" style={labelStyle} align="left">
+                <Typography variant="h5" style={labelStyle} align="left">
                   {formatRU(calculatedMonthly, isRU, roundUp, otherRoundUp)}
                 </Typography>
               </span>
@@ -400,7 +417,15 @@ export const ProgramCalculatorGraph = props => {
 
           <div className="mbsc-row mbsc-align-items-center">
             <Grid item xs={5}>
-              <Typography variant="h5" style={labelStyle} align="left">
+              <Typography
+                variant="h5"
+                style={{
+                  color: "#3f51b5",
+                  textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
+                  padding: "1rem 1rem 1rem 2rem"
+                }}
+                align="left"
+              >
                 Current lender (if any) ?
               </Typography>
             </Grid>
@@ -448,12 +473,12 @@ export const ProgramCalculatorGraph = props => {
           <div className="col-sm-8">
             <div>
               <Typography
-                variant="h4"
+                variant="h5"
                 style={updatedLabelStyle}
                 align="left"
                 gutterBottom
               >
-                {`${programName} `} Loan Overpayment Configuration
+                {`${programName} `} Loan Principal PayDown Configuration
               </Typography>
             </div>
             {!isADE && (
@@ -497,17 +522,17 @@ export const ProgramCalculatorGraph = props => {
             </Typography>
             <Grid container spacing={8} alignItems="center" direction={"row"}>
               <Grid item xs={3}>
-                <Typography variant="h6" style={labelHeaderStyle1} align="left">
+                <Typography variant="h6" style={labelHeaderStyle3} align="left">
                   Year
                 </Typography>
               </Grid>
               <Grid item xs={3}>
-                <Typography variant="h6" style={labelHeaderStyle1} align="left">
+                <Typography variant="h6" style={labelHeaderStyle3} align="left">
                   Month
                 </Typography>
               </Grid>
               <Grid item xs={3}>
-                <Typography variant="h6" style={labelHeaderStyle1} align="left">
+                <Typography variant="h6" style={labelHeaderStyle3} align="left">
                   Amount
                 </Typography>
               </Grid>
@@ -609,7 +634,7 @@ export const ProgramCalculatorGraph = props => {
           </div> */}
         </div>
 
-        <div className="mbsc-row mbsc-align-items-center">
+        {/* <div className="mbsc-row mbsc-align-items-center">
           <Divider
             style={{ width: "100%", color: "#3f51b5", margin: "2rem 1rem" }}
           />
@@ -618,7 +643,7 @@ export const ProgramCalculatorGraph = props => {
             <Table payments={payments} />
           </div>
           <div className="mbsc-col" />
-        </div>
+        </div> */}
       </div>
     </mobiscroll.Form>
   );

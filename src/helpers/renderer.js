@@ -65,6 +65,7 @@ export default (req, store, context) => {
                 sans-serif;
               -webkit-font-smoothing: antialiased;
               -moz-osx-font-smoothing: grayscale;
+              background-color: none !important;
             }
 
             code {

@@ -4,6 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 import { CalculatorGraph } from "../../components/CalculatorGraph";
 import { ProgramCalculatorGraph } from "../../components/ProgramCalculatorGraph";
 import { updatePayPalAmount } from "../../actions";
+import "./index.css";
 
 const styles = {
   container: {

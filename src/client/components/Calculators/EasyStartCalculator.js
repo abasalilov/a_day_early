@@ -404,7 +404,7 @@ class EasyStartCalculatorComponent extends React.Component {
                       this.handleChange("monthlyOverpayment", e.target.value)
                     }
                   >
-                    Overpayment
+                    Additional Principal Paydown
                   </mobiscroll.Input>
                 </div>
               </div>
@@ -468,7 +468,7 @@ class EasyStartCalculatorComponent extends React.Component {
             </div>
           )}
 
-          {payments.length > 20 && (
+          {/* {payments.length > 20 && (
             <Grid
               container
               spacing={8}
@@ -489,7 +489,7 @@ class EasyStartCalculatorComponent extends React.Component {
               <Divider
                 style={{ width: "100%", color: "#3f51b5", margin: "2rem 1rem" }}
               />
-              {/* <Grid
+              <Grid
                 item
                 xs={12}
                 style={{
@@ -507,9 +507,9 @@ class EasyStartCalculatorComponent extends React.Component {
                   alterSize={true}
                   lenderName={lenderDisplayName}
                 />
-              </Grid> */}
+              </Grid>
             </Grid>
-          )}
+          )} */}
         </div>
       </mobiscroll.Form>
     );

@@ -76,12 +76,18 @@ const theme = createMuiTheme({
   },
   // https://material-ui.com/customization/themes/#customizing-all-instances-of-a-component-type
   overrides: {
+    MuiCssBaseline: {
+      "@global": {
+        body: {
+          backgroundColor: "none"
+        }
+      }
+    },
     // Name of the component ⚛️ / style sheet
     MuiButton: {
       // Name of the rule
       root: {
         // Some CSS
-        background: "white",
         borderRadius: 3,
         border: 0,
         height: 48,
