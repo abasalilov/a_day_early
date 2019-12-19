@@ -467,7 +467,7 @@ class CalculatorGraphComponent extends React.Component {
                   align="left"
                   gutterBottom
                 >
-                  Who is your mortgage lender?
+                  Current lender (if any) ?
                 </Typography>
               </div>
               <div className="mbsc-col-3">

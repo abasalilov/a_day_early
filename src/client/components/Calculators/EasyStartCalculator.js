@@ -328,7 +328,7 @@ class EasyStartCalculatorComponent extends React.Component {
           <Grid container spacing={8} alignItems="center" direction={"row"}>
             <Grid item xs={5}>
               <Typography variant="h5" style={labelStyle} align="left">
-                Who is your mortgage lender?
+                Current lender (if any) ?
               </Typography>{" "}
             </Grid>
             <Grid

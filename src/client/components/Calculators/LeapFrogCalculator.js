@@ -329,7 +329,7 @@ class LeapFrogCalculatorComponent extends React.Component {
           <div className="mbsc-row mbsc-align-items-center">
             <Grid item xs={5}>
               <Typography variant="h5" style={labelStyle} align="left">
-                Who is your anticipated mortgage lender?
+                Current lender (if any)
               </Typography>
             </Grid>
             <Grid
