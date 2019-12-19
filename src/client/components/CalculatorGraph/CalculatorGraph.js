@@ -457,7 +457,7 @@ class CalculatorGraphComponent extends React.Component {
                 alignItems: "center"
               }}
             >
-              Prior Individual Overpayments
+              Prior Individual Additional Principal Paydown
             </Typography>
 
             <Grid container spacing={8} alignItems="center" direction={"row"}>

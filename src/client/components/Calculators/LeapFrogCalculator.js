@@ -215,11 +215,7 @@ class LeapFrogCalculatorComponent extends React.Component {
     const showQuestion = isEmpty(accuracy);
 
     return (
-      <mobiscroll.Form
-        className="mbsc-form-grid"
-        theme="ios"
-        themeVariant="light"
-      >
+      <mobiscroll.Form className="mbsc-form-grid">
         <div>
           <div className="mbsc-grid" style={{ padding: "2rem" }}>
             <div className="mbsc-row-12">

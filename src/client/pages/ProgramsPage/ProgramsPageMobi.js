@@ -209,7 +209,7 @@ class ProgramsPageComponent extends React.Component {
             <div className="mbsc-col-1" />
 
             <div className="mbsc-col-4" style={{ marginTop: "4rem" }}>
-              <mobiscroll.Accordion theme="ios">
+              <mobiscroll.Accordion>
                 <mobiscroll.Card
                   collapsible
                   style={{ margin: "2rem" }}
@@ -233,7 +233,6 @@ class ProgramsPageComponent extends React.Component {
                         />
                       )}
                       data={[this.state.items[0]]}
-                      theme="ios"
                       themeVariant="light"
                       swipe={true}
                       enhance={true}
@@ -263,7 +262,6 @@ class ProgramsPageComponent extends React.Component {
                         />
                       )}
                       data={[this.state.items[1]]}
-                      theme="ios"
                       themeVariant="light"
                       swipe={true}
                       enhance={true}
@@ -292,7 +290,6 @@ class ProgramsPageComponent extends React.Component {
                         />
                       )}
                       data={[this.state.items[2]]}
-                      theme="ios"
                       themeVariant="light"
                       swipe={true}
                       enhance={true}
@@ -328,7 +325,6 @@ class ProgramsPageComponent extends React.Component {
                         />
                       )}
                       data={[this.state.items[4]]}
-                      theme="ios"
                       themeVariant="light"
                       swipe={true}
                       enhance={true}
@@ -358,7 +354,6 @@ class ProgramsPageComponent extends React.Component {
                         />
                       )}
                       data={[this.state.items[5]]}
-                      theme="ios"
                       themeVariant="light"
                       swipe={true}
                       enhance={true}
@@ -388,7 +383,6 @@ class ProgramsPageComponent extends React.Component {
                         />
                       )}
                       data={[this.state.items[6]]}
-                      theme="ios"
                       themeVariant="light"
                       swipe={true}
                       enhance={true}
@@ -418,7 +412,6 @@ class ProgramsPageComponent extends React.Component {
                         />
                       )}
                       data={[this.state.items[3]]}
-                      theme="ios"
                       themeVariant="light"
                       swipe={true}
                       enhance={true}

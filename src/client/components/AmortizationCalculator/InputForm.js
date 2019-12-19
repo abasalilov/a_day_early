@@ -20,15 +20,6 @@ const styles = theme => ({
   }
 });
 
-const selectLabelStyle = {
-  color: "#3f51b5",
-  textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)"
-};
-
-const numbersOnly = value => {
-  return value.replace(/[^\d]/g, "");
-};
-
 const validate = values => {
   const errors = {};
   return errors;
@@ -91,7 +82,6 @@ class InputFormComponent extends React.Component {
   }
 
   handleChange(name, e) {
-    console.log("1 handleChange", name);
     if (name === "calendar") {
       if (this.state.calendarOpen === true) {
         this.setState({ calendar: e.target.value });
@@ -120,7 +110,7 @@ class InputFormComponent extends React.Component {
     // const loanLabel = anticipated
     //   ? "Anticipated Loan Amount"
     //   : "Current Loan Amount";
-    const loanLabel = "Loan Amount";
+    const loanLabel = "Original Loan Amount";
     // const originationLabel = anticipated
     //   ? "Expected First Payment Date"
     //   : "First Payment Date";

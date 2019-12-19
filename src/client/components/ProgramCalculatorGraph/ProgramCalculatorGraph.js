@@ -235,11 +235,7 @@ export const ProgramCalculatorGraph = props => {
   }
 
   return (
-    <mobiscroll.Form
-      className="mbsc-form-grid"
-      theme="ios"
-      themeVariant="light"
-    >
+    <mobiscroll.Form className="mbsc-form-grid">
       <div className="mbsc-grid" style={{ padding: "2rem" }}>
         <div className="mbsc-row-12">
           <div className="mbsc-col-12">

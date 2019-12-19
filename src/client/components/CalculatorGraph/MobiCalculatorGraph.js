@@ -242,11 +242,7 @@ class CalculatorGraphComponent extends React.Component {
           marginTop: "6rem"
         }}
       >
-        <mobiscroll.Form
-          className="mbsc-form-grid"
-          theme="ios"
-          themeVariant="light"
-        >
+        <mobiscroll.Form className="mbsc-form-grid">
           <div className="mbsc-grid" style={{ padding: "2rem" }}>
             <div className="mbsc-row">
               <div className="mbsc-col">
@@ -530,7 +526,7 @@ class CalculatorGraphComponent extends React.Component {
                   align="left"
                   gutterBottom
                 >
-                  Prior Recurring Monthly Overpayments
+                  Prior Recurring Monthly Additional Principal Paydown
                 </Typography>
               </div>
               <div className="mbsc-col-5">
@@ -559,7 +555,7 @@ class CalculatorGraphComponent extends React.Component {
                   align="left"
                   gutterBottom
                 >
-                  Prior Individual Overpayments
+                  Prior Individual Additional Principal Paydown
                 </Typography>
               </div>
               <div className="mbsc-col" />
@@ -743,7 +739,7 @@ class CalculatorGraphComponent extends React.Component {
             </Typography>
           </div>
         )}
-        <div className="mbsc-col-12">
+        {/* <div className="mbsc-col-12">
           <Typography variant="h4" style={labelStyle} align="center">
             Simulator
           </Typography>
@@ -754,7 +750,7 @@ class CalculatorGraphComponent extends React.Component {
             </Typography>
             <Table payments={payments} />
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }
