@@ -130,7 +130,7 @@ function getModalStyle(mobile) {
     top: "30%",
     left: mobile ? "25%" : "35%",
     transform: `translate(-20%, -25%)`,
-    width: mobile ? "70%" : "65%"
+    width: mobile ? "70%" : "50%"
   };
 }
 
@@ -185,8 +185,8 @@ const styles = theme => ({
   },
   modalRoot: {
     flexGrow: 1,
-    height: "80%"
-    // overflowY: "scroll"
+    height: "80%",
+    overflowY: "scroll"
   },
   btn: {
     margin: "1rem auto",
