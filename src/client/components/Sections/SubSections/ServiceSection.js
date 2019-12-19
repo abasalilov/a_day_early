@@ -227,8 +227,7 @@ class ServiceSectionComponent extends React.Component {
                     style={{
                       width: "100%",
                       color: "#252774",
-                      marginBottom: "2rem",
-                      textShadow: "3px 3px 0px rgba(0,0,0,0.2)"
+                      marginBottom: "2rem"
                     }}
                   >
                     Let's Start With The Basics
@@ -243,8 +242,7 @@ class ServiceSectionComponent extends React.Component {
                     style={{
                       width: "100%",
                       color: "#252774",
-                      marginBottom: "1rem",
-                      textShadow: "3px 3px 0px rgba(0,0,0,0.2)"
+                      marginBottom: "1rem"
                     }}
                   >
                     (Please fill out a few of the following fields)

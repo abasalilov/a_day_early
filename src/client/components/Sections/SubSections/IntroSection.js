@@ -74,8 +74,7 @@ export const IntroSectionComponent = props => {
   } = props;
   const mobileVariantStyle = {
     fontSize: !mobile && "1.3rem",
-    margin: "2rem 0",
-    textShadow: "2px 2px 0px rgba(0,0,0,0.2)"
+    margin: "2rem 0"
   };
   const containerClass = mobile ? classes.mobilePic : classes.pic;
   const imgClass = mobile ? classes.mobleImg : classes.imgContainer;

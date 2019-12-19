@@ -9,10 +9,6 @@ import "@mobiscroll/react/dist/css/mobiscroll.min.css";
 import Divider from "@material-ui/core/Divider";
 import "./index.css";
 
-const mobileVariantStyle = {
-  textShadow: "2px 2px 0px rgba(0,0,0,0.2)"
-};
-
 const HomePageComponent = props => {
   return (
     <div>
@@ -24,11 +20,10 @@ const HomePageComponent = props => {
           color="textPrimary"
           style={{
             width: "100%",
-            color: "#252774",
-            textShadow: "3px 3px 0px rgba(0,0,0,0.2)"
+            color: "#252774"
           }}
         >
-          The Nation's #1 Mortgage Accelerator
+          The Nation's #1 Mortgage PayOff Accelerator
         </Typography>
         <div className="mbsc-row" style={{ justifyContent: "center" }}>
           <div className="mbsc-col-8" style={{ marginBottom: "2rem" }}>
@@ -48,7 +43,7 @@ const HomePageComponent = props => {
             <div
               style={{
                 border: "solid  #479e70",
-                height: "95%",
+                height: "75%",
                 padding: "1rem",
                 width: "100%",
                 borderRadius: "1rem",
@@ -62,8 +57,7 @@ const HomePageComponent = props => {
                 color="textPrimary"
                 style={{
                   width: "100%",
-                  color: "#252774",
-                  textShadow: "3px 3px 0px rgba(0,0,0,0.2)"
+                  color: "#252774"
                 }}
               >
                 News & Events

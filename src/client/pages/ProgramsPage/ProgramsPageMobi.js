@@ -69,7 +69,7 @@ class ProgramsPageComponent extends React.Component {
         {
           program: "JumpStart",
           description:
-            "Jump ahead to any months payment on your amortization schedule, pay the principal portion now, aDayEarly, and NEVER pay the associated interest. EVER."
+            "Use at the origination of your loan, making the first extra principal payment aDayEarly affecting the amortization schedule before it starts!"
         }
       ]
     };
