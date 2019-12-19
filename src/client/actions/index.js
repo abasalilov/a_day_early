@@ -51,7 +51,20 @@ export const registerUser = info => async (dispatch, getState, api) => {
   const res = await api.post("http://165.22.158.201:5000/ade-register-user", {
     data
   });
-  console.log("res registerUser", res);
+  if (res.status === 201) {
+    const emailData = {
+      username: res.data.username,
+      firstname: res.data.firstname,
+      lastname: res.data.lastname,
+      accountType: res.data.accountType
+    };
+    console.log("res.status === 201)", emailData);
+    const res2 = await api.post("http://165.22.158.201:5000/ade-send-email", {
+      data: emailData
+    });
+    console.log("res2", res2);
+  }
+
   dispatch({
     type: REGISTER_USER,
     payload: res
@@ -108,10 +121,12 @@ export const submitContactUsEmail = data => async (dispatch, getState, api) => {
   dispatch({
     type: EMAIL_SUBMIT
   });
-
-  const res = await api.post("http://165.22.158.201:5000/email", {
+  console.log("submitContactUsEmail data", data);
+  const res = await api.post("http://localhost:5000/ade-send-email", {
     data
   });
+  console.log("submitContactUsEmail res", res);
+
   if (res.status !== 201) {
     dispatch({
       type: EMAIL_SUCCESS
