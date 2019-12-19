@@ -130,7 +130,7 @@ function getModalStyle(mobile) {
     top: "30%",
     left: mobile ? "25%" : "35%",
     transform: `translate(-20%, -25%)`,
-    width: mobile ? "70%" : "50%"
+    width: mobile ? "70%" : "40%"
   };
 }
 
@@ -152,7 +152,6 @@ const styles = theme => ({
     boxShadow: theme.shadows[5],
     margin: "1rem",
     padding: "1rem",
-    height: "90%",
     display: "flex",
     justifyContent: "center",
     overflowY: "visible",
@@ -230,6 +229,7 @@ const renderTextField = ({
   type,
   labelShrink,
   name,
+  mobile,
   labelFontSize,
   placeholder,
   ...custom
@@ -246,7 +246,7 @@ const renderTextField = ({
         labelStyle="floating"
         style={{
           border: "solid #049347 2px",
-          fontSize: "1rem"
+          fontSize: mobile ? "1.5rem" : "1rem"
         }}
       >
         {label}
@@ -373,7 +373,7 @@ class RegistrationModalComponent extends React.Component {
             themeVariant="light"
           >
             <mobiscroll.FormGroup>
-              <div className={classes.modalRoot}>
+              <div>
                 <div className="mbsc-grid-fixed">
                   <div className="mbsc-col-12 mbsc-justify-content-center">
                     <div style={{ float: "right" }}>
@@ -392,90 +392,100 @@ class RegistrationModalComponent extends React.Component {
                         Registration Form
                       </h1>
                     </div>
+                    <div className={classes.modalRoot}>
+                      <form className="mbsc-col-12 mbsc-justify-content-center">
+                        <Field
+                          name="username_email"
+                          type="text"
+                          className={classes.field}
+                          placeholder="Enter email address"
+                          label="Email/Username"
+                          mobile={mobile}
+                          showborder
+                          emailError={emailError}
+                          meta={emailError}
+                          component={renderTextField}
+                          validate={[required, email, minLength6]}
+                          warn={alphaNumeric}
+                        />
+                        <Field
+                          type="text"
+                          label="First Name"
+                          name="firstName"
+                          placeholder="Don"
+                          mobile={mobile}
+                          component={renderTextField}
+                          validate={[required]}
+                          warn={alphaNumeric}
+                          className={classes.field}
+                        />
+                        <Field
+                          type="text"
+                          className={classes.field}
+                          label="Last Name"
+                          name="lastName"
+                          placeholder="Junkin"
+                          mobile={mobile}
+                          component={renderTextField}
+                          validate={[required]}
+                          warn={alphaNumeric}
+                        />
 
-                    <form className="mbsc-col-12 mbsc-justify-content-center">
-                      <Field
-                        name="username_email"
-                        type="text"
-                        className={classes.field}
-                        placeholder="Enter email address"
-                        label="Email/Username"
-                        mobile={mobile}
-                        showborder
-                        emailError={emailError}
-                        meta={emailError}
-                        component={renderTextField}
-                        validate={[required, email, minLength6]}
-                        warn={alphaNumeric}
-                      />
-                      <Field
-                        type="text"
-                        label="First Name"
-                        name="firstName"
-                        placeholder="Don"
-                        mobile={mobile}
-                        component={renderTextField}
-                        validate={[required]}
-                        warn={alphaNumeric}
-                        className={classes.field}
-                      />
-                      <Field
-                        type="text"
-                        className={classes.field}
-                        label="Last Name"
-                        name="lastName"
-                        placeholder="Junkin"
-                        mobile={mobile}
-                        component={renderTextField}
-                        validate={[required]}
-                        warn={alphaNumeric}
-                      />
+                        <Field
+                          type="password"
+                          label="Enter a Password"
+                          name="registerPassword"
+                          placeholder="password1"
+                          className={classes.field}
+                          mobile={mobile}
+                          component={renderTextField}
+                          validate={[required, minLength6]}
+                          warn={alphaNumeric}
+                        />
+                        <Field
+                          type="password"
+                          label="Confirm Password"
+                          name="confirmPassword"
+                          placeholder="password1"
+                          className={classes.field}
+                          mobile={mobile}
+                          component={renderTextField}
+                          validate={[required, minLength6]}
+                          warn={alphaNumeric}
+                        />
 
-                      <Field
-                        type="password"
-                        label="Enter a Password"
-                        name="registerPassword"
-                        placeholder="password1"
-                        className={classes.field}
-                        mobile={mobile}
-                        component={renderTextField}
-                        validate={[required, minLength6]}
-                        warn={alphaNumeric}
-                      />
-                      <Field
-                        type="password"
-                        label="Confirm Password"
-                        name="confirmPassword"
-                        placeholder="password1"
-                        className={classes.field}
-                        mobile={mobile}
-                        component={renderTextField}
-                        validate={[required, minLength6]}
-                        warn={alphaNumeric}
-                      />
+                        <Field
+                          name="accountType"
+                          component={renderAccountSelect}
+                          classes={classes}
+                          validate={[required]}
+                        />
 
-                      <Field
-                        name="accountType"
-                        component={renderAccountSelect}
-                        classes={classes}
-                        validate={[required]}
-                      />
+                        <Field
+                          name="event37"
+                          component={renderEvent37}
+                          classes={classes}
+                          validate={[required]}
+                        />
 
-                      <Field
-                        name="event37"
-                        component={renderEvent37}
-                        classes={classes}
-                        validate={[required]}
-                      />
-
-                      <Field
-                        name="newsLetter"
-                        component={renderNewsLetter}
-                        classes={classes}
-                        validate={[required]}
-                      />
-
-                      <div className={classes.buttons}>
+                        <Field
+                          name="newsLetter"
+                          component={renderNewsLetter}
+                          classes={classes}
+                          validate={[required]}
+                        />
+                      </form>
+                    </div>
+                    <div className={classes.btnContainer}>
+                      {registered ? closeClick() : ""}
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: mobile ? "column" : "row",
+                          justifyContent: "space-between",
+                          alignItems: "center"
+                        }}
+                      >
                         <StyledButton
                           label="Register"
                           className={classes.btn}
@@ -483,27 +493,24 @@ class RegistrationModalComponent extends React.Component {
                           mobile={mobile}
                           onClick={this.handleClick}
                         />
-                      </div>
-                    </form>
-                    <div className={classes.btnContainer}>
-                      {registered ? closeClick() : ""}
-                      <span className={classes.link}>
-                        <Typography
-                          variant={"h6"}
-                          align="center"
-                          color="textPrimary"
-                          gutterBottom
-                        >
-                          Have an account?
-                          <Link
-                            className={classes.regLink}
-                            to="/login#register"
-                            onClick={closeClick}
+                        <span className={classes.link}>
+                          <Typography
+                            variant={"h6"}
+                            align="center"
+                            color="textPrimary"
+                            gutterBottom
                           >
-                            <strong> Sign In</strong>
-                          </Link>
-                        </Typography>
-                      </span>
+                            Have an account?
+                            <Link
+                              className={classes.regLink}
+                              to="/login#register"
+                              onClick={closeClick}
+                            >
+                              <strong> Sign In</strong>
+                            </Link>
+                          </Typography>
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
