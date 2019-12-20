@@ -50,6 +50,11 @@ const programRef = {
     name: "EasyStart",
     description:
       "Build stepping stones effortlessly with a steady, monthly approach toward paying down your mortgage ahead of time."
+  },
+  DD: {
+    name: "DoubleDown",
+    description:
+      "It simply allows double the principle to be paid. The current month and the principle portion of the following month on the amortization schedule. Kind of like LeapFrog but defined by the next month's principle rather than a chosen future amount."
   }
 };
 
@@ -197,6 +202,10 @@ export const ProgramCalculatorGraph = props => {
   let paymentsLabel = isADE
     ? "One time extra principal payment"
     : "Individual Payments";
+
+  if (isJS) {
+    paymentsLabel = "One time new principal payment";
+  }
 
   const updateOverpayment = index => ({ target }) => {
     return setOverpayments(
@@ -484,8 +493,11 @@ export const ProgramCalculatorGraph = props => {
             {!isADE && (
               <div style={{ margin: "2rem 0" }}>
                 <Typography variant="h5" style={labelStyle} align="left">
-                  Please add any extra principal payments you made so far in the
-                  fields below.
+                  {isJS
+                    ? `Please add any new principal payments you'd like to make in the
+                  fields below.`
+                    : `Please add any extra principal payments you made so far in the
+                  fields below.`}
                 </Typography>
                 <div style={fieldStyle}>
                   <Typography variant="h6" style={labelStyle} align="left">
