@@ -130,7 +130,8 @@ function getModalStyle(mobile) {
     top: "30%",
     left: mobile ? "25%" : "35%",
     transform: `translate(-20%, -25%)`,
-    width: mobile ? "70%" : "40%"
+    width: mobile ? "70%" : "50%",
+    height: "70%"
   };
 }
 
@@ -148,14 +149,14 @@ const styles = theme => ({
   },
   paper: {
     position: "absolute",
-    backgroundColor: "#cfe0f3 !important",
     boxShadow: theme.shadows[5],
     margin: "1rem",
-    padding: "1rem",
+    padding: ".5rem",
     display: "flex",
     justifyContent: "center",
     overflowY: "visible",
-    borderRadius: "1rem"
+    borderRadius: "1rem",
+    backgroundColor: "#efeff4 !important"
   },
   modalHeader: {
     display: "flex",
@@ -184,7 +185,7 @@ const styles = theme => ({
   },
   modalRoot: {
     flexGrow: 1,
-    height: "80%",
+    height: "90%",
     overflowY: "scroll"
   },
   btn: {
@@ -367,13 +368,11 @@ class RegistrationModalComponent extends React.Component {
             onSubmit={handleSubmit}
             className="md-grid-fixed"
             style={{
-              background: "#cfe0f3"
+              borderRadius: "1rem"
             }}
-            theme="ios"
-            themeVariant="light"
           >
             <mobiscroll.FormGroup>
-              <div>
+              <div className={classes.modalRoot}>
                 <div className="mbsc-grid-fixed">
                   <div className="mbsc-col-12 mbsc-justify-content-center">
                     <div style={{ float: "right" }}>
@@ -392,7 +391,7 @@ class RegistrationModalComponent extends React.Component {
                         Registration Form
                       </h1>
                     </div>
-                    <div className={classes.modalRoot}>
+                    <div>
                       <form className="mbsc-col-12 mbsc-justify-content-center">
                         <Field
                           name="username_email"

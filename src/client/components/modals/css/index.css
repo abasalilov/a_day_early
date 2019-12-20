@@ -43,10 +43,14 @@ form > div.mbsc-col-8 > label {
   font-weight: bold;
 }
 
-.mbsc-grid-fixed {
+/* .mbsc-grid-fixed {
   padding: 0 !important;
 }
 
 .mbsc-justify-content-center {
   padding: 0em !important;
+} */
+
+#mobiscroll1576803719574 {
+  border-radius: 1rem;
 }
