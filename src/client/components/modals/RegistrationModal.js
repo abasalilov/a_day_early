@@ -467,13 +467,6 @@ class RegistrationModalComponent extends React.Component {
                           classes={classes}
                           validate={[required]}
                         />
-
-                        <Field
-                          name="newsLetter"
-                          component={renderNewsLetter}
-                          classes={classes}
-                          validate={[required]}
-                        />
                       </form>
                     </div>
                     <div className={classes.btnContainer}>
