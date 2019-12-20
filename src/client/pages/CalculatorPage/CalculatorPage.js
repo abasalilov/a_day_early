@@ -44,6 +44,7 @@ class CalculatorPageComponent extends React.Component {
         </div>
       );
     } else {
+      console.log("input", input);
       return (
         <div className={classes.container}>
           <ProgramCalculatorGraph

@@ -98,18 +98,18 @@ class CalculatorGraphComponent extends React.Component {
   }
 
   componentWillUnmount() {
-    this.props.updateInputForm({
-      loanAmount: null,
-      interestRate: null,
-      term: null,
-      lender: null,
-      otherLender: null,
-      monthlyOverpayment: null,
-      overpayments: [defaultOverpayment],
-      accuracy: null,
-      monthlyUpdated: null,
-      ready: false
-    });
+    // this.props.updateInputForm({
+    //   loanAmount: null,
+    //   interestRate: null,
+    //   term: null,
+    //   lender: null,
+    //   otherLender: null,
+    //   monthlyOverpayment: null,
+    //   overpayments: [defaultOverpayment],
+    //   accuracy: null,
+    //   monthlyUpdated: null,
+    //   ready: false
+    // });
   }
 
   setLender(e) {
@@ -118,6 +118,9 @@ class CalculatorGraphComponent extends React.Component {
 
   handleAccuracy(a) {
     this.setState({ accuracy: a });
+    if (a === "yes") {
+      setTimeout(() => this.props.history.push("/programs"), 3000);
+    }
   }
 
   setOverpayments(arr) {
@@ -733,9 +736,9 @@ class CalculatorGraphComponent extends React.Component {
         )}
         {!isEmpty(accuracy) && accuracy === "yes" && (
           <div style={fieldStyle}>
-            <Typography variant="h6" style={labelHeaderStyle1} align="left">
-              Great! Adjust the fields in the section above as needed to
-              simulate early loan pay-off.
+            <Typography variant="h4" style={labelHeaderStyle1} align="left">
+              Great! Let's take a look at the programs page to look at some
+              options for payoff acceleration. Navigating there in 2 seconds!
             </Typography>
           </div>
         )}

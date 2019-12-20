@@ -111,6 +111,7 @@ function checkForMissingFields(fields) {
 }
 
 export default function input(state = defaultState, action) {
+  console.log("action", action);
   switch (action.type) {
     case UPDATE_AMORTIZATION:
       const loanAmount = Number(state.loanAmount);
@@ -187,7 +188,11 @@ export default function input(state = defaultState, action) {
       // let loanTerm = data.loanTerm;
 
       const propList = Object.keys(action.st).filter(item => {
-        return action.st[item] !== null;
+        if (item === "originationDate") {
+          return action.st[item] !== generateFirstDate();
+        } else {
+          return action.st[item] !== null;
+        }
       });
 
       console.log("propList", propList);
@@ -203,33 +208,40 @@ export default function input(state = defaultState, action) {
 
       let donotUpdate =
         typeof fillInData === "string" && fillInData.indexOf("Three of") !== -1;
+      const checkDate = generateFirstDate();
+      const dateSame = action.st.originationDate === checkDate;
 
-      if (propList.length >= 2) {
-        // const checkDate = generateFirstDate();
-        // const dateSame = action.st.originationDate === checkDate;
-
+      if (propList.length >= 3) {
         if (fillInData.updated && !donotUpdate) {
           updatedInfoFormState.canCalculate = true;
           updatedInfoFormState.currentLoanAmount = action.st.currentLoanAmount;
           updatedInfoFormState.interestRate = fillInData.interest;
           updatedInfoFormState.loanAmount = fillInData.principal;
-          updatedInfoFormState.originationDate = action.st.originationDate;
           updatedInfoFormState.payOffDate = action.st.payOffDate;
           updatedInfoFormState.paymentAmount = fillInData.payment;
-          updatedInfoFormState.term = fillInData.payments / 12;
+          updatedInfoFormState.term = action.st.term;
+          if (!dateSame) {
+            updatedInfoFormState.originationDate = action.st.originationDate;
+          }
         }
       } else {
         updatedInfoFormState.currentLoanAmount = action.st.currentLoanAmount;
         updatedInfoFormState.interestRate = action.st.interestRate;
         updatedInfoFormState.loanAmount = action.st.loanAmount;
-        updatedInfoFormState.originationDate = action.st.originationDate;
         updatedInfoFormState.payOffDate = action.st.payOffDate;
         updatedInfoFormState.paymentAmount = action.st.paymentAmount;
         updatedInfoFormState.term = action.st.term;
         canCalculate = Object.keys(action.st).filter(item => {
-          return action.st[item] !== null;
+          if (item === "originationDate") {
+            return action.st[item] !== generateFirstDate();
+          } else {
+            return action.st[item] !== null;
+          }
         });
-        shouldCalculate = canCalculate.length >= 2;
+        if (!dateSame) {
+          updatedInfoFormState.originationDate = action.st.originationDate;
+        }
+        shouldCalculate = canCalculate.length >= 3;
 
         hasMissingFields = checkForMissingFields(canCalculate);
       }
@@ -246,8 +258,6 @@ export default function input(state = defaultState, action) {
       }
       updatedInfoFormState.missingFields =
         hasMissingFields && hasMissingFields.missing;
-
-      console.log("last here in canCalculate", canCalculate);
 
       return updatedInfoFormState;
     case ROUTE_PROGRAMS:

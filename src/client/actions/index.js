@@ -174,7 +174,6 @@ export const updateAmortGraph = st => ({
 export const UPDATE_INFO_FORM = "UPDATE_INFO_FORM";
 
 export const updateInfoForm = st => {
-  console.log("5 st update", st);
   return {
     type: UPDATE_INFO_FORM,
     st

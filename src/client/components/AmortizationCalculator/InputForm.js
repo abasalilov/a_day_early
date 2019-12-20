@@ -70,8 +70,8 @@ class InputFormComponent extends React.Component {
       currentLoanAmount: null,
       payOffDate: null,
       dateTouched: false,
-      originalLoanAmount: null,
-      openCalendar: false
+      originalLoanAmount: null
+      // openCalendar: false
     };
     this.handleOpenCalendar = this.handleChange.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -331,7 +331,6 @@ const mapDispatchToProps = dispatch => {
       dispatch(updateAmortGraph(st));
     },
     updateInputForm: st => {
-      console.log("3 st update Forminpu", st);
       dispatch(updateInfoForm(st));
     }
   };
