@@ -33,7 +33,7 @@
         "axios": "0.16.2",
         "babel-preset-env": "^1.7.0",
         "body-parser": "^1.18.3",
-        "chart.js": "^2.8.0",
+        "chart.js": "^2.9.4",
         "classnames": "^2.2.6",
         "css-loader": "^3.2.1",
         "currency-formatter": "^1.5.5",
